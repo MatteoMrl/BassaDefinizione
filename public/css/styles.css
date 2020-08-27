@@ -71,6 +71,7 @@ header i {
 #wtwTitle {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
+  letter-spacing: 0.3vw;
 }
 
 #whatToWatch {
@@ -103,6 +104,11 @@ header i {
 }
 
 #whatToWatch .card .card-title {
+  color: white;
+}
+
+#whatToWatch .card .btn {
+  background-color: black;
   color: white;
 }
 

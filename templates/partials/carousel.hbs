@@ -1,83 +1,15 @@
-<h1 id="wtwTitle">What to watch:</h1>
+{{#if twFilms}} 
+<h2 id="wtwTitle">WHAT TO WATCH:</h2>
 <section id="whatToWatch">
+  {{#each twFilms}}
   <div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
+  <img class="card-img-top" src="http://img.omdbapi.com/?i={{imdbID}}&apikey=e3e69745" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.plot}}</p>
+    <a href="#" class="btn ">Find out more</a>
   </div>
 </div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i=tt3896198&apikey=e3e69745" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+{{/each}}
 </section>
+{{/if}}

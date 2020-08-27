@@ -53,6 +53,7 @@ header i {
 #wtwTitle {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
+  letter-spacing: 0.3vw;
 }
 
 #whatToWatch {
@@ -68,7 +69,7 @@ header i {
   width: 200px;
   display: inline-block;
   background-color: #121212;
-  color: #ff9900;
+  color: white;
   opacity: 60%;
 }
 #whatToWatch .card img {
@@ -80,6 +81,10 @@ header i {
   height: 300px;
 }
 #whatToWatch .card .card-title {
+  color: white;
+}
+#whatToWatch .card .btn {
+  background-color: black;
   color: white;
 }
 #whatToWatch .card:hover {
