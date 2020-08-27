@@ -5,7 +5,11 @@ var request = require('request');
 const app = express()
 var count = 0; 
 var toWatch = false;
-
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }));
+ 
+// parse application/json
+app.use(bodyParser.json())
 const twFilms = [{ name: "Breaking Bad"},{ name: "Game of thrones"},{ name: "Interstellar"},{ name: "titanic"},{ name: "It"},{ name: "American gods"},{name: "The simpsons"}, {name: "futurama"}, {name: "The martian"}, {name: "8 mile"}];
 
 searchFilm = (name, callback) =>{
@@ -18,10 +22,6 @@ searchFilm = (name, callback) =>{
         else{return callback("error", dataFilm)}
     });
 }
-
-
-
-
 
 const publicDirectoryPath = path.join(__dirname, 'public')
 const viewsPath = path.join(__dirname, 'templates/views')
@@ -38,7 +38,6 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     if(toWatch == false){
         twFilms.forEach((value, index)=>{
-        
             searchFilm(value.name, (err, data) => {
                 count++;
                 if(!err){
@@ -47,12 +46,24 @@ app.get('', (req, res) => {
                         toWatch = true;
                         res.render("index", {twFilms});
                     }
+                } else {
+                    console.log("ERROR");
                 }
             })
         })
     } else {
         res.render("index", {twFilms});
     }
+})
+
+app.get("/search", (req,res) => {
+    searchFilm(req.query.title,(err, data) => {
+        if(!err){
+            res.render("searchFilms", {data});
+        } else {
+            console.log("ERROR");
+        }
+    })
 })
 
 .listen(3000,()=>console.log("Listening on port 3000..."))

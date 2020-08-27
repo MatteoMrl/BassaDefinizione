@@ -90,8 +90,8 @@ header i {
   width: 200px;
   display: inline-block;
   background-color: #121212;
-  color: #ff9900;
-  opacity: 60%;
+  color: white;
+  opacity: 50%;
 }
 
 #whatToWatch .card img {
@@ -119,4 +119,53 @@ header i {
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
-/*# sourceMappingURL=styles.css.map */
+
+#searchFilms {
+  background-image: url("../img/lol.jpg");
+}
+
+#specificFilm {
+  display: -ms-grid;
+  display: grid;
+  background-color: #121212;
+  margin: 5vw;
+  border: 1px solid #ff9900;
+  padding: 2.5vw;
+  -webkit-box-shadow: 0 0 20px 4px #ff9900;
+          box-shadow: 0 0 20px 4px #ff9900;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  overflow: auto;
+}
+
+#specificFilm img {
+  border: 1px solid #ff9900;
+  margin-right: 2vw;
+}
+
+#specificFilm #title {
+  color: black;
+  font-size: 40px;
+  background-color: #ff9900;
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: 0.5vw;
+  border: 1px solid black;
+  padding: 0 1vw;
+}
+
+#specificFilm #plot {
+  font-size: 20px;
+  margin: 2vh 0;
+  padding: 0 1vw;
+  color: white;
+  border-left: 1px solid #ff9900;
+}
+
+#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating {
+  font-size: 15px;
+  padding: 0 1vw;
+  color: white;
+  border-left: 1px solid #ff9900;
+}
+/*# sourceMappingURL=style.css.map */

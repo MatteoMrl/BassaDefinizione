@@ -11,6 +11,14 @@ var request = require('request');
 var app = express();
 var count = 0;
 var toWatch = false;
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: false
+})); // parse application/json
+
+app.use(bodyParser.json());
 var twFilms = [{
   name: "Breaking Bad"
 }, {
@@ -74,6 +82,8 @@ app.get('', function (req, res) {
               twFilms: twFilms
             });
           }
+        } else {
+          console.log("ERROR");
         }
       });
     });
@@ -82,6 +92,17 @@ app.get('', function (req, res) {
       twFilms: twFilms
     });
   }
+});
+app.get("/search", function (req, res) {
+  searchFilm(req.query.title, function (err, data) {
+    if (!err) {
+      res.render("searchFilms", {
+        data: data
+      });
+    } else {
+      console.log("ERROR");
+    }
+  });
 }).listen(3000, function () {
   return console.log("Listening on port 3000...");
 });

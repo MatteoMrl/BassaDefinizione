@@ -78,7 +78,7 @@ header{
         display: inline-block;
         background-color: $lightBlack;
         color: white;
-        opacity: 60%;
+        opacity: 50%;
         
 
         img{
@@ -105,5 +105,47 @@ header{
         position: relative;
         bottom: 2vh;
         box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    }
+}
+
+//-----------------------------------------------------------------------------------------------------------
+
+#searchFilms{background-image: url("../img/lol.jpg");}
+#specificFilm{
+    display: grid;
+    background-color: $lightBlack;
+    margin: 5vw;
+    border: 1px solid $orangeOp;
+    padding: 2.5vw;
+    box-shadow: 0 0 20px 4px $orangeOp;
+    grid-template-columns: auto auto;
+    overflow: auto;
+    img{
+        border: 1px solid $orangeOp;
+        margin-right: 2vw;
+    }
+    #title{
+        color:black;
+        font-size: 40px;
+        background-color: $orangeOp;
+        display: inline;
+        text-transform: uppercase;
+        letter-spacing: 0.5vw;
+        border: 1px solid black;
+        padding: 0 1vw;
+    }
+    #plot{
+        font-size: 20px;
+        margin: 2vh 0;
+        padding: 0 1vw;
+        color: white;
+        border-left: 1px solid $orangeOp;
+    }
+
+    #genre, #runtime, #director, #actors, #awards, #imdbRating{
+        font-size: 15px;
+        padding: 0 1vw;
+        color: white;
+        border-left: 1px solid $orangeOp;
     }
 }
