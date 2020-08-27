@@ -1,4 +1,5 @@
 $orangeOp: #ff9900;
+$lightBlack: #121212;
 
 * {
     margin: 0;
@@ -11,7 +12,7 @@ body{
 }
 
 header{
-    background-color: #121212;
+    background-color: $lightBlack;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -26,6 +27,7 @@ header{
     
     a:hover{
         color: $orangeOp;
+        text-decoration: none;
     }
 
     img{
@@ -57,4 +59,45 @@ header{
     }
 
 }
+#wtwTitle{
+    margin: 3vw 0 3vh 4vw;
+    color: $orangeOp;
+}
+#whatToWatch{
+    border-left: 1px solid $lightBlack;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto ;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 4vh;
 
+    .card{
+        width: 200px;
+        display: inline-block;
+        background-color: $lightBlack;
+        color: $orangeOp;
+        opacity: 60%;
+        
+
+        img{
+            display: block;
+            position: relative;
+            right: 1px;              //altrimenti il poster esce di poco a destra
+            bottom: 1px;
+            width: 200px;
+            height: 300px;
+        }
+
+        .card-title{
+            color: white;
+        }
+    }
+
+    .card:hover{
+        opacity: 100%;
+        position: relative;
+        bottom: 2vh;
+        box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    }
+}
