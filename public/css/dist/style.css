@@ -30,18 +30,24 @@ header img {
 }
 header #divSearch {
   color: #ff9900;
+  display: flex;
   background-color: white;
+  align-items: baseline;
   border-radius: 5px;
   padding: 1vh 1vw;
 }
 header #divSearch input[type=text] {
+  text-transform: uppercase;
   padding: 0.2vw;
-  font-size: 1.2vw;
+  font-size: 1.2rem;
   width: 40vw;
   border-radius: 5px;
   outline: none;
   color: #ff9900;
   border: transparent;
+}
+header #divSearch a:hover {
+  cursor: pointer;
 }
 header #divSearch:hover {
   border: 0.2vw solid #ff9900;
@@ -53,7 +59,7 @@ header i {
 #wtwTitle {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
-  letter-spacing: 0.3vw;
+  letter-spacing: 4px;
 }
 
 #whatToWatch {
@@ -65,27 +71,37 @@ header i {
   padding: 1vw 0;
   row-gap: 4vh;
 }
+#whatToWatch .far, #whatToWatch .fas {
+  color: #ff9900;
+}
 #whatToWatch .card {
   width: 200px;
   display: inline-block;
+  border: transparent;
   background-color: #121212;
-  color: white;
   opacity: 50%;
 }
-#whatToWatch .card img {
+#whatToWatch .card .card-body {
+  margin-bottom: 50px;
+}
+#whatToWatch .card .card-body img {
   display: block;
-  position: relative;
-  right: 1px;
-  bottom: 1px;
   width: 200px;
   height: 300px;
 }
-#whatToWatch .card .card-title {
+#whatToWatch .card .card-body .card-title {
+  color: #ff9900;
+}
+#whatToWatch .card .card-body .card-text {
   color: white;
+  overflow: hidden;
 }
 #whatToWatch .card .btn {
-  background-color: black;
+  background-color: #ff9900;
   color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 #whatToWatch .card:hover {
   opacity: 100%;
@@ -95,7 +111,7 @@ header i {
 }
 
 #searchFilms {
-  background-image: url("../img/lol.jpg");
+  background-color: black;
 }
 
 #specificFilm {
@@ -111,6 +127,7 @@ header i {
 #specificFilm img {
   border: 1px solid #ff9900;
   margin-right: 2vw;
+  height: 100%;
 }
 #specificFilm #title {
   color: black;
@@ -129,7 +146,7 @@ header i {
   color: white;
   border-left: 1px solid #ff9900;
 }
-#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating {
+#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating, #specificFilm #released {
   font-size: 15px;
   padding: 0 1vw;
   color: white;

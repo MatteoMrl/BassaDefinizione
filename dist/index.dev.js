@@ -73,7 +73,9 @@ app.get('', function (req, res) {
             imdbID: data.imdbID,
             title: data.Title,
             plot: data.Plot,
-            rating: data.imdbRating
+            rating: data.imdbRating,
+            votes: data.imdbVotes,
+            genre: data.Genre
           };
 
           if (count == twFilms.length) {
@@ -94,15 +96,23 @@ app.get('', function (req, res) {
   }
 });
 app.get("/search", function (req, res) {
-  searchFilm(req.query.title, function (err, data) {
-    if (!err) {
-      res.render("searchFilms", {
-        data: data
-      });
-    } else {
-      console.log("ERROR");
-    }
-  });
+  var title = req.query.title;
+
+  if (title !== "") {
+    searchFilm(title, function (err, data) {
+      if (!err) {
+        if (data.Director === "N/A") {
+          data.Director = undefined;
+        }
+
+        res.render("searchFilms", {
+          data: data
+        });
+      } else {
+        console.log("ERROR");
+      }
+    });
+  }
 }).listen(3000, function () {
   return console.log("Listening on port 3000...");
 });

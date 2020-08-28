@@ -11,6 +11,8 @@ body{
     background-color: black;
 }
 
+//-----------------------------------------------------------------------------------------------------
+
 header{
     background-color: $lightBlack;
     display: flex;
@@ -36,18 +38,24 @@ header{
 
     #divSearch{
         color:$orangeOp;
+        display: flex;
         background-color: white;
+        align-items: baseline;
         border-radius: 5px;
         padding: 1vh 1vw;  
         input[type=text]{
+            text-transform: uppercase;
             padding: 0.2vw;
-            font-size: 1.2vw;
+            font-size: 1.2rem;
             width: 40vw;
             border-radius: 5px;
             outline: none;
             color: $orangeOp;
             border: transparent;
-        }      
+        }
+        a:hover{
+            cursor: pointer;
+        }     
     }
     
     #divSearch:hover{
@@ -59,10 +67,13 @@ header{
     }
 
 }
+
+//------------------------------------------------------------------------------------------------------------
+
 #wtwTitle{
     margin: 3vw 0 3vh 4vw;
     color: $orangeOp;
-    letter-spacing: 0.3vw;
+    letter-spacing: 4px;
 }
 #whatToWatch{
     border-left: 1px solid $lightBlack;
@@ -72,33 +83,40 @@ header{
     justify-items: center;
     padding: 1vw 0;
     row-gap: 4vh;
-
+    .far, .fas{
+        color: $orangeOp;
+    }
     .card{
         width: 200px;
         display: inline-block;
+        border: transparent;
         background-color: $lightBlack;
-        color: white;
         opacity: 50%;
+        .card-body{
+            margin-bottom: 50px;
+            img{
+                display: block;
+                width: 200px;
+                height: 300px;
+            }
+            .card-title{
+                color: $orangeOp;
+            }
+            .card-text{
+                color: white;
+                overflow: hidden;
+            }
+            
+        }
         
-
-        img{
-            display: block;
-            position: relative;
-            right: 1px;              //altrimenti il poster esce di poco a destra
-            bottom: 1px;
-            width: 200px;
-            height: 300px;
-        }
-
-        .card-title{
-            color: white;
-        }
-
         .btn{
-            background-color: black;
+            background-color: $orangeOp;
             color: white;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
         }
-    }
+}
 
     .card:hover{
         opacity: 100%;
@@ -110,7 +128,7 @@ header{
 
 //-----------------------------------------------------------------------------------------------------------
 
-#searchFilms{background-image: url("../img/lol.jpg");}
+#searchFilms{background-color: black;}
 #specificFilm{
     display: grid;
     background-color: $lightBlack;
@@ -123,6 +141,7 @@ header{
     img{
         border: 1px solid $orangeOp;
         margin-right: 2vw;
+        height: 100%;
     }
     #title{
         color:black;
@@ -142,7 +161,7 @@ header{
         border-left: 1px solid $orangeOp;
     }
 
-    #genre, #runtime, #director, #actors, #awards, #imdbRating{
+    #genre, #runtime, #director, #actors, #awards, #imdbRating, #released{
         font-size: 15px;
         padding: 0 1vw;
         color: white;

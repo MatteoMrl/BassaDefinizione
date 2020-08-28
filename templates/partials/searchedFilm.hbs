@@ -5,9 +5,12 @@
         <h4 id="plot">{{data.Plot}}</h4>
         <h5 id="genre">{{data.Genre}}</h5>
         <h5 id="runtime">{{data.Runtime}}</h5>
-        <h5 id="director">{{data.Director}}</h5>
+        <h5 id="released">{{data.Released}}</h5>
+        {{#if data.Director}} 
+            <h5 id="director">{{data.Director}}</h5>
+        {{/if}}
         <h5 id="actors">{{data.Actors}}</h5>
         <h5 id="awards">{{data.Awards}}</h5>
-        <h5 id="imdbRating">{{data.imdbRating}} <i class="far fa-star"></i> IMDb rating</h5>
+        <h5 id="imdbRating">{{data.imdbRating}} <i class="far fa-star"></i> | {{data.imdbVotes}} <i class="fas fa-vote-yea"></i>    IMDb rating</h5>
     </div>
 </section>
