@@ -1,4 +1,5 @@
 <section id="specificFilm">
+    {{#if data.imdbID}} 
     <img src="http://img.omdbapi.com/?i={{data.imdbID}}&apikey=e3e69745" alt="">
     <div id="filmInformation">
         <h1 id="title">{{data.Title}}</h1>
@@ -7,10 +8,13 @@
         <h5 id="runtime">{{data.Runtime}}</h5>
         <h5 id="released">{{data.Released}}</h5>
         {{#if data.Director}} 
-            <h5 id="director">{{data.Director}}</h5>
+            <h5 id="director">Director: {{data.Director}}</h5>
         {{/if}}
-        <h5 id="actors">{{data.Actors}}</h5>
+        <h5 id="actors">Actors: {{data.Actors}}</h5>
         <h5 id="awards">{{data.Awards}}</h5>
         <h5 id="imdbRating">{{data.imdbRating}} <i class="far fa-star"></i> | {{data.imdbVotes}} <i class="fas fa-vote-yea"></i>    IMDb rating</h5>
     </div>
+    {{else}}
+    <h1>ERROR: FILM NOT FOUND</h1>
+    {{/if}}
 </section>

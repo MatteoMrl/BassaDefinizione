@@ -46,7 +46,6 @@ header{
         input[type=text]{
             text-transform: uppercase;
             padding: 0.2vw;
-            font-size: 1.2rem;
             width: 40vw;
             border-radius: 5px;
             outline: none;
@@ -88,17 +87,19 @@ header{
     }
     .card{
         width: 200px;
+        border-radius: 4px;
         display: inline-block;
         border: transparent;
         background-color: $lightBlack;
-        opacity: 50%;
+        
+        img{
+            height: 300px;
+            width: 200px;
+            opacity: 40%;
+        }
         .card-body{
             margin-bottom: 50px;
-            img{
-                display: block;
-                width: 200px;
-                height: 300px;
-            }
+
             .card-title{
                 color: $orangeOp;
             }
@@ -113,13 +114,16 @@ header{
             background-color: $orangeOp;
             color: white;
             position: absolute;
-            bottom: 10px;
-            left: 10px;
+            bottom: 0;
+            width: 100%;
+            border-radius: 0 0 4px 4px;
         }
 }
 
     .card:hover{
-        opacity: 100%;
+        img{
+            opacity: 100%;
+        }
         position: relative;
         bottom: 2vh;
         box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;

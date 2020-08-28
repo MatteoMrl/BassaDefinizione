@@ -59,7 +59,6 @@ header #divSearch {
 header #divSearch input[type=text] {
   text-transform: uppercase;
   padding: 0.2vw;
-  font-size: 1.2rem;
   width: 40vw;
   border-radius: 5px;
   outline: none;
@@ -103,20 +102,20 @@ header i {
 
 #whatToWatch .card {
   width: 200px;
+  border-radius: 4px;
   display: inline-block;
   border: transparent;
   background-color: #121212;
-  opacity: 50%;
+}
+
+#whatToWatch .card img {
+  height: 300px;
+  width: 200px;
+  opacity: 40%;
 }
 
 #whatToWatch .card .card-body {
   margin-bottom: 50px;
-}
-
-#whatToWatch .card .card-body img {
-  display: block;
-  width: 200px;
-  height: 300px;
 }
 
 #whatToWatch .card .card-body .card-title {
@@ -132,16 +131,20 @@ header i {
   background-color: #ff9900;
   color: white;
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
 }
 
 #whatToWatch .card:hover {
-  opacity: 100%;
   position: relative;
   bottom: 2vh;
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
+}
+
+#whatToWatch .card:hover img {
+  opacity: 100%;
 }
 
 #searchFilms {
