@@ -1,0 +1,1 @@
+project born for my candidacy to 'Soluzioni Futura'
