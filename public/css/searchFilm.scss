@@ -1,0 +1,110 @@
+$orangeOp: #ff9900;
+$lightBlack: #121212;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+//------------------------------------------------------------------------------------------------------
+
+header{
+    background-color: $lightBlack;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px;
+
+    a{
+        text-decoration: none;
+        color:white;
+    }
+    
+    a:hover{
+        color: $orangeOp;
+        text-decoration: none;
+    }
+
+    img{
+        height: 8vh;
+    }
+
+    #divSearch{
+        color:$orangeOp;
+        display: flex;
+        background-color: white;
+        align-items: baseline;
+        border-radius: 5px;
+        padding: 1vh 1vw;  
+        input[type=text]{
+            text-transform: uppercase;
+            padding: 0.2vw;
+            width: 40vw;
+            border-radius: 5px;
+            outline: none;
+            color: $orangeOp;
+            border: transparent;
+        }
+        a:hover{
+            cursor: pointer;
+        }     
+    }
+    
+    #divSearch:hover{
+        border: 0.2vw solid $orangeOp;
+    }
+
+    i{
+        margin-right: 1vw;
+    }
+
+}
+
+//------------------------------------------------------------------------------------------------
+#searchFilms{background-color: black;}
+#specificFilm{
+    display: grid;
+    background-color: $lightBlack;
+    margin: 5vw;
+    border: 1px solid $orangeOp;
+    padding: 2.5vw;
+    box-shadow: 0 0 20px 4px $orangeOp;
+    grid-template-columns: auto auto;
+    overflow: auto;
+    img{
+        border: 1px solid $orangeOp;
+        margin-right: 2vw;
+        height: 100%;
+    }
+    #title{
+        color:black;
+        font-size: 40px;
+        background-color: $orangeOp;
+        display: inline;
+        text-transform: uppercase;
+        letter-spacing: 0.5vw;
+        border: 1px solid black;
+        padding: 0 1vw;
+    }
+    #plot{
+        font-size: 20px;
+        margin: 2vh 0;
+        padding: 0 1vw;
+        color: white;
+        border-left: 1px solid $orangeOp;
+    }
+
+    #genre, #runtime, #director, #actors, #awards, #imdbRating, #released{
+        font-size: 15px;
+        padding: 0 1vw;
+        color: white;
+        border-left: 1px solid $orangeOp;
+    }
+}

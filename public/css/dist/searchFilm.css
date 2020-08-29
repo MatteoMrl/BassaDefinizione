@@ -55,59 +55,45 @@ header i {
   margin-right: 1vw;
 }
 
-#wtwTitle {
-  margin: 3vw 0 3vh 4vw;
-  color: #ff9900;
-  letter-spacing: 4px;
+#searchFilms {
+  background-color: black;
 }
 
-#whatToWatch {
-  border-left: 1px solid #121212;
-  margin: 0 4vw;
+#specificFilm {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  justify-items: center;
-  padding: 1vw 0;
-  row-gap: 4vh;
-}
-#whatToWatch .far, #whatToWatch .fas {
-  color: #ff9900;
-}
-#whatToWatch .card {
-  width: 200px;
-  border-radius: 4px;
-  display: inline-block;
-  border: transparent;
   background-color: #121212;
+  margin: 5vw;
+  border: 1px solid #ff9900;
+  padding: 2.5vw;
+  box-shadow: 0 0 20px 4px #ff9900;
+  grid-template-columns: auto auto;
+  overflow: auto;
 }
-#whatToWatch .card img {
-  height: 300px;
-  width: 200px;
-  opacity: 40%;
+#specificFilm img {
+  border: 1px solid #ff9900;
+  margin-right: 2vw;
+  height: 100%;
 }
-#whatToWatch .card .card-body {
-  margin-bottom: 50px;
-}
-#whatToWatch .card .card-body .card-title {
-  color: #ff9900;
-}
-#whatToWatch .card .card-body .card-text {
-  color: white;
-  overflow: hidden;
-}
-#whatToWatch .card .btn {
+#specificFilm #title {
+  color: black;
+  font-size: 40px;
   background-color: #ff9900;
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: 0.5vw;
+  border: 1px solid black;
+  padding: 0 1vw;
+}
+#specificFilm #plot {
+  font-size: 20px;
+  margin: 2vh 0;
+  padding: 0 1vw;
   color: white;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  border-radius: 0 0 4px 4px;
+  border-left: 1px solid #ff9900;
 }
-#whatToWatch .card:hover {
-  position: relative;
-  bottom: 2vh;
-  box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-}
-#whatToWatch .card:hover img {
-  opacity: 100%;
+#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating, #specificFilm #released {
+  font-size: 15px;
+  padding: 0 1vw;
+  color: white;
+  border-left: 1px solid #ff9900;
 }

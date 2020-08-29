@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>head}}
+    <link rel="stylesheet" href="/css/registration.css">
+</head>
+<body>
+
+    <a href="/"><img src="/img/logo.jpg" alt=""></a>
+
+    <form action="/registration" method="POST">
+
+        <h1 id="title">Create account</h1>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" autocomplete="username">
+            <small id="usernameHelp" class="form-text"><i class="fas fa-info"></i> Letters between 4 and 15</small>
+        </div>
+
+        <div class="form-group">
+            <label for="mail">Email address</label>
+            <input type="email" class="form-control" id="mail" name="mail" autocomplete="email">
+            <small id="emailHelp" class="form-text"><i class="fas fa-info"></i> Insert a valid email</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" autocomplete="new-password">
+            <small id="passwordHelp" class="form-text"><i class="fas fa-info"></i> 7 to 15 characters and the first must be a letter</small>
+        </div>
+        {{#if message}}
+        <div class="alert {{class}}" role="alert">
+            {{message}}
+        </div>
+        {{else}}
+        <button type="submit" class="btn">SUBMIT</button>
+        {{/if}}
+    </form>
+
+    
+
+<script>
+    const usernameInput = document.querySelector("#username");
+    const usernameHelp = document.querySelector("#usernameHelp");
+    const mailInput = document.querySelector("#mail");
+    const mailHelp = document.querySelector("#emailHelp");
+    const passwordInput = document.querySelector("#password");
+    const passwordHelp = document.querySelector("#passwordHelp");
+    const button = document.querySelector("button");
+    var counterUsername = 0;
+    var validUsername = false;
+    var validMail = false;
+    var validPassword = false;
+    var changeColor = false;
+    button.disabled = true;
+    button.style.backgroundColor = "red";
+
+    checkUsername = () => {
+        var regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
+        if(usernameInput.value.match(regex)){
+            validUsername = true;
+            usernameHelp.style.color = "green";
+            usernameInput.classList.remove("invalid");
+            usernameInput.classList.add("valid");
+        } else {
+            validUsername = false;
+            usernameHelp.style.color = "red";
+            usernameInput.classList.remove("valid");
+            usernameInput.classList.add("invalid");
+        }
+    }
+
+    checkMail = () => {
+        var regex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if(mailInput.value.match(regex)){
+            mailHelp.innerHTML = '<i class="fas fa-info"></i> Valid email';
+            mailHelp.style.color = "green";
+            validMail = true;
+            mailInput.classList.remove("invalid");
+            mailInput.classList.add("valid");
+        } else {
+            mailHelp.innerHTML = '<i class="fas fa-info"></i> Invalid email';
+            mailHelp.style.color = "red";
+            validMail = false;
+            mailInput.classList.remove("valid");
+            mailInput.classList.add("invalid");
+        }
+    }
+
+    checkPassword = () => {
+        var regex=  /^[A-Za-z]\w{5,13}$/;
+        if(passwordInput.value.match(regex)){
+            passwordHelp.style.color = "green";
+            validPassword = true;
+            passwordInput.classList.remove("invalid");
+            passwordInput.classList.add("valid");
+        } else {
+            passwordHelp.style.color = "red";
+            validPassword = false;
+            passwordInput.classList.remove("valid");
+            passwordInput.classList.add("invalid");
+        }
+    }
+
+    validButton = () => {
+        if(validUsername === true && validMail === true && validPassword === true){
+            button.disabled = false;
+            button.style.backgroundColor="white";
+        } else {
+            button.disabled = true;
+            button.style.backgroundColor="red";
+        }
+    }
+
+    usernameInput.addEventListener("keydown", ()=> {
+        checkUsername();
+        validButton();
+    })
+    usernameInput.addEventListener("change", ()=> {
+        checkUsername();
+        validButton();
+    })
+    
+    mailInput.addEventListener("keydown", () => {
+        checkMail();
+        validButton();
+    })
+    mailInput.addEventListener("change", () => {
+        checkMail();
+        validButton();
+    })
+    
+    passwordInput.addEventListener("keydown", () => {
+        checkPassword();
+        validButton();
+    })
+    passwordInput.addEventListener("change", () => {
+        checkPassword(passwordInput.value);
+        validButton();
+    })
+
+    button.addEventListener("mouseover", ()=>{
+        button.style.backgroundColor="green";
+    })
+    button.addEventListener("mouseout", ()=>{
+        button.style.backgroundColor="white";
+    })
+</script>
+
+</body>
+</html>

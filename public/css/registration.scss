@@ -1,0 +1,99 @@
+$orangeOp: #ff9900;
+$lightBlack: #121212;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-image: url("/img/bgRegistration.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+img {
+    display: block;
+    margin: 5vh auto 5vh auto;
+    width: 400px;
+    border-radius: 7px;
+}
+
+form {
+    background-color: $lightBlack;
+    color: white;
+    padding: 20px;
+    padding-bottom: 50px;
+    border-radius: 7px;
+    margin: 0;
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+
+    #title{
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .form-group{
+        label{
+            font-size: 15px;
+        }
+
+        .form-control:hover, .form-control:focus{
+            box-shadow: 0 0 10px 1px $orangeOp;
+            outline: none;
+            border: 1px solid $orangeOp;
+        }
+        .valid:hover,.valid:focus{
+            box-shadow: 0 0 10px 1px green;
+            border-color: green;
+        }
+        .invalid:hover,.invalid:focus{
+            box-shadow: 0 0 10px 1px red;
+            border-color: red;
+        }
+    }
+    .btn{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        background-color: white;
+        color: black;
+        letter-spacing: 3px;
+        border-radius: 0 0 7px 7px;
+    }
+    
+    .btn:hover{
+        outline: none;
+        box-shadow: none;
+    }
+
+    .alert {
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        border-radius: 0 0 7px 7px;
+    }
+    .alert-success {
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+    }
+
+    .alert-danger {
+        border: 1px solid red;
+        background-color: red;
+        color: white;
+    }
+ 
+}

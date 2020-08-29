@@ -3,7 +3,7 @@
 <section id="whatToWatch">
   {{#each twFilms}}
   <div class="card">
-  <img class="card-img-top" src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=e3e69745" alt="Card image cap">
+  <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{this.title}}</h5>
     <p class="card-text">{{this.plot}}</p>
@@ -16,12 +16,3 @@
 </section>
 {{/if}}
 
-<script>
-  const searchButton = document.querySelector("#searchButton");
-  const searchFilm = document.querySelector("#searchFilm");
-  console.log(searchButton);
-  searchButton.addEventListener("click", ()=>{
-    searchButton.href=`/search?title=${searchFilm.value}`;
-    searchFilm.value="";
-  })
-</script>
