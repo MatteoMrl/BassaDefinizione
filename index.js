@@ -4,7 +4,9 @@ const hbs = require('hbs')
 const request = require('request');
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
-var mysql      = require('mysql');
+const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
 const app = express()
 var count = 0; 
 var toWatch = false;
@@ -33,16 +35,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 checkUser = ({username, mail, password}, res) => {
-    db.query(`SELECT userMail FROM users WHERE userMail = '${mail}'`,(error,result) => {
+    db.query(`SELECT mail FROM users WHERE mail = '${mail}'`, async (error,result) => {
         if(error){
             console.log(error);
         } else{
             if(result.length == 0){
-                res.render("registration", {message: "Account created successfully", class: "alert-success"})
+                let hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
+                db.query(`INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`, (error,result) => {
+                    if(error){
+                        console.log(error);
+                    } else {
+                        console.log("CE L'HAI FATTA BRUTTO FIGLIO DI PUTTANA!");
+                        res.render("registration", {message: "Account created successfully", class: "alert-success"})
+                    }
+                })
+                
             } else {
                 res.render("registration", {message: "This mail is already in use, try another one", class: "alert-danger"})
             }
-            
         }
     })
 }

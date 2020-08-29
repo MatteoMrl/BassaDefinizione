@@ -14,6 +14,10 @@ var bodyParser = require('body-parser');
 
 var mysql = require('mysql');
 
+var jwt = require('jsonwebtoken');
+
+var bcrypt = require('bcryptjs');
+
 var app = express();
 var count = 0;
 var toWatch = false;
@@ -65,22 +69,59 @@ checkUser = function checkUser(_ref, res) {
   var username = _ref.username,
       mail = _ref.mail,
       password = _ref.password;
-  db.query("SELECT userMail FROM users WHERE userMail = '".concat(mail, "'"), function (error, result) {
-    if (error) {
-      console.log(error);
-    } else {
-      if (result.length == 0) {
-        res.render("registration", {
-          message: "Account created successfully",
-          "class": "alert-success"
-        });
-      } else {
-        res.render("registration", {
-          message: "This mail is already in use, try another one",
-          "class": "alert-danger"
-        });
+  db.query("SELECT mail FROM users WHERE mail = '".concat(mail, "'"), function _callee(error, result) {
+    var hashedPassword;
+    return regeneratorRuntime.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!error) {
+              _context.next = 4;
+              break;
+            }
+
+            console.log(error);
+            _context.next = 12;
+            break;
+
+          case 4:
+            if (!(result.length == 0)) {
+              _context.next = 11;
+              break;
+            }
+
+            _context.next = 7;
+            return regeneratorRuntime.awrap(bcrypt.hash(password, 4));
+
+          case 7:
+            hashedPassword = _context.sent;
+            //number of times the password is hashed
+            db.query("INSERT INTO users(username, password, mail) VALUES('".concat(username, "', '").concat(hashedPassword, "', '").concat(mail, "')"), function (error, result) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("CE L'HAI FATTA BRUTTO FIGLIO DI PUTTANA!");
+                res.render("registration", {
+                  message: "Account created successfully",
+                  "class": "alert-success"
+                });
+              }
+            });
+            _context.next = 12;
+            break;
+
+          case 11:
+            res.render("registration", {
+              message: "This mail is already in use, try another one",
+              "class": "alert-danger"
+            });
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
+    });
   });
 };
 
