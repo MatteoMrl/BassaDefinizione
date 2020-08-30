@@ -1,15 +1,17 @@
-const path = require('path')
-const express = require('express')
-const hbs = require('hbs')
+const path = require('path');
+const express = require('express');
+const hbs = require('hbs');
 const request = require('request');
-const dotenv = require('dotenv')
-const bodyParser = require('body-parser')
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
-const app = express()
+const bcrypt = require('bcryptjs');
+const cookieParser = require('cookie-parser');
+const app = express();
 var count = 0; 
 var toWatch = false;
+var userData = undefined;
 dotenv.config({path: './private/.env'})
 
 var db = mysql.createConnection({
@@ -26,26 +28,26 @@ const viewsPath = path.join(__dirname, 'templates/views')
 const partialsPath = path.join(__dirname, 'templates/partials')
 
 // Setup handlebars engine and views location
-app.set('view engine', 'hbs')
-app.set('views', viewsPath)
-hbs.registerPartials(partialsPath)
+app.set('view engine', 'hbs');
+app.set('views', viewsPath);
+hbs.registerPartials(partialsPath);
 // Setup static directory to serve
-app.use(express.static(publicDirectoryPath))
+app.use(express.static(publicDirectoryPath));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cookieParser());
 
-checkUser = ({username, mail, password}, res) => {
+registerUser = ({username, mail, password}, res) => {
     db.query(`SELECT mail FROM users WHERE mail = '${mail}'`, async (error,result) => {
         if(error){
             console.log(error);
         } else{
-            if(result.length == 0){
+            if(result.length < 1){
                 let hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
                 db.query(`INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`, (error,result) => {
                     if(error){
                         console.log(error);
                     } else {
-                        console.log("CE L'HAI FATTA BRUTTO FIGLIO DI PUTTANA!");
                         res.render("registration", {message: "Account created successfully", class: "alert-success"})
                     }
                 })
@@ -53,6 +55,17 @@ checkUser = ({username, mail, password}, res) => {
             } else {
                 res.render("registration", {message: "This mail is already in use, try another one", class: "alert-danger"})
             }
+        }
+    })
+}
+
+loginUser = ({username, password}, res) => {
+    db.query(`SELECT * FROM users WHERE username = '${username}'`, async (error, result) => {
+        userData = result[0];
+        if(!userData || !(await bcrypt.compare(password, userData.password))){
+            res.status(401).render("login", {message: "Incorrect username or password"})
+        } else {
+            res.status(200).render("index", {twFilms, userData});
         }
     })
 }
@@ -77,7 +90,7 @@ app.get('', (req, res) => {
                     twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster}
                     if(count == twFilms.length){
                         toWatch = true;
-                        res.render("index", {twFilms});
+                        res.render("index", {twFilms, userData});
                     }
                 } else {
                     console.log("ERROR");
@@ -85,7 +98,7 @@ app.get('', (req, res) => {
             })
         })
     } else {
-        res.render("index", {twFilms});
+        res.render("index", {twFilms, userData});
     }
 })
 
@@ -97,13 +110,13 @@ app.get("/search", (req,res) => {
                 if(data.Director==="N/A"){
                     data.Director=undefined;
                 }
-                res.render("searchFilms", {data});
+                res.render("searchFilms", {data, userData});
             } else {
                 console.log("ERROR");
             }
         })
     }else{
-        res.render("searchFilms")
+        res.render("searchFilms", {userData})
     }
 })
 
@@ -111,12 +124,37 @@ app.get("/login", (req,res) => {
     res.render("login");
 })
 
+app.post("/login", (req,res) => {
+    loginUser(req.body, res);
+})
+
 app.get("/registration", (req,res) => {
     res.render("registration");
 })
 
-app.post("/registration", function (req, res) {
-    checkUser(req.body, res);
+app.post("/registration", (req, res) => {
+    registerUser(req.body, res);
+})
+
+app.get("/signout", (req, res) => {
+    if(toWatch == false){
+        twFilms.forEach((value, index)=>{
+            searchFilm(value.name, (err, data) => {
+                count++;
+                if(!err){
+                    twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster}
+                    if(count == twFilms.length){
+                        toWatch = true;
+                        res.render("index", {twFilms});
+                    }
+                } else {
+                    console.log("ERROR");
+                }
+            })
+        })
+    } else {
+        res.render("index", {twFilms});
+    }
 })
 
 .listen(3000,()=>console.log("Listening on port 3000..."))

@@ -1,16 +1,18 @@
 <header>
 
-    <a href="/"><img src="/img/logo.jpg" alt="" id="logo"></a>
+    <a href="/"><img src="/img/logo2.jpg" alt="" id="logo"></a>
 
-    
     <div id="divSearch">
         <i class="fas fa-film"></i>
-        <input class="input-field" type="text" id="searchFilm" placeholder="Search for a movie...">
+        <input class="input-field" spellcheck="false" type="text" id="searchFilm" placeholder="Search for a movie...">
         <a id="searchButton"><i class="fa fa-search"></i></a>
     </div> 
 
-    <a href="/login" class="btn-area"><i class="fa fa-user icon"></i> LOG IN</a>
-
-    <a href="/registration" class="btn-area"><i class="fas fa-sign-in-alt"></i>SIGN IN</a>
-
+    {{#if userData}}
+        <a href="/" class="btn-area"><i class="fa fa-user icon"></i> {{userData.username}}</a>
+        <a href="/signout" class="btn-area"><i class="fas fa-sign-out-alt"></i>SIGN OUT</a>
+    {{else}}
+        <a href="/login" class="btn-area"><i class="fa fa-user icon"></i> LOG IN</a>
+        <a href="/registration" class="btn-area"><i class="fas fa-sign-in-alt"></i>SIGN IN</a>
+    {{/if}}
 </header>

@@ -2,9 +2,104 @@
 <html lang="en">
 <head>
     {{>head}}
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/accessStyle.css">
 </head>
 <body>
-    {{>header}}
+
+    <a href="/"><img src="/img/logo2.jpg" id="imgLogo" alt=""></a>
+
+    <form action="/login" method="POST">
+
+        {{#if message}}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {{else}}
+            <h1 id="title">Log in</h1>
+        {{/if}}
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" autocomplete="username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" autocomplete="new-password">
+        </div>
+
+        <button type="submit" class="btn">SUBMIT</button>
+        
+    </form>
+
+<script>
+    const usernameInput = document.querySelector("#username");
+    const passwordInput = document.querySelector("#password");
+    const button = document.querySelector("button");
+    var validUsername = false;
+    var validPassword = false;
+    button.disabled = true;
+
+    checkUsername = () => {
+        var regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
+        if(usernameInput.value.match(regex)){
+            validUsername = true;
+            usernameInput.classList.remove("invalid");
+            usernameInput.classList.add("valid");
+        } else {
+            validUsername = false;
+            usernameInput.classList.remove("valid");
+            usernameInput.classList.add("invalid");
+        }
+    }
+
+    checkPassword = () => {
+        var regex=  /^[A-Za-z]\w{5,13}$/;
+        if(passwordInput.value.match(regex)){
+            validPassword = true;
+            passwordInput.classList.remove("invalid");
+            passwordInput.classList.add("valid");
+        } else {
+            validPassword = false;
+            passwordInput.classList.remove("valid");
+            passwordInput.classList.add("invalid");
+        }
+    }
+
+    validButton = () => {
+        if(validUsername === true && validPassword === true){
+            button.disabled = false;
+            button.style.backgroundColor="white";
+        } else {
+            button.disabled = true;
+            button.style.backgroundColor="red";
+        }
+    }
+
+    usernameInput.addEventListener("keydown", ()=> {
+        checkUsername();
+        validButton();
+    })
+    usernameInput.addEventListener("change", ()=> {
+        checkUsername();
+        validButton();
+    })
+
+    passwordInput.addEventListener("keydown", () => {
+        checkPassword();
+        validButton();
+    })
+    passwordInput.addEventListener("change", () => {
+        checkPassword(passwordInput.value);
+        validButton();
+    })
+
+    button.addEventListener("mouseover", ()=>{
+        button.style.backgroundColor="green";
+    })
+    button.addEventListener("mouseout", ()=>{
+        button.style.backgroundColor="white";
+    })
+</script>
 </body>
 </html>

@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
     {{>head}}
-    <link rel="stylesheet" href="/css/registration.css">
+    <link rel="stylesheet" href="/css/accessStyle.css">
 </head>
 <body>
+<section>
 
-    <a href="/"><img src="/img/logo.jpg" alt=""></a>
+    <a href="/"><img src="/img/logo2.jpg" id="imgLogo" alt=""></a>
 
     <form action="/registration" method="POST">
-
-        <h1 id="title">Create account</h1>
-
+        {{#if message}}
+            <a href="/"><div class="alert {{class}}" role="alert">
+                {{message}}
+            </div></a>
+        {{else}}
+            <h1 id="title">Create account</h1>
+        {{/if}}
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" autocomplete="username">
@@ -29,16 +34,11 @@
             <input type="password" class="form-control" id="password" name="password" autocomplete="new-password">
             <small id="passwordHelp" class="form-text"><i class="fas fa-info"></i> 7 to 15 characters and the first must be a letter</small>
         </div>
-        {{#if message}}
-        <div class="alert {{class}}" role="alert">
-            {{message}}
-        </div>
-        {{else}}
+            
         <button type="submit" class="btn">SUBMIT</button>
-        {{/if}}
     </form>
 
-    
+</section> 
 
 <script>
     const usernameInput = document.querySelector("#username");
@@ -48,13 +48,11 @@
     const passwordInput = document.querySelector("#password");
     const passwordHelp = document.querySelector("#passwordHelp");
     const button = document.querySelector("button");
-    var counterUsername = 0;
     var validUsername = false;
     var validMail = false;
     var validPassword = false;
     var changeColor = false;
     button.disabled = true;
-    button.style.backgroundColor = "red";
 
     checkUsername = () => {
         var regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/

@@ -18,9 +18,12 @@ var jwt = require('jsonwebtoken');
 
 var bcrypt = require('bcryptjs');
 
+var cookieParser = require('cookie-parser');
+
 var app = express();
 var count = 0;
 var toWatch = false;
+var userData = undefined;
 dotenv.config({
   path: './private/.env'
 });
@@ -64,8 +67,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
-checkUser = function checkUser(_ref, res) {
+registerUser = function registerUser(_ref, res) {
   var username = _ref.username,
       mail = _ref.mail,
       password = _ref.password;
@@ -85,7 +89,7 @@ checkUser = function checkUser(_ref, res) {
             break;
 
           case 4:
-            if (!(result.length == 0)) {
+            if (!(result.length < 1)) {
               _context.next = 11;
               break;
             }
@@ -100,7 +104,6 @@ checkUser = function checkUser(_ref, res) {
               if (error) {
                 console.log(error);
               } else {
-                console.log("CE L'HAI FATTA BRUTTO FIGLIO DI PUTTANA!");
                 res.render("registration", {
                   message: "Account created successfully",
                   "class": "alert-success"
@@ -119,6 +122,55 @@ checkUser = function checkUser(_ref, res) {
           case 12:
           case "end":
             return _context.stop();
+        }
+      }
+    });
+  });
+};
+
+loginUser = function loginUser(_ref2, res) {
+  var username = _ref2.username,
+      password = _ref2.password;
+  db.query("SELECT * FROM users WHERE username = '".concat(username, "'"), function _callee2(error, result) {
+    return regeneratorRuntime.async(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            userData = result[0];
+            _context2.t0 = !userData;
+
+            if (_context2.t0) {
+              _context2.next = 6;
+              break;
+            }
+
+            _context2.next = 5;
+            return regeneratorRuntime.awrap(bcrypt.compare(password, userData.password));
+
+          case 5:
+            _context2.t0 = !_context2.sent;
+
+          case 6:
+            if (!_context2.t0) {
+              _context2.next = 10;
+              break;
+            }
+
+            res.status(401).render("login", {
+              message: "Incorrect username or password"
+            });
+            _context2.next = 11;
+            break;
+
+          case 10:
+            res.status(200).render("index", {
+              twFilms: twFilms,
+              userData: userData
+            });
+
+          case 11:
+          case "end":
+            return _context2.stop();
         }
       }
     });
@@ -157,7 +209,8 @@ app.get('', function (req, res) {
           if (count == twFilms.length) {
             toWatch = true;
             res.render("index", {
-              twFilms: twFilms
+              twFilms: twFilms,
+              userData: userData
             });
           }
         } else {
@@ -167,7 +220,8 @@ app.get('', function (req, res) {
     });
   } else {
     res.render("index", {
-      twFilms: twFilms
+      twFilms: twFilms,
+      userData: userData
     });
   }
 });
@@ -182,24 +236,64 @@ app.get("/search", function (req, res) {
         }
 
         res.render("searchFilms", {
-          data: data
+          data: data,
+          userData: userData
         });
       } else {
         console.log("ERROR");
       }
     });
   } else {
-    res.render("searchFilms");
+    res.render("searchFilms", {
+      userData: userData
+    });
   }
 });
 app.get("/login", function (req, res) {
   res.render("login");
 });
+app.post("/login", function (req, res) {
+  loginUser(req.body, res);
+});
 app.get("/registration", function (req, res) {
   res.render("registration");
 });
 app.post("/registration", function (req, res) {
-  checkUser(req.body, res);
+  registerUser(req.body, res);
+});
+app.get("/signout", function (req, res) {
+  if (toWatch == false) {
+    twFilms.forEach(function (value, index) {
+      searchFilm(value.name, function (err, data) {
+        count++;
+
+        if (!err) {
+          twFilms[index] = {
+            imdbID: data.imdbID,
+            title: data.Title,
+            plot: data.Plot,
+            rating: data.imdbRating,
+            votes: data.imdbVotes,
+            genre: data.Genre,
+            poster: data.Poster
+          };
+
+          if (count == twFilms.length) {
+            toWatch = true;
+            res.render("index", {
+              twFilms: twFilms
+            });
+          }
+        } else {
+          console.log("ERROR");
+        }
+      });
+    });
+  } else {
+    res.render("index", {
+      twFilms: twFilms
+    });
+  }
 }).listen(3000, function () {
   return console.log("Listening on port 3000...");
 });
