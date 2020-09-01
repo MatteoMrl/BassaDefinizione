@@ -172,16 +172,6 @@ body {
             flex-direction: column;
     gap: 20px;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 20px;
-  }
   #specificFilm {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

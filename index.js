@@ -12,9 +12,9 @@ const atob = require('atob');
 const app = express();
 var count = 0; 
 var fvCount = 0;
-var toWatch = false;
 var userData;
 var userFilms = []
+var twFilms = []
 dotenv.config({path: './private/.env'})
 
 var db = mysql.createConnection({
@@ -23,8 +23,6 @@ var db = mysql.createConnection({
     password : process.env.DB_PASSWORD,
     database : process.env.DB_DATABASE
   });
-
-const twFilms = [{ name: "Breaking Bad"},{ name: "Game of thrones"},{ name: "Interstellar"},{ name: "titanic"},{ name: "It"},{ name: "American gods"},{name: "The simpsons"}, {name: "futurama"}, {name: "The martian"}, {name: "8 mile"}];
 
 const publicDirectoryPath = path.join(__dirname, 'public')
 const viewsPath = path.join(__dirname, 'templates/views')
@@ -126,24 +124,23 @@ searchFilm = (name, callback) =>{
 }
 
 renderFilms = (twFilms, res) => {
-    if(toWatch == false){
-        twFilms.forEach((value, index)=>{
-            searchFilm(value.name, (err, data) => {
+    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 25;`, (error, result) => {
+        result.forEach((value, index)=>{
+            searchFilm(value.title, (err, data) => {
                 count++;
                 if(!err){
                     twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster}
                     if(count == twFilms.length){
-                        toWatch = true;
                         res.render("index", {twFilms});
+                        count = 0;
+                        twFilms = [];
                     }
-                } else {
+                } else {                    
                     console.log("ERROR");
-                }
+                    }
+                })
             })
-        })
-    } else {
-        res.render("index", {twFilms});
-    }
+    })
 }
 
 voteFilm = (title, rating, userID, res) => {
@@ -240,9 +237,6 @@ app.post("/registration", (req, res) => {
     registerUser(req.body, res);
 })
 
-app.get("/signout", (req, res) => {
-})
-
 app.post("/token",verifyToken, (req,res) => {
     if(req.id !== undefined){
         db.query(`SELECT * FROM users WHERE id = '${req.id}'`, async (error, result) => {
@@ -258,4 +252,5 @@ app.get("/vote", verifyToken,(req,res) => {
     const {film, rating} = req.query;
     voteFilm(film, rating, req.id, res);
 })
+
 .listen(3000,()=>console.log("Listening on port 3000..."))
