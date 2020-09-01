@@ -1,0 +1,17 @@
+::-webkit-scrollbar {
+  width: 10px;
+  border-left: 1px solid #121212;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=scrollbar.css.map */

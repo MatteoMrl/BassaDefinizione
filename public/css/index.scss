@@ -1,3 +1,6 @@
+@import 'navbar';
+@import 'scrollbar';
+
 $orangeOp: #ff9900;
 $lightBlack: #121212;
 
@@ -11,65 +14,10 @@ body{
     background-color: black;
 }
 
-//-----------------------------------------------------------------------------------------------------
-
-header{
-    background-color: $lightBlack;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 70px;
-
-    a{
-        text-decoration: none;
-        color:white;
-    }
-    
-    a:hover{
-        color: $orangeOp;
-        text-decoration: none;
-    }
-
-    img{
-        height: 8vh;
-    }
-
-    #divSearch{
-        color:$orangeOp;
-        display: flex;
-        background-color: white;
-        align-items: baseline;
-        border-radius: 5px;
-        padding: 1vh 1vw;  
-        input[type=text]{
-            text-transform: uppercase;
-            padding: 0.2vw;
-            width: 40vw;
-            border-radius: 5px;
-            outline: none;
-            color: $orangeOp;
-            border: transparent;
-        }
-        a:hover{
-            cursor: pointer;
-        }     
-    }
-    
-    #divSearch:hover{
-        border: 0.2vw solid $orangeOp;
-    }
-
-    i{
-        margin-right: 1vw;
-    }
-
-}
 
 //------------------------------------------------------------------------------------------------------------
 
-#wtwTitle{
+#title{
     margin: 3vw 0 3vh 4vw;
     color: $orangeOp;
     letter-spacing: 4px;
@@ -81,7 +29,8 @@ header{
     grid-template-columns: auto auto auto auto auto ;
     justify-items: center;
     padding: 1vw 0;
-    row-gap: 4vh;
+    row-gap: 30px;
+
     .far, .fas{
         color: $orangeOp;
     }
@@ -91,12 +40,28 @@ header{
         display: inline-block;
         border: transparent;
         background-color: $lightBlack;
+
+        ::-webkit-scrollbar {
+            width: 2px;
+            margin-left: 5px;
+          }
+          
+        ::-webkit-scrollbar-track {
+            background: none; 
+            border: none;
+        }
+           
+        ::-webkit-scrollbar-thumb { 
+            border-radius: 10px;
+            background-color: $orangeOp;
+        }
         
         img{
             height: 300px;
             width: 200px;
             opacity: 40%;
         }
+
         .card-body{
             margin-bottom: 50px;
 
@@ -105,6 +70,14 @@ header{
             }
             .card-text{
                 color: white;
+            }
+            #plot{
+                height: 200px;
+                overflow-y: auto;
+                
+            }
+            #genre{
+                height: 100px;
                 overflow: hidden;
             }
             
@@ -117,6 +90,10 @@ header{
             bottom: 0;
             width: 100%;
             border-radius: 0 0 4px 4px;
+        }
+
+        .btn:hover, .btn:focus, .btn:active {
+            box-shadow: none;
         }
 }
 
@@ -132,4 +109,25 @@ header{
 
 //-----------------------------------------------------------------------------------------------------------
 
+@media only screen and (max-width: 1200px) {
+    #whatToWatch{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #whatToWatch{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #whatToWatch{
+        grid-template-columns: auto auto;
+    }
+  } 
 

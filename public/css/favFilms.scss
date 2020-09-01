@@ -1,0 +1,93 @@
+@import "navbar";
+@import "scrollbar";
+$orangeOp: #ff9900;
+$lightBlack: #121212;
+body{
+    background-color: black;
+}
+#title{
+    margin: 3vw 0 3vh 4vw;
+    color: $orangeOp;
+    letter-spacing: 4px;
+}
+#favouriteFilms{
+    border-left: 1px solid $lightBlack;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto ;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 30px;
+
+    .far, .fas{
+        color: $orangeOp;
+    }
+    .card{
+        width: 200px;
+        border-radius: 4px;
+        display: inline-block;
+        border: transparent;
+        background-color: $lightBlack;
+
+        img{
+            height: 300px;
+            width: 200px;
+            opacity: 40%;
+        }
+
+        .card-body{
+            margin-bottom: 50px;
+
+            .card-title{
+                color: $orangeOp;
+            }
+            .card-text{
+                color: white;
+            }
+        }
+        
+        .btn{
+            background-color: $orangeOp;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .btn:hover, .btn:focus, .btn:active {
+            box-shadow: none;
+        }
+}
+
+    .card:hover{
+        img{
+            opacity: 100%;
+        }
+        position: relative;
+        bottom: 2vh;
+        box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #favouriteFilms{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #favouriteFilms{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #favouriteFilms{
+        grid-template-columns: auto auto;
+    }
+  } 

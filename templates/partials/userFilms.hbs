@@ -1,0 +1,16 @@
+{{#if userFilms}} 
+  <h2 id="title">YOUR FAVOURITE MOVIES</h2>
+  <section id="favouriteFilms">
+  {{#each userFilms}}
+    <div class="card">
+      <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text" id="rating">{{this.rating}} <i class="far fa-star"></i>
+      </div>
+      <a href="/search?title={{this.title}}" class="btn">FIND OUT MORE</a>
+    </div>
+  {{/each}}
+  </section>
+
+{{/if}}

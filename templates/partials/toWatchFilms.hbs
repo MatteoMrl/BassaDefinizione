@@ -1,18 +1,18 @@
 {{#if twFilms}} 
-<h2 id="wtwTitle">WHAT TO WATCH:</h2>
+<h2 id="title">WHAT TO WATCH:</h2>
 <section id="whatToWatch">
   {{#each twFilms}}
   <div class="card">
-  <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{this.title}}</h5>
-    <p class="card-text">{{this.plot}}</p>
-    <p class="card-text">{{this.genre}}</p>
-    <p class="card-text">{{this.rating}} <i class="far fa-star"></i> | {{this.votes}} <i class="fas fa-vote-yea"></i></p>
+    <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{this.title}}</h5>
+      <p class="card-text" id="plot">{{this.plot}}</p>
+      <p class="card-text" id="genre">{{this.genre}}</p>
+      <p class="card-text" id="rating">{{this.rating}} <i class="far fa-star"></i> | {{this.votes}} <i class="fas fa-vote-yea"></i></p>
+    </div>
+    <a href="/search?title={{this.title}}" class="btn">FIND OUT MORE</a>
   </div>
-  <a href="/search?title={{this.title}}" class="btn">FIND OUT MORE</a>
-</div>
-{{/each}}
+  {{/each}}
 </section>
 {{/if}}
 

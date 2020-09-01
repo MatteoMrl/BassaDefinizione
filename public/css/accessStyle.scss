@@ -66,24 +66,25 @@ form {
         border-radius: 0 0 7px 7px;
     }
     
-    .btn:hover{
-        outline: none;
+    .btn:hover, .btn:focus, .btn:active{
         box-shadow: none;
     }
+
     .alert {
         width: 100%;
         text-align: center;
         border-radius: 7px;
         color: white;
     }
-    .alert-success {
-        border: 1px solid green;
-        background-color: green;
-    }
     
     .alert-danger {
         border: 1px solid red;
         background-color: red;
+    }
+
+    .alert-success {
+        border: 1px solid green;
+        background-color: green;
     }
  
 }

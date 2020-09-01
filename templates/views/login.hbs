@@ -8,7 +8,7 @@
 
     <a href="/"><img src="/img/logo2.jpg" id="imgLogo" alt=""></a>
 
-    <form action="/login" method="POST">
+    <form method="POST">
 
         {{#if message}}
             <div class="alert alert-danger" role="alert">
@@ -28,7 +28,7 @@
             <input type="password" class="form-control" id="password" name="password" autocomplete="new-password">
         </div>
 
-        <button type="submit" class="btn">SUBMIT</button>
+        <button class="btn">SUBMIT</button>
         
     </form>
 
@@ -99,6 +99,12 @@
     })
     button.addEventListener("mouseout", ()=>{
         button.style.backgroundColor="white";
+    })
+    button.addEventListener("click", async (e) => {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", `/login`, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.send(`username=${usernameInput.value}&password=${passwordInput.value}`)
     })
 </script>
 </body>

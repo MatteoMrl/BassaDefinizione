@@ -112,56 +112,109 @@ body {
   background-color: black;
 }
 
-#searchFilms {
-  background-color: black;
+#title {
+  margin: 3vw 0 3vh 4vw;
+  color: #ff9900;
+  letter-spacing: 4px;
 }
 
-#specificFilm, #favouriteFilms {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  background-color: #121212;
-  margin: 5vw;
-  border: 1px solid #ff9900;
-  padding: 2.5vw;
-  -webkit-box-shadow: 0 0 20px 4px #ff9900;
-          box-shadow: 0 0 20px 4px #ff9900;
+#whatToWatch {
+  border-left: 1px solid #121212;
+  margin: 0 4vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto;
+  justify-items: center;
+  padding: 1vw 0;
+  row-gap: 30px;
 }
 
-#specificFilm img, #favouriteFilms img {
-  border: 1px solid #ff9900;
-  margin-right: 2vw;
+#whatToWatch .far, #whatToWatch .fas {
+  color: #ff9900;
+}
+
+#whatToWatch .card {
   width: 200px;
+  border-radius: 4px;
+  display: inline-block;
+  border: transparent;
+  background-color: #121212;
 }
 
-#specificFilm #filmInformation #title, #favouriteFilms #filmInformation #title {
-  color: black;
-  font-size: 40px;
+#whatToWatch .card ::-webkit-scrollbar {
+  width: 2px;
+  margin-left: 5px;
+}
+
+#whatToWatch .card ::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+}
+
+#whatToWatch .card ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
   background-color: #ff9900;
-  display: inline;
-  text-transform: uppercase;
-  letter-spacing: 0.5vw;
-  border: 1px solid black;
-  padding: 0 1vw;
 }
 
-#specificFilm #filmInformation #plot, #favouriteFilms #filmInformation #plot {
-  font-size: 20px;
-  margin: 2vh 0;
-  padding: 0 1vw;
-  color: white;
-  border-left: 1px solid #ff9900;
+#whatToWatch .card img {
+  height: 300px;
+  width: 200px;
+  opacity: 40%;
 }
 
-#specificFilm #filmInformation h5, #specificFilm #filmInformation #starRating, #favouriteFilms #filmInformation h5, #favouriteFilms #filmInformation #starRating {
-  font-size: 15px;
-  padding: 0 1vw;
+#whatToWatch .card .card-body {
+  margin-bottom: 50px;
+}
+
+#whatToWatch .card .card-body .card-title {
+  color: #ff9900;
+}
+
+#whatToWatch .card .card-body .card-text {
   color: white;
-  border-left: 1px solid #ff9900;
+}
+
+#whatToWatch .card .card-body #plot {
+  height: 200px;
+  overflow-y: auto;
+}
+
+#whatToWatch .card .card-body #genre {
+  height: 100px;
+  overflow: hidden;
+}
+
+#whatToWatch .card .btn {
+  background-color: #ff9900;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+}
+
+#whatToWatch .card .btn:hover, #whatToWatch .card .btn:focus, #whatToWatch .card .btn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#whatToWatch .card:hover {
+  position: relative;
+  bottom: 2vh;
+  -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
+          box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
+}
+
+#whatToWatch .card:hover img {
+  opacity: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  #whatToWatch {
+    -ms-grid-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -172,27 +225,16 @@ body {
             flex-direction: column;
     gap: 20px;
   }
+  #whatToWatch {
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-  header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 20px;
-  }
-  #specificFilm {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  #specificFilm img {
-    margin: 20px auto;
-    width: 300px;
-    -webkit-box-shadow: 0 0 10px 2px #ff9900;
-            box-shadow: 0 0 10px 2px #ff9900;
+  #whatToWatch {
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
   }
 }
-/*# sourceMappingURL=searchFilm.css.map */
+/*# sourceMappingURL=index.css.map */

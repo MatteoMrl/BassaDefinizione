@@ -1,14 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  background-color: black;
-}
-
 header {
   background-color: #121212;
   display: -webkit-box;
@@ -29,18 +18,35 @@ header {
   padding: 30px 70px;
 }
 
-header a {
+header a, header button {
   text-decoration: none;
   color: white;
 }
 
-header a:hover {
+header button {
+  border: none;
+  background-color: transparent;
+}
+
+header button:hover, header button:focus, header button:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+header a:hover, header button:hover {
   color: #ff9900;
   text-decoration: none;
+  cursor: pointer;
 }
 
 header img {
-  height: 8vh;
+  display: block;
+  width: 200px;
+}
+
+header #userButton, header #loginButton, header #signinButton {
+  display: none;
 }
 
 header #divSearch {
@@ -71,20 +77,41 @@ header #divSearch a:hover {
 }
 
 header #divSearch:hover {
-  border: 0.2vw solid #ff9900;
+  border: 3px solid #ff9900;
 }
 
 header i {
   margin-right: 1vw;
 }
 
-#wtwTitle {
+::-webkit-scrollbar {
+  width: 10px;
+  border-left: 1px solid #121212;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-radius: 10px;
+}
+
+body {
+  background-color: black;
+}
+
+#title {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
   letter-spacing: 4px;
 }
 
-#whatToWatch {
+#favouriteFilms {
   border-left: 1px solid #121212;
   margin: 0 4vw;
   display: -ms-grid;
@@ -93,14 +120,14 @@ header i {
       grid-template-columns: auto auto auto auto auto;
   justify-items: center;
   padding: 1vw 0;
-  row-gap: 4vh;
+  row-gap: 30px;
 }
 
-#whatToWatch .far, #whatToWatch .fas {
+#favouriteFilms .far, #favouriteFilms .fas {
   color: #ff9900;
 }
 
-#whatToWatch .card {
+#favouriteFilms .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -108,26 +135,25 @@ header i {
   background-color: #121212;
 }
 
-#whatToWatch .card img {
+#favouriteFilms .card img {
   height: 300px;
   width: 200px;
   opacity: 40%;
 }
 
-#whatToWatch .card .card-body {
+#favouriteFilms .card .card-body {
   margin-bottom: 50px;
 }
 
-#whatToWatch .card .card-body .card-title {
+#favouriteFilms .card .card-body .card-title {
   color: #ff9900;
 }
 
-#whatToWatch .card .card-body .card-text {
+#favouriteFilms .card .card-body .card-text {
   color: white;
-  overflow: hidden;
 }
 
-#whatToWatch .card .btn {
+#favouriteFilms .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -136,14 +162,47 @@ header i {
   border-radius: 0 0 4px 4px;
 }
 
-#whatToWatch .card:hover {
+#favouriteFilms .card .btn:hover, #favouriteFilms .card .btn:focus, #favouriteFilms .card .btn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#favouriteFilms .card:hover {
   position: relative;
   bottom: 2vh;
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
 
-#whatToWatch .card:hover img {
+#favouriteFilms .card:hover img {
   opacity: 100%;
 }
-/*# sourceMappingURL=style.css.map */
+
+@media only screen and (max-width: 1200px) {
+  #favouriteFilms {
+    -ms-grid-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+  }
+  #favouriteFilms {
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #favouriteFilms {
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+  }
+}
+/*# sourceMappingURL=favFilms.css.map */

@@ -71,8 +71,7 @@ form .btn {
   border-radius: 0 0 7px 7px;
 }
 
-form .btn:hover {
-  outline: none;
+form .btn:hover, form .btn:focus, form .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -84,13 +83,13 @@ form .alert {
   color: white;
 }
 
-form .alert-success {
-  border: 1px solid green;
-  background-color: green;
-}
-
 form .alert-danger {
   border: 1px solid red;
   background-color: red;
+}
+
+form .alert-success {
+  border: 1px solid green;
+  background-color: green;
 }
 /*# sourceMappingURL=accessStyle.css.map */

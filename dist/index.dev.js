@@ -163,10 +163,40 @@ loginUser = function loginUser(_ref2, res) {
             break;
 
           case 10:
-            res.status(200).render("index", {
-              twFilms: twFilms,
-              userData: userData
-            });
+            if (toWatch == false) {
+              twFilms.forEach(function (value, index) {
+                searchFilm(value.name, function (err, data) {
+                  count++;
+
+                  if (!err) {
+                    twFilms[index] = {
+                      imdbID: data.imdbID,
+                      title: data.Title,
+                      plot: data.Plot,
+                      rating: data.imdbRating,
+                      votes: data.imdbVotes,
+                      genre: data.Genre,
+                      poster: data.Poster
+                    };
+
+                    if (count == twFilms.length) {
+                      toWatch = true;
+                      res.render("index", {
+                        twFilms: twFilms,
+                        userData: userData
+                      });
+                    }
+                  } else {
+                    console.log("ERROR");
+                  }
+                });
+              });
+            } else {
+              res.render("index", {
+                twFilms: twFilms,
+                userData: userData
+              });
+            }
 
           case 11:
           case "end":
@@ -262,6 +292,8 @@ app.post("/registration", function (req, res) {
   registerUser(req.body, res);
 });
 app.get("/signout", function (req, res) {
+  userData = undefined;
+
   if (toWatch == false) {
     twFilms.forEach(function (value, index) {
       searchFilm(value.name, function (err, data) {
@@ -294,6 +326,10 @@ app.get("/signout", function (req, res) {
       twFilms: twFilms
     });
   }
+});
+app.get("/vote", function (req, res) {
+  res.status(200).end();
+  console.log("ciaomamma");
 }).listen(3000, function () {
   return console.log("Listening on port 3000...");
 });

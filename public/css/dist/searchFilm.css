@@ -91,7 +91,7 @@ header i {
   color: white;
   border-left: 1px solid #ff9900;
 }
-#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating, #specificFilm #released {
+#specificFilm #genre, #specificFilm #runtime, #specificFilm #director, #specificFilm #actors, #specificFilm #awards, #specificFilm #imdbRating, #specificFilm #released, #specificFilm #starRating {
   font-size: 15px;
   padding: 0 1vw;
   color: white;

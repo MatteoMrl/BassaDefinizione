@@ -1,0 +1,72 @@
+$orangeOp: #ff9900;
+$lightBlack: #121212;
+header{
+    background-color: $lightBlack;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px;
+    
+    a, button{
+        text-decoration: none;
+        color:white;
+    }
+
+    button{
+        border: none;
+        background-color: transparent;
+    }
+
+    button:hover, button:focus, button:active {
+        box-shadow: none;
+
+        outline: none;
+    }
+    
+    a:hover, button:hover{
+        color: $orangeOp;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    img{
+        display: block;
+        width: 200px;
+    }
+
+    #userButton, #loginButton, #signinButton {
+        display: none;
+    }
+
+    #divSearch{
+        color:$orangeOp;
+        display: flex;
+        background-color: white;
+        align-items: baseline;
+        border-radius: 5px;
+        padding: 1vh 1vw;  
+        input[type=text]{
+            text-transform: uppercase;
+            padding: 0.2vw;
+            width: 40vw;
+            border-radius: 5px;
+            outline: none;
+            color: $orangeOp;
+            border: transparent;
+        }
+        a:hover{
+            cursor: pointer;
+        }     
+    }
+    
+    #divSearch:hover{
+        border: 3px solid $orangeOp;
+    }
+
+    i{
+        margin-right: 1vw;
+    }
+
+}
