@@ -21,7 +21,6 @@ header{
 
     button:hover, button:focus, button:active {
         box-shadow: none;
-
         outline: none;
     }
     
@@ -40,29 +39,28 @@ header{
         display: none;
     }
 
-    #divSearch{
+    #searchFilm{
         color:$orangeOp;
         display: flex;
-        background-color: white;
+        width: 450px;
+        background-color: transparent;
         align-items: baseline;
-        border-radius: 5px;
+        justify-content: space-between;
         padding: 1vh 1vw;  
+        border-bottom: 1px solid $orangeOp;
         input[type=text]{
+            background-color: $lightBlack;
             text-transform: uppercase;
+            width: 100%;
             padding: 0.2vw;
-            width: 40vw;
             border-radius: 5px;
             outline: none;
             color: $orangeOp;
             border: transparent;
         }
-        a:hover{
-            cursor: pointer;
-        }     
-    }
-    
-    #divSearch:hover{
-        border: 3px solid $orangeOp;
+        i{
+            color: orange;
+        }
     }
 
     i{

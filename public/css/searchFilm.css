@@ -49,35 +49,36 @@ header #userButton, header #loginButton, header #signinButton {
   display: none;
 }
 
-header #divSearch {
+header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: white;
+  width: 450px;
+  background-color: transparent;
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  border-radius: 5px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 1vh 1vw;
+  border-bottom: 1px solid #ff9900;
 }
 
-header #divSearch input[type=text] {
+header #searchFilm input[type=text] {
+  background-color: #121212;
   text-transform: uppercase;
+  width: 100%;
   padding: 0.2vw;
-  width: 40vw;
   border-radius: 5px;
   outline: none;
   color: #ff9900;
   border: transparent;
 }
 
-header #divSearch a:hover {
-  cursor: pointer;
-}
-
-header #divSearch:hover {
-  border: 3px solid #ff9900;
+header #searchFilm i {
+  color: orange;
 }
 
 header i {
@@ -112,11 +113,7 @@ body {
   background-color: black;
 }
 
-#searchFilms {
-  background-color: black;
-}
-
-#specificFilm, #favouriteFilms {
+#specificFilm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -132,24 +129,24 @@ body {
           box-shadow: 0 0 20px 4px #ff9900;
 }
 
-#specificFilm img, #favouriteFilms img {
+#specificFilm img {
   border: 1px solid #ff9900;
   margin-right: 2vw;
   width: 200px;
 }
 
-#specificFilm #filmInformation #title, #favouriteFilms #filmInformation #title {
+#specificFilm #filmInformation #title {
+  line-height: 60px;
   color: black;
   font-size: 40px;
   background-color: #ff9900;
   display: inline;
   text-transform: uppercase;
   letter-spacing: 0.5vw;
-  border: 1px solid black;
   padding: 0 1vw;
 }
 
-#specificFilm #filmInformation #plot, #favouriteFilms #filmInformation #plot {
+#specificFilm #filmInformation #plot {
   font-size: 20px;
   margin: 2vh 0;
   padding: 0 1vw;
@@ -157,7 +154,7 @@ body {
   border-left: 1px solid #ff9900;
 }
 
-#specificFilm #filmInformation h5, #specificFilm #filmInformation #starRating, #favouriteFilms #filmInformation h5, #favouriteFilms #filmInformation #starRating {
+#specificFilm #filmInformation h5, #specificFilm #filmInformation #starRating {
   font-size: 15px;
   padding: 0 1vw;
   color: white;
@@ -171,6 +168,9 @@ body {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 20px;
+  }
+  header #searchFilm {
+    width: 90%;
   }
   #specificFilm {
     -webkit-box-orient: vertical;
