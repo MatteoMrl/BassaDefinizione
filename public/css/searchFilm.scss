@@ -15,8 +15,7 @@ body{
 
 //------------------------------------------------------------------------------------------------
 
-#searchFilms{background-color: black;}
-#specificFilm, #favouriteFilms{
+#specificFilm{
     display: flex;
     flex-direction: row;
     background-color: $lightBlack;
@@ -31,13 +30,13 @@ body{
     }
     #filmInformation{
         #title{
+            line-height: 60px;
             color:black;
             font-size: 40px;
             background-color: $orangeOp;
             display: inline;
             text-transform: uppercase;
             letter-spacing: 0.5vw;
-            border: 1px solid black;
             padding: 0 1vw;
         }
         #plot{
@@ -62,6 +61,9 @@ body{
     header {
         flex-direction: column;
         gap: 20px;
+        #searchFilm{
+            width: 90%;
+        }
     }
     #specificFilm{
         flex-direction: column;

@@ -1,4 +1,4 @@
-const form = document.querySelector("form")
+const form = document.querySelector("#userForm")
 const userButton = document.querySelector("#userButton");
 const loginButton = document.querySelector("#loginButton");
 const signinButton = document.querySelector("#signinButton");

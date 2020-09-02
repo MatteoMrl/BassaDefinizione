@@ -130,7 +130,7 @@ renderFilms = (twFilms, res) => {
                 count++;
                 if(!err){
                     twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster}
-                    if(count == twFilms.length){
+                    if(count == (result.length-1)){
                         res.render("index", {twFilms});
                         count = 0;
                         twFilms = [];

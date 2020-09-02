@@ -2,16 +2,17 @@
 
     <a href="/"><img src="/img/logo2.jpg" alt="" id="logo"></a>
 
-    <div id="divSearch">
+    <form method="GET" action="/search" id="searchFilm">
         <i class="fas fa-film"></i>
-        <input class="input-field" spellcheck="false" type="text" id="searchFilm" placeholder="Search for a movie...">
-        <a id="searchButton"><i class="fa fa-search"></i></a>
-    </div> 
-        <form method="post" action="/user">
-            <button type="submit" class="btn-area" id="userButton"><i class="fa fa-user icon"></i></button>
-        </form>
-        <a href="/login" class="btn-area" id="loginButton"><i class="fas fa-sign-in-alt"></i>LOG IN</a>
-        <a href="/registration" class="btn-area" id="signinButton"><i class="fas fa-sign-in-alt"></i>SIGN IN</a>
+        <input class="input-field" spellcheck="false" type="text" id="inputFilm" name="title" placeholder="Search for a movie...">
+        <button id="searchButton"><i class="fa fa-search"></i></button>
+    </form>
+
+    <form id="userForm" method="post" action="/user">
+        <button type="submit" class="btn-area" id="userButton"><i class="fa fa-user icon"></i></button>
+    </form>
+    <a href="/login" class="btn-area" id="loginButton"><i class="fas fa-sign-in-alt"></i>LOG IN</a>
+    <a href="/registration" class="btn-area" id="signinButton"><i class="fas fa-sign-in-alt"></i>SIGN IN</a>
 </header>
 
 <script src="/script/header.js"></script>

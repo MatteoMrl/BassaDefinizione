@@ -119,6 +119,9 @@ body{
     header {
         flex-direction: column;
         gap: 20px;
+        #searchFilm{
+            width: 80%;
+        }
     }
     #whatToWatch{
         grid-template-columns: auto auto auto;

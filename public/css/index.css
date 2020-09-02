@@ -49,35 +49,36 @@ header #userButton, header #loginButton, header #signinButton {
   display: none;
 }
 
-header #divSearch {
+header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: white;
+  width: 450px;
+  background-color: transparent;
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  border-radius: 5px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 1vh 1vw;
+  border-bottom: 1px solid #ff9900;
 }
 
-header #divSearch input[type=text] {
+header #searchFilm input[type=text] {
+  background-color: #121212;
   text-transform: uppercase;
+  width: 100%;
   padding: 0.2vw;
-  width: 40vw;
   border-radius: 5px;
   outline: none;
   color: #ff9900;
   border: transparent;
 }
 
-header #divSearch a:hover {
-  cursor: pointer;
-}
-
-header #divSearch:hover {
-  border: 3px solid #ff9900;
+header #searchFilm i {
+  color: orange;
 }
 
 header i {
@@ -224,6 +225,9 @@ body {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 20px;
+  }
+  header #searchFilm {
+    width: 80%;
   }
   #whatToWatch {
     -ms-grid-columns: auto auto auto;
