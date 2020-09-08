@@ -81,8 +81,15 @@ body{
 
 @media only screen and (max-width: 992px) {
     header {
+        padding: 30px 0px;
         flex-direction: column;
         gap: 20px;
+        #searchFilm{
+            width: 60%;
+        }
+        img{
+            width: 400px;
+        }
     }
     #favouriteFilms{
         grid-template-columns: auto auto auto;
@@ -90,7 +97,30 @@ body{
 }
 
 @media only screen and (max-width: 768px) {
+    header{
+        gap: 15px;
+        #searchFilm{
+            width: 65%;
+        }
+        img{
+            width: 300px;
+        }
+    }
     #favouriteFilms{
         grid-template-columns: auto auto;
+    }
+  } 
+
+@media only screen and (max-width: 600px) {
+    header{
+        #searchFilm{
+            width: 70%;
+        }
+        img{
+            width: 200px;
+        }
+    }
+    #favouriteFilms{
+        grid-template-columns: auto;
     }
   } 

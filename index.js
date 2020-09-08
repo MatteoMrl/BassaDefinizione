@@ -124,7 +124,7 @@ searchFilm = (name, callback) =>{
 }
 
 renderFilms = (twFilms, res) => {
-    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 25;`, (error, result) => {
+    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 21;`, (error, result) => {
         result.forEach((value, index)=>{
             searchFilm(value.title, (err, data) => {
                 count++;
@@ -253,4 +253,6 @@ app.get("/vote", verifyToken,(req,res) => {
     voteFilm(film, rating, req.id, res);
 })
 
-.listen(3000,()=>console.log("Listening on port 3000..."))
+app.get("*", (req,res)=> res.render("error404"))
+
+.listen(80,()=>console.log("Listening on port 80..."))
