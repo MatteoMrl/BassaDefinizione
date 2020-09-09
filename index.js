@@ -17,6 +17,7 @@ var userFilms = []
 var twFilms = []
 var twList = []
 var filmsNumber = 0;
+var error = false;
 dotenv.config({path: './private/.env'})
 
 var db = mysql.createConnection({
@@ -83,22 +84,13 @@ createToken = (id,res) => {
 
 registerUser = ({username, mail, password}, res) => {
     db.query(`SELECT mail FROM users WHERE mail = '${mail}'`, async (error,result) => {
-        if(error){
-            console.log(error);
-        } else{
-            if(result.length < 1){
-                let hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
-                db.query(`INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`, (error,result) => {
-                    if(error){
-                        console.log(error);
-                    } else {
-                        res.render("registration", {message: "Account created successfully", class: "alert-success"})
-                    }
-                })
-                
-            } else {
-                res.render("registration", {message: "This mail is already in use, try another one", class: "alert-danger"})
-            }
+        if(result.length < 1){
+            let hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
+            db.query(`INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`, (error,result) => {
+                    res.render("registration", {message: "Account created successfully", class: "alert-success"})
+            })
+        } else {
+            res.render("registration", {message: "This mail is already in use, try another one", class: "alert-danger"})
         }
     })
 }
@@ -130,21 +122,17 @@ renderFilms = (twFilms, res) => {
         filmsNumber = result.length-1; 
         result.forEach((value, index)=>{
             db.query(`SELECT AVG(rating) AS rating FROM bassad2.films WHERE title = '${value.title}'`, (error,result) => {
-                searchFilm(value.title, (err, data) => {            
+                searchFilm(value.title, (err, data) => {        
                     count++;
-                    if(!err){
-                        twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster, usersRating: result[0].rating.toFixed(1)}
-                        if(count == (filmsNumber)){
-                            res.render("index", {twFilms});
-                            count = 0;
-                            twFilms = [];
-                        }
-                    } else {                    
-                        console.log("ERROR");
-                        }
-                    })
+                    twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster, usersRating: result[0].rating.toFixed(1)}
+                    if(count == (filmsNumber)){
+                        res.render("index", {twFilms});
+                        count = 0;
+                        twFilms = [];
+                    }
                 })
             })
+        })
     })
 }
 
@@ -166,25 +154,21 @@ voteFilm = (title, rating, userID, res) => {
 
 favoriteFilms = (userID, res)=> {
     db.query(`SELECT * FROM films WHERE userID = '${userID}' ORDER BY rating DESC`, (error, result) => {
-        if(error){
-            console.log(error);
+        if(result.length === 0){
+            res.render("user");
         } else {
-            if(result.length === 0){
-                res.render("user");
-            } else {
-                result.forEach((value,index) => {
-                    searchFilm(value.title, (err, data) => {
-                        fvCount++;
-                        userFilms[index] = {title:data.Title, rating: value.rating,poster: data.Poster}
-                        if(fvCount == result.length){
-                            res.render("user", {userFilms});
-                            fvCount = 0;
-                            userFilms = [];
-                        }
-                    })
-                }) 
-            }
-        }       
+            result.forEach((value,index) => {
+                searchFilm(value.title, (err, data) => {
+                    fvCount++;
+                    userFilms[index] = {title:data.Title, rating: value.rating,poster: data.Poster}
+                    if(fvCount == result.length){
+                        res.render("user", {userFilms});
+                        fvCount = 0;
+                        userFilms = [];
+                    }
+                })
+            }) 
+        }
     });
 }
 
@@ -199,15 +183,11 @@ app.get('/user/:username', (req,res) => {
 app.post('/user/:username', (req, res) => {
     var username = req.params.username;
     db.query(`SELECT id FROM users WHERE username = '${username}'`, (error, result) => {
-        if (error){
-            console.log(error);
+        if(result.length === 1) {
+            id = result[0].id;
+            favoriteFilms(id,res);
         } else {
-            if(result.length === 1) {
-                id = result[0].id;
-                favoriteFilms(id,res);
-            } else {
-                res.end();
-            }
+            res.end();
         }
     })
 });
@@ -217,14 +197,10 @@ app.get("/search",(req,res) => {
     const title=req.query.title;
     if(title!==undefined){
         searchFilm(title,(err, data) => {
-            if(!err){
-                if(data.Director==="N/A"){
-                    data.Director=undefined;
-                }
-                res.render("searchFilms", {data});
-            } else {
-                console.log("ERROR");
+            if(data.Director==="N/A"){
+                data.Director=undefined;
             }
+            res.render("searchFilms", {data});
         })
     }else{
         res.render("searchFilms")
@@ -261,6 +237,10 @@ app.post("/token",verifyToken, (req,res) => {
 app.get("/vote", verifyToken,(req,res) => {
     const {film, rating} = req.query;
     voteFilm(film, rating, req.id, res);
+})
+
+app.get("/logout", (req,res) => {
+    renderFilms(twFilms,res);
 })
 
 app.get("*", (req,res)=> res.render("error404"))

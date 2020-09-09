@@ -2,6 +2,7 @@ const form = document.querySelector("#userForm")
 const userButton = document.querySelector("#userButton");
 const loginButton = document.querySelector("#loginButton");
 const signinButton = document.querySelector("#signinButton");
+const logoutButton = document.querySelector("#logoutButton");
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -19,6 +20,10 @@ function getCookie(cname) {
     return "";
 }
 
+deleteCookie = () => {
+    document.cookie = "jwt=;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+}
+
 const token = getCookie("jwt");
 
 if(token !== ""){
@@ -32,8 +37,9 @@ if(token !== ""){
                 form.action = `/user/${username}`
                 userButton.style.display = "block";
                 userButton.innerHTML = `<i class="fa fa-user icon"></i> ${username}`;
+                logoutButton.style.display = "block";
             }
-        }
+        } 
     };
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.setRequestHeader('Authorization','Bearer ' + token);
@@ -42,3 +48,7 @@ if(token !== ""){
     loginButton.style.display = "block";
     signinButton.style.display = "block";
 }
+
+logoutButton.addEventListener("click", (event) => {
+    deleteCookie();
+})

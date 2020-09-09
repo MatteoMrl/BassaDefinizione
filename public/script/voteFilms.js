@@ -1,6 +1,7 @@
 const stars = document.querySelectorAll(".fa-star")
 const rating = document.querySelector("#starRating");
 const filmName = document.querySelector("#title").innerHTML;
+const userRating = document.querySelector("#rating");
 const message = document.querySelector("#message");
 var starRating = 1;
 
@@ -11,6 +12,7 @@ stars.forEach((value,index) => {
             stars[i].classList.remove("fas");
         }
         for(i=1; i<=index; i++){
+            userRating.innerHTML = index+"/10";
             stars[i].classList.add("fas");
             stars[i].classList.remove("far");
         }
@@ -25,7 +27,7 @@ stars.forEach((value,index) => {
                 message.innerHTML = "<i class='far fa-check-circle'></i> FILM RATED CORRECTLY";
             } else {
                 message.style.color = "red";
-                message.innerHTML = "<i class='fas fa-exclamation-circle'></i> FILM ALREADY VOTED";
+                message.innerHTML = "<i class='fas fa-exclamation-circle'></i> FILM ALREADY RATED";
             }
             
         }

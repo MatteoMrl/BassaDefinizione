@@ -45,13 +45,13 @@ header img {
   width: 200px;
 }
 
-header #userButton, header #loginButton, header #signinButton {
+header #userButton, header #loginButton, header #signinButton, header #logoutButton {
   display: none;
   position: relative;
   padding-bottom: 5px;
 }
 
-header #userButton:before, header #loginButton:before, header #signinButton:before {
+header #userButton:before, header #loginButton:before, header #signinButton:before, header #logoutButton:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -66,7 +66,7 @@ header #userButton:before, header #loginButton:before, header #signinButton:befo
   transition: all 0.3s ease-in-out;
 }
 
-header #userButton:hover:before, header #loginButton:hover:before, header #signinButton:hover:before {
+header #userButton:hover:before, header #loginButton:hover:before, header #signinButton:hover:before, header #logoutButton:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);

@@ -45,13 +45,13 @@ header img {
   width: 200px;
 }
 
-header #userButton, header #loginButton, header #signinButton {
+header #userButton, header #loginButton, header #signinButton, header #logoutButton {
   display: none;
   position: relative;
   padding-bottom: 5px;
 }
 
-header #userButton:before, header #loginButton:before, header #signinButton:before {
+header #userButton:before, header #loginButton:before, header #signinButton:before, header #logoutButton:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -66,7 +66,7 @@ header #userButton:before, header #loginButton:before, header #signinButton:befo
   transition: all 0.3s ease-in-out;
 }
 
-header #userButton:hover:before, header #loginButton:hover:before, header #signinButton:hover:before {
+header #userButton:hover:before, header #loginButton:hover:before, header #signinButton:hover:before, header #logoutButton:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
@@ -169,17 +169,18 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #121212;
-  margin: 5vw;
+  margin: 50px;
   border: 1px solid #ff9900;
-  padding: 2.5vw;
+  padding: 20px;
   -webkit-box-shadow: 0 0 20px 4px #ff9900;
           box-shadow: 0 0 20px 4px #ff9900;
 }
 
 #specificFilm img {
   border: 1px solid #ff9900;
-  margin-right: 2vw;
-  width: 200px;
+  margin-right: 20px;
+  width: 300px;
+  height: 450px;
 }
 
 #specificFilm #filmInformation #title {
@@ -201,11 +202,31 @@ body {
   border-left: 1px solid #ff9900;
 }
 
-#specificFilm #filmInformation h5, #specificFilm #filmInformation #starRating {
+#specificFilm #filmInformation h5 {
   font-size: 15px;
-  padding: 0 1vw;
+  padding: 0 10px;
   color: white;
   border-left: 1px solid #ff9900;
+}
+
+#specificFilm #filmInformation #textRating {
+  display: inline;
+  color: #ff9900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#specificFilm #filmInformation #starRating {
+  color: white;
+}
+
+#specificFilm #filmInformation #starRating .fa-star {
+  cursor: pointer;
+}
+
+#specificFilm #filmInformation #rating {
+  color: white;
+  margin-left: 5px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -223,17 +244,19 @@ body {
   header img {
     width: 400px;
   }
-  #specificFilm {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  #specificFilm #filmInformation #title {
+    font-size: 30px;
+    line-height: 50px;
   }
-  #specificFilm img {
-    margin: 20px auto;
-    width: 300px;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+  #specificFilm #filmInformation #textRating {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  #specificFilm #starRating {
+    padding: 0 10px;
+    border-left: 1px solid #ff9900;
   }
 }
 
@@ -247,6 +270,18 @@ body {
   header img {
     width: 300px;
   }
+  #specificFilm {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #specificFilm img {
+    margin: 0 auto 20px auto;
+    width: 300px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -255,6 +290,13 @@ body {
   }
   header img {
     width: 200px;
+  }
+  #specificFilm #filmInformation #title {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #specificFilm #filmInformation #plot {
+    font-size: 15px;
   }
 }
 /*# sourceMappingURL=searchFilm.css.map */

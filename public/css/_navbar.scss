@@ -35,13 +35,13 @@ header{
         width: 200px;
     }
 
-    #userButton, #loginButton, #signinButton {
+    #userButton, #loginButton, #signinButton, #logoutButton {
         display: none;
         position: relative;
         padding-bottom: 5px;
     }
 
-    #userButton:before, #loginButton:before, #signinButton:before {
+    #userButton:before, #loginButton:before, #signinButton:before, #logoutButton:before {
     content: "";
         position: absolute;
         width: 100%;
@@ -54,7 +54,7 @@ header{
         transition: all 0.3s ease-in-out;
     }
 
-    #userButton:hover:before, #loginButton:hover:before, #signinButton:hover:before {
+    #userButton:hover:before, #loginButton:hover:before, #signinButton:hover:before, #logoutButton:hover:before {
         visibility: visible;
         transform: scaleX(1);
       }
