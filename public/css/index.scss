@@ -69,13 +69,17 @@ body{
             .card-title{
                 color: $orangeOp;
             }
+            .card-label{
+                color:$orangeOp;
+                margin: 0;
+            }
             .card-text{
                 color: white;
+                margin: 0 0 10px 0;
             }
             #plot{
                 height: 200px;
                 overflow-y: auto;
-                
             }
             #genre{
                 height: 50px;

@@ -15,6 +15,8 @@ var fvCount = 0;
 var userData;
 var userFilms = []
 var twFilms = []
+var twList = []
+var filmsNumber = 0;
 dotenv.config({path: './private/.env'})
 
 var db = mysql.createConnection({
@@ -59,11 +61,11 @@ function verifyToken(req, res, next) {
             // Next middleware
             next()
         } else {
-            res.send("Token not valide");
+            res.render("error404")
         }
     } else {
       // Forbidden
-      res.sendStatus(403);
+      res.render("error404");
     }
   
   }
@@ -124,20 +126,23 @@ searchFilm = (name, callback) =>{
 }
 
 renderFilms = (twFilms, res) => {
-    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 21;`, (error, result) => {
+    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 26;`, (error, result) => {
+        filmsNumber = result.length-1; 
         result.forEach((value, index)=>{
-            searchFilm(value.title, (err, data) => {
-                count++;
-                if(!err){
-                    twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster}
-                    if(count == (result.length-1)){
-                        res.render("index", {twFilms});
-                        count = 0;
-                        twFilms = [];
-                    }
-                } else {                    
-                    console.log("ERROR");
-                    }
+            db.query(`SELECT AVG(rating) AS rating FROM bassad2.films WHERE title = '${value.title}'`, (error,result) => {
+                searchFilm(value.title, (err, data) => {            
+                    count++;
+                    if(!err){
+                        twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster, usersRating: result[0].rating.toFixed(1)}
+                        if(count == (filmsNumber)){
+                            res.render("index", {twFilms});
+                            count = 0;
+                            twFilms = [];
+                        }
+                    } else {                    
+                        console.log("ERROR");
+                        }
+                    })
                 })
             })
     })
@@ -164,16 +169,21 @@ favoriteFilms = (userID, res)=> {
         if(error){
             console.log(error);
         } else {
-            result.forEach((value,index) => {
-                searchFilm(value.title, (err, data) => {
-                    fvCount++;
-                    userFilms[index] = {title:data.Title, rating: value.rating,poster: data.Poster}
-                    if(fvCount == result.length){
-                        res.render("user", {userFilms});
-                        fvCount = 0;
-                    }
-                })
-            }) 
+            if(result.length === 0){
+                res.render("user");
+            } else {
+                result.forEach((value,index) => {
+                    searchFilm(value.title, (err, data) => {
+                        fvCount++;
+                        userFilms[index] = {title:data.Title, rating: value.rating,poster: data.Poster}
+                        if(fvCount == result.length){
+                            res.render("user", {userFilms});
+                            fvCount = 0;
+                            userFilms = [];
+                        }
+                    })
+                }) 
+            }
         }       
     });
 }
@@ -183,10 +193,10 @@ app.get('',(req, res) => {
 })
 
 app.get('/user/:username', (req,res) => {
-    res.render("user")
+    renderFilms(twFilms,res);
 })
 
-app.post('/user/:username', function(req, res) {
+app.post('/user/:username', (req, res) => {
     var username = req.params.username;
     db.query(`SELECT id FROM users WHERE username = '${username}'`, (error, result) => {
         if (error){

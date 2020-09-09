@@ -219,8 +219,14 @@ body {
   color: #ff9900;
 }
 
+#whatToWatch .card .card-body .card-label {
+  color: #ff9900;
+  margin: 0;
+}
+
 #whatToWatch .card .card-body .card-text {
   color: white;
+  margin: 0 0 10px 0;
 }
 
 #whatToWatch .card .card-body #plot {
