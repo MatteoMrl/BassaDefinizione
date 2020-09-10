@@ -20,16 +20,6 @@ $lightBlack: #121212;
     background-size: cover;
 }
 
-#imgLogo{
-    display: block;
-    width: 400px;
-    border-radius: 7px;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -80%);
-}
-
 form {
     background-color: $lightBlack;
     color: white;
@@ -38,9 +28,17 @@ form {
     border-radius: 7px;
     position: absolute;
     width: 400px;
-    top: 55%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -45%);
+    transform: translate(-50%, -50%);
+
+    #imgLogo{
+        width: 400px;
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+        border-radius: 7px;
+    }
 
     #title{
         font-size: 28px;
@@ -101,11 +99,11 @@ form {
 }
 
 @media only screen and (max-width: 600px) {
-    #imgLogo{
-        width: 300px;
-    }
     form{
         width: 300px;
+        #imgLogo{
+            width: 300px;
+        }
     }
   }
 

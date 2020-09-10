@@ -124,7 +124,8 @@ body{
     header {
         padding: 30px 0px;
         flex-direction: column;
-        gap: 20px;
+        row-gap: 20px;
+
         #searchFilm{
             width: 60%;
         }
@@ -139,7 +140,7 @@ body{
 
 @media only screen and (max-width: 768px) {
     header{
-        gap: 15px;
+        row-gap:15px;
         #searchFilm{
             width: 65%;
         }
@@ -149,11 +150,18 @@ body{
     }
     #whatToWatch{
         grid-template-columns: auto auto;
+        border-left: 1px solid $orangeOp;
+        .card{
+            img{
+                opacity: 100%;
+            }
+        }
     }
   } 
 
 @media only screen and (max-width: 600px) {
     header{
+        row-gap: 10px;
         #searchFilm{
             width: 70%;
         }
