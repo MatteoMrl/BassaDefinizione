@@ -1,5 +1,4 @@
-$orangeOp: #ff9900;
-$lightBlack: #121212;
+@import "colors";
 
 * {
     margin: 0;
@@ -8,101 +7,184 @@ $lightBlack: #121212;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#login{
-    background-image: url("/img/bgLogin.jpg");
-    background-repeat: repeat, no-repeat;
-    background-size: cover;
-}
-
-#registration{
-    background-image: url("/img/bgRegistration.jpg");
-    background-repeat: repeat, no-repeat;
-    background-size: cover;
-}
-
-form {
-    background-color: $lightBlack;
-    color: white;
-    padding: 20px;
-    padding-bottom: 50px;
-    border-radius: 7px;
-    position: absolute;
-    width: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    #imgLogo{
-        width: 400px;
-        position: relative;
-        right: 20px;
-        bottom: 20px;
-        border-radius: 7px;
+html[data-theme = "dark"]{
+    #login{
+        background-image: url("/img/dkLogin.jpg");
+        background-repeat: repeat, no-repeat;
+        background-size: cover;
     }
 
-    #title{
-        font-size: 28px;
-        text-align: center;
+    #registration{
+        background-image: url("/img/dkRegistration.jpg");
+        background-repeat: repeat, no-repeat;
+        background-size: cover;
     }
 
-    .form-group{
-        label{
-            font-size: 15px;
-        }
-        .form-control:hover, .form-control:focus{
-            box-shadow: 0 0 10px 1px $orangeOp;
-            outline: none;
-            border: 1px solid $orangeOp;
-        }
-        .valid:hover,.valid:focus{
-            box-shadow: 0 0 10px 1px green;
-            border-color: green;
-        }
-        .invalid:hover,.invalid:focus{
-            box-shadow: 0 0 10px 1px red;
-            border-color: red;
-        }
-    }
-    .btn{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        width: 100%;
-        background-color: red;
-        color: black;
-        letter-spacing: 3px;
-        border-radius: 0 0 7px 7px;
-    }
-    
-    .btn:hover, .btn:focus, .btn:active{
-        box-shadow: none;
-    }
-
-    .alert {
-        width: 100%;
-        text-align: center;
-        border-radius: 7px;
+    form {
+        background-color: $lightBlack;
         color: white;
-    }
-    
-    .alert-danger {
-        border: 1px solid red;
-        background-color: red;
-    }
+        margin: 10vh auto; 
+        border-radius: 7px;
+        width: 400px;
 
-    .alert-success {
-        border: 1px solid green;
-        background-color: green;
+        #imgLogo{
+            width: 400px;
+            border-radius: 7px;
+        }
+
+        #title{
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .form-group{
+            margin: 20px;
+            label{
+                font-size: 15px;
+            }
+            .form-control:hover, .form-control:focus{
+                box-shadow: 0 0 10px 1px $orangeOp;
+                outline: none;
+                border: 1px solid $orangeOp;
+            }
+            .valid:hover,.valid:focus{
+                box-shadow: 0 0 10px 1px green;
+                border-color: green;
+            }
+            .invalid:hover,.invalid:focus{
+                box-shadow: 0 0 10px 1px red;
+                border-color: red;
+            }
+        }
+        .btn{
+            text-align: center;
+            width: 100%;
+            background-color: red;
+            color: black;
+            letter-spacing: 3px;
+            border-radius: 0 0 7px 7px;
+        }
+        
+        .btn:hover, .btn:focus, .btn:active{
+            box-shadow: none;
+        }
+
+        .alert {
+            width: 100%;
+            text-align: center;
+            border-radius: 7px;
+            color: white;
+        }
+        
+        .alert-danger {
+            border: 1px solid red;
+            background-color: red;
+        }
+
+        .alert-success {
+            border: 1px solid green;
+            background-color: green;
+        }
     }
- 
 }
 
-@media only screen and (max-width: 600px) {
-    form{
-        width: 300px;
+html[data-theme = "light"]{
+    #login{
+        background-image: url("/img/lgLogin.jpg");
+        background-repeat: repeat, no-repeat;
+        background-size: cover;
+    }
+
+    #registration{
+        background-image: url("/img/lgRegistration.jpg");
+        background-repeat: repeat, no-repeat;
+        background-size: cover;
+    }
+
+    form {
+        background-color: $primary;
+        color: $lightBlack;
+        border-radius: 7px;
+        margin: 10vh auto; 
+        width: 400px;
+
         #imgLogo{
+            width: 400px;
+            border-radius: 7px;
+        }
+
+        #title{
+            font-size: 28px;
+            text-align: center;
+            color: $lightBlue;
+        }
+
+        .form-group{
+            margin: 20px;
+            label{
+                font-size: 15px;
+                color: $lightBlack
+            }
+            .form-control:hover, .form-control:focus{
+                box-shadow: 0 0 10px 1px $lightBlue;
+                outline: none;
+                border: 1px solid $lightBlue;
+            }
+            .valid:hover,.valid:focus{
+                box-shadow: 0 0 10px 1px green;
+                border-color: green;
+            }
+            .invalid:hover,.invalid:focus{
+                box-shadow: 0 0 10px 1px red;
+                border-color: red;
+            }
+        }
+        .btn{
+            text-align: center;
+            width: 100%;
+            background-color: red;
+            color: black;
+            letter-spacing: 3px;
+            border-radius: 0 0 7px 7px;
+        }
+        
+        .btn:hover, .btn:focus, .btn:active{
+            box-shadow: none;
+        }
+
+        .alert {
+            width: 100%;
+            text-align: center;
+            border-radius: 7px;
+            color: $primary;
+        }
+        
+        .alert-danger {
+            border: 1px solid red;
+            background-color: red;
+        }
+
+        .alert-success {
+            border: 1px solid green;
+            background-color: green;
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    html[data-theme = "dark"]{
+        form{
             width: 300px;
+            #imgLogo{
+                width: 300px;
+            }
+        }
+    }
+    html[data-theme = "light"]{
+        form{
+            width: 300px;
+            #imgLogo{
+                width: 300px;
+            }
         }
     }
   }

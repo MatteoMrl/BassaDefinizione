@@ -6,72 +6,64 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#login {
-  background-image: url("/img/bgLogin.jpg");
+html[data-theme="dark"] #login {
+  background-image: url("/img/dkLogin.jpg");
   background-repeat: repeat, no-repeat;
   background-size: cover;
 }
 
-#registration {
-  background-image: url("/img/bgRegistration.jpg");
+html[data-theme="dark"] #registration {
+  background-image: url("/img/dkRegistration.jpg");
   background-repeat: repeat, no-repeat;
   background-size: cover;
 }
 
-form {
+html[data-theme="dark"] form {
   background-color: #121212;
   color: white;
-  padding: 20px;
-  padding-bottom: 50px;
+  margin: 10vh auto;
   border-radius: 7px;
-  position: absolute;
   width: 400px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 
-form #imgLogo {
+html[data-theme="dark"] form #imgLogo {
   width: 400px;
-  position: relative;
-  right: 20px;
-  bottom: 20px;
   border-radius: 7px;
 }
 
-form #title {
+html[data-theme="dark"] form #title {
   font-size: 28px;
   text-align: center;
 }
 
-form .form-group label {
+html[data-theme="dark"] form .form-group {
+  margin: 20px;
+}
+
+html[data-theme="dark"] form .form-group label {
   font-size: 15px;
 }
 
-form .form-group .form-control:hover, form .form-group .form-control:focus {
+html[data-theme="dark"] form .form-group .form-control:hover, html[data-theme="dark"] form .form-group .form-control:focus {
   -webkit-box-shadow: 0 0 10px 1px #ff9900;
           box-shadow: 0 0 10px 1px #ff9900;
   outline: none;
   border: 1px solid #ff9900;
 }
 
-form .form-group .valid:hover, form .form-group .valid:focus {
+html[data-theme="dark"] form .form-group .valid:hover, html[data-theme="dark"] form .form-group .valid:focus {
   -webkit-box-shadow: 0 0 10px 1px green;
           box-shadow: 0 0 10px 1px green;
   border-color: green;
 }
 
-form .form-group .invalid:hover, form .form-group .invalid:focus {
+html[data-theme="dark"] form .form-group .invalid:hover, html[data-theme="dark"] form .form-group .invalid:focus {
   -webkit-box-shadow: 0 0 10px 1px red;
           box-shadow: 0 0 10px 1px red;
   border-color: red;
 }
 
-form .btn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+html[data-theme="dark"] form .btn {
   text-align: center;
   width: 100%;
   background-color: red;
@@ -80,33 +72,129 @@ form .btn {
   border-radius: 0 0 7px 7px;
 }
 
-form .btn:hover, form .btn:focus, form .btn:active {
+html[data-theme="dark"] form .btn:hover, html[data-theme="dark"] form .btn:focus, html[data-theme="dark"] form .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-form .alert {
+html[data-theme="dark"] form .alert {
   width: 100%;
   text-align: center;
   border-radius: 7px;
   color: white;
 }
 
-form .alert-danger {
+html[data-theme="dark"] form .alert-danger {
   border: 1px solid red;
   background-color: red;
 }
 
-form .alert-success {
+html[data-theme="dark"] form .alert-success {
+  border: 1px solid green;
+  background-color: green;
+}
+
+html[data-theme="light"] #login {
+  background-image: url("/img/lgLogin.jpg");
+  background-repeat: repeat, no-repeat;
+  background-size: cover;
+}
+
+html[data-theme="light"] #registration {
+  background-image: url("/img/lgRegistration.jpg");
+  background-repeat: repeat, no-repeat;
+  background-size: cover;
+}
+
+html[data-theme="light"] form {
+  background-color: #eeeeee;
+  color: #121212;
+  border-radius: 7px;
+  margin: 10vh auto;
+  width: 400px;
+}
+
+html[data-theme="light"] form #imgLogo {
+  width: 400px;
+  border-radius: 7px;
+}
+
+html[data-theme="light"] form #title {
+  font-size: 28px;
+  text-align: center;
+  color: #68beff;
+}
+
+html[data-theme="light"] form .form-group {
+  margin: 20px;
+}
+
+html[data-theme="light"] form .form-group label {
+  font-size: 15px;
+  color: #121212;
+}
+
+html[data-theme="light"] form .form-group .form-control:hover, html[data-theme="light"] form .form-group .form-control:focus {
+  -webkit-box-shadow: 0 0 10px 1px #68beff;
+          box-shadow: 0 0 10px 1px #68beff;
+  outline: none;
+  border: 1px solid #68beff;
+}
+
+html[data-theme="light"] form .form-group .valid:hover, html[data-theme="light"] form .form-group .valid:focus {
+  -webkit-box-shadow: 0 0 10px 1px green;
+          box-shadow: 0 0 10px 1px green;
+  border-color: green;
+}
+
+html[data-theme="light"] form .form-group .invalid:hover, html[data-theme="light"] form .form-group .invalid:focus {
+  -webkit-box-shadow: 0 0 10px 1px red;
+          box-shadow: 0 0 10px 1px red;
+  border-color: red;
+}
+
+html[data-theme="light"] form .btn {
+  text-align: center;
+  width: 100%;
+  background-color: red;
+  color: black;
+  letter-spacing: 3px;
+  border-radius: 0 0 7px 7px;
+}
+
+html[data-theme="light"] form .btn:hover, html[data-theme="light"] form .btn:focus, html[data-theme="light"] form .btn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+html[data-theme="light"] form .alert {
+  width: 100%;
+  text-align: center;
+  border-radius: 7px;
+  color: #eeeeee;
+}
+
+html[data-theme="light"] form .alert-danger {
+  border: 1px solid red;
+  background-color: red;
+}
+
+html[data-theme="light"] form .alert-success {
   border: 1px solid green;
   background-color: green;
 }
 
 @media only screen and (max-width: 600px) {
-  form {
+  html[data-theme="dark"] form {
     width: 300px;
   }
-  form #imgLogo {
+  html[data-theme="dark"] form #imgLogo {
+    width: 300px;
+  }
+  html[data-theme="light"] form {
+    width: 300px;
+  }
+  html[data-theme="light"] form #imgLogo {
     width: 300px;
   }
 }

@@ -118,7 +118,7 @@ searchFilm = (name, callback) =>{
 }
 
 renderFilms = (twFilms, res) => {
-    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC LIMIT 26;`, (error, result) => {
+    db.query(`SELECT DISTINCT title FROM films ORDER BY rating DESC;`, (error, result) => {
         filmsNumber = result.length-1; 
         result.forEach((value, index)=>{
             db.query(`SELECT AVG(rating) AS rating FROM bassad2.films WHERE title = '${value.title}'`, (error,result) => {
@@ -146,6 +146,7 @@ voteFilm = (title, rating, userID, res) => {
                     res.send({vote: true});
                 })
             } else {
+                db.query(`UPDATE films SET rating = '${rating}' WHERE title = '${title}' AND userID = '${userID}'`);
                 res.send({vote: false});
             }
         }
@@ -243,6 +244,6 @@ app.get("/logout", (req,res) => {
     renderFilms(twFilms,res);
 })
 
-app.get("*", (req,res)=> res.render("error404"))
+app.get("*", (req,res)=> res.status(404).render("error404"))
 
 .listen(80,()=>console.log("Listening on port 80..."))

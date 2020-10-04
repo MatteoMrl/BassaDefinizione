@@ -1,21 +1,42 @@
-$orangeOp: #ff9900;
-$lightBlack: #121212;
+@import "colors";
 
-footer{
-    margin-top: 50px;
-    background-color: $orangeOp;
-    ul{
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        a, a:link, a:visited, a:active{
-            text-decoration: none;
-            color: black;
-            opacity: 70%;
+html[data-theme="dark"]{
+    footer{
+        margin-top: 50px;
+        background-color: $orangeOp;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            a, a:link, a:visited, a:active{
+                text-decoration: none;
+                color: black;
+                opacity: 70%;
+            }
+            
+            a:hover{
+                opacity: 100%;
+            }
         }
-        
-        a:hover{
-            opacity: 100%;
+    }
+}
+
+html[data-theme="light"]{
+    footer{
+        margin-top: 50px;
+        background-color: $lightBlue;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            a, a:link, a:visited, a:active{
+                text-decoration: none;
+                color: $primary;
+            }
+            
+            a:hover{
+                color: white;
+            }
         }
     }
 }

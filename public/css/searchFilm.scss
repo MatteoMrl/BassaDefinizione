@@ -1,9 +1,7 @@
 @import 'navbar';
 @import 'scrollbar';
 @import 'footer';
-
-$orangeOp: #ff9900;
-$lightBlack: #121212;
+@import "colors";
 
 * {
     margin: 0;
@@ -11,139 +9,301 @@ $lightBlack: #121212;
     box-sizing: border-box;
 }
 
-body{
-    background-color: black;
-}
+
 
 //------------------------------------------------------------------------------------------------
-
-#specificFilm{
-    display: flex;
-    flex-direction: row;
-    background-color: $lightBlack;
-    margin: 50px;
-    border: 1px solid $orangeOp;
-    padding: 20px;
-    box-shadow: 0 0 20px 4px $orangeOp;
-    img{
-        border: 1px solid $orangeOp;
-        margin-right: 20px;
-        width: 300px;
-        height: 450px;
+html[data-theme="dark"]{
+    body{
+        background-color: black;
     }
-    #filmInformation{
-        #title{
-            line-height: 60px;
-            color:black;
-            font-size: 40px;
-            background-color: $orangeOp;
-            display: inline;
-            text-transform: uppercase;
-            letter-spacing: 0.5vw;
-            padding: 0 1vw;
+    #specificFilm{
+        display: flex;
+        flex-direction: row;
+        background-color: $lightBlack;
+        margin: 50px;
+        border: 1px solid $orangeOp;
+        padding: 20px;
+        box-shadow: 0 0 20px 4px $orangeOp;
+        img{
+            border: 1px solid $orangeOp;
+            margin-right: 20px;
+            width: 300px;
+            height: 450px;
         }
-        #plot{
-            font-size: 20px;
-            margin: 2vh 0;
-            padding: 0 1vw;
-            color: white;
-            border-left: 1px solid $orangeOp;
-        }
-
-        h5{
-            font-size: 15px;
-            padding: 0 10px;
-            color: white;
-            border-left: 1px solid $orangeOp;
-        }
-
-        #textRating{
-            display: inline;
-            color: $orangeOp;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        #starRating{
-            color: white;
-            .fa-star{
-                cursor: pointer;
+        #filmInformation{
+            #title{
+                line-height: 60px;
+                color:black;
+                font-size: 40px;
+                background-color: $orangeOp;
+                display: inline;
+                text-transform: uppercase;
+                letter-spacing: 0.5vw;
+                padding: 0 1vw;
             }
-        }
+            #plot{
+                font-size: 20px;
+                margin: 2vh 0;
+                padding: 0 1vw;
+                color: white;
+                border-left: 1px solid $orangeOp;
+            }
 
-        #rating{
-            color: white;
-            margin-left: 5px;
+            h5{
+                font-size: 15px;
+                padding: 0 10px;
+                color: white;
+                border-left: 1px solid $orangeOp;
+            }
+
+            #textRating{
+                display: inline;
+                color: $orangeOp;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            #starRating{
+                color: white;
+                .fa-star{
+                    cursor: pointer;
+                }
+            }
+
+            #rating{
+                color: white;
+                margin-left: 5px;
+            }
         }
     }
 }
 
-
-@media only screen and (max-width: 992px) {
-    header {
-        flex-direction: column;
-        row-gap: 20px;
-        padding: 30px 0px;
-        #searchFilm{
-            width: 60%;
-        }
-        img{
-            width: 400px;
-        }
+//-------------------------------------------------------------------------------------------------------------
+html[data-theme="light"]{
+    body{
+        background-color: $primary;
     }
     #specificFilm{
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        margin: 50px;
+        border: 1px solid $lightBlue;
+        padding: 20px;
+        box-shadow: 0 0 20px 4px $lightBlue;
+        img{
+            border: 1px solid $lightBlue;
+            margin-right: 20px;
+            width: 300px;
+            height: 450px;
+        }
         #filmInformation{
             #title{
-                font-size: 30px;
-                line-height: 50px;
+                line-height: 60px;
+                color:black;
+                font-size: 40px;
+                background-color: $lightBlue;
+                display: inline;
+                text-transform: uppercase;
+                letter-spacing: 0.5vw;
+                padding: 0 1vw;
             }
+            #plot{
+                font-size: 20px;
+                margin: 2vh 0;
+                padding: 0 1vw;
+                color: $lightBlack;
+                border-left: 1px solid $lightBlue;
+            }
+
+            h5{
+                font-size: 15px;
+                padding: 0 10px;
+                color: $lightBlack;
+                border-left: 1px solid $lightBlue;
+            }
+
             #textRating{
-                display: block;
-                border: none;
-                padding: 0;
-                margin: 0;
+                display: inline;
+                color: $lightBlue;
+                text-transform: uppercase;
+                letter-spacing: 2px;
             }
-        }
-        #starRating{
-            padding: 0 10px;
-            border-left: 1px solid $orangeOp;
+
+            #starRating{
+                color: $lightBlue;
+                .fa-star{
+                    cursor: pointer;
+                }
+            }
+
+            #rating{
+                color: $lightBlack;
+                margin-left: 5px;
+            }
         }
     }
+}
+
+//----------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 1200px) {
+    html[data-theme = "light"]{
+        header{
+            #searchFilm{
+                width: 300px;
+            }
+        }
+    }   
+    html[data-theme = "dark"]{
+        header{
+            #searchFilm{
+                width: 300px;
+            }
+        }
+    }   
+}
+@media only screen and (max-width: 992px) {
+    html[data-theme="dark"]{
+        header {
+            flex-direction: column;
+            row-gap: 20px;
+            padding: 30px 0px;
+            #searchFilm{
+                width: 60%;
+            }
+            img{
+                width: 400px;
+            }
+        }
+        #specificFilm{
+            #filmInformation{
+                #title{
+                    font-size: 30px;
+                    line-height: 50px;
+                }
+                #textRating{
+                    display: block;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            #starRating{
+                padding: 0 10px;
+                border-left: 1px solid $orangeOp;
+            }
+        }
+    }
+    html[data-theme="light"]{
+        header {
+            flex-direction: column;
+            row-gap: 20px;
+            padding: 30px 0px;
+            #searchFilm{
+                width: 60%;
+            }
+            img{
+                width: 400px;
+            }
+        }
+        #specificFilm{
+            #filmInformation{
+                #title{
+                    font-size: 30px;
+                    line-height: 50px;
+                }
+                #textRating{
+                    display: block;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            #starRating{
+                padding: 0 10px;
+                border-left: 1px solid $orangeOp;
+            }
+        }
+    }
+    
 } 
 
 @media only screen and (max-width: 768px) {
-    header{
-        row-gap: 15px;
-        #searchFilm{
-            width: 65%;
+    html[data-theme="dark"]{
+        header{
+            row-gap: 15px;
+            #searchFilm{
+                width: 65%;
+            }
+            img{
+                width: 300px;
+            }
         }
-        img{
-            width: 300px;
+        #specificFilm{
+            flex-direction: column;
+            img{
+                margin: 0 auto 20px auto;
+                width: 50%;
+                height: 50%;
+            }
         }
     }
-    #specificFilm{
-        flex-direction: column;
-        img{
-            margin: 0 auto 20px auto;
-            width: 50%;
-            height: 50%;
+    html[data-theme="light"]{
+        header{
+            row-gap: 15px;
+            #searchFilm{
+                width: 65%;
+            }
+            img{
+                width: 300px;
+            }
+        }
+        #specificFilm{
+            flex-direction: column;
+            img{
+                margin: 0 auto 20px auto;
+                width: 50%;
+                height: 50%;
+            }
         }
     }
+    
 } 
 @media only screen and (max-width: 600px) {
-    header{
-        row-gap: 10px;
-        #searchFilm{
-            width: 70%;
+    html[data-theme="dark"]{
+        header{
+            row-gap: 10px;
+            #searchFilm{
+                width: 70%;
+            }
+            img{
+                width: 200px;
+            }
         }
-        img{
-            width: 200px;
+        #specificFilm{
+            img{
+                width: 70%;
+                height: 70%;
+            }
         }
     }
-    #specificFilm{
-        img{
-            width: 70%;
-            height: 70%;
+    html[data-theme="light"]{
+        header{
+            row-gap: 10px;
+            #searchFilm{
+                width: 70%;
+            }
+            img{
+                width: 200px;
+            }
+        }
+        #specificFilm{
+            img{
+                width: 70%;
+                height: 70%;
+            }
         }
     }
+    
 } 

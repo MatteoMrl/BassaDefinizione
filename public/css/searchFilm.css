@@ -1,4 +1,8 @@
-header {
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html[data-theme='dark'] header {
   background-color: #121212;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9,49 +13,60 @@ header {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding: 30px 70px;
 }
 
-header a, header button {
+html[data-theme='dark'] header a, html[data-theme='dark'] header button {
   text-decoration: none;
   color: white;
 }
 
-header button {
+html[data-theme='dark'] header button {
   border: none;
   background-color: transparent;
 }
 
-header button:hover, header button:focus, header button:active {
+html[data-theme='dark'] header button:hover, html[data-theme='dark'] header button:focus, html[data-theme='dark'] header button:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
 }
 
-header a:hover, header button:hover {
+html[data-theme='dark'] header a:hover, html[data-theme='dark'] header button:hover {
   color: #ff9900;
   text-decoration: none;
   cursor: pointer;
 }
 
-header img {
+html[data-theme='dark'] header img {
   display: block;
   width: 200px;
 }
 
-header #userButton, header #loginButton, header #signinButton, header #logoutButton {
+html[data-theme='dark'] header #userInteraction #dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #121212;
+  padding: 20px;
+  -webkit-box-shadow: 0px 8px 16px 0px black;
+          box-shadow: 0px 8px 16px 0px black;
+  z-index: 1;
+}
+
+html[data-theme='dark'] header #userInteraction #dropdown-content #userButton, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton {
   display: none;
   position: relative;
   padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-header #userButton:before, header #loginButton:before, header #signinButton:before, header #logoutButton:before {
+html[data-theme='dark'] header #userInteraction #dropdown-content #userButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -66,13 +81,13 @@ header #userButton:before, header #loginButton:before, header #signinButton:befo
   transition: all 0.3s ease-in-out;
 }
 
-header #userButton:hover:before, header #loginButton:hover:before, header #signinButton:hover:before, header #logoutButton:hover:before {
+html[data-theme='dark'] header #userInteraction #dropdown-content #userButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-header #searchFilm {
+html[data-theme='dark'] header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -89,7 +104,7 @@ header #searchFilm {
   border-bottom: 1px solid #ff9900;
 }
 
-header #searchFilm input[type=text] {
+html[data-theme='dark'] header #searchFilm input[type=text] {
   background-color: #121212;
   text-transform: uppercase;
   width: 100%;
@@ -99,37 +114,161 @@ header #searchFilm input[type=text] {
   border: transparent;
 }
 
-header #searchFilm i {
+html[data-theme='dark'] header #searchFilm i {
   color: orange;
 }
 
-header i {
+html[data-theme='dark'] header i {
+  margin-right: 1vw;
+}
+
+html[data-theme='light'] header {
+  background-color: #68beff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 70px;
+}
+
+html[data-theme='light'] header a, html[data-theme='light'] header button {
+  text-decoration: none;
+  color: white;
+}
+
+html[data-theme='light'] header button {
+  border: none;
+  background-color: transparent;
+}
+
+html[data-theme='light'] header button:hover, html[data-theme='light'] header button:focus, html[data-theme='light'] header button:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+html[data-theme='light'] header a:hover, html[data-theme='light'] header button:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+html[data-theme='light'] header img {
+  display: block;
+  width: 200px;
+}
+
+html[data-theme='light'] header #userInteraction #dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #68beff;
+  padding: 20px;
+  -webkit-box-shadow: 0px 8px 16px 0px white;
+          box-shadow: 0px 8px 16px 0px white;
+  z-index: 1;
+}
+
+html[data-theme='light'] header #userInteraction #dropdown-content #userButton, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton {
+  display: none;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+html[data-theme='light'] header #userInteraction #dropdown-content #userButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+html[data-theme='light'] header #userInteraction #dropdown-content #userButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+html[data-theme='light'] header #searchFilm {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 450px;
+  background-color: transparent;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+html[data-theme='light'] header #searchFilm input[type=text] {
+  background-color: #68beff;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #eeeeee;
+  border: transparent;
+}
+
+html[data-theme='light'] header i {
   margin-right: 1vw;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
-  border-left: 1px solid #121212;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+/* Handle */
+html[data-theme="dark"] ::-webkit-scrollbar-track {
   background: none;
-  border: none;
+  border-left: 1px solid #121212;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
   background: #ff9900;
   border-radius: 10px;
 }
 
-footer {
+html[data-theme="light"] ::-webkit-scrollbar-track {
+  background: none;
+  border-left: 1px solid #68beff;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #68beff;
+  border-radius: 10px;
+}
+
+html[data-theme="dark"] footer {
   margin-top: 50px;
   background-color: #ff9900;
 }
 
-footer ul {
+html[data-theme="dark"] footer ul {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -139,14 +278,38 @@ footer ul {
           justify-content: space-evenly;
 }
 
-footer ul a, footer ul a:link, footer ul a:visited, footer ul a:active {
+html[data-theme="dark"] footer ul a, html[data-theme="dark"] footer ul a:link, html[data-theme="dark"] footer ul a:visited, html[data-theme="dark"] footer ul a:active {
   text-decoration: none;
   color: black;
   opacity: 70%;
 }
 
-footer ul a:hover {
+html[data-theme="dark"] footer ul a:hover {
   opacity: 100%;
+}
+
+html[data-theme="light"] footer {
+  margin-top: 50px;
+  background-color: #68beff;
+}
+
+html[data-theme="light"] footer ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+html[data-theme="light"] footer ul a, html[data-theme="light"] footer ul a:link, html[data-theme="light"] footer ul a:visited, html[data-theme="light"] footer ul a:active {
+  text-decoration: none;
+  color: #eeeeee;
+}
+
+html[data-theme="light"] footer ul a:hover {
+  color: white;
 }
 
 * {
@@ -156,11 +319,11 @@ footer ul a:hover {
           box-sizing: border-box;
 }
 
-body {
+html[data-theme="dark"] body {
   background-color: black;
 }
 
-#specificFilm {
+html[data-theme="dark"] #specificFilm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,14 +339,14 @@ body {
           box-shadow: 0 0 20px 4px #ff9900;
 }
 
-#specificFilm img {
+html[data-theme="dark"] #specificFilm img {
   border: 1px solid #ff9900;
   margin-right: 20px;
   width: 300px;
   height: 450px;
 }
 
-#specificFilm #filmInformation #title {
+html[data-theme="dark"] #specificFilm #filmInformation #title {
   line-height: 60px;
   color: black;
   font-size: 40px;
@@ -194,7 +357,7 @@ body {
   padding: 0 1vw;
 }
 
-#specificFilm #filmInformation #plot {
+html[data-theme="dark"] #specificFilm #filmInformation #plot {
   font-size: 20px;
   margin: 2vh 0;
   padding: 0 1vw;
@@ -202,35 +365,117 @@ body {
   border-left: 1px solid #ff9900;
 }
 
-#specificFilm #filmInformation h5 {
+html[data-theme="dark"] #specificFilm #filmInformation h5 {
   font-size: 15px;
   padding: 0 10px;
   color: white;
   border-left: 1px solid #ff9900;
 }
 
-#specificFilm #filmInformation #textRating {
+html[data-theme="dark"] #specificFilm #filmInformation #textRating {
   display: inline;
   color: #ff9900;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-#specificFilm #filmInformation #starRating {
+html[data-theme="dark"] #specificFilm #filmInformation #starRating {
   color: white;
 }
 
-#specificFilm #filmInformation #starRating .fa-star {
+html[data-theme="dark"] #specificFilm #filmInformation #starRating .fa-star {
   cursor: pointer;
 }
 
-#specificFilm #filmInformation #rating {
+html[data-theme="dark"] #specificFilm #filmInformation #rating {
   color: white;
   margin-left: 5px;
 }
 
+html[data-theme="light"] body {
+  background-color: #eeeeee;
+}
+
+html[data-theme="light"] #specificFilm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: white;
+  margin: 50px;
+  border: 1px solid #68beff;
+  padding: 20px;
+  -webkit-box-shadow: 0 0 20px 4px #68beff;
+          box-shadow: 0 0 20px 4px #68beff;
+}
+
+html[data-theme="light"] #specificFilm img {
+  border: 1px solid #68beff;
+  margin-right: 20px;
+  width: 300px;
+  height: 450px;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #title {
+  line-height: 60px;
+  color: black;
+  font-size: 40px;
+  background-color: #68beff;
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: 0.5vw;
+  padding: 0 1vw;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #plot {
+  font-size: 20px;
+  margin: 2vh 0;
+  padding: 0 1vw;
+  color: #121212;
+  border-left: 1px solid #68beff;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation h5 {
+  font-size: 15px;
+  padding: 0 10px;
+  color: #121212;
+  border-left: 1px solid #68beff;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #textRating {
+  display: inline;
+  color: #68beff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #starRating {
+  color: #68beff;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #starRating .fa-star {
+  cursor: pointer;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #rating {
+  color: #121212;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 1200px) {
+  html[data-theme="light"] header #searchFilm {
+    width: 300px;
+  }
+  html[data-theme="dark"] header #searchFilm {
+    width: 300px;
+  }
+}
+
 @media only screen and (max-width: 992px) {
-  header {
+  html[data-theme="dark"] header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -238,45 +483,93 @@ body {
     row-gap: 20px;
     padding: 30px 0px;
   }
-  header #searchFilm {
+  html[data-theme="dark"] header #searchFilm {
     width: 60%;
   }
-  header img {
+  html[data-theme="dark"] header img {
     width: 400px;
   }
-  #specificFilm #filmInformation #title {
+  html[data-theme="dark"] #specificFilm #filmInformation #title {
     font-size: 30px;
     line-height: 50px;
   }
-  #specificFilm #filmInformation #textRating {
+  html[data-theme="dark"] #specificFilm #filmInformation #textRating {
     display: block;
     border: none;
     padding: 0;
     margin: 0;
   }
-  #specificFilm #starRating {
+  html[data-theme="dark"] #specificFilm #starRating {
+    padding: 0 10px;
+    border-left: 1px solid #ff9900;
+  }
+  html[data-theme="light"] header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 20px;
+    padding: 30px 0px;
+  }
+  html[data-theme="light"] header #searchFilm {
+    width: 60%;
+  }
+  html[data-theme="light"] header img {
+    width: 400px;
+  }
+  html[data-theme="light"] #specificFilm #filmInformation #title {
+    font-size: 30px;
+    line-height: 50px;
+  }
+  html[data-theme="light"] #specificFilm #filmInformation #textRating {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  html[data-theme="light"] #specificFilm #starRating {
     padding: 0 10px;
     border-left: 1px solid #ff9900;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  header {
+  html[data-theme="dark"] header {
     row-gap: 15px;
   }
-  header #searchFilm {
+  html[data-theme="dark"] header #searchFilm {
     width: 65%;
   }
-  header img {
+  html[data-theme="dark"] header img {
     width: 300px;
   }
-  #specificFilm {
+  html[data-theme="dark"] #specificFilm {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  #specificFilm img {
+  html[data-theme="dark"] #specificFilm img {
+    margin: 0 auto 20px auto;
+    width: 50%;
+    height: 50%;
+  }
+  html[data-theme="light"] header {
+    row-gap: 15px;
+  }
+  html[data-theme="light"] header #searchFilm {
+    width: 65%;
+  }
+  html[data-theme="light"] header img {
+    width: 300px;
+  }
+  html[data-theme="light"] #specificFilm {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  html[data-theme="light"] #specificFilm img {
     margin: 0 auto 20px auto;
     width: 50%;
     height: 50%;
@@ -284,16 +577,29 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-  header {
+  html[data-theme="dark"] header {
     row-gap: 10px;
   }
-  header #searchFilm {
+  html[data-theme="dark"] header #searchFilm {
     width: 70%;
   }
-  header img {
+  html[data-theme="dark"] header img {
     width: 200px;
   }
-  #specificFilm img {
+  html[data-theme="dark"] #specificFilm img {
+    width: 70%;
+    height: 70%;
+  }
+  html[data-theme="light"] header {
+    row-gap: 10px;
+  }
+  html[data-theme="light"] header #searchFilm {
+    width: 70%;
+  }
+  html[data-theme="light"] header img {
+    width: 200px;
+  }
+  html[data-theme="light"] #specificFilm img {
     width: 70%;
     height: 70%;
   }

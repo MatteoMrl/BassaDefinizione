@@ -22,12 +22,11 @@ stars.forEach((value,index) => {
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             const {vote} = JSON.parse(this.responseText);
+            message.style.color = "green";
             if(vote){
-                message.style.color = "green";
                 message.innerHTML = "<i class='far fa-check-circle'></i> FILM RATED CORRECTLY";
             } else {
-                message.style.color = "red";
-                message.innerHTML = "<i class='fas fa-exclamation-circle'></i> FILM ALREADY RATED";
+                message.innerHTML = "<i class='far fa-check-circle'></i> RATING UPDATED SUCCESSFULLY";
             }
             
         }
