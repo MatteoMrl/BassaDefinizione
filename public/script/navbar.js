@@ -108,9 +108,8 @@ modeButton.addEventListener("click", () => {
     }
 })
 
-userInteraction.addEventListener("mouseover", () => {
-    dropdownContent.style.display="block";
-})
-userInteraction.addEventListener("mouseout", () => {
-    dropdownContent.style.display="none"; 
+userInteraction.addEventListener("click", () => {
+    if(dropdownContent.style.display === "none" || !dropdownContent.style.display)
+    dropdownContent.style.display="block"
+    else dropdownContent.style.display="none"
 })

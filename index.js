@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const request = require('request');
+const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -106,15 +106,16 @@ loginUser = ({username, password}, res) => {
     })
 }
 
-searchFilm = (name, callback) =>{
+searchFilm = async (name, callback) =>{
+
     let url = `https://www.omdbapi.com/?t=${encodeURIComponent(name)}&apikey=${process.env.OMDBKEY}`;
-    request(url, function(error, res, body){
-        if(!error && res.statusCode == 200){
-            var dataFilm = JSON.parse(body)
-            return callback(undefined,dataFilm);
-        }
-        else{return callback("error", dataFilm)}
-    });
+    try{
+        const response = await fetch(url);
+        const data = await response.json(); //.json è una promise perciò c'è bisogno di await
+        callback(data)
+    } catch(err){
+        console.log(err);
+    }
 }
 
 renderFilms = (twFilms, res) => {
@@ -122,7 +123,7 @@ renderFilms = (twFilms, res) => {
         filmsNumber = result.length-1; 
         result.forEach((value, index)=>{
             db.query(`SELECT AVG(rating) AS rating FROM bassad2.films WHERE title = '${value.title}'`, (error,result) => {
-                searchFilm(value.title, (err, data) => {        
+                searchFilm(value.title, (data) => {        
                     count++;
                     twFilms[index] = {imdbID: data.imdbID, title:data.Title, plot: data.Plot, rating: data.imdbRating, votes: data.imdbVotes, genre: data.Genre, poster: data.Poster, usersRating: result[0].rating.toFixed(1)}
                     if(count == (filmsNumber)){
@@ -159,7 +160,7 @@ favoriteFilms = (userID, res)=> {
             res.render("user");
         } else {
             result.forEach((value,index) => {
-                searchFilm(value.title, (err, data) => {
+                searchFilm(value.title, (data) => {
                     fvCount++;
                     userFilms[index] = {title:data.Title, rating: value.rating,poster: data.Poster}
                     if(fvCount == result.length){
@@ -197,7 +198,7 @@ app.post('/user/:username', (req, res) => {
 app.get("/search",(req,res) => {
     const title=req.query.title;
     if(title!==undefined){
-        searchFilm(title,(err, data) => {
+        searchFilm(title,(data) => {
             if(data.Director==="N/A"){
                 data.Director=undefined;
             }

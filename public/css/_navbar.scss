@@ -46,6 +46,7 @@ html[data-theme='dark']{
                 background-color: $lightBlack;
                 padding: 20px;
                 box-shadow: 0px 8px 16px 0px black;
+                border-radius: 5px;
                 z-index: 1;
 
                 #userButton, #loginButton, #signinButton, #logoutButton {
@@ -146,6 +147,7 @@ html[data-theme='light']{
                 background-color: $lightBlue;
                 padding: 20px;
                 box-shadow: 0px 8px 16px 0px white;
+                border-radius: 5px;
                 z-index: 1;
 
                 #userButton, #loginButton, #signinButton, #logoutButton {
