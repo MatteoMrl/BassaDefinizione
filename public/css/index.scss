@@ -1,355 +1,361 @@
-@import 'navbar';
-@import 'scrollbar';
-@import 'footer';
-@import 'colors';
+@import "navbar";
+@import "scrollbar";
+@import "footer";
+@import "colors";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 //------------------------------------------------------------------------------------------------------------
 
-html[data-theme='dark']{
-    body{
-        background-color: black;
-    }
-    #title{
-        margin: 3vw 0 3vh 4vw;
-        color: $orangeOp;
-        letter-spacing: 4px;
-    }
-    #whatToWatch{
-        border-left: 1px solid $lightBlack;
-        margin: 0 4vw;
-        display: grid;
-        grid-template-columns: auto auto auto auto auto ;
-        justify-items: center;
-        padding: 1vw 0;
-        row-gap: 30px;
+html[data-theme="dark"] {
+  body {
+    background-color: black;
+  }
+  #title {
+    margin: 3vw 0 3vh 4vw;
+    color: $orangeOp;
+    letter-spacing: 4px;
+  }
+  #whatToWatch {
+    border-left: 1px solid $orangeOp;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 30px;
 
-        .far, .fas{
-            color: $orangeOp;
+    .far,
+    .fas {
+      color: $orangeOp;
+    }
+    .card {
+      width: 200px;
+      border-radius: 4px;
+      display: inline-block;
+      border: transparent;
+      background-color: $lightBlack;
+      transition: 0.5s;
+
+      ::-webkit-scrollbar {
+        width: 2px;
+        margin-left: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: none;
+        border: none;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: $orangeOp;
+      }
+
+      img {
+        height: 300px;
+        width: 200px;
+        opacity: 40%;
+        transition: 0.5s;
+      }
+
+      .card-body {
+        margin-bottom: 50px;
+
+        .card-title {
+          background-color: $orangeOp;
+          color: $lightBlack;
+          text-align: center;
+          padding: 2px;
         }
-        .card{
-            width: 200px;
-            border-radius: 4px;
-            display: inline-block;
-            border: transparent;
-            background-color: $lightBlack;
-
-            ::-webkit-scrollbar {
-                width: 2px;
-                margin-left: 5px;
-            }
-            
-            ::-webkit-scrollbar-track {
-                background: none; 
-                border: none;
-            }
-            
-            ::-webkit-scrollbar-thumb { 
-                border-radius: 10px;
-                background-color: $orangeOp;
-            }
-            
-            img{
-                height: 300px;
-                width: 200px;
-                opacity: 40%;
-            }
-
-            .card-body{
-                margin-bottom: 50px;
-
-                .card-title{
-                    background-color: $orangeOp;
-                    color: $lightBlack;
-                    text-align: center;
-                    padding: 2px;
-                }
-                .card-label{
-                    color:$orangeOp;
-                    margin: 0;
-                }
-                .card-text{
-                    color: white;
-                    margin: 0 0 10px 0;
-                }
-                #plot{
-                    height: 200px;
-                    overflow-y: auto;
-                }
-                #genre{
-                    height: 50px;
-                    overflow: hidden;
-                }
-                
-            }
-            
-            .btn{
-                background-color: $orangeOp;
-                color: white;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                border-radius: 0 0 4px 4px;
-            }
-
-            .btn:hover, .btn:focus, .btn:active {
-                box-shadow: none;
-            }
-    }
-
-        .card:hover{
-            img{
-                opacity: 100%;
-            }
-            position: relative;
-            bottom: 2vh;
-            box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+        .card-label {
+          color: $orangeOp;
+          margin: 0;
         }
+        .card-text {
+          color: white;
+          margin: 0 0 10px 0;
+        }
+        #plot {
+          height: 180px;
+          overflow-y: auto;
+        }
+        #genre {
+          height: 50px;
+          overflow: hidden;
+        }
+      }
+
+      .btn {
+        background-color: $orangeOp;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .btn:hover,
+      .btn:focus,
+      .btn:active {
+        box-shadow: none;
+      }
     }
+
+    .card:hover {
+      img {
+        opacity: 100%;
+      }
+      position: relative;
+      bottom: 2vh;
+      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------------
 
-html[data-theme='light']{
-    body{
-        background-color: $primary;
-    }
-    #title{
-        margin: 3vw 0 3vh 4vw;
-        color: $lightBlue;
-        letter-spacing: 4px;
-    }
-    #whatToWatch{
-        border-left: 1px solid $lightBlue;
-        margin: 0 4vw;
-        display: grid;
-        grid-template-columns: auto auto auto auto auto ;
-        justify-items: center;
-        padding: 1vw 0;
-        row-gap: 30px;
+html[data-theme="light"] {
+  body {
+    background-color: $primary;
+  }
+  #title {
+    margin: 3vw 0 3vh 4vw;
+    color: $lightBlue;
+    letter-spacing: 4px;
+  }
+  #whatToWatch {
+    border-left: 1px solid $lightBlue;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 30px;
 
-        .far, .fas{
-            color: $lightBlue;
+    .far,
+    .fas {
+      color: $lightBlue;
+    }
+    .card {
+      width: 200px;
+      border-radius: 4px;
+      display: inline-block;
+      border: transparent;
+      background-color: white;
+      transition: 0.5s;
+
+      ::-webkit-scrollbar {
+        width: 2px;
+        margin-left: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: none;
+        border: none;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: $lightBlue;
+      }
+
+      img {
+        height: 300px;
+        width: 200px;
+        opacity: 80%;
+        transition: 0.5s;
+      }
+
+      .card-body {
+        margin-bottom: 50px;
+
+        .card-title {
+          background-color: $lightBlue;
+          color: white;
+          text-align: center;
+          padding: 2px;
         }
-        .card{
-            width: 200px;
-            border-radius: 4px;
-            display: inline-block;
-            border: transparent;
-            background-color: white;
-
-            ::-webkit-scrollbar {
-                width: 2px;
-                margin-left: 5px;
-            }
-            
-            ::-webkit-scrollbar-track {
-                background: none; 
-                border: none;
-            }
-            
-            ::-webkit-scrollbar-thumb { 
-                border-radius: 10px;
-                background-color: $lightBlue;
-            }
-            
-            img{
-                height: 300px;
-                width: 200px;
-                opacity: 80%;
-            }
-
-            .card-body{
-                margin-bottom: 50px;
-
-                .card-title{
-                    background-color: $lightBlue;
-                    color: white;
-                    text-align: center;
-                    padding: 2px;
-                }
-                .card-label{
-                    color:$lightBlue;
-                    margin: 0;
-                }
-                .card-text{
-                    color: $lightBlack;
-                    margin: 0 0 10px 0;
-                }
-                #plot{
-                    height: 200px;
-                    overflow-y: auto;
-                }
-                #genre{
-                    height: 50px;
-                    overflow: hidden;
-                }
-                
-            }
-            
-            .btn{
-                background-color: $lightBlue;
-                color: white;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                border-radius: 0 0 4px 4px;
-            }
-
-            .btn:hover, .btn:focus, .btn:active {
-                box-shadow: none;
-            }
-    }
-
-        .card:hover{
-            img{
-                opacity: 100%;
-            }
-            position: relative;
-            bottom: 2vh;
-            box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
+        .card-label {
+          color: $lightBlue;
+          margin: 0;
         }
+        .card-text {
+          color: $lightBlack;
+          margin: 0 0 10px 0;
+        }
+        #plot {
+          height: 180px;
+          overflow-y: auto;
+        }
+        #genre {
+          height: 50px;
+          overflow: hidden;
+        }
+      }
+
+      .btn {
+        background-color: $lightBlue;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .btn:hover,
+      .btn:focus,
+      .btn:active {
+        box-shadow: none;
+      }
     }
+
+    .card:hover {
+      img {
+        opacity: 100%;
+      }
+      position: relative;
+      bottom: 2vh;
+      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
+    }
+  }
 }
-
 
 //-----------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 1200px) {
-    html[data-theme = "light"]{
-        header{
-            #searchFilm{
-                width: 300px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto auto auto;
-        }
-    }   
-    html[data-theme = "dark"]{
-        header{
-            #searchFilm{
-                width: 300px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto auto auto;
-        }
-    }   
+  html[data-theme="light"] {
+    header {
+      #searchFilm {
+        width: 300px;
+      }
+    }
+    #whatToWatch {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
+  html[data-theme="dark"] {
+    header {
+      #searchFilm {
+        width: 300px;
+      }
+    }
+    #whatToWatch {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
 }
 
 @media only screen and (max-width: 992px) {
-    html[data-theme="light"]{
-        header {
-            padding: 30px 0px;
-            flex-direction: column;
-            row-gap: 20px;
+  html[data-theme="light"] {
+    header {
+      padding: 30px 0px;
+      flex-direction: column;
+      row-gap: 20px;
 
-            #searchFilm{
-                width: 60%;
-            }
-            img{
-                width: 400px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto auto;
-        }
+      #searchFilm {
+        width: 60%;
+      }
+      img {
+        width: 400px;
+      }
     }
-    html[data-theme="dark"]{
-        header {
-            padding: 30px 0px;
-            flex-direction: column;
-            row-gap: 20px;
+    #whatToWatch {
+      grid-template-columns: auto auto auto;
+    }
+  }
+  html[data-theme="dark"] {
+    header {
+      padding: 30px 0px;
+      flex-direction: column;
+      row-gap: 20px;
 
-            #searchFilm{
-                width: 60%;
-            }
-            img{
-                width: 400px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto auto;
-        }
+      #searchFilm {
+        width: 60%;
+      }
+      img {
+        width: 400px;
+      }
     }
+    #whatToWatch {
+      grid-template-columns: auto auto auto;
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    html[data-theme="dark"]{
-        header{
-            row-gap:15px;
-            #searchFilm{
-                width: 65%;
-            }
-            img{
-                width: 300px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto;
-            border-left: 1px solid $orangeOp;
-            .card{
-                img{
-                    opacity: 100%;
-                }
-            }
-        }
-    } 
-    html[data-theme="light"]{
-        header{
-            row-gap:15px;
-            #searchFilm{
-                width: 65%;
-            }
-            img{
-                width: 300px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto auto;
-            .card{
-                img{
-                    opacity: 100%;
-                }
-            }
-        }
+  html[data-theme="dark"] {
+    header {
+      row-gap: 15px;
+      #searchFilm {
+        width: 65%;
+      }
+      img {
+        width: 300px;
+      }
     }
+    #whatToWatch {
+      grid-template-columns: auto auto;
+      border-left: 1px solid $orangeOp;
+      .card {
+        img {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+  html[data-theme="light"] {
+    header {
+      row-gap: 15px;
+      #searchFilm {
+        width: 65%;
+      }
+      img {
+        width: 300px;
+      }
+    }
+    #whatToWatch {
+      grid-template-columns: auto auto;
+      .card {
+        img {
+          opacity: 100%;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    html[data-theme="dark"]{
-        header{
-            row-gap: 10px;
-            #searchFilm{
-                width: 70%;
-            }
-            img{
-                width: 200px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto;
-        }
+  html[data-theme="dark"] {
+    header {
+      row-gap: 10px;
+      #searchFilm {
+        width: 70%;
+      }
+      img {
+        width: 200px;
+      }
     }
-    html[data-theme = "light"]{
-        header{
-            row-gap: 10px;
-            #searchFilm{
-                width: 70%;
-            }
-            img{
-                width: 200px;
-            }
-        }
-        #whatToWatch{
-            grid-template-columns: auto;
-        }
+    #whatToWatch {
+      grid-template-columns: auto;
     }
-} 
-
+  }
+  html[data-theme="light"] {
+    header {
+      row-gap: 10px;
+      #searchFilm {
+        width: 70%;
+      }
+      img {
+        width: 200px;
+      }
+    }
+    #whatToWatch {
+      grid-template-columns: auto;
+    }
+  }
+}

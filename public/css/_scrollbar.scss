@@ -1,31 +1,30 @@
 @import "colors";
 
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
+  width: 10px;
+}
 
-   
-  /* Handle */
-html[data-theme="dark"]{
+/* Track */
+
+/* Handle */
+html[data-theme="dark"] {
   ::-webkit-scrollbar-track {
-    background: none; 
+    background: none;
     border-left: 1px solid $lightBlack;
   }
   ::-webkit-scrollbar-thumb {
-    background: $orangeOp; 
+    background: $orangeOp;
     border-radius: 10px;
   }
 }
 
-html[data-theme="light"]{
+html[data-theme="light"] {
   ::-webkit-scrollbar-track {
-    background: none; 
+    background: none;
     border-left: 1px solid $lightBlue;
   }
   ::-webkit-scrollbar-thumb {
-    background: $lightBlue; 
+    background: $lightBlue;
     border-radius: 10px;
   }
 }

@@ -2,7 +2,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html[data-theme='dark'] header {
+html[data-theme="dark"] header {
   background-color: #121212;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,34 +22,38 @@ html[data-theme='dark'] header {
   padding: 30px 70px;
 }
 
-html[data-theme='dark'] header a, html[data-theme='dark'] header button {
+html[data-theme="dark"] header a,
+html[data-theme="dark"] header button {
   text-decoration: none;
   color: white;
 }
 
-html[data-theme='dark'] header button {
+html[data-theme="dark"] header button {
   border: none;
   background-color: transparent;
 }
 
-html[data-theme='dark'] header button:hover, html[data-theme='dark'] header button:focus, html[data-theme='dark'] header button:active {
+html[data-theme="dark"] header button:hover,
+html[data-theme="dark"] header button:focus,
+html[data-theme="dark"] header button:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
 }
 
-html[data-theme='dark'] header a:hover, html[data-theme='dark'] header button:hover {
+html[data-theme="dark"] header a:hover,
+html[data-theme="dark"] header button:hover {
   color: #ff9900;
   text-decoration: none;
   cursor: pointer;
 }
 
-html[data-theme='dark'] header img {
+html[data-theme="dark"] header img {
   display: block;
   width: 200px;
 }
 
-html[data-theme='dark'] header #userInteraction #dropdown-content {
+html[data-theme="dark"] header #userInteraction #dropdown-content {
   display: none;
   position: absolute;
   background-color: #121212;
@@ -60,14 +64,20 @@ html[data-theme='dark'] header #userInteraction #dropdown-content {
   z-index: 1;
 }
 
-html[data-theme='dark'] header #userInteraction #dropdown-content #userButton, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton {
+html[data-theme="dark"] header #userInteraction #dropdown-content #userButton,
+html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton,
+html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton,
+html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton {
   display: none;
   position: relative;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
 
-html[data-theme='dark'] header #userInteraction #dropdown-content #userButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton:before, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton:before {
+html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -82,13 +92,16 @@ html[data-theme='dark'] header #userInteraction #dropdown-content #userButton:be
   transition: all 0.3s ease-in-out;
 }
 
-html[data-theme='dark'] header #userInteraction #dropdown-content #userButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #loginButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #signinButton:hover:before, html[data-theme='dark'] header #userInteraction #dropdown-content #logoutButton:hover:before {
+html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:hover:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:hover:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:hover:before,
+html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-html[data-theme='dark'] header #searchFilm {
+html[data-theme="dark"] header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -105,7 +118,7 @@ html[data-theme='dark'] header #searchFilm {
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme='dark'] header #searchFilm input[type=text] {
+html[data-theme="dark"] header #searchFilm input[type="text"] {
   background-color: #121212;
   text-transform: uppercase;
   width: 100%;
@@ -115,15 +128,15 @@ html[data-theme='dark'] header #searchFilm input[type=text] {
   border: transparent;
 }
 
-html[data-theme='dark'] header #searchFilm i {
+html[data-theme="dark"] header #searchFilm i {
   color: orange;
 }
 
-html[data-theme='dark'] header i {
+html[data-theme="dark"] header i {
   margin-right: 1vw;
 }
 
-html[data-theme='light'] header {
+html[data-theme="light"] header {
   background-color: #68beff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -143,33 +156,37 @@ html[data-theme='light'] header {
   padding: 30px 70px;
 }
 
-html[data-theme='light'] header a, html[data-theme='light'] header button {
+html[data-theme="light"] header a,
+html[data-theme="light"] header button {
   text-decoration: none;
   color: white;
 }
 
-html[data-theme='light'] header button {
+html[data-theme="light"] header button {
   border: none;
   background-color: transparent;
 }
 
-html[data-theme='light'] header button:hover, html[data-theme='light'] header button:focus, html[data-theme='light'] header button:active {
+html[data-theme="light"] header button:hover,
+html[data-theme="light"] header button:focus,
+html[data-theme="light"] header button:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
 }
 
-html[data-theme='light'] header a:hover, html[data-theme='light'] header button:hover {
+html[data-theme="light"] header a:hover,
+html[data-theme="light"] header button:hover {
   text-decoration: none;
   cursor: pointer;
 }
 
-html[data-theme='light'] header img {
+html[data-theme="light"] header img {
   display: block;
   width: 200px;
 }
 
-html[data-theme='light'] header #userInteraction #dropdown-content {
+html[data-theme="light"] header #userInteraction #dropdown-content {
   display: none;
   position: absolute;
   background-color: #68beff;
@@ -180,14 +197,20 @@ html[data-theme='light'] header #userInteraction #dropdown-content {
   z-index: 1;
 }
 
-html[data-theme='light'] header #userInteraction #dropdown-content #userButton, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton {
+html[data-theme="light"] header #userInteraction #dropdown-content #userButton,
+html[data-theme="light"] header #userInteraction #dropdown-content #loginButton,
+html[data-theme="light"] header #userInteraction #dropdown-content #signinButton,
+html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton {
   display: none;
   position: relative;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
 
-html[data-theme='light'] header #userInteraction #dropdown-content #userButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton:before, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton:before {
+html[data-theme="light"] header #userInteraction #dropdown-content #userButton:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -202,13 +225,16 @@ html[data-theme='light'] header #userInteraction #dropdown-content #userButton:b
   transition: all 0.3s ease-in-out;
 }
 
-html[data-theme='light'] header #userInteraction #dropdown-content #userButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #loginButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #signinButton:hover:before, html[data-theme='light'] header #userInteraction #dropdown-content #logoutButton:hover:before {
+html[data-theme="light"] header #userInteraction #dropdown-content #userButton:hover:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:hover:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:hover:before,
+html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-html[data-theme='light'] header #searchFilm {
+html[data-theme="light"] header #searchFilm {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -225,7 +251,7 @@ html[data-theme='light'] header #searchFilm {
   border-bottom: 1px solid #eeeeee;
 }
 
-html[data-theme='light'] header #searchFilm input[type=text] {
+html[data-theme="light"] header #searchFilm input[type="text"] {
   background-color: #68beff;
   text-transform: uppercase;
   width: 100%;
@@ -235,7 +261,7 @@ html[data-theme='light'] header #searchFilm input[type=text] {
   border: transparent;
 }
 
-html[data-theme='light'] header i {
+html[data-theme="light"] header i {
   margin-right: 1vw;
 }
 
@@ -266,7 +292,9 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb {
 }
 
 html[data-theme="dark"] footer {
-  margin-top: 50px;
+  width: 100%;
+  height: 150px;
+  text-transform: uppercase;
   background-color: #ff9900;
 }
 
@@ -280,7 +308,10 @@ html[data-theme="dark"] footer ul {
           justify-content: space-evenly;
 }
 
-html[data-theme="dark"] footer ul a, html[data-theme="dark"] footer ul a:link, html[data-theme="dark"] footer ul a:visited, html[data-theme="dark"] footer ul a:active {
+html[data-theme="dark"] footer ul a,
+html[data-theme="dark"] footer ul a:link,
+html[data-theme="dark"] footer ul a:visited,
+html[data-theme="dark"] footer ul a:active {
   text-decoration: none;
   color: black;
   opacity: 70%;
@@ -291,8 +322,10 @@ html[data-theme="dark"] footer ul a:hover {
 }
 
 html[data-theme="light"] footer {
-  margin-top: 50px;
+  width: 100%;
+  height: 150px;
   background-color: #68beff;
+  text-transform: uppercase;
 }
 
 html[data-theme="light"] footer ul {
@@ -305,7 +338,10 @@ html[data-theme="light"] footer ul {
           justify-content: space-evenly;
 }
 
-html[data-theme="light"] footer ul a, html[data-theme="light"] footer ul a:link, html[data-theme="light"] footer ul a:visited, html[data-theme="light"] footer ul a:active {
+html[data-theme="light"] footer ul a,
+html[data-theme="light"] footer ul a:link,
+html[data-theme="light"] footer ul a:visited,
+html[data-theme="light"] footer ul a:active {
   text-decoration: none;
   color: #eeeeee;
 }
@@ -321,18 +357,18 @@ html[data-theme="light"] footer ul a:hover {
           box-sizing: border-box;
 }
 
-html[data-theme='dark'] body {
+html[data-theme="dark"] body {
   background-color: black;
 }
 
-html[data-theme='dark'] #title {
+html[data-theme="dark"] #title {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
   letter-spacing: 4px;
 }
 
-html[data-theme='dark'] #whatToWatch {
-  border-left: 1px solid #121212;
+html[data-theme="dark"] #whatToWatch {
+  border-left: 1px solid #ff9900;
   margin: 0 4vw;
   display: -ms-grid;
   display: grid;
@@ -343,71 +379,76 @@ html[data-theme='dark'] #whatToWatch {
   row-gap: 30px;
 }
 
-html[data-theme='dark'] #whatToWatch .far, html[data-theme='dark'] #whatToWatch .fas {
+html[data-theme="dark"] #whatToWatch .far,
+html[data-theme="dark"] #whatToWatch .fas {
   color: #ff9900;
 }
 
-html[data-theme='dark'] #whatToWatch .card {
+html[data-theme="dark"] #whatToWatch .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
   border: transparent;
   background-color: #121212;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-html[data-theme='dark'] #whatToWatch .card ::-webkit-scrollbar {
+html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
 
-html[data-theme='dark'] #whatToWatch .card ::-webkit-scrollbar-track {
+html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
 
-html[data-theme='dark'] #whatToWatch .card ::-webkit-scrollbar-thumb {
+html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ff9900;
 }
 
-html[data-theme='dark'] #whatToWatch .card img {
+html[data-theme="dark"] #whatToWatch .card img {
   height: 300px;
   width: 200px;
   opacity: 40%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body {
+html[data-theme="dark"] #whatToWatch .card .card-body {
   margin-bottom: 50px;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body .card-title {
+html[data-theme="dark"] #whatToWatch .card .card-body .card-title {
   background-color: #ff9900;
   color: #121212;
   text-align: center;
   padding: 2px;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body .card-label {
+html[data-theme="dark"] #whatToWatch .card .card-body .card-label {
   color: #ff9900;
   margin: 0;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body .card-text {
+html[data-theme="dark"] #whatToWatch .card .card-body .card-text {
   color: white;
   margin: 0 0 10px 0;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body #plot {
-  height: 200px;
+html[data-theme="dark"] #whatToWatch .card .card-body #plot {
+  height: 180px;
   overflow-y: auto;
 }
 
-html[data-theme='dark'] #whatToWatch .card .card-body #genre {
+html[data-theme="dark"] #whatToWatch .card .card-body #genre {
   height: 50px;
   overflow: hidden;
 }
 
-html[data-theme='dark'] #whatToWatch .card .btn {
+html[data-theme="dark"] #whatToWatch .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -416,33 +457,35 @@ html[data-theme='dark'] #whatToWatch .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme='dark'] #whatToWatch .card .btn:hover, html[data-theme='dark'] #whatToWatch .card .btn:focus, html[data-theme='dark'] #whatToWatch .card .btn:active {
+html[data-theme="dark"] #whatToWatch .card .btn:hover,
+html[data-theme="dark"] #whatToWatch .card .btn:focus,
+html[data-theme="dark"] #whatToWatch .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme='dark'] #whatToWatch .card:hover {
+html[data-theme="dark"] #whatToWatch .card:hover {
   position: relative;
   bottom: 2vh;
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
 
-html[data-theme='dark'] #whatToWatch .card:hover img {
+html[data-theme="dark"] #whatToWatch .card:hover img {
   opacity: 100%;
 }
 
-html[data-theme='light'] body {
+html[data-theme="light"] body {
   background-color: #eeeeee;
 }
 
-html[data-theme='light'] #title {
+html[data-theme="light"] #title {
   margin: 3vw 0 3vh 4vw;
   color: #68beff;
   letter-spacing: 4px;
 }
 
-html[data-theme='light'] #whatToWatch {
+html[data-theme="light"] #whatToWatch {
   border-left: 1px solid #68beff;
   margin: 0 4vw;
   display: -ms-grid;
@@ -454,71 +497,76 @@ html[data-theme='light'] #whatToWatch {
   row-gap: 30px;
 }
 
-html[data-theme='light'] #whatToWatch .far, html[data-theme='light'] #whatToWatch .fas {
+html[data-theme="light"] #whatToWatch .far,
+html[data-theme="light"] #whatToWatch .fas {
   color: #68beff;
 }
 
-html[data-theme='light'] #whatToWatch .card {
+html[data-theme="light"] #whatToWatch .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
   border: transparent;
   background-color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-html[data-theme='light'] #whatToWatch .card ::-webkit-scrollbar {
+html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
 
-html[data-theme='light'] #whatToWatch .card ::-webkit-scrollbar-track {
+html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
 
-html[data-theme='light'] #whatToWatch .card ::-webkit-scrollbar-thumb {
+html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #68beff;
 }
 
-html[data-theme='light'] #whatToWatch .card img {
+html[data-theme="light"] #whatToWatch .card img {
   height: 300px;
   width: 200px;
   opacity: 80%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body {
+html[data-theme="light"] #whatToWatch .card .card-body {
   margin-bottom: 50px;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body .card-title {
+html[data-theme="light"] #whatToWatch .card .card-body .card-title {
   background-color: #68beff;
   color: white;
   text-align: center;
   padding: 2px;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body .card-label {
+html[data-theme="light"] #whatToWatch .card .card-body .card-label {
   color: #68beff;
   margin: 0;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body .card-text {
+html[data-theme="light"] #whatToWatch .card .card-body .card-text {
   color: #121212;
   margin: 0 0 10px 0;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body #plot {
-  height: 200px;
+html[data-theme="light"] #whatToWatch .card .card-body #plot {
+  height: 180px;
   overflow-y: auto;
 }
 
-html[data-theme='light'] #whatToWatch .card .card-body #genre {
+html[data-theme="light"] #whatToWatch .card .card-body #genre {
   height: 50px;
   overflow: hidden;
 }
 
-html[data-theme='light'] #whatToWatch .card .btn {
+html[data-theme="light"] #whatToWatch .card .btn {
   background-color: #68beff;
   color: white;
   position: absolute;
@@ -527,19 +575,21 @@ html[data-theme='light'] #whatToWatch .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme='light'] #whatToWatch .card .btn:hover, html[data-theme='light'] #whatToWatch .card .btn:focus, html[data-theme='light'] #whatToWatch .card .btn:active {
+html[data-theme="light"] #whatToWatch .card .btn:hover,
+html[data-theme="light"] #whatToWatch .card .btn:focus,
+html[data-theme="light"] #whatToWatch .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme='light'] #whatToWatch .card:hover {
+html[data-theme="light"] #whatToWatch .card:hover {
   position: relative;
   bottom: 2vh;
   -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
           box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
 }
 
-html[data-theme='light'] #whatToWatch .card:hover img {
+html[data-theme="light"] #whatToWatch .card:hover img {
   opacity: 100%;
 }
 

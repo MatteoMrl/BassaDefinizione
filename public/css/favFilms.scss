@@ -1,269 +1,305 @@
 @import "navbar";
 @import "scrollbar";
-@import 'footer';
+@import "footer";
 @import "colors";
 
+* {
+  box-sizing: border-box;
+}
 
-html[data-theme="dark"]{
-    body{
-        background-color: black;
-    }
-    #title{
-        margin: 3vw 0 3vh 4vw;
-        color: $orangeOp;
-        letter-spacing: 4px;
-    }
-    #favouriteFilms{
-        border-left: 1px solid $lightBlack;
-        margin: 0 4vw;
-        display: grid;
-        grid-template-columns: auto auto auto auto auto ;
-        justify-items: center;
-        padding: 1vw 0;
-        row-gap: 30px;
+html[data-theme="dark"] {
+  body {
+    background-color: black;
+  }
+  #title {
+    margin: 3vw 0 3vh 4vw;
+    color: $orangeOp;
+    letter-spacing: 4px;
+  }
 
-        .far, .fas{
-            color: $orangeOp;
+  #noFilm {
+    border-left: 5px $orangeOp solid;
+    text-transform: uppercase;
+    margin: 10vh 10vw;
+    h1 {
+      font-size: 10vw;
+      color: orange;
+      span {
+        background-color: $orangeOp;
+        color: black;
+      }
+    }
+  }
+
+  #favouriteFilms {
+    border-left: 1px solid $lightBlack;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 30px;
+
+    .far,
+    .fas {
+      color: $orangeOp;
+    }
+    .card {
+      width: 200px;
+      border-radius: 4px;
+      display: inline-block;
+      border: transparent;
+      background-color: $lightBlack;
+
+      img {
+        height: 300px;
+        width: 200px;
+        opacity: 80%;
+      }
+
+      .card-body {
+        margin-bottom: 50px;
+
+        .card-title {
+          color: $orangeOp;
         }
-        .card{
-            width: 200px;
-            border-radius: 4px;
-            display: inline-block;
-            border: transparent;
-            background-color: $lightBlack;
-
-            img{
-                height: 300px;
-                width: 200px;
-                opacity: 80%;
-            }
-
-            .card-body{
-                margin-bottom: 50px;
-
-                .card-title{
-                    color: $orangeOp;
-                }
-                .card-text{
-                    color: white;
-                }
-            }
-            
-            .btn{
-                background-color: $orangeOp;
-                color: white;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                border-radius: 0 0 4px 4px;
-            }
-
-            .btn:hover, .btn:focus, .btn:active {
-                box-shadow: none;
-            }
-    }
-
-        .card:hover{
-            img{
-                opacity: 100%;
-            }
-            position: relative;
-            bottom: 2vh;
-            box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+        .card-text {
+          color: white;
         }
+      }
+
+      .btn {
+        background-color: $orangeOp;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .btn:hover,
+      .btn:focus,
+      .btn:active {
+        box-shadow: none;
+      }
     }
+
+    .card:hover {
+      img {
+        opacity: 100%;
+      }
+      position: relative;
+      bottom: 2vh;
+      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    }
+  }
 }
 
 //----------------------------------------------------------------------------------------------
 
-html[data-theme="light"]{
-    body{
-        background-color: $primary;
+html[data-theme="light"] {
+  body {
+    background-color: $primary;
+  }
+  #title {
+    margin: 3vw 0 3vh 4vw;
+    color: $lightBlue;
+    letter-spacing: 4px;
+  }
+
+  #noFilm {
+    border-left: 5px $lightBlue solid;
+    text-transform: uppercase;
+    margin: 10vh 10vw;
+    h1 {
+      font-size: 10vw;
+      color: $lightBlue;
+      span {
+        background-color: $lightBlue;
+        color: $primary;
+      }
     }
-    #title{
-        margin: 3vw 0 3vh 4vw;
-        color: $lightBlue;
-        letter-spacing: 4px;
+  }
+  #favouriteFilms {
+    border-left: 1px solid $lightBlue;
+    margin: 0 4vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-items: center;
+    padding: 1vw 0;
+    row-gap: 30px;
+
+    .far,
+    .fas {
+      color: $lightBlue;
     }
-    #favouriteFilms{
-        border-left: 1px solid $lightBlue;
-        margin: 0 4vw;
-        display: grid;
-        grid-template-columns: auto auto auto auto auto ;
-        justify-items: center;
-        padding: 1vw 0;
-        row-gap: 30px;
-    
-        .far, .fas{
-            color: $lightBlue;
+    .card {
+      width: 200px;
+      border-radius: 4px;
+      display: inline-block;
+      border: transparent;
+      background-color: white;
+
+      img {
+        height: 300px;
+        width: 200px;
+        opacity: 80%;
+      }
+
+      .card-body {
+        margin-bottom: 50px;
+
+        .card-title {
+          color: $lightBlue;
         }
-        .card{
-            width: 200px;
-            border-radius: 4px;
-            display: inline-block;
-            border: transparent;
-            background-color: white;
-    
-            img{
-                height: 300px;
-                width: 200px;
-                opacity: 80%;
-            }
-    
-            .card-body{
-                margin-bottom: 50px;
-    
-                .card-title{
-                    color: $lightBlue;
-                }
-                .card-text{
-                    color: $lightBlack;
-                }
-            }
-            
-            .btn{
-                background-color: $lightBlue;
-                color: $lightBlack;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                border-radius: 0 0 4px 4px;
-            }
-    
-            .btn:hover, .btn:focus, .btn:active {
-                box-shadow: none;
-            }
-    }
-    
-        .card:hover{
-            img{
-                opacity: 100%;
-            }
-            position: relative;
-            bottom: 2vh;
-            box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
+        .card-text {
+          color: $lightBlack;
         }
+      }
+
+      .btn {
+        background-color: $lightBlue;
+        color: $lightBlack;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .btn:hover,
+      .btn:focus,
+      .btn:active {
+        box-shadow: none;
+      }
     }
+
+    .card:hover {
+      img {
+        opacity: 100%;
+      }
+      position: relative;
+      bottom: 2vh;
+      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-    html[data-theme="dark"]{
-        header{
-            #searchFilm{
-                width: 300px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto auto auto;
-        }
+  html[data-theme="dark"] {
+    header {
+      #searchFilm {
+        width: 300px;
+      }
     }
-    html[data-theme="light"]{
-        header{
-            #searchFilm{
-                width: 300px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto auto auto;
-        }
+    #favouriteFilms {
+      grid-template-columns: auto auto auto auto;
     }
-    
+  }
+  html[data-theme="light"] {
+    header {
+      #searchFilm {
+        width: 300px;
+      }
+    }
+    #favouriteFilms {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
 }
 
 @media only screen and (max-width: 992px) {
-    html[data-theme="dark"]{
-        header {
-            padding: 30px 0px;
-            flex-direction: column;
-            row-gap: 20px;
-            #searchFilm{
-                width: 60%;
-            }
-            img{
-                width: 400px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto auto;
-        }
+  html[data-theme="dark"] {
+    header {
+      padding: 30px 0px;
+      flex-direction: column;
+      row-gap: 20px;
+      #searchFilm {
+        width: 60%;
+      }
+      img {
+        width: 400px;
+      }
     }
-    html[data-theme="light"]{
-        header {
-            padding: 30px 0px;
-            flex-direction: column;
-            row-gap: 20px;
-            #searchFilm{
-                width: 60%;
-            }
-            img{
-                width: 400px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto auto;
-        }
+    #favouriteFilms {
+      grid-template-columns: auto auto auto;
     }
-    
+  }
+  html[data-theme="light"] {
+    header {
+      padding: 30px 0px;
+      flex-direction: column;
+      row-gap: 20px;
+      #searchFilm {
+        width: 60%;
+      }
+      img {
+        width: 400px;
+      }
+    }
+    #favouriteFilms {
+      grid-template-columns: auto auto auto;
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    html[data-theme="dark"]{
-        header{
-            row-gap: 15px;
-            #searchFilm{
-                width: 65%;
-            }
-            img{
-                width: 300px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto;
-        }
+  html[data-theme="dark"] {
+    header {
+      row-gap: 15px;
+      #searchFilm {
+        width: 65%;
+      }
+      img {
+        width: 300px;
+      }
     }
-    html[data-theme="light"]{
-        header{
-            row-gap: 15px;
-            #searchFilm{
-                width: 65%;
-            }
-            img{
-                width: 300px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto auto;
-        }
+    #favouriteFilms {
+      grid-template-columns: auto auto;
     }
-} 
+  }
+  html[data-theme="light"] {
+    header {
+      row-gap: 15px;
+      #searchFilm {
+        width: 65%;
+      }
+      img {
+        width: 300px;
+      }
+    }
+    #favouriteFilms {
+      grid-template-columns: auto auto;
+    }
+  }
+}
 
 @media only screen and (max-width: 600px) {
-    html[data-theme="dark"]{
-        header{
-            row-gap: 10px;
-            #searchFilm{
-                width: 70%;
-            }
-            img{
-                width: 200px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto;
-        }
+  html[data-theme="dark"] {
+    header {
+      row-gap: 10px;
+      #searchFilm {
+        width: 70%;
+      }
+      img {
+        width: 200px;
+      }
     }
-    html[data-theme="light"]{
-        header{
-            row-gap: 10px;
-            #searchFilm{
-                width: 70%;
-            }
-            img{
-                width: 200px;
-            }
-        }
-        #favouriteFilms{
-            grid-template-columns: auto;
-        }
+    #favouriteFilms {
+      grid-template-columns: auto;
     }
-} 
+  }
+  html[data-theme="light"] {
+    header {
+      row-gap: 10px;
+      #searchFilm {
+        width: 70%;
+      }
+      img {
+        width: 200px;
+      }
+    }
+    #favouriteFilms {
+      grid-template-columns: auto;
+    }
+  }
+}

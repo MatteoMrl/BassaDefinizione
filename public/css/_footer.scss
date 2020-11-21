@@ -1,42 +1,52 @@
 @import "colors";
 
-html[data-theme="dark"]{
-    footer{
-        margin-top: 50px;
-        background-color: $orangeOp;
-        ul{
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            a, a:link, a:visited, a:active{
-                text-decoration: none;
-                color: black;
-                opacity: 70%;
-            }
-            
-            a:hover{
-                opacity: 100%;
-            }
-        }
+html[data-theme="dark"] {
+  footer {
+    width: 100%;
+    height: 150px;
+    text-transform: uppercase;
+    background-color: $orangeOp;
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      a,
+      a:link,
+      a:visited,
+      a:active {
+        text-decoration: none;
+        color: black;
+        opacity: 70%;
+      }
+
+      a:hover {
+        opacity: 100%;
+      }
     }
+  }
 }
 
-html[data-theme="light"]{
-    footer{
-        margin-top: 50px;
-        background-color: $lightBlue;
-        ul{
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            a, a:link, a:visited, a:active{
-                text-decoration: none;
-                color: $primary;
-            }
-            
-            a:hover{
-                color: white;
-            }
-        }
+html[data-theme="light"] {
+  footer {
+    width: 100%;
+    height: 150px;
+    background-color: $lightBlue;
+    text-transform: uppercase;
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      a,
+      a:link,
+      a:visited,
+      a:active {
+        text-decoration: none;
+        color: $primary;
+      }
+
+      a:hover {
+        color: white;
+      }
     }
+  }
 }
