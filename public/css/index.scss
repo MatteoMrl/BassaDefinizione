@@ -18,6 +18,7 @@ html[data-theme="dark"] {
   #title {
     margin: 3vw 0 3vh 4vw;
     color: $orangeOp;
+    font-size: 40px;
     letter-spacing: 4px;
   }
   #whatToWatch {
@@ -126,6 +127,7 @@ html[data-theme="light"] {
   #title {
     margin: 3vw 0 3vh 4vw;
     color: $lightBlue;
+    font-size: 40px;
     letter-spacing: 4px;
   }
   #whatToWatch {
@@ -267,6 +269,9 @@ html[data-theme="light"] {
     #whatToWatch {
       grid-template-columns: auto auto auto;
     }
+    #title {
+      font-size: 30px;
+    }
   }
   html[data-theme="dark"] {
     header {
@@ -283,6 +288,9 @@ html[data-theme="light"] {
     }
     #whatToWatch {
       grid-template-columns: auto auto auto;
+    }
+    #title {
+      font-size: 30px;
     }
   }
 }
@@ -307,6 +315,9 @@ html[data-theme="light"] {
         }
       }
     }
+    #title {
+      font-size: 20px;
+    }
   }
   html[data-theme="light"] {
     header {
@@ -325,6 +336,9 @@ html[data-theme="light"] {
           opacity: 100%;
         }
       }
+    }
+    #title {
+      font-size: 20px;
     }
   }
 }

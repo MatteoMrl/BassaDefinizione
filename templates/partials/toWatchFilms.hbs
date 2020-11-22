@@ -1,18 +1,18 @@
 
-  <h2 id="title">WHAT TO WATCH</h2>
+  <h2 id="title">MOVIES RATED BY OTHER USERS</h2>
   <article id="whatToWatch" data-theme="dark">
     {{#each twFilms}}
     <div class="card">
-      <img class="card-img-top" src="{{this.poster}}" alt="Card image cap">
+      <img class="card-img-top" src="{{this.Poster}}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
-        <p class="card-text" id="plot">{{this.plot}}</p>
+        <h5 class="card-title">{{this.Title}}</h5>
+        <p class="card-text" id="plot">{{this.Plot}}</p>
         <h6 class="card-label">GENRE</h6>
-        <p class="card-text" id="genre">{{this.genre}}</p>
+        <p class="card-text" id="genre">{{this.Genre}}</p>
         <h6 class="card-label">USERS RATING</h6>
-        <p class="card-text">{{this.usersRating}}<i class="far fa-star"></i></p>
+        <p class="card-text">{{this.averageRating}}<i class="far fa-star"></i> | {{this.numberVotes}} <i class="fas fa-vote-yea"></i></p>
       </div>
-      <a href="/search?title={{this.title}}" class="btn">FIND OUT MORE</a>
+      <a href="/search?title={{this.Title}}" class="btn">FIND OUT MORE</a>
     </div>
     {{/each}}
   </article>

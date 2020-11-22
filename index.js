@@ -1,3 +1,4 @@
+"use strict";
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
@@ -39,11 +40,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-encodeToken = (token) => {
+function encodeToken(token) {
   const base64Url = token.split(".")[1];
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   return JSON.parse(atob(base64));
-};
+}
 
 function verifyToken(req, res, next) {
   // Get auth header value
@@ -68,7 +69,7 @@ function verifyToken(req, res, next) {
   }
 }
 
-createToken = (id, res) => {
+function createToken(id, res) {
   const token = jwt.sign({ id: id.toString() }, process.env.JWT_SECRETKEY, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
@@ -79,9 +80,9 @@ createToken = (id, res) => {
   };
   res.cookie("jwt", token, cookieOptions);
   renderFilms(twFilms, res);
-};
+}
 
-registerUser = ({ username, mail, password }, res) => {
+function userRegistration({ username, mail, password }, res) {
   db.query(
     `SELECT mail FROM users WHERE mail = '${mail}'`,
     async (error, result) => {
@@ -104,9 +105,9 @@ registerUser = ({ username, mail, password }, res) => {
       }
     }
   );
-};
+}
 
-loginUser = ({ username, password }, res) => {
+function loginUser({ username, password }, res) {
   db.query(
     `SELECT * FROM users WHERE username = '${username}'`,
     async (error, result) => {
@@ -118,9 +119,9 @@ loginUser = ({ username, password }, res) => {
       }
     }
   );
-};
+}
 
-searchFilm = async (name, callback) => {
+async function searchFilm(name, callback) {
   const url = `https://www.omdbapi.com/?t=${encodeURIComponent(name)}&apikey=${
     process.env.OMDBKEY
   }`;
@@ -131,30 +132,60 @@ searchFilm = async (name, callback) => {
   } catch (err) {
     console.log(err);
   }
-};
+}
 
-renderFilms = (twFilms, res) => {
+function renderFilms(twFilms, res) {
   db.query(
     `SELECT DISTINCT title FROM films ORDER BY rating DESC;`,
     (error, result) => {
       filmsNumber = result.length - 1;
+      let listOfGenres = [];
       result.forEach((value, index) => {
         db.query(
-          `SELECT AVG(rating) AS rating FROM bassad2.films WHERE title = '${value.title}'`,
+          `SELECT rating FROM bassad2.films WHERE title = '${value.title}'`,
           (error, result) => {
+            let sum = 0;
+            const numberVotes = result.length;
+            result.forEach((e) => (sum += e.rating));
+            const avgRating = (sum / numberVotes).toFixed(1);
             searchFilm(value.title, (data) => {
+              const {
+                imdbID,
+                Title,
+                Plot,
+                Rating,
+                Votes,
+                Genre,
+                Poster,
+              } = data;
+              const thisGenres = Genre.split(", ");
+              thisGenres.forEach((genre) => {
+                if (!listOfGenres.includes(genre)) listOfGenres.push(genre);
+              });
               count++;
               twFilms[index] = {
-                imdbID: data.imdbID,
-                title: data.Title,
-                plot: data.Plot,
-                rating: data.imdbRating,
-                votes: data.imdbVotes,
-                genre: data.Genre,
-                poster: data.Poster,
-                usersRating: result[0].rating.toFixed(1),
+                imdbID,
+                Title,
+                Plot,
+                Rating,
+                Votes,
+                Genre,
+                Poster,
+                averageRating: avgRating,
+                numberVotes,
               };
               if (count == filmsNumber) {
+                let allGenres = [];
+                listOfGenres.forEach((genre) => {
+                  let listOfFilms = [];
+                  twFilms.forEach((film) => {
+                    let filmGenres = film.Genre.split(", ");
+                    if (filmGenres.includes(genre)) {
+                      listOfFilms.push(film.Title);
+                    }
+                  });
+                  allGenres.push({ genre, listOfFilms });
+                });
                 res.render("index", { twFilms });
                 count = 0;
                 twFilms = [];
@@ -165,9 +196,9 @@ renderFilms = (twFilms, res) => {
       });
     }
   );
-};
+}
 
-voteFilm = (title, rating, userID, res) => {
+function voteFilm(title, rating, userID, res) {
   db.query(
     `SELECT userID FROM films WHERE title = '${title}' AND userID = '${userID}'`,
     (error, result) => {
@@ -190,9 +221,9 @@ voteFilm = (title, rating, userID, res) => {
       }
     }
   );
-};
+}
 
-favoriteFilms = (userID, res) => {
+function favoriteFilms(userID, res) {
   db.query(
     `SELECT * FROM films WHERE userID = '${userID}' ORDER BY rating DESC`,
     (error, result) => {
@@ -217,7 +248,7 @@ favoriteFilms = (userID, res) => {
       }
     }
   );
-};
+}
 
 app.get("", (req, res) => {
   renderFilms(twFilms, res);
@@ -233,7 +264,7 @@ app.post("/user/:username", (req, res) => {
     `SELECT id FROM users WHERE username = '${username}'`,
     (error, result) => {
       if (result.length === 1) {
-        id = result[0].id;
+        const id = result[0].id;
         favoriteFilms(id, res);
       } else {
         res.end();
@@ -269,7 +300,7 @@ app.get("/registration", (req, res) => {
 });
 
 app.post("/registration", (req, res) => {
-  registerUser(req.body, res);
+  userRegistration(req.body, res);
 });
 
 app.post("/token", verifyToken, (req, res) => {

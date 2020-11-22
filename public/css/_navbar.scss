@@ -53,14 +53,19 @@ html[data-theme="dark"] {
         border-radius: 5px;
         z-index: 1;
 
+        #modeButton {
+          padding: 0 0 5px 0 !important;
+          margin: 0 0 5px 0 !important;
+        }
+
         #userButton,
         #loginButton,
         #signinButton,
         #logoutButton {
           display: none;
           position: relative;
-          padding-bottom: 5px;
-          margin-bottom: 5px;
+          padding: 0 0 5px 0 !important;
+          margin: 0 0 5px 0 !important;
         }
         #userButton:before,
         #loginButton:before,
@@ -167,14 +172,19 @@ html[data-theme="light"] {
         border-radius: 5px;
         z-index: 1;
 
+        #modeButton {
+          padding: 0 0 5px 0 !important;
+          margin: 0 0 5px 0 !important;
+        }
+
         #userButton,
         #loginButton,
         #signinButton,
         #logoutButton {
           display: none;
           position: relative;
-          padding-bottom: 5px;
-          margin-bottom: 5px;
+          padding: 0 0 5px 0 !important;
+          margin: 0 0 5px 0 !important;
         }
         #userButton:before,
         #loginButton:before,

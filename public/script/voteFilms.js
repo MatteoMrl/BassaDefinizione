@@ -1,19 +1,20 @@
+"use strict";
 const stars = document.querySelectorAll(".fa-star");
 const rating = document.querySelector("#starRating");
 const filmName = document.querySelector("#title").innerHTML;
 const userRating = document.querySelector("#rating");
-const message = document.querySelector("#message");
+const serverResponse = document.querySelector("#serverResponse");
 let starRating = 1;
 
 stars.forEach((value, index) => {
   value.addEventListener("mouseover", () => {
-    for (i = 2; i < stars.length; i++) {
+    for (let i = 2; i < stars.length; i++) {
       //così è impossibile dar meno di 1 stella
       stars[i].classList.add("far");
       stars[i].classList.remove("fas");
     }
-    for (i = 1; i <= index; i++) {
-      userRating.innerHTML = index + "/10";
+    for (let i = 1; i <= index; i++) {
+      userRating.innerHTML = index + " <i class='far fa-star'></i>";
       stars[i].classList.add("fas");
       stars[i].classList.remove("far");
     }
@@ -31,14 +32,14 @@ stars.forEach((value, index) => {
         return response.json();
       })
       .then(({ vote }) => {
-        message.style.color = "green";
         if (vote) {
-          message.innerHTML =
+          serverResponse.innerHTML =
             "<i class='far fa-check-circle'></i> FILM RATED CORRECTLY";
         } else {
-          message.innerHTML =
+          serverResponse.innerHTML =
             "<i class='far fa-check-circle'></i> RATING UPDATED SUCCESSFULLY";
         }
+        serverResponse.style.backgroundColor = "green";
       });
   });
 });

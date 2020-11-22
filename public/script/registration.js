@@ -1,3 +1,4 @@
+"use strict";
 const usernameInput = document.querySelector("#username");
 const usernameHelp = document.querySelector("#usernameHelp");
 const mailInput = document.querySelector("#mail");
@@ -25,7 +26,7 @@ if (localStorage.getItem("mode")) {
   localStorage.setItem("mode", "dark");
 }
 
-checkUsername = () => {
+function checkUsername() {
   const regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
   if (usernameInput.value.match(regex)) {
     validUsername = true;
@@ -38,9 +39,9 @@ checkUsername = () => {
     usernameInput.classList.remove("valid");
     usernameInput.classList.add("invalid");
   }
-};
+}
 
-checkMail = () => {
+function checkMail() {
   const regex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   if (mailInput.value.match(regex)) {
     mailHelp.innerHTML = '<i class="fas fa-info"></i> Valid email';
@@ -55,9 +56,9 @@ checkMail = () => {
     mailInput.classList.remove("valid");
     mailInput.classList.add("invalid");
   }
-};
+}
 
-checkPassword = () => {
+function checkPassword() {
   const regex = /^[A-Za-z]\w{5,13}$/;
   if (passwordInput.value.match(regex)) {
     passwordHelp.style.color = "green";
@@ -70,9 +71,9 @@ checkPassword = () => {
     passwordInput.classList.remove("valid");
     passwordInput.classList.add("invalid");
   }
-};
+}
 
-validButton = () => {
+function validButton() {
   if (validUsername === true && validMail === true && validPassword === true) {
     button.disabled = false;
     button.style.backgroundColor = "white";
@@ -80,7 +81,7 @@ validButton = () => {
     button.disabled = true;
     button.style.backgroundColor = "red";
   }
-};
+}
 
 usernameInput.addEventListener("keydown", () => {
   checkUsername();

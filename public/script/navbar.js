@@ -1,3 +1,4 @@
+"use script";
 const form = document.querySelector("#userForm");
 const userButton = document.querySelector("#userButton");
 const loginButton = document.querySelector("#loginButton");
@@ -25,10 +26,6 @@ function getCookie(cname) {
   }
   return "";
 }
-
-deleteCookie = () => {
-  document.cookie = "jwt=;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-};
 
 getStorage = () => {
   if (localStorage.getItem("mode")) {
@@ -83,8 +80,8 @@ if (token !== "") {
   signinButton.style.display = "block";
 }
 
-logoutButton.addEventListener("click", (event) => {
-  deleteCookie();
+logoutButton.addEventListener("click", () => {
+  document.cookie = "jwt=;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 });
 
 modeButton.addEventListener("mouseover", () => {

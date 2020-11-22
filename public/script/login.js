@@ -1,3 +1,4 @@
+"use strict";
 const usernameInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
 const button = document.querySelector("button");
@@ -19,7 +20,7 @@ if (localStorage.getItem("mode")) {
   localStorage.setItem("mode", "dark");
 }
 
-checkUsername = () => {
+function checkUsername() {
   const regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
   if (usernameInput.value.match(regex)) {
     validUsername = true;
@@ -30,9 +31,9 @@ checkUsername = () => {
     usernameInput.classList.remove("valid");
     usernameInput.classList.add("invalid");
   }
-};
+}
 
-checkPassword = () => {
+function checkPassword() {
   const regex = /^[A-Za-z]\w{5,13}$/;
   if (passwordInput.value.match(regex)) {
     validPassword = true;
@@ -43,9 +44,9 @@ checkPassword = () => {
     passwordInput.classList.remove("valid");
     passwordInput.classList.add("invalid");
   }
-};
+}
 
-validButton = () => {
+function validButton() {
   if (validUsername === true && validPassword === true) {
     button.disabled = false;
     button.style.backgroundColor = "white";
@@ -53,7 +54,7 @@ validButton = () => {
     button.disabled = true;
     button.style.backgroundColor = "red";
   }
-};
+}
 
 usernameInput.addEventListener("keydown", () => {
   checkUsername();
@@ -79,7 +80,7 @@ button.addEventListener("mouseover", () => {
 button.addEventListener("mouseout", () => {
   button.style.backgroundColor = "white";
 });
-button.addEventListener("click", async (e) => {
+button.addEventListener("click", () => {
   fetch("/login", {
     headers: {
       Accept: "application/json",
