@@ -15,7 +15,7 @@ Through BassaDefinizione the user can:
 
 ### External APIs
 
-Any information on any film is obtained from [OMDb API] (http://www.omdbapi.com/), through a GET request in which an identification key must be specified
+Any information on any film is obtained from [OMDb API](http://www.omdbapi.com/), through a GET request in which an identification key must be specified
 
 ### Main NPM packages used
 
