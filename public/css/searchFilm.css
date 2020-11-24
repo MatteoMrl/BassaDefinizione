@@ -576,12 +576,26 @@ html[data-theme="light"] #specificFilm #filmInformation #rating {
   border-radius: 5px;
 }
 
+html[data-theme="light"] #specificFilm #filmInformation #serverResponse {
+  display: inline;
+  color: black;
+  border-radius: 5px;
+  text-indent: 5px;
+  padding: 5px;
+}
+
 @media only screen and (max-width: 1200px) {
   html[data-theme="light"] header #searchFilm {
     width: 300px;
   }
+  html[data-theme="light"] #specificFilm #filmInformation #serverResponse {
+    display: inline-block;
+  }
   html[data-theme="dark"] header #searchFilm {
     width: 300px;
+  }
+  html[data-theme="dark"] #specificFilm #filmInformation #serverResponse {
+    display: inline-block;
   }
 }
 

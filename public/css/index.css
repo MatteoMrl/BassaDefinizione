@@ -359,6 +359,12 @@ html[data-theme="light"] footer ul a:hover {
   color: white;
 }
 
+aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -370,6 +376,12 @@ html[data-theme="dark"] body {
   background-color: black;
 }
 
+html[data-theme="dark"] main {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "sidebar main";
+}
+
 html[data-theme="dark"] #title {
   margin: 3vw 0 3vh 4vw;
   color: #ff9900;
@@ -377,9 +389,100 @@ html[data-theme="dark"] #title {
   letter-spacing: 4px;
 }
 
-html[data-theme="dark"] #whatToWatch {
+html[data-theme="dark"] aside {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: sidebar;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar {
+  width: 4px;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar-track {
+  border: none;
+}
+
+html[data-theme="dark"] aside #genresLegend {
+  background-color: #ff9900;
+  color: black;
+  text-align: right;
+}
+
+html[data-theme="dark"] aside #genresLegend i {
+  background-color: black;
+  color: #ff9900;
+  padding: 5px;
+}
+
+html[data-theme="dark"] aside ul {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  top: 0;
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  overflow: scroll;
+}
+
+html[data-theme="dark"] aside ul li {
+  background-color: #121212;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] aside ul li a {
+  text-decoration: none;
+  color: #918f8f;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+html[data-theme="dark"] aside ul li:hover {
+  background-color: black;
+}
+
+html[data-theme="dark"] aside ul li:hover a {
+  color: #ff9900;
+}
+
+html[data-theme="dark"] aside #backOnTop {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  left: 0;
+  background-color: violet !important;
+}
+
+html[data-theme="dark"] section {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-area: main;
+}
+
+html[data-theme="dark"] section .genre {
+  background-color: #ff9900;
+  color: black;
+}
+
+html[data-theme="dark"] section .genre i {
+  background-color: black;
+  color: #ff9900;
+  padding: 5px;
+}
+
+html[data-theme="dark"] article {
   border-left: 1px solid #ff9900;
-  margin: 0 4vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto auto auto;
@@ -387,14 +490,15 @@ html[data-theme="dark"] #whatToWatch {
   justify-items: center;
   padding: 1vw 0;
   row-gap: 30px;
+  margin-bottom: 30px;
 }
 
-html[data-theme="dark"] #whatToWatch .far,
-html[data-theme="dark"] #whatToWatch .fas {
+html[data-theme="dark"] article .far,
+html[data-theme="dark"] article .fas {
   color: #ff9900;
 }
 
-html[data-theme="dark"] #whatToWatch .card {
+html[data-theme="dark"] article .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -404,22 +508,22 @@ html[data-theme="dark"] #whatToWatch .card {
   transition: 0.5s;
 }
 
-html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar {
+html[data-theme="dark"] article .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
 
-html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar-track {
+html[data-theme="dark"] article .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
 
-html[data-theme="dark"] #whatToWatch .card ::-webkit-scrollbar-thumb {
+html[data-theme="dark"] article .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] #whatToWatch .card img {
+html[data-theme="dark"] article .card img {
   height: 300px;
   width: 200px;
   opacity: 40%;
@@ -427,38 +531,38 @@ html[data-theme="dark"] #whatToWatch .card img {
   transition: 0.5s;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body {
+html[data-theme="dark"] article .card .card-body {
   margin-bottom: 50px;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body .card-title {
+html[data-theme="dark"] article .card .card-body .card-title {
   background-color: #ff9900;
   color: #121212;
   text-align: center;
   padding: 2px;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body .card-label {
+html[data-theme="dark"] article .card .card-body .card-label {
   color: #ff9900;
   margin: 0;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body .card-text {
+html[data-theme="dark"] article .card .card-body .card-text {
   color: white;
   margin: 0 0 10px 0;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body #plot {
+html[data-theme="dark"] article .card .card-body #plot {
   height: 180px;
   overflow-y: auto;
 }
 
-html[data-theme="dark"] #whatToWatch .card .card-body #genre {
+html[data-theme="dark"] article .card .card-body #filmGenre {
   height: 50px;
   overflow: hidden;
 }
 
-html[data-theme="dark"] #whatToWatch .card .btn {
+html[data-theme="dark"] article .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -467,26 +571,43 @@ html[data-theme="dark"] #whatToWatch .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme="dark"] #whatToWatch .card .btn:hover,
-html[data-theme="dark"] #whatToWatch .card .btn:focus,
-html[data-theme="dark"] #whatToWatch .card .btn:active {
+html[data-theme="dark"] article .card .btn:hover,
+html[data-theme="dark"] article .card .btn:focus,
+html[data-theme="dark"] article .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme="dark"] #whatToWatch .card:hover {
+html[data-theme="dark"] article .card:hover {
   position: relative;
   bottom: 2vh;
-  -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-          box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
 
-html[data-theme="dark"] #whatToWatch .card:hover img {
+html[data-theme="dark"] article .card:hover img {
   opacity: 100%;
 }
 
 html[data-theme="light"] body {
   background-color: #eeeeee;
+}
+
+html[data-theme="light"] main {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "sidebar main main main main";
+}
+
+html[data-theme="light"] aside {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: sidebar;
+}
+
+html[data-theme="light"] section {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-area: main;
 }
 
 html[data-theme="light"] #title {
@@ -496,7 +617,7 @@ html[data-theme="light"] #title {
   letter-spacing: 4px;
 }
 
-html[data-theme="light"] #whatToWatch {
+html[data-theme="light"] article {
   border-left: 1px solid #68beff;
   margin: 0 4vw;
   display: -ms-grid;
@@ -508,12 +629,12 @@ html[data-theme="light"] #whatToWatch {
   row-gap: 30px;
 }
 
-html[data-theme="light"] #whatToWatch .far,
-html[data-theme="light"] #whatToWatch .fas {
+html[data-theme="light"] article .far,
+html[data-theme="light"] article .fas {
   color: #68beff;
 }
 
-html[data-theme="light"] #whatToWatch .card {
+html[data-theme="light"] article .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -523,22 +644,22 @@ html[data-theme="light"] #whatToWatch .card {
   transition: 0.5s;
 }
 
-html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar {
+html[data-theme="light"] article .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
 
-html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar-track {
+html[data-theme="light"] article .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
 
-html[data-theme="light"] #whatToWatch .card ::-webkit-scrollbar-thumb {
+html[data-theme="light"] article .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #68beff;
 }
 
-html[data-theme="light"] #whatToWatch .card img {
+html[data-theme="light"] article .card img {
   height: 300px;
   width: 200px;
   opacity: 80%;
@@ -546,38 +667,38 @@ html[data-theme="light"] #whatToWatch .card img {
   transition: 0.5s;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body {
+html[data-theme="light"] article .card .card-body {
   margin-bottom: 50px;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body .card-title {
+html[data-theme="light"] article .card .card-body .card-title {
   background-color: #68beff;
   color: white;
   text-align: center;
   padding: 2px;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body .card-label {
+html[data-theme="light"] article .card .card-body .card-label {
   color: #68beff;
   margin: 0;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body .card-text {
+html[data-theme="light"] article .card .card-body .card-text {
   color: #121212;
   margin: 0 0 10px 0;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body #plot {
+html[data-theme="light"] article .card .card-body #plot {
   height: 180px;
   overflow-y: auto;
 }
 
-html[data-theme="light"] #whatToWatch .card .card-body #genre {
+html[data-theme="light"] article .card .card-body #filmGenre {
   height: 50px;
   overflow: hidden;
 }
 
-html[data-theme="light"] #whatToWatch .card .btn {
+html[data-theme="light"] article .card .btn {
   background-color: #68beff;
   color: white;
   position: absolute;
@@ -586,21 +707,21 @@ html[data-theme="light"] #whatToWatch .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme="light"] #whatToWatch .card .btn:hover,
-html[data-theme="light"] #whatToWatch .card .btn:focus,
-html[data-theme="light"] #whatToWatch .card .btn:active {
+html[data-theme="light"] article .card .btn:hover,
+html[data-theme="light"] article .card .btn:focus,
+html[data-theme="light"] article .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme="light"] #whatToWatch .card:hover {
+html[data-theme="light"] article .card:hover {
   position: relative;
   bottom: 2vh;
   -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
           box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
 }
 
-html[data-theme="light"] #whatToWatch .card:hover img {
+html[data-theme="light"] article .card:hover img {
   opacity: 100%;
 }
 
@@ -608,14 +729,14 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="light"] header #searchFilm {
     width: 300px;
   }
-  html[data-theme="light"] #whatToWatch {
+  html[data-theme="light"] article {
     -ms-grid-columns: auto auto auto auto;
         grid-template-columns: auto auto auto auto;
   }
   html[data-theme="dark"] header #searchFilm {
     width: 300px;
   }
-  html[data-theme="dark"] #whatToWatch {
+  html[data-theme="dark"] article {
     -ms-grid-columns: auto auto auto auto;
         grid-template-columns: auto auto auto auto;
   }
@@ -636,7 +757,7 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="light"] header img {
     width: 400px;
   }
-  html[data-theme="light"] #whatToWatch {
+  html[data-theme="light"] article {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
   }
@@ -657,7 +778,7 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="dark"] header img {
     width: 400px;
   }
-  html[data-theme="dark"] #whatToWatch {
+  html[data-theme="dark"] article {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
   }
@@ -676,12 +797,12 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="dark"] header img {
     width: 300px;
   }
-  html[data-theme="dark"] #whatToWatch {
+  html[data-theme="dark"] article {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
     border-left: 1px solid #ff9900;
   }
-  html[data-theme="dark"] #whatToWatch .card img {
+  html[data-theme="dark"] article .card img {
     opacity: 100%;
   }
   html[data-theme="dark"] #title {
@@ -696,11 +817,11 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="light"] header img {
     width: 300px;
   }
-  html[data-theme="light"] #whatToWatch {
+  html[data-theme="light"] article {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
-  html[data-theme="light"] #whatToWatch .card img {
+  html[data-theme="light"] article .card img {
     opacity: 100%;
   }
   html[data-theme="light"] #title {
@@ -718,7 +839,7 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="dark"] header img {
     width: 200px;
   }
-  html[data-theme="dark"] #whatToWatch {
+  html[data-theme="dark"] article {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
   }
@@ -731,7 +852,7 @@ html[data-theme="light"] #whatToWatch .card:hover img {
   html[data-theme="light"] header img {
     width: 200px;
   }
-  html[data-theme="light"] #whatToWatch {
+  html[data-theme="light"] article {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
   }

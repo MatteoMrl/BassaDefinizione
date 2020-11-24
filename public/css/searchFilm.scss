@@ -202,6 +202,14 @@ html[data-theme="light"] {
         padding: 5px;
         border-radius: 5px;
       }
+
+      #serverResponse {
+        display: inline;
+        color: black;
+        border-radius: 5px;
+        text-indent: 5px;
+        padding: 5px;
+      }
     }
   }
 }
@@ -215,11 +223,25 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
+    #specificFilm {
+      #filmInformation {
+        #serverResponse {
+          display: inline-block;
+        }
+      }
+    }
   }
   html[data-theme="dark"] {
     header {
       #searchFilm {
         width: 300px;
+      }
+    }
+    #specificFilm {
+      #filmInformation {
+        #serverResponse {
+          display: inline-block;
+        }
       }
     }
   }

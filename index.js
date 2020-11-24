@@ -14,9 +14,8 @@ const app = express();
 let count = 0;
 let fvCount = 0;
 let userData;
-let userFilms = [];
-let twFilms = [];
 let filmsNumber = 0;
+let allFilms;
 dotenv.config({ path: "./private/.env" });
 
 const db = mysql.createConnection({
@@ -79,7 +78,7 @@ function createToken(id, res) {
     ),
   };
   res.cookie("jwt", token, cookieOptions);
-  renderFilms(twFilms, res);
+  res.render("index", { allFilms });
 }
 
 function userRegistration({ username, mail, password }, res) {
@@ -134,13 +133,14 @@ async function searchFilm(name, callback) {
   }
 }
 
-function renderFilms(twFilms, res) {
+/*function renderFilms(res) {
   db.query(
     `SELECT DISTINCT title FROM films ORDER BY rating DESC;`,
     (error, result) => {
+      let listOfFilms = [];
       filmsNumber = result.length - 1;
       let listOfGenres = [];
-      result.forEach((value, index) => {
+      result.forEach((value) => {
         db.query(
           `SELECT rating FROM bassad2.films WHERE title = '${value.title}'`,
           (error, result) => {
@@ -163,7 +163,7 @@ function renderFilms(twFilms, res) {
                 if (!listOfGenres.includes(genre)) listOfGenres.push(genre);
               });
               count++;
-              twFilms[index] = {
+              listOfFilms.push({
                 imdbID,
                 Title,
                 Plot,
@@ -173,22 +173,94 @@ function renderFilms(twFilms, res) {
                 Poster,
                 averageRating: avgRating,
                 numberVotes,
-              };
+              });
               if (count == filmsNumber) {
                 let allGenres = [];
                 listOfGenres.forEach((genre) => {
-                  let listOfFilms = [];
-                  twFilms.forEach((film) => {
+                  let genreFilms = [];
+                  listOfFilms.forEach((film, index) => {
                     let filmGenres = film.Genre.split(", ");
                     if (filmGenres.includes(genre)) {
-                      listOfFilms.push(film.Title);
+                      genreFilms.push(listOfFilms[index]);
                     }
                   });
-                  allGenres.push({ genre, listOfFilms });
+                  allGenres.push({ genre, genreFilms });
                 });
-                res.render("index", { twFilms });
+                res.render("index", { allGenres });
                 count = 0;
-                twFilms = [];
+                listOfFilms = [];
+              }
+            });
+          }
+        );
+      });
+    }
+  );
+}
+*/
+function renderFilms() {
+  db.query(
+    `SELECT DISTINCT title FROM films ORDER BY rating DESC;`,
+    (error, result) => {
+      let listOfFilms = [];
+      filmsNumber = result.length - 1;
+      let listOfGenres = [];
+      result.forEach((value) => {
+        db.query(
+          `SELECT rating FROM bassad2.films WHERE title = '${value.title}'`,
+          (error, result) => {
+            let sum = 0;
+            const numberVotes = result.length;
+            result.forEach((e) => (sum += e.rating));
+            const avgRating = (sum / numberVotes).toFixed(1);
+            searchFilm(value.title, (data) => {
+              const {
+                imdbID,
+                Title,
+                Plot,
+                Rating,
+                Votes,
+                Genre,
+                Poster,
+                Type,
+              } = data;
+              if (Type === "movie") {
+                const thisGenres = Genre.split(", ");
+                thisGenres.forEach((genre) => {
+                  if (!listOfGenres.includes(genre)) listOfGenres.push(genre);
+                });
+                count++;
+                listOfFilms.push({
+                  imdbID,
+                  Title,
+                  Plot,
+                  Rating,
+                  Votes,
+                  Genre,
+                  Poster,
+                  averageRating: avgRating,
+                  numberVotes,
+                });
+                if (count == filmsNumber) {
+                  let allGenres = [];
+                  listOfGenres.forEach((genre) => {
+                    let genreFilms = [];
+                    listOfFilms.forEach((film, index) => {
+                      let filmGenres = film.Genre.split(", ");
+                      if (filmGenres.includes(genre)) {
+                        genreFilms.push(listOfFilms[index]);
+                      }
+                    });
+                    allGenres.push({ genre, genreFilms });
+                  });
+                  count = 0;
+                  listOfFilms = [];
+                  allFilms = allGenres;
+                  console.log("aggiornato");
+                  return;
+                }
+              } else {
+                filmsNumber--;
               }
             });
           }
@@ -227,17 +299,18 @@ function favoriteFilms(userID, res) {
   db.query(
     `SELECT * FROM films WHERE userID = '${userID}' ORDER BY rating DESC`,
     (error, result) => {
+      let userFilms = [];
       if (result.length === 0) {
         res.render("user");
       } else {
-        result.forEach((value, index) => {
+        result.forEach((value) => {
           searchFilm(value.title, (data) => {
             fvCount++;
-            userFilms[index] = {
+            userFilms.push({
               title: data.Title,
               rating: value.rating,
               poster: data.Poster,
-            };
+            });
             if (fvCount == result.length) {
               res.render("user", { userFilms });
               fvCount = 0;
@@ -250,12 +323,15 @@ function favoriteFilms(userID, res) {
   );
 }
 
+renderFilms();
+setInterval(() => renderFilms(), 60000);
+
 app.get("", (req, res) => {
-  renderFilms(twFilms, res);
+  res.render("index", { allFilms });
 });
 
 app.get("/user/:username", (req, res) => {
-  renderFilms(twFilms, res);
+  res.render("index", { allFilms });
 });
 
 app.post("/user/:username", (req, res) => {
@@ -320,7 +396,7 @@ app.get("/vote", verifyToken, (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  renderFilms(twFilms, res);
+  res.render("index", { allFilms });
 });
 
 app

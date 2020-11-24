@@ -2,6 +2,7 @@
 @import "scrollbar";
 @import "footer";
 @import "colors";
+@import "sidebar";
 
 * {
   margin: 0;
@@ -15,20 +16,99 @@ html[data-theme="dark"] {
   body {
     background-color: black;
   }
+
+  main {
+    display: grid;
+    grid-template-areas: "sidebar main";
+  }
+
   #title {
     margin: 3vw 0 3vh 4vw;
     color: $orangeOp;
     font-size: 40px;
     letter-spacing: 4px;
   }
-  #whatToWatch {
+
+  aside {
+    grid-area: sidebar;
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      border: none;
+    }
+
+    #genresLegend {
+      background-color: $orangeOp;
+      color: black;
+      text-align: right;
+      i {
+        background-color: black;
+        color: $orangeOp;
+        padding: 5px;
+      }
+    }
+    ul {
+      position: sticky;
+      left: 0;
+      top: 0;
+      list-style-type: none;
+      direction: rtl;
+      height: 100vh;
+      overflow: scroll;
+      li {
+        background-color: $lightBlack;
+        direction: ltr;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.5s;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+          color: rgb(145, 143, 143);
+          transition: 0.5s;
+        }
+      }
+      li:hover {
+        background-color: black;
+        a {
+          color: $orangeOp;
+        }
+      }
+    }
+    #backOnTop {
+      position: sticky;
+      top: 10px;
+      left: 0;
+      background-color: violet !important;
+    }
+  }
+
+  section {
+    grid-area: main;
+    .genre {
+      background-color: $orangeOp;
+      color: black;
+      i {
+        background-color: black;
+        color: $orangeOp;
+        padding: 5px;
+      }
+    }
+  }
+
+  article {
     border-left: 1px solid $orangeOp;
-    margin: 0 4vw;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
     padding: 1vw 0;
     row-gap: 30px;
+    margin-bottom: 30px;
 
     .far,
     .fas {
@@ -85,7 +165,7 @@ html[data-theme="dark"] {
           height: 180px;
           overflow-y: auto;
         }
-        #genre {
+        #filmGenre {
           height: 50px;
           overflow: hidden;
         }
@@ -113,7 +193,7 @@ html[data-theme="dark"] {
       }
       position: relative;
       bottom: 2vh;
-      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+      //box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
     }
   }
 }
@@ -124,13 +204,24 @@ html[data-theme="light"] {
   body {
     background-color: $primary;
   }
+  main {
+    display: grid;
+    grid-template-areas: "sidebar main main main main";
+  }
+  aside {
+    grid-area: sidebar;
+  }
+
+  section {
+    grid-area: main;
+  }
   #title {
     margin: 3vw 0 3vh 4vw;
     color: $lightBlue;
     font-size: 40px;
     letter-spacing: 4px;
   }
-  #whatToWatch {
+  article {
     border-left: 1px solid $lightBlue;
     margin: 0 4vw;
     display: grid;
@@ -194,7 +285,7 @@ html[data-theme="light"] {
           height: 180px;
           overflow-y: auto;
         }
-        #genre {
+        #filmGenre {
           height: 50px;
           overflow: hidden;
         }
@@ -236,7 +327,7 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto auto auto;
     }
   }
@@ -246,7 +337,7 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto auto auto;
     }
   }
@@ -266,7 +357,7 @@ html[data-theme="light"] {
         width: 400px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto auto;
     }
     #title {
@@ -286,7 +377,7 @@ html[data-theme="light"] {
         width: 400px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto auto;
     }
     #title {
@@ -306,7 +397,7 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto;
       border-left: 1px solid $orangeOp;
       .card {
@@ -329,7 +420,7 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto auto;
       .card {
         img {
@@ -354,7 +445,7 @@ html[data-theme="light"] {
         width: 200px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto;
     }
   }
@@ -368,7 +459,7 @@ html[data-theme="light"] {
         width: 200px;
       }
     }
-    #whatToWatch {
+    article {
       grid-template-columns: auto;
     }
   }
