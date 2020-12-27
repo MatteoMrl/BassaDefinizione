@@ -379,20 +379,15 @@ html[data-theme="dark"] body {
 html[data-theme="dark"] main {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "sidebar main";
-}
-
-html[data-theme="dark"] #title {
-  margin: 3vw 0 3vh 4vw;
-  color: #ff9900;
-  font-size: 40px;
-  letter-spacing: 4px;
+  -ms-grid-columns: [sidebar] 20% [main] 80%;
+      grid-template-columns: [sidebar] 20% [main] 80%;
 }
 
 html[data-theme="dark"] aside {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: sidebar;
+  margin: 10px 0 0 10px;
 }
 
 html[data-theme="dark"] aside ::-webkit-scrollbar {
@@ -455,18 +450,9 @@ html[data-theme="dark"] aside ul li:hover a {
   color: #ff9900;
 }
 
-html[data-theme="dark"] aside #backOnTop {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 10px;
-  left: 0;
-  background-color: violet !important;
-}
-
 html[data-theme="dark"] section {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 4;
   grid-area: main;
 }
 
@@ -481,6 +467,36 @@ html[data-theme="dark"] section .genre i {
   padding: 5px;
 }
 
+html[data-theme="dark"] section #slogan {
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #121212;
+  text-align: center;
+}
+
+html[data-theme="dark"] section #slogan h2 {
+  color: white;
+}
+
+html[data-theme="dark"] section #slogan h1 {
+  color: #ff9900;
+}
+
+html[data-theme="dark"] section #slogan img {
+  margin-bottom: 8px;
+}
+
+html[data-theme="dark"] section .module-border-wrap {
+  width: 75%;
+  margin: 50px auto;
+  padding: 1rem;
+  position: relative;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#68beff));
+  background: linear-gradient(to right, #ff9900, #68beff);
+}
+
 html[data-theme="dark"] article {
   border-left: 1px solid #ff9900;
   display: -ms-grid;
@@ -488,6 +504,9 @@ html[data-theme="dark"] article {
   -ms-grid-columns: auto auto auto auto auto;
       grid-template-columns: auto auto auto auto auto;
   justify-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   padding: 1vw 0;
   row-gap: 30px;
   margin-bottom: 30px;
@@ -594,32 +613,125 @@ html[data-theme="light"] body {
 html[data-theme="light"] main {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "sidebar main main main main";
+      grid-template-areas: "sidebar main";
 }
 
 html[data-theme="light"] aside {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: sidebar;
+  margin: 10px 0 0 10px;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar {
+  width: 4px;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar-track {
+  border: none;
+}
+
+html[data-theme="light"] aside #genresLegend {
+  background-color: #68beff;
+  color: white;
+  text-align: right;
+}
+
+html[data-theme="light"] aside #genresLegend i {
+  background-color: #eeeeee;
+  color: #68beff;
+  padding: 5px;
+}
+
+html[data-theme="light"] aside ul {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  top: 0;
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  overflow: scroll;
+}
+
+html[data-theme="light"] aside ul li {
+  background-color: white;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+html[data-theme="light"] aside ul li a {
+  text-decoration: none;
+  color: black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+html[data-theme="light"] aside ul li:hover {
+  background-color: #eeeeee;
+}
+
+html[data-theme="light"] aside ul li:hover a {
+  color: #68beff;
 }
 
 html[data-theme="light"] section {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 4;
   grid-area: main;
 }
 
-html[data-theme="light"] #title {
-  margin: 3vw 0 3vh 4vw;
+html[data-theme="light"] section .genre {
+  background-color: #68beff;
+  color: white;
+}
+
+html[data-theme="light"] section .genre i {
+  background-color: #eeeeee;
   color: #68beff;
-  font-size: 40px;
-  letter-spacing: 4px;
+  padding: 5px;
+}
+
+html[data-theme="light"] #slogan {
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+html[data-theme="light"] #slogan h2 {
+  color: black;
+}
+
+html[data-theme="light"] #slogan h1 {
+  color: #68beff;
+}
+
+html[data-theme="light"] #slogan img {
+  margin-bottom: 8px;
+}
+
+html[data-theme="light"] .module-border-wrap {
+  width: 75%;
+  margin: 50px auto;
+  padding: 1rem;
+  position: relative;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#68beff));
+  background: linear-gradient(to right, #ff9900, #68beff);
 }
 
 html[data-theme="light"] article {
   border-left: 1px solid #68beff;
-  margin: 0 4vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto auto auto;
@@ -717,8 +829,6 @@ html[data-theme="light"] article .card .btn:active {
 html[data-theme="light"] article .card:hover {
   position: relative;
   bottom: 2vh;
-  -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-          box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
 }
 
 html[data-theme="light"] article .card:hover img {

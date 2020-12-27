@@ -324,7 +324,7 @@ function favoriteFilms(userID, res) {
 }
 
 renderFilms();
-setInterval(() => renderFilms(), 60000);
+setInterval(() => renderFilms(), 300000);
 
 app.get("", (req, res) => {
   res.render("index", { allFilms });

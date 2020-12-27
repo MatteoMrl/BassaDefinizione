@@ -19,19 +19,12 @@ html[data-theme="dark"] {
 
   main {
     display: grid;
-    grid-template-areas: "sidebar main";
-  }
-
-  #title {
-    margin: 3vw 0 3vh 4vw;
-    color: $orangeOp;
-    font-size: 40px;
-    letter-spacing: 4px;
+    grid-template-columns: [sidebar]20% [main]80%;
   }
 
   aside {
     grid-area: sidebar;
-
+    margin: 10px 0 0 10px;
     ::-webkit-scrollbar {
       width: 4px;
     }
@@ -46,6 +39,7 @@ html[data-theme="dark"] {
       background-color: $orangeOp;
       color: black;
       text-align: right;
+
       i {
         background-color: black;
         color: $orangeOp;
@@ -80,12 +74,6 @@ html[data-theme="dark"] {
         }
       }
     }
-    #backOnTop {
-      position: sticky;
-      top: 10px;
-      left: 0;
-      background-color: violet !important;
-    }
   }
 
   section {
@@ -99,6 +87,30 @@ html[data-theme="dark"] {
         padding: 5px;
       }
     }
+    #slogan {
+      width: 100%;
+      padding: 30px;
+      border-radius: 10px;
+      background-color: $lightBlack;
+      text-align: center;
+      h2 {
+        color: white;
+      }
+      h1 {
+        color: $orangeOp;
+      }
+      img {
+        margin-bottom: 8px;
+      }
+    }
+    .module-border-wrap {
+      width: 75%;
+      margin: 50px auto;
+      padding: 1rem;
+      position: relative;
+      border-radius: 10px;
+      background: linear-gradient(to right, $orangeOp, $lightBlue);
+    }
   }
 
   article {
@@ -106,6 +118,7 @@ html[data-theme="dark"] {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
+    justify-content: space-evenly;
     padding: 1vw 0;
     row-gap: 30px;
     margin-bottom: 30px;
@@ -206,24 +219,100 @@ html[data-theme="light"] {
   }
   main {
     display: grid;
-    grid-template-areas: "sidebar main main main main";
+    grid-template-areas: "sidebar main";
   }
   aside {
     grid-area: sidebar;
-  }
+    margin: 10px 0 0 10px;
 
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      border: none;
+    }
+
+    #genresLegend {
+      background-color: $lightBlue;
+      color: white;
+      text-align: right;
+      i {
+        background-color: $primary;
+        color: $lightBlue;
+        padding: 5px;
+      }
+    }
+
+    ul {
+      position: sticky;
+      left: 0;
+      top: 0;
+      list-style-type: none;
+      direction: rtl;
+      height: 100vh;
+      overflow: scroll;
+      li {
+        background-color: white;
+        direction: ltr;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.5s;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+          color: black;
+          transition: 0.5s;
+        }
+      }
+      li:hover {
+        background-color: $primary;
+        a {
+          color: $lightBlue;
+        }
+      }
+    }
+  }
   section {
     grid-area: main;
+    .genre {
+      background-color: $lightBlue;
+      color: white;
+      i {
+        background-color: $primary;
+        color: $lightBlue;
+        padding: 5px;
+      }
+    }
   }
-  #title {
-    margin: 3vw 0 3vh 4vw;
-    color: $lightBlue;
-    font-size: 40px;
-    letter-spacing: 4px;
+  #slogan {
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    h2 {
+      color: black;
+    }
+    h1 {
+      color: $lightBlue;
+    }
+    img {
+      margin-bottom: 8px;
+    }
+  }
+  .module-border-wrap {
+    width: 75%;
+    margin: 50px auto;
+    padding: 1rem;
+    position: relative;
+    border-radius: 10px;
+    background: linear-gradient(to right, $orangeOp, $lightBlue);
   }
   article {
     border-left: 1px solid $lightBlue;
-    margin: 0 4vw;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
@@ -313,7 +402,6 @@ html[data-theme="light"] {
       }
       position: relative;
       bottom: 2vh;
-      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
     }
   }
 }
