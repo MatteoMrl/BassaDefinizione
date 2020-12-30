@@ -13,6 +13,7 @@
 html[data-theme="dark"] {
   body {
     background-color: black;
+    min-height: 100vh;
   }
 
   #filmNotFound {
@@ -46,6 +47,7 @@ html[data-theme="dark"] {
       height: 450px;
     }
     #filmInformation {
+      height: 100%;
       #title {
         line-height: 60px;
         color: black;
@@ -58,8 +60,8 @@ html[data-theme="dark"] {
       }
       #plot {
         font-size: 20px;
-        margin: 2vh 0;
-        padding: 0 1vw;
+        margin: 20px 0;
+        padding: 0 10px;
         color: white;
         border-left: 1px solid $orangeOp;
       }
@@ -71,37 +73,33 @@ html[data-theme="dark"] {
         border-left: 1px solid $orangeOp;
       }
 
-      #textRating {
-        display: inline;
-        background-color: $orangeOp;
-        color: black;
-        padding: 5px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-right: 5px;
-      }
-
-      #starRating {
-        padding: 5px;
-        .fa-star {
+      #vote {
+        margin-top: 20px;
+        #textRating {
+          display: inline;
+          background-color: $orangeOp;
+          color: black;
+          padding: 5px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-right: 5px;
+          font-size: 20px;
+        }
+        .fas {
+          color: black;
+          font-size: 20px;
           cursor: pointer;
         }
-        .far {
-          color: black;
-        }
-        .fas {
-          color: $orangeOp;
-        }
-      }
 
-      #rating {
-        background-color: $orangeOp;
-        color: black;
-        margin-left: 5px;
-        padding: 5px;
-        border-radius: 5px;
-        .fas {
-          color: black;
+        .fa-thumbs-up,
+        .fa-thumbs-down {
+          transition: color 0.5s;
+        }
+        .fa-thumbs-up:hover {
+          color: green;
+        }
+        .fa-thumbs-down:hover {
+          color: red;
         }
       }
 
@@ -109,7 +107,7 @@ html[data-theme="dark"] {
         display: inline;
         color: black;
         border-radius: 5px;
-        text-indent: 5px;
+        margin-left: 10px;
         padding: 5px;
       }
     }
@@ -120,6 +118,7 @@ html[data-theme="dark"] {
 html[data-theme="light"] {
   body {
     background-color: $primary;
+    min-height: 100vh;
   }
 
   #filmNotFound {
@@ -161,12 +160,12 @@ html[data-theme="light"] {
         display: inline;
         text-transform: uppercase;
         letter-spacing: 0.5vw;
-        padding: 0 1vw;
+        padding: 0 10px;
       }
       #plot {
         font-size: 20px;
         margin: 2vh 0;
-        padding: 0 1vw;
+        padding: 0 10px;
         color: $lightBlack;
         border-left: 1px solid $lightBlue;
       }
@@ -178,36 +177,40 @@ html[data-theme="light"] {
         border-left: 1px solid $lightBlue;
       }
 
-      #textRating {
-        display: inline;
-        background-color: $lightBlue;
-        color: black;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        padding: 5px;
-      }
-
-      #starRating {
-        color: $lightBlue;
-        padding: 5px;
-        .fa-star {
+      #vote {
+        #textRating {
+          display: inline;
+          background-color: $lightBlue;
+          color: black;
+          padding: 5px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-right: 5px;
+          font-size: 20px;
+        }
+        .fas {
+          color: black;
+          font-size: 20px;
           cursor: pointer;
         }
-      }
 
-      #rating {
-        background-color: $lightBlue;
-        color: black;
-        margin-left: 5px;
-        padding: 5px;
-        border-radius: 5px;
+        .fa-thumbs-up,
+        .fa-thumbs-down {
+          transition: color 0.5s;
+        }
+        .fa-thumbs-up:hover {
+          color: green;
+        }
+        .fa-thumbs-down:hover {
+          color: red;
+        }
       }
 
       #serverResponse {
         display: inline;
         color: black;
         border-radius: 5px;
-        text-indent: 5px;
+        margin-left: 10px;
         padding: 5px;
       }
     }

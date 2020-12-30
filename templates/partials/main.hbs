@@ -7,10 +7,9 @@
         <h2>Search. Vote. Save.</h2>
         <h1>ANY MOVIE IN YOUR MIND</h1>
       </div></div>
-      {{#each allFilms}}
-      <div class="genre" id="{{this.genre}}"><h1><i class="fas fa-angle-right"></i> {{this.genre}}</h1></div>
+      <div class="genre" id="{{genre}}"><h1>{{genre}}</h1></div>
       <article>
-      {{#each this.genreFilms}}
+      {{#each listOfFilms}}
       <div class="card">
         <img class="card-img-top" src="{{this.Poster}}" alt="Card image cap">
         <div class="card-body">
@@ -18,14 +17,15 @@
           <p class="card-text" id="plot">{{this.Plot}}</p>
           <h6 class="card-label">GENRE</h6>
           <p class="card-text" id="filmGenre">{{this.Genre}}</p>
-          <h6 class="card-label">USERS RATING</h6>
-          <p class="card-text">{{this.averageRating}}<i class="far fa-star"></i> | {{this.numberVotes}} <i class="fas fa-vote-yea"></i></p>
+          <h6 class="card-label">APPRECIATION</h6>
+          <p class="card-text">Percentage of users who liked this movie: {{this.Appreciation}}%</p>
+          <h6 class="card-label">IMDB RATING</h6>
+          <p class="card-text">{{this.Rating}}<i class="far fa-star"></i> | {{this.Votes}} <i class="fas fa-vote-yea"></i></p>
         </div>
         <a href="/search?title={{this.Title}}" class="btn">FIND OUT MORE</a>
       </div>
       {{/each}}
       </article>
-      {{/each}}
     </section>
   </main>
 

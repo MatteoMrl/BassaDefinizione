@@ -332,7 +332,6 @@ html[data-theme="dark"] footer ul a:hover {
 
 html[data-theme="light"] footer {
   width: 100%;
-  height: 150px;
   background-color: #68beff;
   text-transform: uppercase;
 }
@@ -365,11 +364,8 @@ aside {
   top: 0;
 }
 
-* {
+html[data-theme="dark"] h1 {
   margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 html[data-theme="dark"] body {
@@ -381,11 +377,10 @@ html[data-theme="dark"] main {
   display: grid;
   -ms-grid-columns: [sidebar] 20% [main] 80%;
       grid-template-columns: [sidebar] 20% [main] 80%;
+  margin: 0 10px;
 }
 
 html[data-theme="dark"] aside {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: sidebar;
   margin: 10px 0 0 10px;
 }
@@ -403,15 +398,20 @@ html[data-theme="dark"] aside ::-webkit-scrollbar-track {
 }
 
 html[data-theme="dark"] aside #genresLegend {
-  background-color: #ff9900;
-  color: black;
   text-align: right;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] aside #genresLegend i {
-  background-color: black;
+html[data-theme="dark"] aside #genresLegend h1 {
   color: #ff9900;
-  padding: 5px;
+  font-size: 2.5vw;
+}
+
+html[data-theme="dark"] aside #genresLegend h1 i {
+  color: #ff9900;
+  font-size: 2.5vw;
 }
 
 html[data-theme="dark"] aside ul {
@@ -432,7 +432,6 @@ html[data-theme="dark"] aside ul li {
   margin: 5%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  cursor: pointer;
 }
 
 html[data-theme="dark"] aside ul li a {
@@ -440,6 +439,7 @@ html[data-theme="dark"] aside ul li a {
   color: #918f8f;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 html[data-theme="dark"] aside ul li:hover {
@@ -451,20 +451,17 @@ html[data-theme="dark"] aside ul li:hover a {
 }
 
 html[data-theme="dark"] section {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: main;
 }
 
 html[data-theme="dark"] section .genre {
-  background-color: #ff9900;
-  color: black;
-}
-
-html[data-theme="dark"] section .genre i {
-  background-color: black;
   color: #ff9900;
-  padding: 5px;
+  background-color: #121212;
+  font-size: 3.5vw;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 html[data-theme="dark"] section #slogan {
@@ -481,6 +478,20 @@ html[data-theme="dark"] section #slogan h2 {
 
 html[data-theme="dark"] section #slogan h1 {
   color: #ff9900;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, right top, from(#68beff), color-stop(50%, #68beff), color-stop(50%, #ff9900));
+  background: linear-gradient(to right, #68beff, #68beff 50%, #ff9900 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  -webkit-transition: background-position 1s ease;
+  transition: background-position 1s ease;
+}
+
+html[data-theme="dark"] section #slogan h1:hover {
+  background-position: 0 100%;
 }
 
 html[data-theme="dark"] section #slogan img {
@@ -507,7 +518,7 @@ html[data-theme="dark"] article {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  padding: 1vw 0;
+  padding: 30px 0;
   row-gap: 30px;
   margin-bottom: 30px;
 }
@@ -559,6 +570,9 @@ html[data-theme="dark"] article .card .card-body .card-title {
   color: #121212;
   text-align: center;
   padding: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 html[data-theme="dark"] article .card .card-body .card-label {
@@ -599,11 +613,15 @@ html[data-theme="dark"] article .card .btn:active {
 
 html[data-theme="dark"] article .card:hover {
   position: relative;
-  bottom: 2vh;
+  bottom: 15px;
 }
 
 html[data-theme="dark"] article .card:hover img {
   opacity: 100%;
+}
+
+html[data-theme="light"] h1 {
+  margin: 0;
 }
 
 html[data-theme="light"] body {
@@ -613,12 +631,12 @@ html[data-theme="light"] body {
 html[data-theme="light"] main {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "sidebar main";
+  -ms-grid-columns: [sidebar] 20% [main] 80%;
+      grid-template-columns: [sidebar] 20% [main] 80%;
+  margin: 0 10px;
 }
 
 html[data-theme="light"] aside {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: sidebar;
   margin: 10px 0 0 10px;
 }
@@ -636,15 +654,20 @@ html[data-theme="light"] aside ::-webkit-scrollbar-track {
 }
 
 html[data-theme="light"] aside #genresLegend {
-  background-color: #68beff;
-  color: white;
   text-align: right;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #68beff;
 }
 
-html[data-theme="light"] aside #genresLegend i {
-  background-color: #eeeeee;
+html[data-theme="light"] aside #genresLegend h1 {
   color: #68beff;
-  padding: 5px;
+  font-size: 2.5vw;
+}
+
+html[data-theme="light"] aside #genresLegend h1 i {
+  color: #68beff;
+  font-size: 2.5vw;
 }
 
 html[data-theme="light"] aside ul {
@@ -665,7 +688,6 @@ html[data-theme="light"] aside ul li {
   margin: 5%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  cursor: pointer;
 }
 
 html[data-theme="light"] aside ul li a {
@@ -673,6 +695,7 @@ html[data-theme="light"] aside ul li a {
   color: black;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 html[data-theme="light"] aside ul li:hover {
@@ -684,20 +707,17 @@ html[data-theme="light"] aside ul li:hover a {
 }
 
 html[data-theme="light"] section {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: main;
 }
 
 html[data-theme="light"] section .genre {
-  background-color: #68beff;
-  color: white;
-}
-
-html[data-theme="light"] section .genre i {
-  background-color: #eeeeee;
   color: #68beff;
-  padding: 5px;
+  background-color: white;
+  font-size: 3.5vw;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 html[data-theme="light"] #slogan {
@@ -714,6 +734,20 @@ html[data-theme="light"] #slogan h2 {
 
 html[data-theme="light"] #slogan h1 {
   color: #68beff;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, right top, from(#ff9900), color-stop(50%, #ff9900), color-stop(50%, #68beff));
+  background: linear-gradient(to right, #ff9900, #ff9900 50%, #68beff 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  -webkit-transition: background-position 500ms ease;
+  transition: background-position 500ms ease;
+}
+
+html[data-theme="light"] #slogan h1:hover {
+  background-position: 0 100%;
 }
 
 html[data-theme="light"] #slogan img {
@@ -788,6 +822,9 @@ html[data-theme="light"] article .card .card-body .card-title {
   color: white;
   text-align: center;
   padding: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 html[data-theme="light"] article .card .card-body .card-label {
@@ -828,11 +865,22 @@ html[data-theme="light"] article .card .btn:active {
 
 html[data-theme="light"] article .card:hover {
   position: relative;
-  bottom: 2vh;
+  bottom: 15px;
 }
 
 html[data-theme="light"] article .card:hover img {
   opacity: 100%;
+}
+
+@media only screen and (max-width: 1600px) {
+  html[data-theme="light"] article {
+    -ms-grid-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
+  }
+  html[data-theme="dark"] article {
+    -ms-grid-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -840,64 +888,19 @@ html[data-theme="light"] article .card:hover img {
     width: 300px;
   }
   html[data-theme="light"] article {
-    -ms-grid-columns: auto auto auto auto;
-        grid-template-columns: auto auto auto auto;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
   }
   html[data-theme="dark"] header #searchFilm {
     width: 300px;
   }
   html[data-theme="dark"] article {
-    -ms-grid-columns: auto auto auto auto;
-        grid-template-columns: auto auto auto auto;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  html[data-theme="light"] header {
-    padding: 30px 0px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    row-gap: 20px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 60%;
-  }
-  html[data-theme="light"] header img {
-    width: 400px;
-  }
-  html[data-theme="light"] article {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
   }
-  html[data-theme="light"] #title {
-    font-size: 30px;
-  }
-  html[data-theme="dark"] header {
-    padding: 30px 0px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    row-gap: 20px;
-  }
-  html[data-theme="dark"] header #searchFilm {
-    width: 60%;
-  }
-  html[data-theme="dark"] header img {
-    width: 400px;
-  }
-  html[data-theme="dark"] article {
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
-  }
-  html[data-theme="dark"] #title {
-    font-size: 30px;
-  }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   html[data-theme="dark"] header {
     row-gap: 15px;
   }

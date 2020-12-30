@@ -1,9 +1,8 @@
 <aside>
     <div id="genresLegend"><h1>GENRES <i class="fas fa-angle-left"></i></h1></div>
     <ul>
-    {{#each allFilms}}
-    <li><a href="#{{this.genre}}">{{this.genre}}</a></li>
+    {{#each listOfGenres}}
+    <li id="{{this.genre}}"><a href="?genre={{this.genre}}">{{this.genre}}</a></li>
     {{/each}}
-    
     </ul>
 </aside>

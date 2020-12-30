@@ -4,15 +4,12 @@
 @import "colors";
 @import "sidebar";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 //------------------------------------------------------------------------------------------------------------
 
 html[data-theme="dark"] {
+  h1 {
+    margin: 0;
+  }
   body {
     background-color: black;
   }
@@ -20,6 +17,7 @@ html[data-theme="dark"] {
   main {
     display: grid;
     grid-template-columns: [sidebar]20% [main]80%;
+    margin: 0 10px;
   }
 
   aside {
@@ -36,14 +34,17 @@ html[data-theme="dark"] {
     }
 
     #genresLegend {
-      background-color: $orangeOp;
-      color: black;
       text-align: right;
-
-      i {
-        background-color: black;
+      padding: 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $orangeOp;
+      h1 {
         color: $orangeOp;
-        padding: 5px;
+        font-size: 2.5vw;
+        i {
+          color: $orangeOp;
+          font-size: 2.5vw;
+        }
       }
     }
     ul {
@@ -60,11 +61,11 @@ html[data-theme="dark"] {
         padding: 10px;
         margin: 5%;
         transition: 0.5s;
-        cursor: pointer;
         a {
           text-decoration: none;
           color: rgb(145, 143, 143);
           transition: 0.5s;
+          cursor: pointer;
         }
       }
       li:hover {
@@ -79,13 +80,13 @@ html[data-theme="dark"] {
   section {
     grid-area: main;
     .genre {
-      background-color: $orangeOp;
-      color: black;
-      i {
-        background-color: black;
-        color: $orangeOp;
-        padding: 5px;
-      }
+      color: $orangeOp;
+      background-color: $lightBlack;
+      font-size: 3.5vw;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
     #slogan {
       width: 100%;
@@ -98,6 +99,22 @@ html[data-theme="dark"] {
       }
       h1 {
         color: $orangeOp;
+        overflow: hidden;
+        background: linear-gradient(
+          to right,
+          $lightBlue,
+          $lightBlue 50%,
+          $orangeOp 50%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: background-position 1s ease;
+      }
+      h1:hover {
+        background-position: 0 100%;
       }
       img {
         margin-bottom: 8px;
@@ -119,7 +136,7 @@ html[data-theme="dark"] {
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
     justify-content: space-evenly;
-    padding: 1vw 0;
+    padding: 30px 0;
     row-gap: 30px;
     margin-bottom: 30px;
 
@@ -165,6 +182,9 @@ html[data-theme="dark"] {
           color: $lightBlack;
           text-align: center;
           padding: 2px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         .card-label {
           color: $orangeOp;
@@ -205,7 +225,7 @@ html[data-theme="dark"] {
         opacity: 100%;
       }
       position: relative;
-      bottom: 2vh;
+      bottom: 15px;
       //box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
     }
   }
@@ -214,12 +234,16 @@ html[data-theme="dark"] {
 //--------------------------------------------------------------------------------------------------------
 
 html[data-theme="light"] {
+  h1 {
+    margin: 0;
+  }
   body {
     background-color: $primary;
   }
   main {
     display: grid;
-    grid-template-areas: "sidebar main";
+    grid-template-columns: [sidebar]20% [main]80%;
+    margin: 0 10px;
   }
   aside {
     grid-area: sidebar;
@@ -236,13 +260,17 @@ html[data-theme="light"] {
     }
 
     #genresLegend {
-      background-color: $lightBlue;
-      color: white;
       text-align: right;
-      i {
-        background-color: $primary;
+      padding: 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $lightBlue;
+      h1 {
         color: $lightBlue;
-        padding: 5px;
+        font-size: 2.5vw;
+        i {
+          color: $lightBlue;
+          font-size: 2.5vw;
+        }
       }
     }
 
@@ -260,11 +288,12 @@ html[data-theme="light"] {
         padding: 10px;
         margin: 5%;
         transition: 0.5s;
-        cursor: pointer;
+
         a {
           text-decoration: none;
           color: black;
           transition: 0.5s;
+          cursor: pointer;
         }
       }
       li:hover {
@@ -278,13 +307,13 @@ html[data-theme="light"] {
   section {
     grid-area: main;
     .genre {
-      background-color: $lightBlue;
-      color: white;
-      i {
-        background-color: $primary;
-        color: $lightBlue;
-        padding: 5px;
-      }
+      color: $lightBlue;
+      background-color: white;
+      font-size: 3.5vw;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
   }
   #slogan {
@@ -298,6 +327,22 @@ html[data-theme="light"] {
     }
     h1 {
       color: $lightBlue;
+      overflow: hidden;
+      background: linear-gradient(
+        to right,
+        $orangeOp,
+        $orangeOp 50%,
+        $lightBlue 50%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      background-position: 100%;
+      transition: background-position 500ms ease;
+    }
+    h1:hover {
+      background-position: 0 100%;
     }
     img {
       margin-bottom: 8px;
@@ -361,6 +406,9 @@ html[data-theme="light"] {
           color: white;
           text-align: center;
           padding: 2px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         .card-label {
           color: $lightBlue;
@@ -401,12 +449,25 @@ html[data-theme="light"] {
         opacity: 100%;
       }
       position: relative;
-      bottom: 2vh;
+      bottom: 15px;
     }
   }
 }
 
 //-----------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 1600px) {
+  html[data-theme="light"] {
+    article {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
+  html[data-theme="dark"] {
+    article {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
+}
 
 @media only screen and (max-width: 1200px) {
   html[data-theme="light"] {
@@ -416,7 +477,7 @@ html[data-theme="light"] {
       }
     }
     article {
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto;
     }
   }
   html[data-theme="dark"] {
@@ -426,55 +487,12 @@ html[data-theme="light"] {
       }
     }
     article {
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto;
     }
   }
 }
 
-@media only screen and (max-width: 992px) {
-  html[data-theme="light"] {
-    header {
-      padding: 30px 0px;
-      flex-direction: column;
-      row-gap: 20px;
-
-      #searchFilm {
-        width: 60%;
-      }
-      img {
-        width: 400px;
-      }
-    }
-    article {
-      grid-template-columns: auto auto auto;
-    }
-    #title {
-      font-size: 30px;
-    }
-  }
-  html[data-theme="dark"] {
-    header {
-      padding: 30px 0px;
-      flex-direction: column;
-      row-gap: 20px;
-
-      #searchFilm {
-        width: 60%;
-      }
-      img {
-        width: 400px;
-      }
-    }
-    article {
-      grid-template-columns: auto auto auto;
-    }
-    #title {
-      font-size: 30px;
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   html[data-theme="dark"] {
     header {
       row-gap: 15px;

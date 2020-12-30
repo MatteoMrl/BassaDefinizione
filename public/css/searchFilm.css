@@ -332,7 +332,6 @@ html[data-theme="dark"] footer ul a:hover {
 
 html[data-theme="light"] footer {
   width: 100%;
-  height: 150px;
   background-color: #68beff;
   text-transform: uppercase;
 }
@@ -368,6 +367,7 @@ html[data-theme="light"] footer ul a:hover {
 
 html[data-theme="dark"] body {
   background-color: black;
+  min-height: 100vh;
 }
 
 html[data-theme="dark"] #filmNotFound {
@@ -409,6 +409,10 @@ html[data-theme="dark"] #specificFilm img {
   height: 450px;
 }
 
+html[data-theme="dark"] #specificFilm #filmInformation {
+  height: 100%;
+}
+
 html[data-theme="dark"] #specificFilm #filmInformation #title {
   line-height: 60px;
   color: black;
@@ -422,8 +426,8 @@ html[data-theme="dark"] #specificFilm #filmInformation #title {
 
 html[data-theme="dark"] #specificFilm #filmInformation #plot {
   font-size: 20px;
-  margin: 2vh 0;
-  padding: 0 1vw;
+  margin: 20px 0;
+  padding: 0 10px;
   color: white;
   border-left: 1px solid #ff9900;
 }
@@ -435,7 +439,11 @@ html[data-theme="dark"] #specificFilm #filmInformation h5 {
   border-left: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] #specificFilm #filmInformation #textRating {
+html[data-theme="dark"] #specificFilm #filmInformation #vote {
+  margin-top: 20px;
+}
+
+html[data-theme="dark"] #specificFilm #filmInformation #vote #textRating {
   display: inline;
   background-color: #ff9900;
   color: black;
@@ -443,46 +451,40 @@ html[data-theme="dark"] #specificFilm #filmInformation #textRating {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-right: 5px;
+  font-size: 20px;
 }
 
-html[data-theme="dark"] #specificFilm #filmInformation #starRating {
-  padding: 5px;
-}
-
-html[data-theme="dark"] #specificFilm #filmInformation #starRating .fa-star {
+html[data-theme="dark"] #specificFilm #filmInformation #vote .fas {
+  color: black;
+  font-size: 20px;
   cursor: pointer;
 }
 
-html[data-theme="dark"] #specificFilm #filmInformation #starRating .far {
-  color: black;
+html[data-theme="dark"] #specificFilm #filmInformation #vote .fa-thumbs-up,
+html[data-theme="dark"] #specificFilm #filmInformation #vote .fa-thumbs-down {
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
 }
 
-html[data-theme="dark"] #specificFilm #filmInformation #starRating .fas {
-  color: #ff9900;
+html[data-theme="dark"] #specificFilm #filmInformation #vote .fa-thumbs-up:hover {
+  color: green;
 }
 
-html[data-theme="dark"] #specificFilm #filmInformation #rating {
-  background-color: #ff9900;
-  color: black;
-  margin-left: 5px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-html[data-theme="dark"] #specificFilm #filmInformation #rating .fas {
-  color: black;
+html[data-theme="dark"] #specificFilm #filmInformation #vote .fa-thumbs-down:hover {
+  color: red;
 }
 
 html[data-theme="dark"] #specificFilm #filmInformation #serverResponse {
   display: inline;
   color: black;
   border-radius: 5px;
-  text-indent: 5px;
+  margin-left: 10px;
   padding: 5px;
 }
 
 html[data-theme="light"] body {
   background-color: #eeeeee;
+  min-height: 100vh;
 }
 
 html[data-theme="light"] #filmNotFound {
@@ -532,13 +534,13 @@ html[data-theme="light"] #specificFilm #filmInformation #title {
   display: inline;
   text-transform: uppercase;
   letter-spacing: 0.5vw;
-  padding: 0 1vw;
+  padding: 0 10px;
 }
 
 html[data-theme="light"] #specificFilm #filmInformation #plot {
   font-size: 20px;
   margin: 2vh 0;
-  padding: 0 1vw;
+  padding: 0 10px;
   color: #121212;
   border-left: 1px solid #68beff;
 }
@@ -550,37 +552,42 @@ html[data-theme="light"] #specificFilm #filmInformation h5 {
   border-left: 1px solid #68beff;
 }
 
-html[data-theme="light"] #specificFilm #filmInformation #textRating {
+html[data-theme="light"] #specificFilm #filmInformation #vote #textRating {
   display: inline;
   background-color: #68beff;
   color: black;
+  padding: 5px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 5px;
+  margin-right: 5px;
+  font-size: 20px;
 }
 
-html[data-theme="light"] #specificFilm #filmInformation #starRating {
-  color: #68beff;
-  padding: 5px;
-}
-
-html[data-theme="light"] #specificFilm #filmInformation #starRating .fa-star {
+html[data-theme="light"] #specificFilm #filmInformation #vote .fas {
+  color: black;
+  font-size: 20px;
   cursor: pointer;
 }
 
-html[data-theme="light"] #specificFilm #filmInformation #rating {
-  background-color: #68beff;
-  color: black;
-  margin-left: 5px;
-  padding: 5px;
-  border-radius: 5px;
+html[data-theme="light"] #specificFilm #filmInformation #vote .fa-thumbs-up,
+html[data-theme="light"] #specificFilm #filmInformation #vote .fa-thumbs-down {
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #vote .fa-thumbs-up:hover {
+  color: green;
+}
+
+html[data-theme="light"] #specificFilm #filmInformation #vote .fa-thumbs-down:hover {
+  color: red;
 }
 
 html[data-theme="light"] #specificFilm #filmInformation #serverResponse {
   display: inline;
   color: black;
   border-radius: 5px;
-  text-indent: 5px;
+  margin-left: 10px;
   padding: 5px;
 }
 

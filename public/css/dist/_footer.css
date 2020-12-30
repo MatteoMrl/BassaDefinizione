@@ -1,0 +1,42 @@
+html[data-theme=dark] footer {
+  width: 100%;
+  text-transform: uppercase;
+  background-color: #ff9900;
+}
+html[data-theme=dark] footer ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+html[data-theme=dark] footer ul a,
+html[data-theme=dark] footer ul a:link,
+html[data-theme=dark] footer ul a:visited,
+html[data-theme=dark] footer ul a:active {
+  text-decoration: none;
+  color: black;
+  opacity: 70%;
+}
+html[data-theme=dark] footer ul a:hover {
+  opacity: 100%;
+}
+
+html[data-theme=light] footer {
+  width: 100%;
+  background-color: #68beff;
+  text-transform: uppercase;
+}
+html[data-theme=light] footer ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+html[data-theme=light] footer ul a,
+html[data-theme=light] footer ul a:link,
+html[data-theme=light] footer ul a:visited,
+html[data-theme=light] footer ul a:active {
+  text-decoration: none;
+  color: #eeeeee;
+}
+html[data-theme=light] footer ul a:hover {
+  color: white;
+}
