@@ -303,7 +303,10 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb {
 
 html[data-theme="dark"] footer {
   width: 100%;
+  position: absolute;
+  bottom: 0;
   text-transform: uppercase;
+  height: 150px;
   background-color: #ff9900;
 }
 
@@ -332,6 +335,9 @@ html[data-theme="dark"] footer ul a:hover {
 
 html[data-theme="light"] footer {
   width: 100%;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
   background-color: #68beff;
   text-transform: uppercase;
 }
@@ -365,12 +371,9 @@ html[data-theme="light"] footer ul a:hover {
 
 html[data-theme="dark"] body {
   background-color: black;
-}
-
-html[data-theme="dark"] #title {
-  margin: 3vw 0 3vh 4vw;
-  color: #ff9900;
-  letter-spacing: 4px;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 200px;
 }
 
 html[data-theme="dark"] #noFilm {
@@ -389,9 +392,103 @@ html[data-theme="dark"] #noFilm h1 span {
   color: black;
 }
 
+html[data-theme="dark"] main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: [sidebar] 20% [article] 80%;
+      grid-template-columns: [sidebar] 20% [article] 80%;
+  margin: 30px 10px;
+}
+
+html[data-theme="dark"] aside {
+  grid-area: sidebar;
+  margin: 10px 0;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar {
+  width: 4px;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+html[data-theme="dark"] aside ::-webkit-scrollbar-track {
+  border: none;
+}
+
+html[data-theme="dark"] aside #genresLegend {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff9900;
+}
+
+html[data-theme="dark"] aside #genresLegend h1 {
+  color: #ff9900;
+  font-size: 2.5vw;
+}
+
+html[data-theme="dark"] aside ul {
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  overflow: scroll;
+  padding: 0;
+}
+
+html[data-theme="dark"] aside ul li {
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #ff9900), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #ff9900 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] aside ul li:hover {
+  border-color: #ff9900;
+  color: black;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+html[data-theme="dark"] article {
+  grid-area: article;
+  margin: 10px 0;
+}
+
+html[data-theme="dark"] article #title {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff9900;
+}
+
+html[data-theme="dark"] article #title h1 {
+  color: #ff9900;
+  font-size: 2.5vw;
+}
+
+html[data-theme="dark"] article #title h1 i {
+  color: #ff9900;
+  font-size: 2.5vw;
+}
+
 html[data-theme="dark"] #favouriteFilms {
-  border-left: 1px solid #121212;
-  margin: 0 4vw;
+  border-left: 1px solid #ff9900;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto auto auto;
@@ -451,8 +548,6 @@ html[data-theme="dark"] #favouriteFilms .card .btn:active {
 html[data-theme="dark"] #favouriteFilms .card:hover {
   position: relative;
   bottom: 2vh;
-  -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-          box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
 
 html[data-theme="dark"] #favouriteFilms .card:hover img {
@@ -461,18 +556,23 @@ html[data-theme="dark"] #favouriteFilms .card:hover img {
 
 html[data-theme="light"] body {
   background-color: #eeeeee;
+  position: relative;
+  padding-bottom: 200px;
 }
 
-html[data-theme="light"] #title {
-  margin: 3vw 0 3vh 4vw;
-  color: #68beff;
-  letter-spacing: 4px;
+html[data-theme="light"] main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: [sidebar] 20% [article] 80%;
+      grid-template-columns: [sidebar] 20% [article] 80%;
+  margin: 30px 10px;
 }
 
 html[data-theme="light"] #noFilm {
   border-left: 5px #68beff solid;
   text-transform: uppercase;
   margin: 10vh 10vw;
+  height: 100vh;
 }
 
 html[data-theme="light"] #noFilm h1 {
@@ -485,9 +585,100 @@ html[data-theme="light"] #noFilm h1 span {
   color: #eeeeee;
 }
 
+html[data-theme="light"] aside {
+  grid-area: sidebar;
+  margin: 10px 0;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar {
+  width: 4px;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+html[data-theme="light"] aside ::-webkit-scrollbar-track {
+  border: none;
+}
+
+html[data-theme="light"] aside #genresLegend {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #68beff;
+}
+
+html[data-theme="light"] aside #genresLegend h1 {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+
+html[data-theme="light"] aside ul {
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  padding: 0;
+  margin: 0 10px;
+  overflow: scroll;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+}
+
+html[data-theme="light"] aside ul li {
+  background-size: 200% 200%;
+  text-align: center;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #68beff), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #68beff 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none;
+  border: 1px solid #68beff;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+html[data-theme="light"] aside ul li:hover {
+  border-color: #68beff;
+  color: black;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #68beff), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #68beff 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+html[data-theme="light"] article {
+  grid-area: article;
+  margin-top: 10px;
+}
+
+html[data-theme="light"] article #title {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #68beff;
+}
+
+html[data-theme="light"] article #title h1 {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+
+html[data-theme="light"] article #title h1 i {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+
 html[data-theme="light"] #favouriteFilms {
   border-left: 1px solid #68beff;
-  margin: 0 4vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto auto auto;
@@ -547,8 +738,6 @@ html[data-theme="light"] #favouriteFilms .card .btn:active {
 html[data-theme="light"] #favouriteFilms .card:hover {
   position: relative;
   bottom: 2vh;
-  -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-          box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
 }
 
 html[data-theme="light"] #favouriteFilms .card:hover img {

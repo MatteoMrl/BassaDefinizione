@@ -204,85 +204,51 @@ const voteFilm = async (title, vote, userID, res) => {
 };
 
 function favoriteFilms(userID, res) {
+  //questa funzione e render films potrebbero diventare una singola
+  //prende tutti i film votati piaciuti all'utente e li renderizza --> pesante ma evito altre chiamate
   let userFilms = [];
-  listOfGenres.forEach((genre) => {
+  let userGenres = listOfGenres;
+
+  userGenres.forEach((genre) => {
     db.query(
       `SELECT title FROM ${genre} WHERE userID = ${userID} AND liked = 1;`,
       async (error, result) => {
-        result.forEach((film) => userFilms.push(film));
+        if (result.length !== 0) {
+          result.forEach(async ({ title }) => {
+            const data = await searchFilm(title);
+            if (!userFilms.some((e) => e.Title === data.Title)) {
+              const { Title, imdbRating, Poster, Genre } = data;
+              userFilms.push({ Title, imdbRating, Poster, Genre });
+            }
+            if (
+              genre == userGenres[userGenres.length - 1] &&
+              title == result[result.length - 1].title
+            ) {
+              res.render("user", {
+                userFilms,
+                userGenres,
+              });
+            }
+          });
+        } else {
+          userGenres = userGenres.filter((userGenre) => userGenre !== genre);
+          if (genre === listOfGenres[listOfGenres.length - 1]) {
+            res.render("user", {
+              userFilms,
+              userGenres,
+            });
+          }
+        }
       }
     );
   });
-
-  /*let listOfFilms = [];
-      let count = 0;
-      result.forEach(async (film) => {
-        const data = await searchFilm(film.title);
-        const { Title, Plot, imdbRating, imdbVotes, Genre, Poster } = data;
-        db.query(
-          `SELECT * FROM ${genre} WHERE title = '${Title}'`,
-          (error, usersVotes) => {
-            const Appreciation = Math.floor(
-              (usersVotes.reduce((sum, current) => sum + current.liked, 0) *
-                100) /
-                usersVotes.length
-            );
-            listOfFilms.push({
-              Title,
-              Plot,
-              Rating: imdbRating,
-              Votes: imdbVotes,
-              Appreciation,
-              Genre,
-              Poster,
-            });
-            count++;
-            if (count === result.length) {
-              //utlizzo count poichè il foreach non so come metterlo asincrono e perciò se avessi
-              listOfFilms.sort((a, b) => b.Rating - a.Rating); //film ordinati per voto decrescente
-              res.render("index", {
-                genre,
-                listOfFilms,
-                listOfGenres,
-              });
-            }
-          }
-        );
-      });*/
-  /*
-  db.query(
-    `SELECT * FROM films WHERE userID = '${userID}' ORDER BY rating DESC`,
-    (error, result) => {
-      let userFilms = [];
-      if (result.length === 0) {
-        res.render("user");
-      } else {
-        result.forEach((value) => {
-          searchFilm(value.title, (data) => {
-            fvCount++;
-            userFilms.push({
-              title: data.Title,
-              rating: value.rating,
-              poster: data.Poster,
-            });
-            if (fvCount == result.length) {
-              res.render("user", { userFilms });
-              fvCount = 0;
-              userFilms = [];
-            }
-          });
-        });
-      }
-    }
-  );
-  */
 }
 
 //----------------------------------------------------------------------------------------------------
 
 db.query("SHOW TABLES", (error, result) => {
   result.forEach((genre) =>
-    listOfGenres.push({ genre: genre.Tables_in_bassadefinizione })
+    listOfGenres.push(genre.Tables_in_bassadefinizione)
   );
   listOfGenres.pop();
   console.log("CREATA LA LISTA DEI GENERI");
@@ -298,6 +264,7 @@ app.get("/user/:username", (req, res) => {
 
 app.post("/user/:username", (req, res) => {
   const username = req.params.username;
+
   db.query(
     `SELECT id FROM users WHERE username = '${username}'`,
     (error, result) => {

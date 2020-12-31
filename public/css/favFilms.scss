@@ -10,17 +10,16 @@
 html[data-theme="dark"] {
   body {
     background-color: black;
-  }
-  #title {
-    margin: 3vw 0 3vh 4vw;
-    color: $orangeOp;
-    letter-spacing: 4px;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
   }
 
   #noFilm {
     border-left: 5px $orangeOp solid;
     text-transform: uppercase;
     margin: 10vh 10vw;
+    //height: 100vh;
     h1 {
       font-size: 10vw;
       color: orange;
@@ -31,9 +30,98 @@ html[data-theme="dark"] {
     }
   }
 
+  main {
+    display: grid;
+    grid-template-columns: [sidebar]20% [article]80%;
+    margin: 30px 10px;
+  }
+
+  aside {
+    grid-area: sidebar;
+    margin: 10px 0;
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      border: none;
+    }
+
+    #genresLegend {
+      text-align: center;
+      padding: 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $orangeOp;
+      h1 {
+        color: $orangeOp;
+        font-size: 2.5vw;
+      }
+    }
+    ul {
+      list-style-type: none;
+      direction: rtl;
+      height: 100vh;
+      overflow: scroll;
+      padding: 0;
+      li {
+        background-size: 200% 200%;
+        text-align: center;
+        background-image: linear-gradient(
+          to top,
+          $orangeOp 50%,
+          transparent 50%
+        );
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+        direction: ltr;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.5s;
+
+        text-decoration: none;
+        color: rgb(145, 143, 143);
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      li:hover {
+        border-color: $orangeOp;
+        color: black;
+        background-image: linear-gradient(
+          to top,
+          $orangeOp 51%,
+          transparent 50%
+        );
+        background-position: 0 100%;
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+      }
+    }
+  }
+
+  article {
+    grid-area: article;
+    margin: 10px 0;
+    #title {
+      text-align: center;
+      padding: 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $orangeOp;
+      h1 {
+        color: $orangeOp;
+        font-size: 2.5vw;
+        i {
+          color: $orangeOp;
+          font-size: 2.5vw;
+        }
+      }
+    }
+  }
+
   #favouriteFilms {
-    border-left: 1px solid $lightBlack;
-    margin: 0 4vw;
+    border-left: 1px solid $orangeOp;
+
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
@@ -90,7 +178,6 @@ html[data-theme="dark"] {
       }
       position: relative;
       bottom: 2vh;
-      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
     }
   }
 }
@@ -100,17 +187,21 @@ html[data-theme="dark"] {
 html[data-theme="light"] {
   body {
     background-color: $primary;
+    position: relative;
+    padding-bottom: 200px;
   }
-  #title {
-    margin: 3vw 0 3vh 4vw;
-    color: $lightBlue;
-    letter-spacing: 4px;
+
+  main {
+    display: grid;
+    grid-template-columns: [sidebar]20% [article]80%;
+    margin: 30px 10px;
   }
 
   #noFilm {
     border-left: 5px $lightBlue solid;
     text-transform: uppercase;
     margin: 10vh 10vw;
+    height: 100vh;
     h1 {
       font-size: 10vw;
       color: $lightBlue;
@@ -120,9 +211,97 @@ html[data-theme="light"] {
       }
     }
   }
+
+  aside {
+    grid-area: sidebar;
+    margin: 10px 0;
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      border: none;
+    }
+
+    #genresLegend {
+      text-align: center;
+      padding: 0;
+      margin: 20px 0;
+      border-bottom: 1px solid $lightBlue;
+      h1 {
+        color: $lightBlue;
+        font-size: 2.5vw;
+      }
+    }
+    ul {
+      list-style-type: none;
+      direction: rtl;
+      height: 100vh;
+      padding: 0;
+      margin: 0 10px;
+      overflow: scroll;
+      border: 1px solid white;
+      border-radius: 5px;
+      background-color: white;
+      li {
+        background-size: 200% 200%;
+        text-align: center;
+        border-radius: 10px;
+        background-image: linear-gradient(
+          to top,
+          $lightBlue 50%,
+          transparent 50%
+        );
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+        direction: ltr;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.5s;
+
+        text-decoration: none;
+        border: 1px solid $lightBlue;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      li:hover {
+        border-color: $lightBlue;
+        color: black;
+        background-image: linear-gradient(
+          to top,
+          $lightBlue 51%,
+          transparent 50%
+        );
+        background-position: 0 100%;
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+      }
+    }
+  }
+
+  article {
+    grid-area: article;
+    margin-top: 10px;
+    #title {
+      text-align: center;
+      padding: 0;
+      margin: 20px 0;
+      border-bottom: 1px solid $lightBlue;
+      h1 {
+        color: $lightBlue;
+        font-size: 2.5vw;
+        i {
+          color: $lightBlue;
+          font-size: 2.5vw;
+        }
+      }
+    }
+  }
+
   #favouriteFilms {
     border-left: 1px solid $lightBlue;
-    margin: 0 4vw;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
@@ -179,7 +358,6 @@ html[data-theme="light"] {
       }
       position: relative;
       bottom: 2vh;
-      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
     }
   }
 }

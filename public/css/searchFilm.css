@@ -303,7 +303,10 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb {
 
 html[data-theme="dark"] footer {
   width: 100%;
+  position: absolute;
+  bottom: 0;
   text-transform: uppercase;
+  height: 150px;
   background-color: #ff9900;
 }
 
@@ -332,6 +335,9 @@ html[data-theme="dark"] footer ul a:hover {
 
 html[data-theme="light"] footer {
   width: 100%;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
   background-color: #68beff;
   text-transform: uppercase;
 }
@@ -367,7 +373,9 @@ html[data-theme="light"] footer ul a:hover {
 
 html[data-theme="dark"] body {
   background-color: black;
+  position: relative;
   min-height: 100vh;
+  padding-bottom: 200px;
 }
 
 html[data-theme="dark"] #filmNotFound {
@@ -398,7 +406,7 @@ html[data-theme="dark"] #specificFilm {
           flex-direction: row;
   background-color: #121212;
   width: 90%;
-  margin: 50px auto;
+  margin: 50px auto 0;
   padding: 20px;
 }
 
@@ -484,7 +492,9 @@ html[data-theme="dark"] #specificFilm #filmInformation #serverResponse {
 
 html[data-theme="light"] body {
   background-color: #eeeeee;
+  position: relative;
   min-height: 100vh;
+  padding-bottom: 200px;
 }
 
 html[data-theme="light"] #filmNotFound {
@@ -515,7 +525,7 @@ html[data-theme="light"] #specificFilm {
           flex-direction: row;
   background-color: white;
   width: 90%;
-  margin: 50px auto;
+  margin: 50px auto 0;
   padding: 20px;
 }
 

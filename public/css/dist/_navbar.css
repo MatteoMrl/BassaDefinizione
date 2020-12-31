@@ -1,0 +1,207 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html[data-theme=dark] header {
+  background-color: #121212;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 70px;
+}
+html[data-theme=dark] header a,
+html[data-theme=dark] header button {
+  text-decoration: none;
+  color: white;
+}
+html[data-theme=dark] header button {
+  border: none;
+  background-color: transparent;
+}
+html[data-theme=dark] header button:hover,
+html[data-theme=dark] header button:focus,
+html[data-theme=dark] header button:active {
+  box-shadow: none;
+  outline: none;
+}
+html[data-theme=dark] header a:hover,
+html[data-theme=dark] header button:hover {
+  color: #ff9900;
+  text-decoration: none;
+  cursor: pointer;
+}
+html[data-theme=dark] header img {
+  display: block;
+  width: 200px;
+}
+html[data-theme=dark] header #userInteraction #dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #121212;
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px black;
+  border-radius: 5px;
+  z-index: 1;
+}
+html[data-theme=dark] header #userInteraction #dropdown-content #modeButton {
+  padding: 0 0 5px 0 !important;
+  margin: 0 0 5px 0 !important;
+}
+html[data-theme=dark] header #userInteraction #dropdown-content #userButton,
+html[data-theme=dark] header #userInteraction #dropdown-content #loginButton,
+html[data-theme=dark] header #userInteraction #dropdown-content #signinButton,
+html[data-theme=dark] header #userInteraction #dropdown-content #logoutButton {
+  display: none;
+  position: relative;
+  padding: 0 0 5px 0 !important;
+  margin: 0 0 5px 0 !important;
+}
+html[data-theme=dark] header #userInteraction #dropdown-content #userButton:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #loginButton:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #signinButton:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #logoutButton:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff9900;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+html[data-theme=dark] header #userInteraction #dropdown-content #userButton:hover:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #loginButton:hover:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #signinButton:hover:before,
+html[data-theme=dark] header #userInteraction #dropdown-content #logoutButton:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+html[data-theme=dark] header #searchFilm {
+  color: #ff9900;
+  display: flex;
+  width: 450px;
+  background-color: transparent;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ff9900;
+}
+html[data-theme=dark] header #searchFilm input[type=text] {
+  background-color: #121212;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #ff9900;
+  border: transparent;
+}
+html[data-theme=dark] header #searchFilm i {
+  color: orange;
+}
+html[data-theme=dark] header i {
+  margin-right: 1vw;
+}
+
+html[data-theme=light] header {
+  background-color: #68beff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 70px;
+}
+html[data-theme=light] header a,
+html[data-theme=light] header button {
+  text-decoration: none;
+  color: white;
+}
+html[data-theme=light] header button {
+  border: none;
+  background-color: transparent;
+}
+html[data-theme=light] header button:hover,
+html[data-theme=light] header button:focus,
+html[data-theme=light] header button:active {
+  box-shadow: none;
+  outline: none;
+}
+html[data-theme=light] header a:hover,
+html[data-theme=light] header button:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+html[data-theme=light] header img {
+  display: block;
+  width: 200px;
+}
+html[data-theme=light] header #userInteraction #dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #68beff;
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px white;
+  border-radius: 5px;
+  z-index: 1;
+}
+html[data-theme=light] header #userInteraction #dropdown-content #modeButton {
+  padding: 0 0 5px 0 !important;
+  margin: 0 0 5px 0 !important;
+}
+html[data-theme=light] header #userInteraction #dropdown-content #userButton,
+html[data-theme=light] header #userInteraction #dropdown-content #loginButton,
+html[data-theme=light] header #userInteraction #dropdown-content #signinButton,
+html[data-theme=light] header #userInteraction #dropdown-content #logoutButton {
+  display: none;
+  position: relative;
+  padding: 0 0 5px 0 !important;
+  margin: 0 0 5px 0 !important;
+}
+html[data-theme=light] header #userInteraction #dropdown-content #userButton:before,
+html[data-theme=light] header #userInteraction #dropdown-content #loginButton:before,
+html[data-theme=light] header #userInteraction #dropdown-content #signinButton:before,
+html[data-theme=light] header #userInteraction #dropdown-content #logoutButton:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+html[data-theme=light] header #userInteraction #dropdown-content #userButton:hover:before,
+html[data-theme=light] header #userInteraction #dropdown-content #loginButton:hover:before,
+html[data-theme=light] header #userInteraction #dropdown-content #signinButton:hover:before,
+html[data-theme=light] header #userInteraction #dropdown-content #logoutButton:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+html[data-theme=light] header #searchFilm {
+  color: white;
+  display: flex;
+  width: 450px;
+  background-color: transparent;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #eeeeee;
+}
+html[data-theme=light] header #searchFilm input[type=text] {
+  background-color: #68beff;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #eeeeee;
+  border: transparent;
+}
+html[data-theme=light] header i {
+  margin-right: 1vw;
+}

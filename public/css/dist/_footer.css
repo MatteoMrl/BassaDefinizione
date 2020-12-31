@@ -1,6 +1,9 @@
 html[data-theme=dark] footer {
   width: 100%;
+  position: absolute;
+  bottom: 0;
   text-transform: uppercase;
+  height: 150px;
   background-color: #ff9900;
 }
 html[data-theme=dark] footer ul {
@@ -22,6 +25,9 @@ html[data-theme=dark] footer ul a:hover {
 
 html[data-theme=light] footer {
   width: 100%;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
   background-color: #68beff;
   text-transform: uppercase;
 }

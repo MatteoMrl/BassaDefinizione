@@ -280,219 +280,328 @@ html[data-theme=light] footer ul a:hover {
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 html[data-theme=dark] body {
   background-color: black;
-  position: relative;
   min-height: 100vh;
+  position: relative;
   padding-bottom: 200px;
 }
-html[data-theme=dark] #filmNotFound {
-  padding: 0;
-  border-right: 5px #ff9900 solid;
+html[data-theme=dark] #noFilm {
+  border-left: 5px #ff9900 solid;
   text-transform: uppercase;
   margin: 10vh 10vw;
 }
-html[data-theme=dark] #filmNotFound h1 {
-  font-size: 8vw;
+html[data-theme=dark] #noFilm h1 {
+  font-size: 10vw;
   color: orange;
-  text-align: right;
 }
-html[data-theme=dark] #filmNotFound h1 span {
+html[data-theme=dark] #noFilm h1 span {
   background-color: #ff9900;
   color: black;
 }
-html[data-theme=dark] #specificFilm {
-  display: flex;
-  flex-direction: row;
-  background-color: #121212;
-  width: 90%;
-  margin: 50px auto 0;
-  padding: 20px;
+html[data-theme=dark] main {
+  display: grid;
+  grid-template-columns: [sidebar] 20% [article] 80%;
+  margin: 30px 10px;
 }
-html[data-theme=dark] #specificFilm img {
-  border: 1px solid #ff9900;
-  margin-right: 20px;
-  width: 300px;
-  height: 450px;
+html[data-theme=dark] aside {
+  grid-area: sidebar;
+  margin: 10px 0;
 }
-html[data-theme=dark] #specificFilm #filmInformation {
-  height: 100%;
+html[data-theme=dark] aside ::-webkit-scrollbar {
+  width: 4px;
 }
-html[data-theme=dark] #specificFilm #filmInformation #title {
-  line-height: 60px;
-  color: black;
-  font-size: 40px;
-  background-color: #ff9900;
-  display: inline;
-  text-transform: uppercase;
-  letter-spacing: 0.5vw;
-  padding: 0 1vw;
+html[data-theme=dark] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
-html[data-theme=dark] #specificFilm #filmInformation #plot {
-  font-size: 20px;
-  margin: 20px 0;
-  padding: 0 10px;
-  color: white;
-  border-left: 1px solid #ff9900;
+html[data-theme=dark] aside ::-webkit-scrollbar-track {
+  border: none;
 }
-html[data-theme=dark] #specificFilm #filmInformation h5 {
-  font-size: 15px;
-  padding: 0 10px;
-  color: white;
-  border-left: 1px solid #ff9900;
+html[data-theme=dark] aside #genresLegend {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff9900;
 }
-html[data-theme=dark] #specificFilm #filmInformation #vote {
-  margin-top: 20px;
+html[data-theme=dark] aside #genresLegend h1 {
+  color: #ff9900;
+  font-size: 2.5vw;
 }
-html[data-theme=dark] #specificFilm #filmInformation #vote #textRating {
-  display: inline;
-  background-color: #ff9900;
-  color: black;
-  padding: 5px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-right: 5px;
-  font-size: 20px;
+html[data-theme=dark] aside ul {
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  overflow: scroll;
+  padding: 0;
 }
-html[data-theme=dark] #specificFilm #filmInformation #vote .fas {
-  color: black;
-  font-size: 20px;
+html[data-theme=dark] aside ul li {
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: linear-gradient(to top, #ff9900 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  transition: 0.5s;
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.5s;
   cursor: pointer;
 }
-html[data-theme=dark] #specificFilm #filmInformation #vote .fa-thumbs-up,
-html[data-theme=dark] #specificFilm #filmInformation #vote .fa-thumbs-down {
-  transition: color 0.5s;
-}
-html[data-theme=dark] #specificFilm #filmInformation #vote .fa-thumbs-up:hover {
-  color: green;
-}
-html[data-theme=dark] #specificFilm #filmInformation #vote .fa-thumbs-down:hover {
-  color: red;
-}
-html[data-theme=dark] #specificFilm #filmInformation #serverResponse {
-  display: inline;
+html[data-theme=dark] aside ul li:hover {
+  border-color: #ff9900;
   color: black;
-  border-radius: 5px;
-  margin-left: 10px;
-  padding: 5px;
+  background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=dark] article {
+  grid-area: article;
+  margin: 10px 0;
+}
+html[data-theme=dark] article #title {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff9900;
+}
+html[data-theme=dark] article #title h1 {
+  color: #ff9900;
+  font-size: 2.5vw;
+}
+html[data-theme=dark] article #title h1 i {
+  color: #ff9900;
+  font-size: 2.5vw;
+}
+html[data-theme=dark] #favouriteFilms {
+  border-left: 1px solid #ff9900;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-items: center;
+  padding: 1vw 0;
+  row-gap: 30px;
+}
+html[data-theme=dark] #favouriteFilms .far,
+html[data-theme=dark] #favouriteFilms .fas {
+  color: #ff9900;
+}
+html[data-theme=dark] #favouriteFilms .card {
+  width: 200px;
+  border-radius: 4px;
+  display: inline-block;
+  border: transparent;
+  background-color: #121212;
+}
+html[data-theme=dark] #favouriteFilms .card img {
+  height: 300px;
+  width: 200px;
+  opacity: 80%;
+}
+html[data-theme=dark] #favouriteFilms .card .card-body {
+  margin-bottom: 50px;
+}
+html[data-theme=dark] #favouriteFilms .card .card-body .card-title {
+  color: #ff9900;
+}
+html[data-theme=dark] #favouriteFilms .card .card-body .card-text {
+  color: white;
+}
+html[data-theme=dark] #favouriteFilms .card .btn {
+  background-color: #ff9900;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+}
+html[data-theme=dark] #favouriteFilms .card .btn:hover,
+html[data-theme=dark] #favouriteFilms .card .btn:focus,
+html[data-theme=dark] #favouriteFilms .card .btn:active {
+  box-shadow: none;
+}
+html[data-theme=dark] #favouriteFilms .card:hover {
+  position: relative;
+  bottom: 2vh;
+}
+html[data-theme=dark] #favouriteFilms .card:hover img {
+  opacity: 100%;
 }
 
 html[data-theme=light] body {
   background-color: #eeeeee;
   position: relative;
-  min-height: 100vh;
   padding-bottom: 200px;
 }
-html[data-theme=light] #filmNotFound {
-  padding: 0;
-  border-right: 5px #68beff solid;
+html[data-theme=light] main {
+  display: grid;
+  grid-template-columns: [sidebar] 20% [article] 80%;
+  margin: 30px 10px;
+}
+html[data-theme=light] #noFilm {
+  border-left: 5px #68beff solid;
   text-transform: uppercase;
   margin: 10vh 10vw;
+  height: 100vh;
 }
-html[data-theme=light] #filmNotFound h1 {
-  font-size: 8vw;
+html[data-theme=light] #noFilm h1 {
+  font-size: 10vw;
   color: #68beff;
-  text-align: right;
 }
-html[data-theme=light] #filmNotFound h1 span {
+html[data-theme=light] #noFilm h1 span {
   background-color: #68beff;
-  color: white;
+  color: #eeeeee;
 }
-html[data-theme=light] #specificFilm {
-  display: flex;
-  flex-direction: row;
+html[data-theme=light] aside {
+  grid-area: sidebar;
+  margin: 10px 0;
+}
+html[data-theme=light] aside ::-webkit-scrollbar {
+  width: 4px;
+}
+html[data-theme=light] aside ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+html[data-theme=light] aside ::-webkit-scrollbar-track {
+  border: none;
+}
+html[data-theme=light] aside #genresLegend {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #68beff;
+}
+html[data-theme=light] aside #genresLegend h1 {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+html[data-theme=light] aside ul {
+  list-style-type: none;
+  direction: rtl;
+  height: 100vh;
+  padding: 0;
+  margin: 0 10px;
+  overflow: scroll;
+  border: 1px solid white;
+  border-radius: 5px;
   background-color: white;
-  width: 90%;
-  margin: 50px auto 0;
-  padding: 20px;
 }
-html[data-theme=light] #specificFilm img {
+html[data-theme=light] aside ul li {
+  background-size: 200% 200%;
+  text-align: center;
+  border-radius: 10px;
+  background-image: linear-gradient(to top, #68beff 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  padding: 10px;
+  margin: 5%;
+  transition: 0.5s;
+  text-decoration: none;
   border: 1px solid #68beff;
-  margin-right: 20px;
-  width: 300px;
-  height: 450px;
-}
-html[data-theme=light] #specificFilm #filmInformation #title {
-  line-height: 60px;
-  color: black;
-  font-size: 40px;
-  background-color: #68beff;
-  display: inline;
-  text-transform: uppercase;
-  letter-spacing: 0.5vw;
-  padding: 0 10px;
-}
-html[data-theme=light] #specificFilm #filmInformation #plot {
-  font-size: 20px;
-  margin: 2vh 0;
-  padding: 0 10px;
-  color: #121212;
-  border-left: 1px solid #68beff;
-}
-html[data-theme=light] #specificFilm #filmInformation h5 {
-  font-size: 15px;
-  padding: 0 10px;
-  color: #121212;
-  border-left: 1px solid #68beff;
-}
-html[data-theme=light] #specificFilm #filmInformation #vote #textRating {
-  display: inline;
-  background-color: #68beff;
-  color: black;
-  padding: 5px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-right: 5px;
-  font-size: 20px;
-}
-html[data-theme=light] #specificFilm #filmInformation #vote .fas {
-  color: black;
-  font-size: 20px;
+  transition: 0.5s;
   cursor: pointer;
 }
-html[data-theme=light] #specificFilm #filmInformation #vote .fa-thumbs-up,
-html[data-theme=light] #specificFilm #filmInformation #vote .fa-thumbs-down {
-  transition: color 0.5s;
-}
-html[data-theme=light] #specificFilm #filmInformation #vote .fa-thumbs-up:hover {
-  color: green;
-}
-html[data-theme=light] #specificFilm #filmInformation #vote .fa-thumbs-down:hover {
-  color: red;
-}
-html[data-theme=light] #specificFilm #filmInformation #serverResponse {
-  display: inline;
+html[data-theme=light] aside ul li:hover {
+  border-color: #68beff;
   color: black;
-  border-radius: 5px;
-  margin-left: 10px;
-  padding: 5px;
+  background-image: linear-gradient(to top, #68beff 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=light] article {
+  grid-area: article;
+  margin-top: 10px;
+}
+html[data-theme=light] article #title {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #68beff;
+}
+html[data-theme=light] article #title h1 {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+html[data-theme=light] article #title h1 i {
+  color: #68beff;
+  font-size: 2.5vw;
+}
+html[data-theme=light] #favouriteFilms {
+  border-left: 1px solid #68beff;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-items: center;
+  padding: 1vw 0;
+  row-gap: 30px;
+}
+html[data-theme=light] #favouriteFilms .far,
+html[data-theme=light] #favouriteFilms .fas {
+  color: #68beff;
+}
+html[data-theme=light] #favouriteFilms .card {
+  width: 200px;
+  border-radius: 4px;
+  display: inline-block;
+  border: transparent;
+  background-color: white;
+}
+html[data-theme=light] #favouriteFilms .card img {
+  height: 300px;
+  width: 200px;
+  opacity: 80%;
+}
+html[data-theme=light] #favouriteFilms .card .card-body {
+  margin-bottom: 50px;
+}
+html[data-theme=light] #favouriteFilms .card .card-body .card-title {
+  color: #68beff;
+}
+html[data-theme=light] #favouriteFilms .card .card-body .card-text {
+  color: #121212;
+}
+html[data-theme=light] #favouriteFilms .card .btn {
+  background-color: #68beff;
+  color: #121212;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+}
+html[data-theme=light] #favouriteFilms .card .btn:hover,
+html[data-theme=light] #favouriteFilms .card .btn:focus,
+html[data-theme=light] #favouriteFilms .card .btn:active {
+  box-shadow: none;
+}
+html[data-theme=light] #favouriteFilms .card:hover {
+  position: relative;
+  bottom: 2vh;
+}
+html[data-theme=light] #favouriteFilms .card:hover img {
+  opacity: 100%;
 }
 
 @media only screen and (max-width: 1200px) {
-  html[data-theme=light] header #searchFilm {
-    width: 300px;
-  }
-  html[data-theme=light] #specificFilm #filmInformation #serverResponse {
-    display: inline-block;
-  }
-
   html[data-theme=dark] header #searchFilm {
     width: 300px;
   }
-  html[data-theme=dark] #specificFilm #filmInformation #serverResponse {
-    display: inline-block;
+  html[data-theme=dark] #favouriteFilms {
+    grid-template-columns: auto auto auto auto;
+  }
+
+  html[data-theme=light] header #searchFilm {
+    width: 300px;
+  }
+  html[data-theme=light] #favouriteFilms {
+    grid-template-columns: auto auto auto auto;
   }
 }
 @media only screen and (max-width: 992px) {
   html[data-theme=dark] header {
+    padding: 30px 0px;
     flex-direction: column;
     row-gap: 20px;
-    padding: 30px 0px;
   }
   html[data-theme=dark] header #searchFilm {
     width: 60%;
@@ -500,19 +609,14 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=dark] header img {
     width: 400px;
   }
-  html[data-theme=dark] #specificFilm #filmInformation #title {
-    font-size: 30px;
-    line-height: 50px;
-  }
-  html[data-theme=dark] #specificFilm #filmInformation #textRating {
-    display: inline-block;
-    border: none;
+  html[data-theme=dark] #favouriteFilms {
+    grid-template-columns: auto auto auto;
   }
 
   html[data-theme=light] header {
+    padding: 30px 0px;
     flex-direction: column;
     row-gap: 20px;
-    padding: 30px 0px;
   }
   html[data-theme=light] header #searchFilm {
     width: 60%;
@@ -520,13 +624,8 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=light] header img {
     width: 400px;
   }
-  html[data-theme=light] #specificFilm #filmInformation #title {
-    font-size: 30px;
-    line-height: 50px;
-  }
-  html[data-theme=light] #specificFilm #filmInformation #textRating {
-    display: inline-block;
-    border: none;
+  html[data-theme=light] #favouriteFilms {
+    grid-template-columns: auto auto auto;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -539,13 +638,8 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=dark] header img {
     width: 300px;
   }
-  html[data-theme=dark] #specificFilm {
-    flex-direction: column;
-  }
-  html[data-theme=dark] #specificFilm img {
-    margin: 0 auto 20px auto;
-    width: 50%;
-    height: 50%;
+  html[data-theme=dark] #favouriteFilms {
+    grid-template-columns: auto auto;
   }
 
   html[data-theme=light] header {
@@ -557,13 +651,8 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=light] header img {
     width: 300px;
   }
-  html[data-theme=light] #specificFilm {
-    flex-direction: column;
-  }
-  html[data-theme=light] #specificFilm img {
-    margin: 0 auto 20px auto;
-    width: 50%;
-    height: 50%;
+  html[data-theme=light] #favouriteFilms {
+    grid-template-columns: auto auto;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -576,9 +665,8 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=dark] header img {
     width: 200px;
   }
-  html[data-theme=dark] #specificFilm img {
-    width: 70%;
-    height: 70%;
+  html[data-theme=dark] #favouriteFilms {
+    grid-template-columns: auto;
   }
 
   html[data-theme=light] header {
@@ -590,8 +678,7 @@ html[data-theme=light] #specificFilm #filmInformation #serverResponse {
   html[data-theme=light] header img {
     width: 200px;
   }
-  html[data-theme=light] #specificFilm img {
-    width: 70%;
-    height: 70%;
+  html[data-theme=light] #favouriteFilms {
+    grid-template-columns: auto;
   }
 }

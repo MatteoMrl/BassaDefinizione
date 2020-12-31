@@ -331,96 +331,83 @@ var voteFilm = function voteFilm(title, vote, userID, res) {
 };
 
 function favoriteFilms(userID, res) {
+  //questa funzione e render films potrebbero diventare una singola
+  //prende tutti i film votati piaciuti all'utente e li renderizza --> pesante ma evito altre chiamate
   var userFilms = [];
-  listOfGenres.forEach(function (genre) {
-    db.query("SELECT title FROM ".concat(genre, " WHERE userID = ").concat(userID, " AND liked = 1;"), function _callee5(error, result) {
-      return regeneratorRuntime.async(function _callee5$(_context7) {
+  var userGenres = listOfGenres;
+  userGenres.forEach(function (genre) {
+    db.query("SELECT title FROM ".concat(genre, " WHERE userID = ").concat(userID, " AND liked = 1;"), function _callee6(error, result) {
+      return regeneratorRuntime.async(function _callee6$(_context8) {
         while (1) {
-          switch (_context7.prev = _context7.next) {
+          switch (_context8.prev = _context8.next) {
             case 0:
-              result.forEach(function (film) {
-                return userFilms.push(film);
-              });
+              if (result.length !== 0) {
+                result.forEach(function _callee5(_ref3) {
+                  var title, data, Title, imdbRating, Poster, Genre;
+                  return regeneratorRuntime.async(function _callee5$(_context7) {
+                    while (1) {
+                      switch (_context7.prev = _context7.next) {
+                        case 0:
+                          title = _ref3.title;
+                          _context7.next = 3;
+                          return regeneratorRuntime.awrap(searchFilm(title));
+
+                        case 3:
+                          data = _context7.sent;
+
+                          if (!userFilms.some(function (e) {
+                            return e.Title === data.Title;
+                          })) {
+                            Title = data.Title, imdbRating = data.imdbRating, Poster = data.Poster, Genre = data.Genre;
+                            userFilms.push({
+                              Title: Title,
+                              imdbRating: imdbRating,
+                              Poster: Poster,
+                              Genre: Genre
+                            });
+                          }
+
+                          if (genre == userGenres[userGenres.length - 1] && title == result[result.length - 1].title) {
+                            res.render("user", {
+                              userFilms: userFilms,
+                              userGenres: userGenres
+                            });
+                          }
+
+                        case 6:
+                        case "end":
+                          return _context7.stop();
+                      }
+                    }
+                  });
+                });
+              } else {
+                userGenres = userGenres.filter(function (userGenre) {
+                  return userGenre !== genre;
+                });
+
+                if (genre === listOfGenres[listOfGenres.length - 1]) {
+                  res.render("user", {
+                    userFilms: userFilms,
+                    userGenres: userGenres
+                  });
+                }
+              }
 
             case 1:
             case "end":
-              return _context7.stop();
+              return _context8.stop();
           }
         }
       });
     });
   });
-  /*let listOfFilms = [];
-      let count = 0;
-      result.forEach(async (film) => {
-        const data = await searchFilm(film.title);
-        const { Title, Plot, imdbRating, imdbVotes, Genre, Poster } = data;
-        db.query(
-          `SELECT * FROM ${genre} WHERE title = '${Title}'`,
-          (error, usersVotes) => {
-            const Appreciation = Math.floor(
-              (usersVotes.reduce((sum, current) => sum + current.liked, 0) *
-                100) /
-                usersVotes.length
-            );
-            listOfFilms.push({
-              Title,
-              Plot,
-              Rating: imdbRating,
-              Votes: imdbVotes,
-              Appreciation,
-              Genre,
-              Poster,
-            });
-            count++;
-            if (count === result.length) {
-              //utlizzo count poichè il foreach non so come metterlo asincrono e perciò se avessi
-              listOfFilms.sort((a, b) => b.Rating - a.Rating); //film ordinati per voto decrescente
-              res.render("index", {
-                genre,
-                listOfFilms,
-                listOfGenres,
-              });
-            }
-          }
-        );
-      });*/
-
-  /*
-  db.query(
-    `SELECT * FROM films WHERE userID = '${userID}' ORDER BY rating DESC`,
-    (error, result) => {
-      let userFilms = [];
-      if (result.length === 0) {
-        res.render("user");
-      } else {
-        result.forEach((value) => {
-          searchFilm(value.title, (data) => {
-            fvCount++;
-            userFilms.push({
-              title: data.Title,
-              rating: value.rating,
-              poster: data.Poster,
-            });
-            if (fvCount == result.length) {
-              res.render("user", { userFilms });
-              fvCount = 0;
-              userFilms = [];
-            }
-          });
-        });
-      }
-    }
-  );
-  */
 } //----------------------------------------------------------------------------------------------------
 
 
 db.query("SHOW TABLES", function (error, result) {
   result.forEach(function (genre) {
-    return listOfGenres.push({
-      genre: genre.Tables_in_bassadefinizione
-    });
+    return listOfGenres.push(genre.Tables_in_bassadefinizione);
   });
   listOfGenres.pop();
   console.log("CREATA LA LISTA DEI GENERI");
@@ -444,24 +431,24 @@ app.post("/user/:username", function (req, res) {
     }
   });
 });
-app.get("/search", function _callee6(req, res) {
+app.get("/search", function _callee7(req, res) {
   var title, data;
-  return regeneratorRuntime.async(function _callee6$(_context8) {
+  return regeneratorRuntime.async(function _callee7$(_context9) {
     while (1) {
-      switch (_context8.prev = _context8.next) {
+      switch (_context9.prev = _context9.next) {
         case 0:
           title = req.query.title;
 
           if (!title) {
-            _context8.next = 9;
+            _context9.next = 9;
             break;
           }
 
-          _context8.next = 4;
+          _context9.next = 4;
           return regeneratorRuntime.awrap(searchFilm(title));
 
         case 4:
-          data = _context8.sent;
+          data = _context9.sent;
 
           if (data.Director === "N/A") {
             data.Director = undefined;
@@ -470,7 +457,7 @@ app.get("/search", function _callee6(req, res) {
           res.render("searchFilms", {
             data: data
           });
-          _context8.next = 10;
+          _context9.next = 10;
           break;
 
         case 9:
@@ -478,7 +465,7 @@ app.get("/search", function _callee6(req, res) {
 
         case 10:
         case "end":
-          return _context8.stop();
+          return _context9.stop();
       }
     }
   });

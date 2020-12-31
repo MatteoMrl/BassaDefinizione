@@ -2,7 +2,6 @@
 @import "scrollbar";
 @import "footer";
 @import "colors";
-@import "sidebar";
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -12,6 +11,8 @@ html[data-theme="dark"] {
   }
   body {
     background-color: black;
+    position: relative;
+    padding-bottom: 200px;
   }
 
   main {
@@ -226,7 +227,7 @@ html[data-theme="dark"] {
       }
       position: relative;
       bottom: 15px;
-      //box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
     }
   }
 }
@@ -239,6 +240,8 @@ html[data-theme="light"] {
   }
   body {
     background-color: $primary;
+    position: relative;
+    padding-bottom: 200px;
   }
   main {
     display: grid;
@@ -450,6 +453,7 @@ html[data-theme="light"] {
       }
       position: relative;
       bottom: 15px;
+      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
     }
   }
 }
