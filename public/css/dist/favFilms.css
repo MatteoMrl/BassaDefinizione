@@ -400,9 +400,6 @@ html[data-theme=dark] #favouriteFilms .card img {
   width: 200px;
   opacity: 80%;
 }
-html[data-theme=dark] #favouriteFilms .card .card-body {
-  margin-bottom: 50px;
-}
 html[data-theme=dark] #favouriteFilms .card .card-body .card-title {
   color: #ff9900;
 }
@@ -424,7 +421,7 @@ html[data-theme=dark] #favouriteFilms .card .btn:active {
 }
 html[data-theme=dark] #favouriteFilms .card:hover {
   position: relative;
-  bottom: 2vh;
+  bottom: 20px;
 }
 html[data-theme=dark] #favouriteFilms .card:hover img {
   opacity: 100%;
@@ -552,9 +549,6 @@ html[data-theme=light] #favouriteFilms .card img {
   width: 200px;
   opacity: 80%;
 }
-html[data-theme=light] #favouriteFilms .card .card-body {
-  margin-bottom: 50px;
-}
 html[data-theme=light] #favouriteFilms .card .card-body .card-title {
   color: #68beff;
 }
@@ -576,7 +570,7 @@ html[data-theme=light] #favouriteFilms .card .btn:active {
 }
 html[data-theme=light] #favouriteFilms .card:hover {
   position: relative;
-  bottom: 2vh;
+  bottom: 20px;
 }
 html[data-theme=light] #favouriteFilms .card:hover img {
   opacity: 100%;

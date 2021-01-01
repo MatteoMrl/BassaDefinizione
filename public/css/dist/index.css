@@ -235,6 +235,7 @@ html[data-theme=dark] footer {
   position: absolute;
   bottom: 0;
   text-transform: uppercase;
+  height: 150px;
   background-color: #ff9900;
 }
 html[data-theme=dark] footer ul {
@@ -256,6 +257,7 @@ html[data-theme=dark] footer ul a:hover {
 
 html[data-theme=light] footer {
   width: 100%;
+  height: 150px;
   position: absolute;
   bottom: 0;
   background-color: #68beff;
@@ -331,7 +333,81 @@ html[data-theme=dark] aside ul li {
   direction: ltr;
   padding: 10px;
   margin: 5%;
-  transition: 0.5s;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+html[data-theme=dark] aside ul li:before, html[data-theme=dark] aside ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #121212;
+}
+html[data-theme=dark] aside ul li:before {
+  top: 0;
+}
+html[data-theme=dark] aside ul li:after {
+  bottom: 0;
+}
+html[data-theme=dark] aside ul li:hover > * > *:before, html[data-theme=dark] aside ul li:hover > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=dark] aside ul li:hover > * > * > *:before, html[data-theme=dark] aside ul li:hover > * > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=dark] aside ul li > *:before, html[data-theme=dark] aside ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #121212;
+}
+html[data-theme=dark] aside ul li > *:before {
+  left: 0;
+}
+html[data-theme=dark] aside ul li > *:after {
+  right: 0;
+}
+html[data-theme=dark] aside ul li > * > *:before, html[data-theme=dark] aside ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #ff9900;
+}
+html[data-theme=dark] aside ul li > * > *:before {
+  top: 0;
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] aside ul li > * > *:after {
+  bottom: 0;
+  transform: translate3d(105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] aside ul li > * > * > *:before, html[data-theme=dark] aside ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #ff9900;
+}
+html[data-theme=dark] aside ul li > * > * > *:before {
+  left: 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] aside ul li > * > * > *:after {
+  right: 0;
+  transform: translate3d(0, -105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 html[data-theme=dark] aside ul li a {
   text-decoration: none;
@@ -387,10 +463,11 @@ html[data-theme=dark] section #slogan img {
 html[data-theme=dark] section .module-border-wrap {
   width: 75%;
   margin: 50px auto;
-  padding: 1rem;
+  padding: 1vw;
   position: relative;
   border-radius: 10px;
   background: linear-gradient(to right, #ff9900, #68beff);
+  box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 html[data-theme=dark] article {
   border-left: 1px solid #ff9900;
@@ -431,9 +508,6 @@ html[data-theme=dark] article .card img {
   width: 200px;
   opacity: 40%;
   transition: 0.5s;
-}
-html[data-theme=dark] article .card .card-body {
-  margin-bottom: 50px;
 }
 html[data-theme=dark] article .card .card-body .card-title {
   background-color: #ff9900;
@@ -536,7 +610,81 @@ html[data-theme=light] aside ul li {
   direction: ltr;
   padding: 10px;
   margin: 5%;
-  transition: 0.5s;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+html[data-theme=light] aside ul li:before, html[data-theme=light] aside ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+html[data-theme=light] aside ul li:before {
+  top: 0;
+}
+html[data-theme=light] aside ul li:after {
+  bottom: 0;
+}
+html[data-theme=light] aside ul li:hover > * > *:before, html[data-theme=light] aside ul li:hover > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=light] aside ul li:hover > * > * > *:before, html[data-theme=light] aside ul li:hover > * > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=light] aside ul li > *:before, html[data-theme=light] aside ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: white;
+}
+html[data-theme=light] aside ul li > *:before {
+  left: 0;
+}
+html[data-theme=light] aside ul li > *:after {
+  right: 0;
+}
+html[data-theme=light] aside ul li > * > *:before, html[data-theme=light] aside ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #68beff;
+}
+html[data-theme=light] aside ul li > * > *:before {
+  top: 0;
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] aside ul li > * > *:after {
+  bottom: 0;
+  transform: translate3d(105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] aside ul li > * > * > *:before, html[data-theme=light] aside ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #68beff;
+}
+html[data-theme=light] aside ul li > * > * > *:before {
+  left: 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] aside ul li > * > * > *:after {
+  right: 0;
+  transform: translate3d(0, -105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 html[data-theme=light] aside ul li a {
   text-decoration: none;
@@ -592,10 +740,11 @@ html[data-theme=light] #slogan img {
 html[data-theme=light] .module-border-wrap {
   width: 75%;
   margin: 50px auto;
-  padding: 1rem;
+  padding: 1vw;
   position: relative;
   border-radius: 10px;
   background: linear-gradient(to right, #ff9900, #68beff);
+  box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 html[data-theme=light] article {
   border-left: 1px solid #68beff;
@@ -634,9 +783,6 @@ html[data-theme=light] article .card img {
   width: 200px;
   opacity: 80%;
   transition: 0.5s;
-}
-html[data-theme=light] article .card .card-body {
-  margin-bottom: 50px;
 }
 html[data-theme=light] article .card .card-body .card-title {
   background-color: #68beff;
@@ -698,19 +844,29 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=light] header #searchFilm {
     width: 300px;
   }
-  html[data-theme=light] article {
-    grid-template-columns: auto auto auto;
+  html[data-theme=light] aside {
+    display: none;
+  }
+  html[data-theme=light] main {
+    grid-template-columns: [main] 100%;
+    margin: 0 10px;
   }
 
   html[data-theme=dark] header #searchFilm {
     width: 300px;
   }
-  html[data-theme=dark] article {
-    grid-template-columns: auto auto auto;
+  html[data-theme=dark] main {
+    grid-template-columns: [main] 100%;
+    margin: 0 10px;
+  }
+  html[data-theme=dark] aside {
+    display: none;
   }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   html[data-theme=dark] header {
+    flex-direction: column;
+    padding: 30px;
     row-gap: 15px;
   }
   html[data-theme=dark] header #searchFilm {
@@ -719,8 +875,14 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=dark] header img {
     width: 300px;
   }
+  html[data-theme=dark] #slogan h2 {
+    font-size: 26px;
+  }
+  html[data-theme=dark] #slogan h1 {
+    font-size: 32px;
+  }
   html[data-theme=dark] article {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     border-left: 1px solid #ff9900;
   }
   html[data-theme=dark] article .card img {
@@ -732,6 +894,7 @@ html[data-theme=light] article .card:hover img {
 
   html[data-theme=light] header {
     row-gap: 15px;
+    flex-direction: column;
   }
   html[data-theme=light] header #searchFilm {
     width: 65%;
@@ -740,7 +903,7 @@ html[data-theme=light] article .card:hover img {
     width: 300px;
   }
   html[data-theme=light] article {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
   }
   html[data-theme=light] article .card img {
     opacity: 100%;
@@ -749,7 +912,7 @@ html[data-theme=light] article .card:hover img {
     font-size: 20px;
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   html[data-theme=dark] header {
     row-gap: 10px;
   }
@@ -759,8 +922,23 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=dark] header img {
     width: 200px;
   }
+  html[data-theme=dark] #slogan {
+    padding: 15px;
+  }
+  html[data-theme=dark] #slogan img {
+    width: 75px;
+  }
+  html[data-theme=dark] #slogan h2 {
+    font-size: 4.5vw;
+  }
+  html[data-theme=dark] #slogan h1 {
+    font-size: 5vw;
+  }
+  html[data-theme=dark] .module-border-wrap {
+    width: 90% !important;
+  }
   html[data-theme=dark] article {
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
   }
 
   html[data-theme=light] header {
@@ -772,7 +950,22 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=light] header img {
     width: 200px;
   }
+  html[data-theme=light] #slogan {
+    padding: 15px;
+  }
+  html[data-theme=light] #slogan img {
+    width: 75px;
+  }
+  html[data-theme=light] #slogan h2 {
+    font-size: 4.5vw;
+  }
+  html[data-theme=light] #slogan h1 {
+    font-size: 5vw;
+  }
+  html[data-theme=light] .module-border-wrap {
+    width: 90% !important;
+  }
   html[data-theme=light] article {
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
   }
 }

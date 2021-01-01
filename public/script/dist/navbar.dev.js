@@ -83,7 +83,7 @@ if (token !== "") {
 }
 
 logoutButton.addEventListener("click", function () {
-  document.cookie = "jwt=;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  document.cookie = "jwt=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 });
 modeButton.addEventListener("mouseover", function () {
   modeButton.innerHTML = "<i class='fas fa-exchange-alt'></i> CHANGE";

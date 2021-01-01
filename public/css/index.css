@@ -432,8 +432,114 @@ html[data-theme="dark"] aside ul li {
   direction: ltr;
   padding: 10px;
   margin: 5%;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] aside ul li:before, html[data-theme="dark"] aside ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #121212;
+}
+
+html[data-theme="dark"] aside ul li:before {
+  top: 0;
+}
+
+html[data-theme="dark"] aside ul li:after {
+  bottom: 0;
+}
+
+html[data-theme="dark"] aside ul li:hover > * > *:before, html[data-theme="dark"] aside ul li:hover > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+html[data-theme="dark"] aside ul li:hover > * > * > *:before, html[data-theme="dark"] aside ul li:hover > * > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+html[data-theme="dark"] aside ul li > *:before, html[data-theme="dark"] aside ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #121212;
+}
+
+html[data-theme="dark"] aside ul li > *:before {
+  left: 0;
+}
+
+html[data-theme="dark"] aside ul li > *:after {
+  right: 0;
+}
+
+html[data-theme="dark"] aside ul li > * > *:before, html[data-theme="dark"] aside ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #ff9900;
+}
+
+html[data-theme="dark"] aside ul li > * > *:before {
+  top: 0;
+  -webkit-transform: translate3d(-105%, 0, 0);
+          transform: translate3d(-105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="dark"] aside ul li > * > *:after {
+  bottom: 0;
+  -webkit-transform: translate3d(105%, 0, 0);
+          transform: translate3d(105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="dark"] aside ul li > * > * > *:before, html[data-theme="dark"] aside ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #ff9900;
+}
+
+html[data-theme="dark"] aside ul li > * > * > *:before {
+  left: 0;
+  -webkit-transform: translate3d(0, 105%, 0);
+          transform: translate3d(0, 105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="dark"] aside ul li > * > * > *:after {
+  right: 0;
+  -webkit-transform: translate3d(0, -105%, 0);
+          transform: translate3d(0, -105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html[data-theme="dark"] aside ul li a {
@@ -503,11 +609,13 @@ html[data-theme="dark"] section #slogan img {
 html[data-theme="dark"] section .module-border-wrap {
   width: 75%;
   margin: 50px auto;
-  padding: 1rem;
+  padding: 1vw;
   position: relative;
   border-radius: 10px;
   background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#68beff));
   background: linear-gradient(to right, #ff9900, #68beff);
+  -webkit-box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
+          box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 
 html[data-theme="dark"] article {
@@ -561,10 +669,6 @@ html[data-theme="dark"] article .card img {
   opacity: 40%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-
-html[data-theme="dark"] article .card .card-body {
-  margin-bottom: 50px;
 }
 
 html[data-theme="dark"] article .card .card-body .card-title {
@@ -692,8 +796,114 @@ html[data-theme="light"] aside ul li {
   direction: ltr;
   padding: 10px;
   margin: 5%;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-theme="light"] aside ul li:before, html[data-theme="light"] aside ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+
+html[data-theme="light"] aside ul li:before {
+  top: 0;
+}
+
+html[data-theme="light"] aside ul li:after {
+  bottom: 0;
+}
+
+html[data-theme="light"] aside ul li:hover > * > *:before, html[data-theme="light"] aside ul li:hover > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+html[data-theme="light"] aside ul li:hover > * > * > *:before, html[data-theme="light"] aside ul li:hover > * > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+html[data-theme="light"] aside ul li > *:before, html[data-theme="light"] aside ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: white;
+}
+
+html[data-theme="light"] aside ul li > *:before {
+  left: 0;
+}
+
+html[data-theme="light"] aside ul li > *:after {
+  right: 0;
+}
+
+html[data-theme="light"] aside ul li > * > *:before, html[data-theme="light"] aside ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #68beff;
+}
+
+html[data-theme="light"] aside ul li > * > *:before {
+  top: 0;
+  -webkit-transform: translate3d(-105%, 0, 0);
+          transform: translate3d(-105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="light"] aside ul li > * > *:after {
+  bottom: 0;
+  -webkit-transform: translate3d(105%, 0, 0);
+          transform: translate3d(105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="light"] aside ul li > * > * > *:before, html[data-theme="light"] aside ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #68beff;
+}
+
+html[data-theme="light"] aside ul li > * > * > *:before {
+  left: 0;
+  -webkit-transform: translate3d(0, 105%, 0);
+          transform: translate3d(0, 105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="light"] aside ul li > * > * > *:after {
+  right: 0;
+  -webkit-transform: translate3d(0, -105%, 0);
+          transform: translate3d(0, -105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html[data-theme="light"] aside ul li a {
@@ -763,11 +973,13 @@ html[data-theme="light"] #slogan img {
 html[data-theme="light"] .module-border-wrap {
   width: 75%;
   margin: 50px auto;
-  padding: 1rem;
+  padding: 1vw;
   position: relative;
   border-radius: 10px;
   background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#68beff));
   background: linear-gradient(to right, #ff9900, #68beff);
+  -webkit-box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
+          box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 
 html[data-theme="light"] article {
@@ -817,10 +1029,6 @@ html[data-theme="light"] article .card img {
   opacity: 80%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-
-html[data-theme="light"] article .card .card-body {
-  margin-bottom: 50px;
 }
 
 html[data-theme="light"] article .card .card-body .card-title {
@@ -895,21 +1103,34 @@ html[data-theme="light"] article .card:hover img {
   html[data-theme="light"] header #searchFilm {
     width: 300px;
   }
-  html[data-theme="light"] article {
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
+  html[data-theme="light"] aside {
+    display: none;
+  }
+  html[data-theme="light"] main {
+    -ms-grid-columns: [main] 100%;
+        grid-template-columns: [main] 100%;
+    margin: 0 10px;
   }
   html[data-theme="dark"] header #searchFilm {
     width: 300px;
   }
-  html[data-theme="dark"] article {
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
+  html[data-theme="dark"] main {
+    -ms-grid-columns: [main] 100%;
+        grid-template-columns: [main] 100%;
+    margin: 0 10px;
+  }
+  html[data-theme="dark"] aside {
+    display: none;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   html[data-theme="dark"] header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 30px;
     row-gap: 15px;
   }
   html[data-theme="dark"] header #searchFilm {
@@ -918,9 +1139,15 @@ html[data-theme="light"] article .card:hover img {
   html[data-theme="dark"] header img {
     width: 300px;
   }
+  html[data-theme="dark"] #slogan h2 {
+    font-size: 26px;
+  }
+  html[data-theme="dark"] #slogan h1 {
+    font-size: 32px;
+  }
   html[data-theme="dark"] article {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
     border-left: 1px solid #ff9900;
   }
   html[data-theme="dark"] article .card img {
@@ -931,6 +1158,10 @@ html[data-theme="light"] article .card:hover img {
   }
   html[data-theme="light"] header {
     row-gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   html[data-theme="light"] header #searchFilm {
     width: 65%;
@@ -939,8 +1170,8 @@ html[data-theme="light"] article .card:hover img {
     width: 300px;
   }
   html[data-theme="light"] article {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
   }
   html[data-theme="light"] article .card img {
     opacity: 100%;
@@ -950,7 +1181,7 @@ html[data-theme="light"] article .card:hover img {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   html[data-theme="dark"] header {
     row-gap: 10px;
   }
@@ -960,9 +1191,24 @@ html[data-theme="light"] article .card:hover img {
   html[data-theme="dark"] header img {
     width: 200px;
   }
+  html[data-theme="dark"] #slogan {
+    padding: 15px;
+  }
+  html[data-theme="dark"] #slogan img {
+    width: 75px;
+  }
+  html[data-theme="dark"] #slogan h2 {
+    font-size: 4.5vw;
+  }
+  html[data-theme="dark"] #slogan h1 {
+    font-size: 5vw;
+  }
+  html[data-theme="dark"] .module-border-wrap {
+    width: 90% !important;
+  }
   html[data-theme="dark"] article {
-    -ms-grid-columns: auto;
-        grid-template-columns: auto;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
   }
   html[data-theme="light"] header {
     row-gap: 10px;
@@ -973,9 +1219,24 @@ html[data-theme="light"] article .card:hover img {
   html[data-theme="light"] header img {
     width: 200px;
   }
+  html[data-theme="light"] #slogan {
+    padding: 15px;
+  }
+  html[data-theme="light"] #slogan img {
+    width: 75px;
+  }
+  html[data-theme="light"] #slogan h2 {
+    font-size: 4.5vw;
+  }
+  html[data-theme="light"] #slogan h1 {
+    font-size: 5vw;
+  }
+  html[data-theme="light"] .module-border-wrap {
+    width: 90% !important;
+  }
   html[data-theme="light"] article {
-    -ms-grid-columns: auto;
-        grid-template-columns: auto;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
   }
 }
 /*# sourceMappingURL=index.css.map */

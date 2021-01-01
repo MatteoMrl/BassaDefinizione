@@ -107,14 +107,15 @@ function userRegistration(_ref, res) {
         switch (_context.prev = _context.next) {
           case 0:
             if (!(result.length < 1)) {
-              _context.next = 7;
+              _context.next = 13;
               break;
             }
 
-            _context.next = 3;
+            _context.prev = 1;
+            _context.next = 4;
             return regeneratorRuntime.awrap(bcrypt.hash(password, 4));
 
-          case 3:
+          case 4:
             hashedPassword = _context.sent;
             //number of times the password is hashed
             db.query("INSERT INTO users(username, password, mail) VALUES('".concat(username, "', '").concat(hashedPassword, "', '").concat(mail, "')"), function (error, result) {
@@ -123,21 +124,30 @@ function userRegistration(_ref, res) {
                 "class": "alert-success"
               });
             });
-            _context.next = 8;
+            _context.next = 11;
             break;
 
-          case 7:
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0);
+
+          case 11:
+            _context.next = 14;
+            break;
+
+          case 13:
             res.render("registration", {
               message: "This mail is already in use, try another one",
               "class": "alert-danger"
             });
 
-          case 8:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    });
+    }, null, null, [[1, 8]]);
   });
 }
 
@@ -239,10 +249,11 @@ var renderFilms = function renderFilms(genre, res) {
                 while (1) {
                   switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context4.next = 2;
+                      _context4.prev = 0;
+                      _context4.next = 3;
                       return regeneratorRuntime.awrap(searchFilm(film.title));
 
-                    case 2:
+                    case 3:
                       data = _context4.sent;
                       Title = data.Title, Plot = data.Plot, imdbRating = data.imdbRating, imdbVotes = data.imdbVotes, Genre = data.Genre, Poster = data.Poster;
                       db.query("SELECT * FROM ".concat(genre, " WHERE title = '").concat(Title, "'"), function (error, usersVotes) {
@@ -273,13 +284,20 @@ var renderFilms = function renderFilms(genre, res) {
                           });
                         }
                       });
+                      _context4.next = 11;
+                      break;
 
-                    case 5:
+                    case 8:
+                      _context4.prev = 8;
+                      _context4.t0 = _context4["catch"](0);
+                      console.log(_context4.t0);
+
+                    case 11:
                     case "end":
                       return _context4.stop();
                   }
                 }
-              });
+              }, null, null, [[0, 8]]);
             });
 
           case 3:
@@ -297,10 +315,11 @@ var voteFilm = function voteFilm(title, vote, userID, res) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
-          _context6.next = 2;
+          _context6.prev = 0;
+          _context6.next = 3;
           return regeneratorRuntime.awrap(searchFilm(title));
 
-        case 2:
+        case 3:
           data = _context6.sent;
           genres = data.Genre.split(", ").filter(function (genre) {
             return !genre.includes("-");
@@ -321,13 +340,20 @@ var voteFilm = function voteFilm(title, vote, userID, res) {
           res.send({
             vote: true
           });
+          _context6.next = 12;
+          break;
 
-        case 6:
+        case 9:
+          _context6.prev = 9;
+          _context6.t0 = _context6["catch"](0);
+          console.log(_context6.t0);
+
+        case 12:
         case "end":
           return _context6.stop();
       }
     }
-  });
+  }, null, null, [[0, 9]]);
 };
 
 function favoriteFilms(userID, res) {
@@ -349,10 +375,11 @@ function favoriteFilms(userID, res) {
                       switch (_context7.prev = _context7.next) {
                         case 0:
                           title = _ref3.title;
-                          _context7.next = 3;
+                          _context7.prev = 1;
+                          _context7.next = 4;
                           return regeneratorRuntime.awrap(searchFilm(title));
 
-                        case 3:
+                        case 4:
                           data = _context7.sent;
 
                           if (!userFilms.some(function (e) {
@@ -374,12 +401,20 @@ function favoriteFilms(userID, res) {
                             });
                           }
 
-                        case 6:
+                          _context7.next = 12;
+                          break;
+
+                        case 9:
+                          _context7.prev = 9;
+                          _context7.t0 = _context7["catch"](1);
+                          console.log(_context7.t0);
+
+                        case 12:
                         case "end":
                           return _context7.stop();
                       }
                     }
-                  });
+                  }, null, null, [[1, 9]]);
                 });
               } else {
                 userGenres = userGenres.filter(function (userGenre) {
@@ -440,14 +475,15 @@ app.get("/search", function _callee7(req, res) {
           title = req.query.title;
 
           if (!title) {
-            _context9.next = 9;
+            _context9.next = 15;
             break;
           }
 
-          _context9.next = 4;
+          _context9.prev = 2;
+          _context9.next = 5;
           return regeneratorRuntime.awrap(searchFilm(title));
 
-        case 4:
+        case 5:
           data = _context9.sent;
 
           if (data.Director === "N/A") {
@@ -457,18 +493,27 @@ app.get("/search", function _callee7(req, res) {
           res.render("searchFilms", {
             data: data
           });
-          _context9.next = 10;
+          _context9.next = 13;
           break;
 
-        case 9:
+        case 10:
+          _context9.prev = 10;
+          _context9.t0 = _context9["catch"](2);
+          console.log(_context9.t0);
+
+        case 13:
+          _context9.next = 16;
+          break;
+
+        case 15:
           res.render("searchFilms");
 
-        case 10:
+        case 16:
         case "end":
           return _context9.stop();
       }
     }
-  });
+  }, null, null, [[2, 10]]);
 });
 app.get("/login", function (req, res) {
   res.render("login");

@@ -146,8 +146,6 @@ html[data-theme="dark"] {
       }
 
       .card-body {
-        margin-bottom: 50px;
-
         .card-title {
           color: $orangeOp;
         }
@@ -177,7 +175,7 @@ html[data-theme="dark"] {
         opacity: 100%;
       }
       position: relative;
-      bottom: 2vh;
+      bottom: 20px;
     }
   }
 }
@@ -326,8 +324,6 @@ html[data-theme="light"] {
       }
 
       .card-body {
-        margin-bottom: 50px;
-
         .card-title {
           color: $lightBlue;
         }
@@ -357,7 +353,7 @@ html[data-theme="light"] {
         opacity: 100%;
       }
       position: relative;
-      bottom: 2vh;
+      bottom: 20px;
     }
   }
 }
