@@ -234,7 +234,6 @@ html[data-theme=dark] footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  text-transform: uppercase;
   height: 150px;
   background-color: #ff9900;
 }
@@ -254,6 +253,9 @@ html[data-theme=dark] footer ul a:active {
 html[data-theme=dark] footer ul a:hover {
   opacity: 100%;
 }
+html[data-theme=dark] footer .footer-copyright i {
+  color: red;
+}
 
 html[data-theme=light] footer {
   width: 100%;
@@ -261,7 +263,6 @@ html[data-theme=light] footer {
   position: absolute;
   bottom: 0;
   background-color: #68beff;
-  text-transform: uppercase;
 }
 html[data-theme=light] footer ul {
   width: 100%;
@@ -286,6 +287,7 @@ html[data-theme=dark] body {
   background-color: black;
   position: relative;
   padding-bottom: 200px;
+  min-height: 100vh;
 }
 html[data-theme=dark] main {
   display: grid;
@@ -427,11 +429,14 @@ html[data-theme=dark] section {
 html[data-theme=dark] section .genre {
   color: #ff9900;
   background-color: #121212;
-  font-size: 3.5vw;
+  font-size: 30px;
   text-align: center;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+html[data-theme=dark] section .genre i {
+  display: none;
 }
 html[data-theme=dark] section #slogan {
   width: 100%;
@@ -469,7 +474,111 @@ html[data-theme=dark] section .module-border-wrap {
   background: linear-gradient(to right, #ff9900, #68beff);
   box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
-html[data-theme=dark] article {
+html[data-theme=dark] article#articleGenres {
+  display: none;
+}
+html[data-theme=dark] article#articleGenres ul {
+  padding: 0;
+  margin: 0 5%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  list-style-type: none;
+}
+html[data-theme=dark] article#articleGenres ul li {
+  display: inline;
+  background-color: #121212;
+  padding: 10px;
+  margin: 5%;
+  transition: 0.8s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+html[data-theme=dark] article#articleGenres ul li:before, html[data-theme=dark] article#articleGenres ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #121212;
+}
+html[data-theme=dark] article#articleGenres ul li:before {
+  top: 0;
+}
+html[data-theme=dark] article#articleGenres ul li:after {
+  bottom: 0;
+}
+html[data-theme=dark] article#articleGenres ul li:hover > * > *:before, html[data-theme=dark] article#articleGenres ul li:hover > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=dark] article#articleGenres ul li:hover > * > * > *:before, html[data-theme=dark] article#articleGenres ul li:hover > * > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=dark] article#articleGenres ul li > *:before, html[data-theme=dark] article#articleGenres ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #121212;
+}
+html[data-theme=dark] article#articleGenres ul li > *:before {
+  left: 0;
+}
+html[data-theme=dark] article#articleGenres ul li > *:after {
+  right: 0;
+}
+html[data-theme=dark] article#articleGenres ul li > * > *:before, html[data-theme=dark] article#articleGenres ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #ff9900;
+}
+html[data-theme=dark] article#articleGenres ul li > * > *:before {
+  top: 0;
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] article#articleGenres ul li > * > *:after {
+  bottom: 0;
+  transform: translate3d(105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] article#articleGenres ul li > * > * > *:before, html[data-theme=dark] article#articleGenres ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #ff9900;
+}
+html[data-theme=dark] article#articleGenres ul li > * > * > *:before {
+  left: 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] article#articleGenres ul li > * > * > *:after {
+  right: 0;
+  transform: translate3d(0, -105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=dark] article#articleGenres ul li a {
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.8s;
+  cursor: pointer;
+}
+html[data-theme=dark] article#articleGenres ul li:hover {
+  background-color: black;
+}
+html[data-theme=dark] article#articleGenres ul li:hover a {
+  color: #ff9900;
+}
+html[data-theme=dark] article#articleFilms {
   border-left: 1px solid #ff9900;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -479,11 +588,11 @@ html[data-theme=dark] article {
   row-gap: 30px;
   margin-bottom: 30px;
 }
-html[data-theme=dark] article .far,
-html[data-theme=dark] article .fas {
+html[data-theme=dark] article#articleFilms .far,
+html[data-theme=dark] article#articleFilms .fas {
   color: #ff9900;
 }
-html[data-theme=dark] article .card {
+html[data-theme=dark] article#articleFilms .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -491,25 +600,25 @@ html[data-theme=dark] article .card {
   background-color: #121212;
   transition: 0.5s;
 }
-html[data-theme=dark] article .card ::-webkit-scrollbar {
+html[data-theme=dark] article#articleFilms .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
-html[data-theme=dark] article .card ::-webkit-scrollbar-track {
+html[data-theme=dark] article#articleFilms .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
-html[data-theme=dark] article .card ::-webkit-scrollbar-thumb {
+html[data-theme=dark] article#articleFilms .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ff9900;
 }
-html[data-theme=dark] article .card img {
+html[data-theme=dark] article#articleFilms .card img {
   height: 300px;
   width: 200px;
   opacity: 40%;
   transition: 0.5s;
 }
-html[data-theme=dark] article .card .card-body .card-title {
+html[data-theme=dark] article#articleFilms .card .card-body .card-title {
   background-color: #ff9900;
   color: #121212;
   text-align: center;
@@ -518,23 +627,23 @@ html[data-theme=dark] article .card .card-body .card-title {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-html[data-theme=dark] article .card .card-body .card-label {
+html[data-theme=dark] article#articleFilms .card .card-body .card-label {
   color: #ff9900;
   margin: 0;
 }
-html[data-theme=dark] article .card .card-body .card-text {
+html[data-theme=dark] article#articleFilms .card .card-body .card-text {
   color: white;
   margin: 0 0 10px 0;
 }
-html[data-theme=dark] article .card .card-body #plot {
+html[data-theme=dark] article#articleFilms .card .card-body #plot {
   height: 180px;
   overflow-y: auto;
 }
-html[data-theme=dark] article .card .card-body #filmGenre {
+html[data-theme=dark] article#articleFilms .card .card-body #filmGenre {
   height: 50px;
   overflow: hidden;
 }
-html[data-theme=dark] article .card .btn {
+html[data-theme=dark] article#articleFilms .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -542,17 +651,17 @@ html[data-theme=dark] article .card .btn {
   width: 100%;
   border-radius: 0 0 4px 4px;
 }
-html[data-theme=dark] article .card .btn:hover,
-html[data-theme=dark] article .card .btn:focus,
-html[data-theme=dark] article .card .btn:active {
+html[data-theme=dark] article#articleFilms .card .btn:hover,
+html[data-theme=dark] article#articleFilms .card .btn:focus,
+html[data-theme=dark] article#articleFilms .card .btn:active {
   box-shadow: none;
 }
-html[data-theme=dark] article .card:hover {
+html[data-theme=dark] article#articleFilms .card:hover {
   position: relative;
   bottom: 15px;
   box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
-html[data-theme=dark] article .card:hover img {
+html[data-theme=dark] article#articleFilms .card:hover img {
   opacity: 100%;
 }
 
@@ -563,6 +672,7 @@ html[data-theme=light] body {
   background-color: #eeeeee;
   position: relative;
   padding-bottom: 200px;
+  min-height: 100vh;
 }
 html[data-theme=light] main {
   display: grid;
@@ -704,11 +814,14 @@ html[data-theme=light] section {
 html[data-theme=light] section .genre {
   color: #68beff;
   background-color: white;
-  font-size: 3.5vw;
+  font-size: 30px;
   text-align: center;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+html[data-theme=light] section .genre i {
+  display: none;
 }
 html[data-theme=light] #slogan {
   width: 100%;
@@ -746,7 +859,111 @@ html[data-theme=light] .module-border-wrap {
   background: linear-gradient(to right, #ff9900, #68beff);
   box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
-html[data-theme=light] article {
+html[data-theme=light] article#articleGenres {
+  display: none;
+}
+html[data-theme=light] article#articleGenres ul {
+  padding: 0;
+  margin: 0 5%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  list-style-type: none;
+}
+html[data-theme=light] article#articleGenres ul li {
+  display: inline;
+  background-color: white;
+  padding: 10px;
+  margin: 5%;
+  transition: 0.8s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+html[data-theme=light] article#articleGenres ul li:before, html[data-theme=light] article#articleGenres ul li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+html[data-theme=light] article#articleGenres ul li:before {
+  top: 0;
+}
+html[data-theme=light] article#articleGenres ul li:after {
+  bottom: 0;
+}
+html[data-theme=light] article#articleGenres ul li:hover > * > *:before, html[data-theme=light] article#articleGenres ul li:hover > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=light] article#articleGenres ul li:hover > * > * > *:before, html[data-theme=light] article#articleGenres ul li:hover > * > * > *:after {
+  transform: translate3d(0, 0, 0);
+}
+html[data-theme=light] article#articleGenres ul li > *:before, html[data-theme=light] article#articleGenres ul li > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: white;
+}
+html[data-theme=light] article#articleGenres ul li > *:before {
+  left: 0;
+}
+html[data-theme=light] article#articleGenres ul li > *:after {
+  right: 0;
+}
+html[data-theme=light] article#articleGenres ul li > * > *:before, html[data-theme=light] article#articleGenres ul li > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 2px;
+  width: 100%;
+  background-color: #68beff;
+}
+html[data-theme=light] article#articleGenres ul li > * > *:before {
+  top: 0;
+  transform: translate3d(-105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] article#articleGenres ul li > * > *:after {
+  bottom: 0;
+  transform: translate3d(105%, 0, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] article#articleGenres ul li > * > * > *:before, html[data-theme=light] article#articleGenres ul li > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 2px;
+  background-color: #68beff;
+}
+html[data-theme=light] article#articleGenres ul li > * > * > *:before {
+  left: 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] article#articleGenres ul li > * > * > *:after {
+  right: 0;
+  transform: translate3d(0, -105%, 0);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+html[data-theme=light] article#articleGenres ul li a {
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.8s;
+  cursor: pointer;
+}
+html[data-theme=light] article#articleGenres ul li:hover {
+  background-color: #eeeeee;
+}
+html[data-theme=light] article#articleGenres ul li:hover a {
+  color: #68beff;
+}
+html[data-theme=light] article#articleFilms {
   border-left: 1px solid #68beff;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -754,11 +971,11 @@ html[data-theme=light] article {
   padding: 1vw 0;
   row-gap: 30px;
 }
-html[data-theme=light] article .far,
-html[data-theme=light] article .fas {
+html[data-theme=light] article#articleFilms .far,
+html[data-theme=light] article#articleFilms .fas {
   color: #68beff;
 }
-html[data-theme=light] article .card {
+html[data-theme=light] article#articleFilms .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -766,25 +983,25 @@ html[data-theme=light] article .card {
   background-color: white;
   transition: 0.5s;
 }
-html[data-theme=light] article .card ::-webkit-scrollbar {
+html[data-theme=light] article#articleFilms .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
-html[data-theme=light] article .card ::-webkit-scrollbar-track {
+html[data-theme=light] article#articleFilms .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
-html[data-theme=light] article .card ::-webkit-scrollbar-thumb {
+html[data-theme=light] article#articleFilms .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #68beff;
 }
-html[data-theme=light] article .card img {
+html[data-theme=light] article#articleFilms .card img {
   height: 300px;
   width: 200px;
   opacity: 80%;
   transition: 0.5s;
 }
-html[data-theme=light] article .card .card-body .card-title {
+html[data-theme=light] article#articleFilms .card .card-body .card-title {
   background-color: #68beff;
   color: white;
   text-align: center;
@@ -793,23 +1010,23 @@ html[data-theme=light] article .card .card-body .card-title {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-html[data-theme=light] article .card .card-body .card-label {
+html[data-theme=light] article#articleFilms .card .card-body .card-label {
   color: #68beff;
   margin: 0;
 }
-html[data-theme=light] article .card .card-body .card-text {
+html[data-theme=light] article#articleFilms .card .card-body .card-text {
   color: #121212;
   margin: 0 0 10px 0;
 }
-html[data-theme=light] article .card .card-body #plot {
+html[data-theme=light] article#articleFilms .card .card-body #plot {
   height: 180px;
   overflow-y: auto;
 }
-html[data-theme=light] article .card .card-body #filmGenre {
+html[data-theme=light] article#articleFilms .card .card-body #filmGenre {
   height: 50px;
   overflow: hidden;
 }
-html[data-theme=light] article .card .btn {
+html[data-theme=light] article#articleFilms .card .btn {
   background-color: #68beff;
   color: white;
   position: absolute;
@@ -817,26 +1034,26 @@ html[data-theme=light] article .card .btn {
   width: 100%;
   border-radius: 0 0 4px 4px;
 }
-html[data-theme=light] article .card .btn:hover,
-html[data-theme=light] article .card .btn:focus,
-html[data-theme=light] article .card .btn:active {
+html[data-theme=light] article#articleFilms .card .btn:hover,
+html[data-theme=light] article#articleFilms .card .btn:focus,
+html[data-theme=light] article#articleFilms .card .btn:active {
   box-shadow: none;
 }
-html[data-theme=light] article .card:hover {
+html[data-theme=light] article#articleFilms .card:hover {
   position: relative;
   bottom: 15px;
   box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
 }
-html[data-theme=light] article .card:hover img {
+html[data-theme=light] article#articleFilms .card:hover img {
   opacity: 100%;
 }
 
 @media only screen and (max-width: 1600px) {
-  html[data-theme=light] article {
+  html[data-theme=light] article#articleFilms {
     grid-template-columns: auto auto auto auto;
   }
 
-  html[data-theme=dark] article {
+  html[data-theme=dark] article#articleFilms {
     grid-template-columns: auto auto auto auto;
   }
 }
@@ -851,6 +1068,15 @@ html[data-theme=light] article .card:hover img {
     grid-template-columns: [main] 100%;
     margin: 0 10px;
   }
+  html[data-theme=light] main .genre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  html[data-theme=light] main .genre i {
+    display: block;
+    cursor: pointer;
+  }
 
   html[data-theme=dark] header #searchFilm {
     width: 300px;
@@ -858,6 +1084,15 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=dark] main {
     grid-template-columns: [main] 100%;
     margin: 0 10px;
+  }
+  html[data-theme=dark] main .genre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  html[data-theme=dark] main .genre i {
+    display: block;
+    cursor: pointer;
   }
   html[data-theme=dark] aside {
     display: none;
@@ -881,11 +1116,17 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=dark] #slogan h1 {
     font-size: 32px;
   }
-  html[data-theme=dark] article {
+  html[data-theme=dark] .genre h1 {
+    font-size: 35px;
+  }
+  html[data-theme=dark] .genre i {
+    font-size: 25px;
+  }
+  html[data-theme=dark] article#articleFilms {
     grid-template-columns: auto auto auto;
     border-left: 1px solid #ff9900;
   }
-  html[data-theme=dark] article .card img {
+  html[data-theme=dark] article#articleFilms .card img {
     opacity: 100%;
   }
   html[data-theme=dark] #title {
@@ -895,6 +1136,7 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=light] header {
     row-gap: 15px;
     flex-direction: column;
+    padding: 30px;
   }
   html[data-theme=light] header #searchFilm {
     width: 65%;
@@ -902,10 +1144,22 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=light] header img {
     width: 300px;
   }
-  html[data-theme=light] article {
+  html[data-theme=light] #slogan h2 {
+    font-size: 26px;
+  }
+  html[data-theme=light] #slogan h1 {
+    font-size: 32px;
+  }
+  html[data-theme=light] .genre h1 {
+    font-size: 35px;
+  }
+  html[data-theme=light] .genre i {
+    font-size: 25px;
+  }
+  html[data-theme=light] article#articleFilms {
     grid-template-columns: auto auto auto;
   }
-  html[data-theme=light] article .card img {
+  html[data-theme=light] article#articleFilms .card img {
     opacity: 100%;
   }
   html[data-theme=light] #title {
@@ -917,10 +1171,16 @@ html[data-theme=light] article .card:hover img {
     row-gap: 10px;
   }
   html[data-theme=dark] header #searchFilm {
-    width: 70%;
+    width: 90%;
   }
   html[data-theme=dark] header img {
     width: 200px;
+  }
+  html[data-theme=dark] .genre h1 {
+    font-size: 30px;
+  }
+  html[data-theme=dark] .genre i {
+    font-size: 20px;
   }
   html[data-theme=dark] #slogan {
     padding: 15px;
@@ -937,18 +1197,27 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=dark] .module-border-wrap {
     width: 90% !important;
   }
-  html[data-theme=dark] article {
+  html[data-theme=dark] article#articleFilms {
     grid-template-columns: auto auto;
+  }
+  html[data-theme=dark] article#articleGenres ul {
+    grid-template-columns: 33% 33% 33%;
   }
 
   html[data-theme=light] header {
     row-gap: 10px;
   }
   html[data-theme=light] header #searchFilm {
-    width: 70%;
+    width: 90%;
   }
   html[data-theme=light] header img {
     width: 200px;
+  }
+  html[data-theme=light] .genre h1 {
+    font-size: 30px;
+  }
+  html[data-theme=light] .genre i {
+    font-size: 20px;
   }
   html[data-theme=light] #slogan {
     padding: 15px;
@@ -965,7 +1234,73 @@ html[data-theme=light] article .card:hover img {
   html[data-theme=light] .module-border-wrap {
     width: 90% !important;
   }
-  html[data-theme=light] article {
+  html[data-theme=light] article#articleFilms {
     grid-template-columns: auto auto;
+  }
+  html[data-theme=light] article#articleGenres ul {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  html[data-theme=dark] header {
+    row-gap: 10px;
+    padding: 20px 10px;
+  }
+  html[data-theme=dark] header img {
+    width: 200px;
+  }
+  html[data-theme=dark] article#articleFilms {
+    grid-template-columns: auto auto;
+  }
+  html[data-theme=dark] article#articleFilms .card {
+    width: 150px;
+  }
+  html[data-theme=dark] article#articleFilms .card .card-body {
+    padding: 10px;
+    font-size: 14px;
+  }
+  html[data-theme=dark] article#articleFilms .card .card-body #filmGenre {
+    height: 40px;
+  }
+  html[data-theme=dark] article#articleFilms .card img {
+    width: 150px;
+    height: 225px;
+  }
+  html[data-theme=dark] article#articleFilms .card #plot {
+    display: none;
+  }
+  html[data-theme=dark] article#articleGenres ul {
+    grid-template-columns: 50% 50%;
+  }
+
+  html[data-theme=light] header {
+    row-gap: 10px;
+    padding: 20px 10px;
+  }
+  html[data-theme=light] header img {
+    width: 200px;
+  }
+  html[data-theme=light] article#articleFilms {
+    grid-template-columns: auto auto;
+  }
+  html[data-theme=light] article#articleFilms .card {
+    width: 150px;
+  }
+  html[data-theme=light] article#articleFilms .card .card-body {
+    padding: 10px;
+    font-size: 14px;
+  }
+  html[data-theme=light] article#articleFilms .card .card-body #filmGenre {
+    height: 40px;
+  }
+  html[data-theme=light] article#articleFilms .card img {
+    width: 150px;
+    height: 225px;
+  }
+  html[data-theme=light] article#articleFilms .card #plot {
+    display: none;
+  }
+  html[data-theme=light] article#articleGenres ul {
+    grid-template-columns: 50% 50%;
   }
 }

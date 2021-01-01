@@ -30,6 +30,73 @@ html[data-theme="dark"] {
     }
   }
 
+  #filterGenres {
+    margin: auto;
+    display: none;
+    background-color: $lightBlack;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    letter-spacing: 2px;
+    background-size: 200% 200%;
+    text-align: center;
+    background-image: linear-gradient(to top, black 50%, transparent 50%);
+    transition: background-position 300ms, color 300ms ease,
+      border-color 300ms ease;
+  }
+  #filterGenres:hover {
+    border-color: black;
+    color: $orangeOp;
+    background-image: linear-gradient(to top, black 51%, transparent 50%);
+    background-position: 0 100%;
+    transition: background-position 300ms, color 300ms ease,
+      border-color 300ms ease;
+  }
+
+  #allGenres {
+    display: none;
+    margin: 5%;
+    ul {
+      display: grid;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      grid-template-columns: 33% 33% auto;
+      li {
+        padding: 5px;
+        border: 1px solid $orangeOp;
+        background-size: 200% 200%;
+        text-align: center;
+        background-image: linear-gradient(
+          to top,
+          $orangeOp 50%,
+          transparent 50%
+        );
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+        direction: ltr;
+        transition: 0.5s;
+
+        text-decoration: none;
+        color: rgb(145, 143, 143);
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      li:hover {
+        color: black;
+        background-image: linear-gradient(
+          to top,
+          $orangeOp 51%,
+          transparent 50%
+        );
+        background-position: 0 100%;
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+      }
+    }
+  }
+
   main {
     display: grid;
     grid-template-columns: [sidebar]20% [article]80%;
@@ -56,7 +123,7 @@ html[data-theme="dark"] {
       border-bottom: 1px solid $orangeOp;
       h1 {
         color: $orangeOp;
-        font-size: 2.5vw;
+        font-size: 30px;
       }
     }
     ul {
@@ -110,10 +177,10 @@ html[data-theme="dark"] {
       border-bottom: 1px solid $orangeOp;
       h1 {
         color: $orangeOp;
-        font-size: 2.5vw;
+        font-size: 30px;
         i {
           color: $orangeOp;
-          font-size: 2.5vw;
+          font-size: 30px;
         }
       }
     }
@@ -188,6 +255,73 @@ html[data-theme="light"] {
     position: relative;
     padding-bottom: 200px;
   }
+  #filterGenres {
+    margin: auto;
+    display: none;
+    background-color: $lightBlue;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    letter-spacing: 2px;
+    background-size: 200% 200%;
+    text-align: center;
+    background-image: linear-gradient(to top, $primary 50%, transparent 50%);
+    transition: background-position 300ms, color 300ms ease,
+      border-color 300ms ease;
+  }
+  #filterGenres:hover {
+    border-color: $primary;
+    color: $lightBlue;
+    background-image: linear-gradient(to top, $primary 51%, transparent 50%);
+    background-position: 0 100%;
+    transition: background-position 300ms, color 300ms ease,
+      border-color 300ms ease;
+  }
+
+  #allGenres {
+    //display: none;
+    margin: 5%;
+    ul {
+      display: grid;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      grid-template-columns: 33% 33% auto;
+      li {
+        padding: 10px;
+        border: 1px solid $lightBlue;
+        color: white;
+        background-size: 200% 200%;
+        text-align: center;
+        background-image: linear-gradient(
+          to top,
+          $lightBlue 50%,
+          transparent 50%
+        );
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+        direction: ltr;
+        transition: 0.5s;
+
+        text-decoration: none;
+        color: rgb(145, 143, 143);
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      li:hover {
+        color: black;
+        background-image: linear-gradient(
+          to top,
+          $lightBlue 51%,
+          transparent 50%
+        );
+        background-position: 0 100%;
+        transition: background-position 300ms, color 300ms ease,
+          border-color 300ms ease;
+      }
+    }
+  }
 
   main {
     display: grid;
@@ -230,7 +364,7 @@ html[data-theme="light"] {
       border-bottom: 1px solid $lightBlue;
       h1 {
         color: $lightBlue;
-        font-size: 2.5vw;
+        font-size: 30px;
       }
     }
     ul {
@@ -289,10 +423,10 @@ html[data-theme="light"] {
       border-bottom: 1px solid $lightBlue;
       h1 {
         color: $lightBlue;
-        font-size: 2.5vw;
+        font-size: 30px;
         i {
           color: $lightBlue;
-          font-size: 2.5vw;
+          font-size: 30px;
         }
       }
     }
@@ -358,7 +492,7 @@ html[data-theme="light"] {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1400px) {
   html[data-theme="dark"] {
     header {
       #searchFilm {
@@ -381,7 +515,7 @@ html[data-theme="light"] {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1100px) {
   html[data-theme="dark"] {
     header {
       padding: 30px 0px;
@@ -416,7 +550,7 @@ html[data-theme="light"] {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   html[data-theme="dark"] {
     header {
       row-gap: 15px;
@@ -458,8 +592,25 @@ html[data-theme="light"] {
         width: 200px;
       }
     }
+    #filterGenres {
+      display: block;
+    }
+    main {
+      grid-template-columns: [article]100%;
+    }
     #favouriteFilms {
-      grid-template-columns: auto;
+      grid-template-columns: auto auto;
+      border: none;
+      .card {
+        width: 150px;
+        img {
+          width: 150px;
+          height: 225px;
+        }
+      }
+    }
+    aside {
+      display: none;
     }
   }
   html[data-theme="light"] {
@@ -472,8 +623,24 @@ html[data-theme="light"] {
         width: 200px;
       }
     }
+    main {
+      grid-template-columns: [article]100%;
+    }
+    #filterGenres {
+      display: block;
+    }
     #favouriteFilms {
-      grid-template-columns: auto;
+      grid-template-columns: auto auto;
+      .card {
+        width: 150px;
+        img {
+          width: 150px;
+          height: 225px;
+        }
+      }
+    }
+    aside {
+      display: none;
     }
   }
 }

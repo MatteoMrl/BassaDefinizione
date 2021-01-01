@@ -135,6 +135,7 @@ html[data-theme="dark"] {
     background-color: black;
     position: relative;
     padding-bottom: 200px;
+    min-height: 100vh;
   }
 
   main {
@@ -206,11 +207,14 @@ html[data-theme="dark"] {
     .genre {
       color: $orangeOp;
       background-color: $lightBlack;
-      font-size: 3.5vw;
+      font-size: 30px;
       text-align: center;
-      padding: 10px;
+      padding: 10px 20px;
       border-radius: 10px;
       margin-bottom: 10px;
+      i {
+        display: none;
+      }
     }
     #slogan {
       width: 100%;
@@ -256,7 +260,39 @@ html[data-theme="dark"] {
     }
   }
 
-  article {
+  article#articleGenres {
+    display: none;
+    ul {
+      padding: 0;
+      margin: 0 5%;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      list-style-type: none;
+      li {
+        display: inline;
+        background-color: $lightBlack;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.8s;
+        text-align: center;
+        @include btn-border-slide($lightBlack, $orangeOp, 2px, 0.8s);
+        a {
+          text-decoration: none;
+          color: rgb(145, 143, 143);
+          transition: 0.8s;
+          cursor: pointer;
+        }
+      }
+      li:hover {
+        background-color: black;
+        a {
+          color: $orangeOp;
+        }
+      }
+    }
+  }
+
+  article#articleFilms {
     border-left: 1px solid $orangeOp;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
@@ -365,6 +401,7 @@ html[data-theme="light"] {
     background-color: $primary;
     position: relative;
     padding-bottom: 200px;
+    min-height: 100vh;
   }
   main {
     display: grid;
@@ -436,11 +473,14 @@ html[data-theme="light"] {
     .genre {
       color: $lightBlue;
       background-color: white;
-      font-size: 3.5vw;
+      font-size: 30px;
       text-align: center;
-      padding: 10px;
+      padding: 10px 20px;
       border-radius: 10px;
       margin-bottom: 10px;
+      i {
+        display: none;
+      }
     }
   }
   #slogan {
@@ -475,6 +515,7 @@ html[data-theme="light"] {
       margin-bottom: 8px;
     }
   }
+
   .module-border-wrap {
     width: 75%;
     margin: 50px auto;
@@ -484,7 +525,40 @@ html[data-theme="light"] {
     background: linear-gradient(to right, $orangeOp, $lightBlue);
     box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
   }
-  article {
+
+  article#articleGenres {
+    display: none;
+    ul {
+      padding: 0;
+      margin: 0 5%;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      list-style-type: none;
+      li {
+        display: inline;
+        background-color: white;
+        padding: 10px;
+        margin: 5%;
+        transition: 0.8s;
+        text-align: center;
+        @include btn-border-slide(white, $lightBlue, 2px, 0.8s);
+        a {
+          text-decoration: none;
+          color: rgb(145, 143, 143);
+          transition: 0.8s;
+          cursor: pointer;
+        }
+      }
+      li:hover {
+        background-color: $primary;
+        a {
+          color: $lightBlue;
+        }
+      }
+    }
+  }
+
+  article#articleFilms {
     border-left: 1px solid $lightBlue;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
@@ -585,12 +659,12 @@ html[data-theme="light"] {
 
 @media only screen and (max-width: 1600px) {
   html[data-theme="light"] {
-    article {
+    article#articleFilms {
       grid-template-columns: auto auto auto auto;
     }
   }
   html[data-theme="dark"] {
-    article {
+    article#articleFilms {
       grid-template-columns: auto auto auto auto;
     }
   }
@@ -609,6 +683,15 @@ html[data-theme="light"] {
     main {
       grid-template-columns: [main]100%;
       margin: 0 10px;
+      .genre {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i {
+          display: block;
+          cursor: pointer;
+        }
+      }
     }
   }
   html[data-theme="dark"] {
@@ -620,6 +703,15 @@ html[data-theme="light"] {
     main {
       grid-template-columns: [main]100%;
       margin: 0 10px;
+      .genre {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i {
+          display: block;
+          cursor: pointer;
+        }
+      }
     }
     aside {
       display: none;
@@ -648,7 +740,15 @@ html[data-theme="light"] {
         font-size: 32px;
       }
     }
-    article {
+    .genre {
+      h1 {
+        font-size: 35px;
+      }
+      i {
+        font-size: 25px;
+      }
+    }
+    article#articleFilms {
       grid-template-columns: auto auto auto;
       border-left: 1px solid $orangeOp;
       .card {
@@ -665,6 +765,7 @@ html[data-theme="light"] {
     header {
       row-gap: 15px;
       flex-direction: column;
+      padding: 30px;
       #searchFilm {
         width: 65%;
       }
@@ -672,8 +773,23 @@ html[data-theme="light"] {
         width: 300px;
       }
     }
-
-    article {
+    #slogan {
+      h2 {
+        font-size: 26px;
+      }
+      h1 {
+        font-size: 32px;
+      }
+    }
+    .genre {
+      h1 {
+        font-size: 35px;
+      }
+      i {
+        font-size: 25px;
+      }
+    }
+    article#articleFilms {
       grid-template-columns: auto auto auto;
       .card {
         img {
@@ -692,10 +808,18 @@ html[data-theme="light"] {
     header {
       row-gap: 10px;
       #searchFilm {
-        width: 70%;
+        width: 90%;
       }
       img {
         width: 200px;
+      }
+    }
+    .genre {
+      h1 {
+        font-size: 30px;
+      }
+      i {
+        font-size: 20px;
       }
     }
     #slogan {
@@ -713,18 +837,31 @@ html[data-theme="light"] {
     .module-border-wrap {
       width: 90% !important;
     }
-    article {
+    article#articleFilms {
       grid-template-columns: auto auto;
+    }
+    article#articleGenres {
+      ul {
+        grid-template-columns: 33% 33% 33%;
+      }
     }
   }
   html[data-theme="light"] {
     header {
       row-gap: 10px;
       #searchFilm {
-        width: 70%;
+        width: 90%;
       }
       img {
         width: 200px;
+      }
+    }
+    .genre {
+      h1 {
+        font-size: 30px;
+      }
+      i {
+        font-size: 20px;
       }
     }
     #slogan {
@@ -742,8 +879,83 @@ html[data-theme="light"] {
     .module-border-wrap {
       width: 90% !important;
     }
-    article {
+    article#articleFilms {
       grid-template-columns: auto auto;
+    }
+    article#articleGenres {
+      ul {
+        grid-template-columns: 33% 33% 33%;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  html[data-theme="dark"] {
+    header {
+      row-gap: 10px;
+      padding: 20px 10px;
+      img {
+        width: 200px;
+      }
+    }
+    article#articleFilms {
+      grid-template-columns: auto auto;
+      .card {
+        width: 150px;
+        .card-body {
+          padding: 10px;
+          font-size: 14px;
+          #filmGenre {
+            height: 40px;
+          }
+        }
+        img {
+          width: 150px;
+          height: 225px;
+        }
+        #plot {
+          display: none;
+        }
+      }
+    }
+    article#articleGenres {
+      ul {
+        grid-template-columns: 50% 50%;
+      }
+    }
+  }
+  html[data-theme="light"] {
+    header {
+      row-gap: 10px;
+      padding: 20px 10px;
+      img {
+        width: 200px;
+      }
+    }
+    article#articleFilms {
+      grid-template-columns: auto auto;
+      .card {
+        width: 150px;
+        .card-body {
+          padding: 10px;
+          font-size: 14px;
+          #filmGenre {
+            height: 40px;
+          }
+        }
+        img {
+          width: 150px;
+          height: 225px;
+        }
+        #plot {
+          display: none;
+        }
+      }
+    }
+    article#articleGenres {
+      ul {
+        grid-template-columns: 50% 50%;
+      }
     }
   }
 }

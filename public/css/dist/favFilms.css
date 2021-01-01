@@ -92,7 +92,6 @@ html[data-theme=dark] header #searchFilm {
 }
 html[data-theme=dark] header #searchFilm input[type=text] {
   background-color: #121212;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -195,7 +194,6 @@ html[data-theme=light] header #searchFilm {
 }
 html[data-theme=light] header #searchFilm input[type=text] {
   background-color: #68beff;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -234,7 +232,6 @@ html[data-theme=dark] footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  text-transform: uppercase;
   height: 150px;
   background-color: #ff9900;
 }
@@ -254,6 +251,9 @@ html[data-theme=dark] footer ul a:active {
 html[data-theme=dark] footer ul a:hover {
   opacity: 100%;
 }
+html[data-theme=dark] footer .footer-copyright i {
+  color: red;
+}
 
 html[data-theme=light] footer {
   width: 100%;
@@ -261,7 +261,6 @@ html[data-theme=light] footer {
   position: absolute;
   bottom: 0;
   background-color: #68beff;
-  text-transform: uppercase;
 }
 html[data-theme=light] footer ul {
   width: 100%;
@@ -277,6 +276,9 @@ html[data-theme=light] footer ul a:active {
 }
 html[data-theme=light] footer ul a:hover {
   color: white;
+}
+html[data-theme=light] footer .footer-copyright i {
+  color: red;
 }
 
 * {
@@ -301,6 +303,58 @@ html[data-theme=dark] #noFilm h1 {
 html[data-theme=dark] #noFilm h1 span {
   background-color: #ff9900;
   color: black;
+}
+html[data-theme=dark] #filterGenres {
+  margin: auto;
+  display: none;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  letter-spacing: 2px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: linear-gradient(to top, black 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=dark] #filterGenres:hover {
+  border-color: black;
+  color: #ff9900;
+  background-image: linear-gradient(to top, black 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=dark] #allGenres {
+  display: none;
+  margin: 5%;
+}
+html[data-theme=dark] #allGenres ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  grid-template-columns: 33% 33% auto;
+}
+html[data-theme=dark] #allGenres ul li {
+  padding: 5px;
+  border: 1px solid #ff9900;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: linear-gradient(to top, #ff9900 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  transition: 0.5s;
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.5s;
+  cursor: pointer;
+}
+html[data-theme=dark] #allGenres ul li:hover {
+  color: black;
+  background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 html[data-theme=dark] main {
   display: grid;
@@ -328,7 +382,7 @@ html[data-theme=dark] aside #genresLegend {
 }
 html[data-theme=dark] aside #genresLegend h1 {
   color: #ff9900;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=dark] aside ul {
   list-style-type: none;
@@ -370,11 +424,11 @@ html[data-theme=dark] article #title {
 }
 html[data-theme=dark] article #title h1 {
   color: #ff9900;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=dark] article #title h1 i {
   color: #ff9900;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=dark] #favouriteFilms {
   border-left: 1px solid #ff9900;
@@ -432,6 +486,58 @@ html[data-theme=light] body {
   position: relative;
   padding-bottom: 200px;
 }
+html[data-theme=light] #filterGenres {
+  margin: auto;
+  display: none;
+  background-color: #68beff;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  letter-spacing: 2px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: linear-gradient(to top, #eeeeee 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=light] #filterGenres:hover {
+  border-color: #eeeeee;
+  color: #68beff;
+  background-image: linear-gradient(to top, #eeeeee 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+html[data-theme=light] #allGenres {
+  margin: 5%;
+}
+html[data-theme=light] #allGenres ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  grid-template-columns: 33% 33% auto;
+}
+html[data-theme=light] #allGenres ul li {
+  padding: 10px;
+  border: 1px solid #68beff;
+  color: white;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: linear-gradient(to top, #68beff 50%, transparent 50%);
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  direction: ltr;
+  transition: 0.5s;
+  text-decoration: none;
+  color: #918f8f;
+  transition: 0.5s;
+  cursor: pointer;
+}
+html[data-theme=light] #allGenres ul li:hover {
+  color: black;
+  background-image: linear-gradient(to top, #68beff 51%, transparent 50%);
+  background-position: 0 100%;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
 html[data-theme=light] main {
   display: grid;
   grid-template-columns: [sidebar] 20% [article] 80%;
@@ -472,7 +578,7 @@ html[data-theme=light] aside #genresLegend {
 }
 html[data-theme=light] aside #genresLegend h1 {
   color: #68beff;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=light] aside ul {
   list-style-type: none;
@@ -519,11 +625,11 @@ html[data-theme=light] article #title {
 }
 html[data-theme=light] article #title h1 {
   color: #68beff;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=light] article #title h1 i {
   color: #68beff;
-  font-size: 2.5vw;
+  font-size: 30px;
 }
 html[data-theme=light] #favouriteFilms {
   border-left: 1px solid #68beff;
@@ -576,7 +682,7 @@ html[data-theme=light] #favouriteFilms .card:hover img {
   opacity: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1400px) {
   html[data-theme=dark] header #searchFilm {
     width: 300px;
   }
@@ -591,7 +697,7 @@ html[data-theme=light] #favouriteFilms .card:hover img {
     grid-template-columns: auto auto auto auto;
   }
 }
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1100px) {
   html[data-theme=dark] header {
     padding: 30px 0px;
     flex-direction: column;
@@ -622,7 +728,7 @@ html[data-theme=light] #favouriteFilms .card:hover img {
     grid-template-columns: auto auto auto;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   html[data-theme=dark] header {
     row-gap: 15px;
   }
@@ -659,8 +765,25 @@ html[data-theme=light] #favouriteFilms .card:hover img {
   html[data-theme=dark] header img {
     width: 200px;
   }
+  html[data-theme=dark] #filterGenres {
+    display: block;
+  }
+  html[data-theme=dark] main {
+    grid-template-columns: [article] 100%;
+  }
   html[data-theme=dark] #favouriteFilms {
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
+    border: none;
+  }
+  html[data-theme=dark] #favouriteFilms .card {
+    width: 150px;
+  }
+  html[data-theme=dark] #favouriteFilms .card img {
+    width: 150px;
+    height: 225px;
+  }
+  html[data-theme=dark] aside {
+    display: none;
   }
 
   html[data-theme=light] header {
@@ -672,7 +795,23 @@ html[data-theme=light] #favouriteFilms .card:hover img {
   html[data-theme=light] header img {
     width: 200px;
   }
+  html[data-theme=light] main {
+    grid-template-columns: [article] 100%;
+  }
+  html[data-theme=light] #filterGenres {
+    display: block;
+  }
   html[data-theme=light] #favouriteFilms {
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
+  }
+  html[data-theme=light] #favouriteFilms .card {
+    width: 150px;
+  }
+  html[data-theme=light] #favouriteFilms .card img {
+    width: 150px;
+    height: 225px;
+  }
+  html[data-theme=light] aside {
+    display: none;
   }
 }

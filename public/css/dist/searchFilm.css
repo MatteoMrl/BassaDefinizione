@@ -92,7 +92,6 @@ html[data-theme=dark] header #searchFilm {
 }
 html[data-theme=dark] header #searchFilm input[type=text] {
   background-color: #121212;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -195,7 +194,6 @@ html[data-theme=light] header #searchFilm {
 }
 html[data-theme=light] header #searchFilm input[type=text] {
   background-color: #68beff;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -234,7 +232,6 @@ html[data-theme=dark] footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  text-transform: uppercase;
   height: 150px;
   background-color: #ff9900;
 }
@@ -254,6 +251,9 @@ html[data-theme=dark] footer ul a:active {
 html[data-theme=dark] footer ul a:hover {
   opacity: 100%;
 }
+html[data-theme=dark] footer .footer-copyright i {
+  color: red;
+}
 
 html[data-theme=light] footer {
   width: 100%;
@@ -261,7 +261,6 @@ html[data-theme=light] footer {
   position: absolute;
   bottom: 0;
   background-color: #68beff;
-  text-transform: uppercase;
 }
 html[data-theme=light] footer ul {
   width: 100%;
@@ -277,6 +276,9 @@ html[data-theme=light] footer ul a:active {
 }
 html[data-theme=light] footer ul a:hover {
   color: white;
+}
+html[data-theme=light] footer .footer-copyright i {
+  color: red;
 }
 
 * {

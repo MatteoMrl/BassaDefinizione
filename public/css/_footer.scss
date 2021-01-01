@@ -5,7 +5,6 @@ html[data-theme="dark"] {
     width: 100%;
     position: absolute;
     bottom: 0;
-    text-transform: uppercase;
     height: 150px;
     background-color: $orangeOp;
     ul {
@@ -25,6 +24,9 @@ html[data-theme="dark"] {
         opacity: 100%;
       }
     }
+    .footer-copyright i {
+      color: red;
+    }
   }
 }
 
@@ -35,7 +37,6 @@ html[data-theme="light"] {
     position: absolute;
     bottom: 0;
     background-color: $lightBlue;
-    text-transform: uppercase;
     ul {
       width: 100%;
       display: flex;
@@ -51,6 +52,9 @@ html[data-theme="light"] {
       a:hover {
         color: white;
       }
+    }
+    .footer-copyright i {
+      color: red;
     }
   }
 }
