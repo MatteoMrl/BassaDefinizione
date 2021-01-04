@@ -821,7 +821,6 @@ html[data-theme="dark"] article#articleFilms .card ::-webkit-scrollbar-thumb {
 html[data-theme="dark"] article#articleFilms .card img {
   height: 300px;
   width: 200px;
-  opacity: 40%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -873,14 +872,10 @@ html[data-theme="dark"] article#articleFilms .card .btn:active {
 }
 
 html[data-theme="dark"] article#articleFilms .card:hover {
-  position: relative;
-  bottom: 15px;
+  -webkit-transform: scale(0.93);
+          transform: scale(0.93);
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-}
-
-html[data-theme="dark"] article#articleFilms .card:hover img {
-  opacity: 100%;
 }
 
 html[data-theme="light"] h1 {
@@ -1332,7 +1327,6 @@ html[data-theme="light"] article#articleFilms .card ::-webkit-scrollbar-thumb {
 html[data-theme="light"] article#articleFilms .card img {
   height: 300px;
   width: 200px;
-  opacity: 80%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -1384,14 +1378,10 @@ html[data-theme="light"] article#articleFilms .card .btn:active {
 }
 
 html[data-theme="light"] article#articleFilms .card:hover {
-  position: relative;
-  bottom: 15px;
+  -webkit-transform: scale(0.93);
+          transform: scale(0.93);
   -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
           box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-}
-
-html[data-theme="light"] article#articleFilms .card:hover img {
-  opacity: 100%;
 }
 
 @media only screen and (max-width: 1600px) {

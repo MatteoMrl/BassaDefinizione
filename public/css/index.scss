@@ -332,7 +332,6 @@ html[data-theme="dark"] {
       img {
         height: 300px;
         width: 200px;
-        opacity: 40%;
         transition: 0.5s;
       }
 
@@ -381,11 +380,7 @@ html[data-theme="dark"] {
     }
 
     .card:hover {
-      img {
-        opacity: 100%;
-      }
-      position: relative;
-      bottom: 15px;
+      transform: scale(0.93);
       box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
     }
   }
@@ -596,7 +591,6 @@ html[data-theme="light"] {
       img {
         height: 300px;
         width: 200px;
-        opacity: 80%;
         transition: 0.5s;
       }
 
@@ -645,11 +639,7 @@ html[data-theme="light"] {
     }
 
     .card:hover {
-      img {
-        opacity: 100%;
-      }
-      position: relative;
-      bottom: 15px;
+      transform: scale(0.93);
       box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
     }
   }

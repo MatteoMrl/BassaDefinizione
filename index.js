@@ -40,6 +40,18 @@ app.use(cookieParser());
 
 //-----------------------------------------------------------------------------------------------
 
+const dbQuery = (queryString) => {
+  return new Promise((resolve) => {
+    db.query(queryString, (error, result) => {
+      if (error) {
+        throw new Error("There's an error");
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
 function encodeToken(token) {
   const base64Url = token.split(".")[1];
   const base64 = base64Url.replace("-", "+").replace("_", "/");
@@ -82,195 +94,208 @@ function createToken(id, res) {
   renderFilms(null, res);
 }
 
-function userRegistration({ username, mail, password }, res) {
-  db.query(
-    `SELECT mail FROM users WHERE mail = '${mail}'`,
-    async (error, result) => {
-      if (result.length < 1) {
-        try {
-          let hashedPassword = await bcrypt.hash(password, 4); //number of times the password is hashed
-          db.query(
-            `INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`,
-            (error, result) => {
-              res.render("registration", {
-                message: "Account created successfully",
-                class: "alert-success",
-              });
-            }
-          );
-        } catch (err) {
-          console.log(err);
-        }
-      } else {
-        res.render("registration", {
-          message: "This mail is already in use, try another one",
-          class: "alert-danger",
-        });
-      }
+const userRegistration = async ({ username, mail, password }, res) => {
+  try {
+    const resultMail = await dbQuery(
+      `SELECT mail FROM users WHERE mail = '${mail}'`
+    );
+    if (resultMail.length < 1) {
+      const hashedPassword = await bcrypt.hash(password, 4); //number of times the password is hashed
+      dbQuery(
+        `INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`
+      );
+      res.render("registration", {
+        message: "Account created successfully",
+        class: "alert-success",
+      });
+    } else {
+      res.render("registration", {
+        message: "This mail is already in use, try another one",
+        class: "alert-danger",
+      });
     }
-  );
-}
+  } catch (err) {
+    console.log(err);
+    res.render("registration", {
+      message: "An error has occurred. Please try again",
+      class: "alert-danger",
+    });
+  }
+};
 
-function loginUser({ username, password }, res) {
-  db.query(
-    `SELECT * FROM users WHERE username = '${username}'`,
-    async (error, result) => {
-      userData = result[0];
-      if (!userData || !(await bcrypt.compare(password, userData.password))) {
-        res.render("login", { message: "Incorrect username or password" });
-      } else {
-        createToken(userData.id, res);
-      }
+const loginUser = async ({ username, password }, res) => {
+  try {
+    const users = await dbQuery(
+      `SELECT * FROM users WHERE username = '${username}'`
+    );
+    userData = users[0];
+    if (!userData || !(await bcrypt.compare(password, userData.password))) {
+      res.render("login", { message: "Incorrect username or password" });
+    } else {
+      createToken(userData.id, res);
     }
-  );
-}
+  } catch (err) {
+    console.log(err);
+    res.render("login", { message: "An error has occurred. Please try again" });
+  }
+};
 
-async function searchFilm(name) {
+const searchFilm = async (name) => {
   const url = `https://www.omdbapi.com/?t=${encodeURIComponent(name)}&apikey=${
     process.env.OMDBKEY
   }`;
   try {
     const response = await fetch(url);
-    const data = await response.json(); //.json è una promise perciò c'è bisogno di await
-    return data;
+    return response.json(); //.json è una promise perciò c'è bisogno di await
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-const renderFilms = (genre, res) => {
+const renderFilms = async (genre, res) => {
   if (!genre) {
     genre = "Action";
   }
-  db.query(`SELECT DISTINCT title FROM ${genre};`, async (error, result) => {
+  try {
+    const listOfTitles = await dbQuery(`SELECT DISTINCT title FROM ${genre};`);
     let listOfFilms = [];
     let count = 0;
-    result.forEach(async (film) => {
-      try {
-        const data = await searchFilm(film.title);
-        const { Title, Plot, imdbRating, imdbVotes, Genre, Poster } = data;
-        db.query(
-          `SELECT * FROM ${genre} WHERE title = '${Title}'`,
-          (error, usersVotes) => {
-            const Appreciation = Math.floor(
-              (usersVotes.reduce((sum, current) => sum + current.liked, 0) *
-                100) /
-                usersVotes.length
-            );
-            listOfFilms.push({
-              Title,
-              Plot,
-              Rating: imdbRating,
-              Votes: imdbVotes,
-              Appreciation,
-              Genre,
-              Poster,
-            });
-            count++;
-            if (count === result.length) {
-              //utlizzo count poichè il foreach non so come metterlo asincrono e perciò se avessi
-              listOfFilms.sort((a, b) => b.Rating - a.Rating); //film ordinati per voto decrescente
-              res.render("index", {
-                genre,
-                listOfFilms,
-                listOfGenres,
-              });
-            }
-          }
-        );
-      } catch (err) {
-        console.log(err);
+    listOfTitles.forEach(async (film) => {
+      const data = await searchFilm(film.title);
+      const { Title, Plot, imdbRating, imdbVotes, Genre, Poster } = data;
+      const usersVotes = await dbQuery(
+        `SELECT * FROM ${genre} WHERE title = '${Title}'`
+      );
+      const Appreciation = Math.floor(
+        (usersVotes.reduce((sum, current) => sum + current.liked, 0) * 100) /
+          usersVotes.length
+      );
+      listOfFilms.push({
+        Title,
+        Plot,
+        Rating: imdbRating,
+        Votes: imdbVotes,
+        Appreciation,
+        Genre,
+        Poster,
+      });
+      count++;
+      if (count === listOfTitles.length) {
+        //utlizzo count poichè il foreach non so come metterlo asincrono e perciò se avessi
+        listOfFilms.sort((a, b) => b.Rating - a.Rating); //film ordinati per voto decrescente
+        res.render("index", {
+          genre,
+          listOfFilms,
+          listOfGenres,
+        });
       }
     });
-  });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const voteFilm = async (title, vote, userID, res) => {
+const voteFilm = async (title, vote, userIDreq, res) => {
   try {
     const data = await searchFilm(title);
     const genres = data.Genre.split(", ").filter(
       (genre) => !genre.includes("-")
     );
-    genres.forEach((genre) => {
-      db.query(
-        `SELECT userID FROM ${genre} WHERE title = '${title}' AND userID = '${userID}'`,
-        (error, result) => {
-          if (error) {
-            res.status(400);
-          } else {
-            if (result.length < 1) {
-              db.query(
-                `INSERT INTO ${genre} VALUES('${title}', '${vote}', '${userID}')`
-              );
-            } else {
-              db.query(
-                `UPDATE ${genre} SET liked = '${vote}' WHERE title = '${title}' AND userID = '${userID}'`
-              );
-            }
-          }
-        }
+    genres.forEach(async (genre) => {
+      const userID = await dbQuery(
+        `SELECT userID FROM ${genre} WHERE title = '${title}' AND userID = '${userIDreq}'`
       );
+
+      if (userID.length < 1) {
+        db.query(
+          `INSERT INTO ${genre} VALUES('${title}', '${vote}', '${userIDreq}')`
+        );
+      } else {
+        db.query(
+          `UPDATE ${genre} SET liked = '${vote}' WHERE title = '${title}' AND userID = '${userIDreq}'`
+        );
+      }
     });
     res.send({ vote: true });
+  } catch (err) {
+    console.log("ehi c'è un errore ocio vez");
+  }
+};
+
+const favoriteFilms = async (userID, res) => {
+  //prende tutti i film votati piaciuti all'utente e li renderizza --> pesante ma evito altre chiamate
+  let userFilms = [];
+  let userGenres = listOfGenres; //copio la lista dei generi globale in modo da poterla modificare in base all'utente
+  let filterUserGenres = listOfGenres;
+  userGenres = userGenres.map(
+    //la lista dei generi dell'utente diventa una di promise
+    (genre) =>
+      dbQuery(
+        `SELECT title FROM ${genre} WHERE userID = ${userID} AND liked = 1;`
+      )
+  );
+  try {
+    const results = await Promise.all(userGenres); //attraverso Promise.all creo un'unica promise partendo dalla lista di esse
+    console.log(userGenres);
+
+    for (let result of results) {
+      //scorro i risultati delle varie promise
+      if (result.length !== 0) {
+        //se sono presenti 1 o + film votati dall'utente in quel genere allora li scorre
+        result = result.map(({ title }) => searchFilm(title)); //la lista dei risultati diventa una di promise (searchFilm è una promise avendo async)
+        const allData = await Promise.all(result); //stesso procedimento di results
+        for (let data of allData) {
+          if (!userFilms.some((e) => e.Title === data.Title)) {
+            //se nella lista dei film dell'utente non è presente quello appena cercato lo aggiunge
+            //questo viene fatto per evitare che film con più generi vengano aggiunti più volte
+            const { Title, imdbRating, Poster, Genre } = data;
+            userFilms.push({ Title, imdbRating, Poster, Genre });
+          }
+        }
+      } else {
+        const emptyGenre = listOfGenres[results.indexOf(result)];
+        filterUserGenres = filterUserGenres.filter(
+          (userGenre) => userGenre !== emptyGenre
+        );
+      }
+    }
+    res.render("user", {
+      userFilms,
+      userGenres: filterUserGenres,
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
-function favoriteFilms(userID, res) {
-  //questa funzione e render films potrebbero diventare una singola
-  //prende tutti i film votati piaciuti all'utente e li renderizza --> pesante ma evito altre chiamate
-  let userFilms = [];
-  let userGenres = listOfGenres;
-
-  userGenres.forEach((genre) => {
-    db.query(
-      `SELECT title FROM ${genre} WHERE userID = ${userID} AND liked = 1;`,
-      async (error, result) => {
-        if (result.length !== 0) {
-          result.forEach(async ({ title }) => {
-            try {
-              const data = await searchFilm(title);
-              if (!userFilms.some((e) => e.Title === data.Title)) {
-                const { Title, imdbRating, Poster, Genre } = data;
-                userFilms.push({ Title, imdbRating, Poster, Genre });
-              }
-              if (
-                genre == userGenres[userGenres.length - 1] &&
-                title == result[result.length - 1].title
-              ) {
-                res.render("user", {
-                  userFilms,
-                  userGenres,
-                });
-              }
-            } catch (err) {
-              console.log(err);
-            }
-          });
-        } else {
-          userGenres = userGenres.filter((userGenre) => userGenre !== genre);
-          if (genre === listOfGenres[listOfGenres.length - 1]) {
-            res.render("user", {
-              userFilms,
-              userGenres,
-            });
-          }
-        }
-      }
+const renderUser = async ({ username }, res) => {
+  try {
+    const result = await dbQuery(
+      `SELECT id FROM users WHERE username = '${username}'`
     );
-  });
-}
+    if (result.length === 1) {
+      const id = result[0].id;
+      favoriteFilms(id, res);
+    } else {
+      throw new Error("id not found");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 //----------------------------------------------------------------------------------------------------
 
-db.query("SHOW TABLES", (error, result) => {
-  result.forEach((genre) =>
+(async () => {
+  const tables = await dbQuery("SHOW TABLES");
+  tables.forEach((genre) =>
     listOfGenres.push(genre.Tables_in_bassadefinizione)
   );
   listOfGenres.pop();
   console.log("CREATA LA LISTA DEI GENERI");
-});
+})();
+
+//----------------------------------------------------------------------------------------------------
 
 app.get("", (req, res) => {
   renderFilms(req.query.genre, res);
@@ -281,19 +306,7 @@ app.get("/user/:username", (req, res) => {
 });
 
 app.post("/user/:username", (req, res) => {
-  const username = req.params.username;
-
-  db.query(
-    `SELECT id FROM users WHERE username = '${username}'`,
-    (error, result) => {
-      if (result.length === 1) {
-        const id = result[0].id;
-        favoriteFilms(id, res);
-      } else {
-        res.end();
-      }
-    }
-  );
+  renderUser(req.params, res);
 });
 
 app.get("/search", async (req, res) => {
@@ -329,12 +342,17 @@ app.post("/registration", (req, res) => {
   userRegistration(req.body, res);
 });
 
-app.post("/token", verifyToken, (req, res) => {
+app.post("/token", verifyToken, async (req, res) => {
   if (req.id !== undefined) {
-    db.query(`SELECT * FROM users WHERE id = '${req.id}'`, (error, result) => {
-      let userData = result[0];
+    try {
+      const result = await dbQuery(
+        `SELECT * FROM users WHERE id = '${req.id}'`
+      );
+      const userData = result[0];
       res.send({ username: userData.username, id: userData.id });
-    });
+    } catch {
+      res.send({ username: undefined });
+    }
   } else {
     res.send({ username: undefined });
   }

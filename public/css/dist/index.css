@@ -92,7 +92,6 @@ html[data-theme=dark] header #searchFilm {
 }
 html[data-theme=dark] header #searchFilm input[type=text] {
   background-color: #121212;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -195,7 +194,6 @@ html[data-theme=light] header #searchFilm {
 }
 html[data-theme=light] header #searchFilm input[type=text] {
   background-color: #68beff;
-  text-transform: uppercase;
   width: 100%;
   border-radius: 5px;
   outline: none;
@@ -278,6 +276,9 @@ html[data-theme=light] footer ul a:active {
 }
 html[data-theme=light] footer ul a:hover {
   color: white;
+}
+html[data-theme=light] footer .footer-copyright i {
+  color: red;
 }
 
 html[data-theme=dark] h1 {
@@ -615,7 +616,6 @@ html[data-theme=dark] article#articleFilms .card ::-webkit-scrollbar-thumb {
 html[data-theme=dark] article#articleFilms .card img {
   height: 300px;
   width: 200px;
-  opacity: 40%;
   transition: 0.5s;
 }
 html[data-theme=dark] article#articleFilms .card .card-body .card-title {
@@ -657,12 +657,8 @@ html[data-theme=dark] article#articleFilms .card .btn:active {
   box-shadow: none;
 }
 html[data-theme=dark] article#articleFilms .card:hover {
-  position: relative;
-  bottom: 15px;
+  transform: scale(0.93);
   box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-}
-html[data-theme=dark] article#articleFilms .card:hover img {
-  opacity: 100%;
 }
 
 html[data-theme=light] h1 {
@@ -998,7 +994,6 @@ html[data-theme=light] article#articleFilms .card ::-webkit-scrollbar-thumb {
 html[data-theme=light] article#articleFilms .card img {
   height: 300px;
   width: 200px;
-  opacity: 80%;
   transition: 0.5s;
 }
 html[data-theme=light] article#articleFilms .card .card-body .card-title {
@@ -1040,12 +1035,8 @@ html[data-theme=light] article#articleFilms .card .btn:active {
   box-shadow: none;
 }
 html[data-theme=light] article#articleFilms .card:hover {
-  position: relative;
-  bottom: 15px;
+  transform: scale(0.93);
   box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-}
-html[data-theme=light] article#articleFilms .card:hover img {
-  opacity: 100%;
 }
 
 @media only screen and (max-width: 1600px) {
