@@ -129,7 +129,6 @@ To have a global IP address instead, you need to:
 ## Future upgrades
 
 - [ ] Change the password
-- [ ] Log in with multiple accounts at the same time
 - [ ] Write a review of a movie
 - [ ] View the reviews of other users for a movie
 - [ ] Recover a forgotten password
