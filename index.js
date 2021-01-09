@@ -94,35 +94,6 @@ function createToken(id, res) {
   renderFilms(null, res);
 }
 
-const userRegistration = async ({ username, mail, password }, res) => {
-  try {
-    const resultMail = await dbQuery(
-      `SELECT mail FROM users WHERE mail = '${mail}'`
-    );
-    if (resultMail.length < 1) {
-      const hashedPassword = await bcrypt.hash(password, 4); //number of times the password is hashed
-      dbQuery(
-        `INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`
-      );
-      res.render("registration", {
-        message: "Account created successfully",
-        class: "alert-success",
-      });
-    } else {
-      res.render("registration", {
-        message: "This mail is already in use, try another one",
-        class: "alert-danger",
-      });
-    }
-  } catch (err) {
-    console.log(err);
-    res.render("registration", {
-      message: "An error has occurred. Please try again",
-      class: "alert-danger",
-    });
-  }
-};
-
 const loginUser = async ({ username, password }, res) => {
   try {
     const users = await dbQuery(
@@ -137,6 +108,32 @@ const loginUser = async ({ username, password }, res) => {
   } catch (err) {
     console.log(err);
     res.render("login", { message: "An error has occurred. Please try again" });
+  }
+};
+
+const userRegistration = async ({ username, mail, password }, res) => {
+  try {
+    const resultMail = await dbQuery(
+      `SELECT mail FROM users WHERE mail = '${mail}'`
+    );
+    if (resultMail.length < 1) {
+      const hashedPassword = await bcrypt.hash(password, 4); //number of times the password is hashed
+      dbQuery(
+        `INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`
+      );
+      loginUser({ username, password }, res);
+    } else {
+      res.render("registration", {
+        message: "This mail is already in use, try another one",
+        class: "alert-danger",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.render("registration", {
+      message: "An error has occurred. Please try again",
+      class: "alert-danger",
+    });
   }
 };
 
@@ -236,7 +233,6 @@ const favoriteFilms = async (userID, res) => {
   );
   try {
     const results = await Promise.all(userGenres); //attraverso Promise.all creo un'unica promise partendo dalla lista di esse
-    console.log(userGenres);
 
     for (let result of results) {
       //scorro i risultati delle varie promise

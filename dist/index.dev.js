@@ -108,37 +108,99 @@ function createToken(id, res) {
   renderFilms(null, res);
 }
 
-var userRegistration = function userRegistration(_ref, res) {
-  var username, mail, password, resultMail, hashedPassword;
-  return regeneratorRuntime.async(function userRegistration$(_context) {
+var loginUser = function loginUser(_ref, res) {
+  var username, password, users;
+  return regeneratorRuntime.async(function loginUser$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          username = _ref.username, mail = _ref.mail, password = _ref.password;
+          username = _ref.username, password = _ref.password;
           _context.prev = 1;
           _context.next = 4;
-          return regeneratorRuntime.awrap(dbQuery("SELECT mail FROM users WHERE mail = '".concat(mail, "'")));
+          return regeneratorRuntime.awrap(dbQuery("SELECT * FROM users WHERE username = '".concat(username, "'")));
 
         case 4:
-          resultMail = _context.sent;
+          users = _context.sent;
+          userData = users[0];
+          _context.t0 = !userData;
 
-          if (!(resultMail.length < 1)) {
-            _context.next = 13;
+          if (_context.t0) {
+            _context.next = 11;
             break;
           }
 
-          _context.next = 8;
+          _context.next = 10;
+          return regeneratorRuntime.awrap(bcrypt.compare(password, userData.password));
+
+        case 10:
+          _context.t0 = !_context.sent;
+
+        case 11:
+          if (!_context.t0) {
+            _context.next = 15;
+            break;
+          }
+
+          res.render("login", {
+            message: "Incorrect username or password"
+          });
+          _context.next = 16;
+          break;
+
+        case 15:
+          createToken(userData.id, res);
+
+        case 16:
+          _context.next = 22;
+          break;
+
+        case 18:
+          _context.prev = 18;
+          _context.t1 = _context["catch"](1);
+          console.log(_context.t1);
+          res.render("login", {
+            message: "An error has occurred. Please try again"
+          });
+
+        case 22:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, [[1, 18]]);
+};
+
+var userRegistration = function userRegistration(_ref2, res) {
+  var username, mail, password, resultMail, hashedPassword;
+  return regeneratorRuntime.async(function userRegistration$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          username = _ref2.username, mail = _ref2.mail, password = _ref2.password;
+          _context2.prev = 1;
+          _context2.next = 4;
+          return regeneratorRuntime.awrap(dbQuery("SELECT mail FROM users WHERE mail = '".concat(mail, "'")));
+
+        case 4:
+          resultMail = _context2.sent;
+
+          if (!(resultMail.length < 1)) {
+            _context2.next = 13;
+            break;
+          }
+
+          _context2.next = 8;
           return regeneratorRuntime.awrap(bcrypt.hash(password, 4));
 
         case 8:
-          hashedPassword = _context.sent;
+          hashedPassword = _context2.sent;
           //number of times the password is hashed
           dbQuery("INSERT INTO users(username, password, mail) VALUES('".concat(username, "', '").concat(hashedPassword, "', '").concat(mail, "')"));
-          res.render("registration", {
-            message: "Account created successfully",
-            "class": "alert-success"
-          });
-          _context.next = 14;
+          loginUser({
+            username: username,
+            password: password
+          }, res);
+          _context2.next = 14;
           break;
 
         case 13:
@@ -148,13 +210,13 @@ var userRegistration = function userRegistration(_ref, res) {
           });
 
         case 14:
-          _context.next = 20;
+          _context2.next = 20;
           break;
 
         case 16:
-          _context.prev = 16;
-          _context.t0 = _context["catch"](1);
-          console.log(_context.t0);
+          _context2.prev = 16;
+          _context2.t0 = _context2["catch"](1);
+          console.log(_context2.t0);
           res.render("registration", {
             message: "An error has occurred. Please try again",
             "class": "alert-danger"
@@ -162,72 +224,10 @@ var userRegistration = function userRegistration(_ref, res) {
 
         case 20:
         case "end":
-          return _context.stop();
-      }
-    }
-  }, null, null, [[1, 16]]);
-};
-
-var loginUser = function loginUser(_ref2, res) {
-  var username, password, users;
-  return regeneratorRuntime.async(function loginUser$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          username = _ref2.username, password = _ref2.password;
-          _context2.prev = 1;
-          _context2.next = 4;
-          return regeneratorRuntime.awrap(dbQuery("SELECT * FROM users WHERE username = '".concat(username, "'")));
-
-        case 4:
-          users = _context2.sent;
-          userData = users[0];
-          _context2.t0 = !userData;
-
-          if (_context2.t0) {
-            _context2.next = 11;
-            break;
-          }
-
-          _context2.next = 10;
-          return regeneratorRuntime.awrap(bcrypt.compare(password, userData.password));
-
-        case 10:
-          _context2.t0 = !_context2.sent;
-
-        case 11:
-          if (!_context2.t0) {
-            _context2.next = 15;
-            break;
-          }
-
-          res.render("login", {
-            message: "Incorrect username or password"
-          });
-          _context2.next = 16;
-          break;
-
-        case 15:
-          createToken(userData.id, res);
-
-        case 16:
-          _context2.next = 22;
-          break;
-
-        case 18:
-          _context2.prev = 18;
-          _context2.t1 = _context2["catch"](1);
-          console.log(_context2.t1);
-          res.render("login", {
-            message: "An error has occurred. Please try again"
-          });
-
-        case 22:
-        case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[1, 18]]);
+  }, null, null, [[1, 16]]);
 };
 
 var searchFilm = function searchFilm(name) {
@@ -425,23 +425,22 @@ var favoriteFilms = function favoriteFilms(userID, res) {
         case 7:
           results = _context8.sent;
           //attraverso Promise.all creo un'unica promise partendo dalla lista di esse
-          console.log(userGenres);
           _iteratorNormalCompletion = true;
           _didIteratorError = false;
           _iteratorError = undefined;
-          _context8.prev = 12;
+          _context8.prev = 11;
           _iterator = results[Symbol.iterator]();
 
-        case 14:
+        case 13:
           if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-            _context8.next = 47;
+            _context8.next = 46;
             break;
           }
 
           result = _step.value;
 
           if (!(result.length !== 0)) {
-            _context8.next = 43;
+            _context8.next = 42;
             break;
           }
 
@@ -451,16 +450,16 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             return searchFilm(title);
           }); //la lista dei risultati diventa una di promise (searchFilm è una promise avendo async)
 
-          _context8.next = 20;
+          _context8.next = 19;
           return regeneratorRuntime.awrap(Promise.all(result));
 
-        case 20:
+        case 19:
           allData = _context8.sent;
           //stesso procedimento di results
           _iteratorNormalCompletion2 = true;
           _didIteratorError2 = false;
           _iteratorError2 = undefined;
-          _context8.prev = 24;
+          _context8.prev = 23;
 
           _loop = function _loop() {
             var data = _step2.value;
@@ -487,44 +486,44 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             _loop();
           }
 
-          _context8.next = 33;
+          _context8.next = 32;
           break;
 
-        case 29:
-          _context8.prev = 29;
-          _context8.t0 = _context8["catch"](24);
+        case 28:
+          _context8.prev = 28;
+          _context8.t0 = _context8["catch"](23);
           _didIteratorError2 = true;
           _iteratorError2 = _context8.t0;
 
-        case 33:
+        case 32:
+          _context8.prev = 32;
           _context8.prev = 33;
-          _context8.prev = 34;
 
           if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
             _iterator2["return"]();
           }
 
-        case 36:
-          _context8.prev = 36;
+        case 35:
+          _context8.prev = 35;
 
           if (!_didIteratorError2) {
-            _context8.next = 39;
+            _context8.next = 38;
             break;
           }
 
           throw _iteratorError2;
 
+        case 38:
+          return _context8.finish(35);
+
         case 39:
-          return _context8.finish(36);
+          return _context8.finish(32);
 
         case 40:
-          return _context8.finish(33);
-
-        case 41:
-          _context8.next = 44;
+          _context8.next = 43;
           break;
 
-        case 43:
+        case 42:
           (function () {
             var emptyGenre = listOfGenres[results.indexOf(result)];
             filterUserGenres = filterUserGenres.filter(function (userGenre) {
@@ -532,64 +531,64 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             });
           })();
 
-        case 44:
+        case 43:
           _iteratorNormalCompletion = true;
-          _context8.next = 14;
+          _context8.next = 13;
           break;
 
-        case 47:
-          _context8.next = 53;
+        case 46:
+          _context8.next = 52;
           break;
 
-        case 49:
-          _context8.prev = 49;
-          _context8.t1 = _context8["catch"](12);
+        case 48:
+          _context8.prev = 48;
+          _context8.t1 = _context8["catch"](11);
           _didIteratorError = true;
           _iteratorError = _context8.t1;
 
-        case 53:
+        case 52:
+          _context8.prev = 52;
           _context8.prev = 53;
-          _context8.prev = 54;
 
           if (!_iteratorNormalCompletion && _iterator["return"] != null) {
             _iterator["return"]();
           }
 
-        case 56:
-          _context8.prev = 56;
+        case 55:
+          _context8.prev = 55;
 
           if (!_didIteratorError) {
-            _context8.next = 59;
+            _context8.next = 58;
             break;
           }
 
           throw _iteratorError;
 
+        case 58:
+          return _context8.finish(55);
+
         case 59:
-          return _context8.finish(56);
+          return _context8.finish(52);
 
         case 60:
-          return _context8.finish(53);
-
-        case 61:
           res.render("user", {
             userFilms: userFilms,
             userGenres: filterUserGenres
           });
-          _context8.next = 67;
+          _context8.next = 66;
           break;
 
-        case 64:
-          _context8.prev = 64;
+        case 63:
+          _context8.prev = 63;
           _context8.t2 = _context8["catch"](4);
           console.log(_context8.t2);
 
-        case 67:
+        case 66:
         case "end":
           return _context8.stop();
       }
     }
-  }, null, null, [[4, 64], [12, 49, 53, 61], [24, 29, 33, 41], [34,, 36, 40], [54,, 56, 60]]);
+  }, null, null, [[4, 63], [11, 48, 52, 60], [23, 28, 32, 40], [33,, 35, 39], [53,, 55, 59]]);
 };
 
 var renderUser = function renderUser(_ref4, res) {

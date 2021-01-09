@@ -38,12 +38,12 @@ getStorage = function getStorage() {
     if (localStorage.getItem("mode") === "light") {
       html.setAttribute("data-theme", "light");
       logo.setAttribute("src", "/img/lgLogo.jpg");
-      modeButton.innerHTML = "<i class='far fa-sun' id='modeButton'></i> LIGHT MODE";
+      modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
       currentMode = "light";
     } else {
       html.setAttribute("data-theme", "dark");
       logo.setAttribute("src", "/img/dkLogo.jpg");
-      modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
+      modeButton.innerHTML = "<i class='far fa-sun' id='modeButton'></i> LIGHT MODE";
       currentMode = "dark";
     }
   } else {
@@ -90,22 +90,22 @@ modeButton.addEventListener("mouseover", function () {
 });
 modeButton.addEventListener("mouseout", function () {
   if (currentMode === "dark") {
-    modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
-  } else {
     modeButton.innerHTML = "<i class='far fa-sun' id='modeButton'></i> LIGHT MODE";
+  } else {
+    modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
   }
 });
 modeButton.addEventListener("click", function () {
   if (currentMode === "dark") {
     html.setAttribute("data-theme", "light");
     logo.setAttribute("src", "/img/lgLogo.jpg");
-    modeButton.innerHTML = "<i class='far fa-sun' id='modeButton'></i> LIGHT MODE";
+    modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
     currentMode = "light";
     localStorage.setItem("mode", "light");
   } else {
     html.setAttribute("data-theme", "dark");
     logo.setAttribute("src", "/img/dkLogo.jpg");
-    modeButton.innerHTML = "<i class='far fa-moon' id='modeButton'></i> DARK MODE";
+    modeButton.innerHTML = "<i class='far fa-sun' id='modeButton'></i> LIGHT MODE";
     currentMode = "dark";
     localStorage.setItem("mode", "dark");
   }
