@@ -7,9 +7,9 @@
 Through BassaDefinizione the user can:
 
 - Look for a movie
-- Vote 1 to 10 a movie
+- Like or dislike a movie
 - Register and log
-- Observe the average user rating of a specific film
+- Observe the user appreciation of a specific film
 - Display in descending order of the evaluation rated films
 - Change theme from light to dark and vice versa
 
@@ -129,8 +129,7 @@ To have a global IP address instead, you need to:
 ## Future upgrades
 
 - [ ] Change the password
-- [ ] Write a review of a movie
-- [ ] View the reviews of other users for a movie
+- [ ] Advanced movie search
 - [ ] Recover a forgotten password
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TheGodMorel/BassaDefinizione)
