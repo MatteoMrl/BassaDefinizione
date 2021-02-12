@@ -26,15 +26,6 @@ Any information on any film is obtained from [OMDb API](http://www.omdbapi.com/)
 - [JWT](https://www.npmjs.com/package/jsonwebtoken)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
-### Database
-
-Divided into two tables:
-
-1. Encrypted login information and ID of each user
-2. List of films voted with relative vote and ID of the user who voted it
-
-The database is managed with MYSQL connected to RDS
-
 ## Installation
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/TheGodMorel/BassaDefinizione)
@@ -61,12 +52,9 @@ To allow the creation and connection to the database is necessary:
    - The name must be the same
    - Enter the RDS database endpoint as the local database Hostname
    - Leave as port 3306
-4. In the local database, create two tables called <i>films</i> and <i>users</i>
-   - Divide the first into 3 columns: <i>title</i> (string), <i>rating</i> (string) and <i>userID</i> (int)
-   - Divide the second into 4 columns: <i>id</i> (int auto_increment), <i>username</i> (string), <i>password</i> (string) and <i>mail</i> (string)
-5. Now that the database is ready, proceed to create cloned folder in another folder called <i>private</i> inside which the file will go <i>.env</i>
+4. Now that the database is ready, proceed to create cloned folder in another folder called <i>private</i> inside which the file will go <i>.env</i>
    <br><img src="imgReadme/Cattura.PNG"/>
-6. In this file insert:
+5. In this file insert:
    - **OMDBKEY**: unique key to access the OMDB API
    - **DB_HOST**: endpoint of the RDS database
    - **DB_USER**: name used in the database
