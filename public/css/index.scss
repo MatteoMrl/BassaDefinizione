@@ -256,7 +256,7 @@ html[data-theme="dark"] {
       position: relative;
       border-radius: 10px;
       background: linear-gradient(to right, $orangeOp, $lightBlue);
-      box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
+      //box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
     }
   }
 
@@ -518,7 +518,7 @@ html[data-theme="light"] {
     position: relative;
     border-radius: 10px;
     background: linear-gradient(to right, $orangeOp, $lightBlue);
-    box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
+    //box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
   }
 
   article#articleGenres {

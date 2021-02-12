@@ -1,93 +1,93 @@
-"use strict";
-const usernameInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const button = document.querySelector("button");
-const html = document.querySelector("html");
-const logo = document.querySelector("#imgLogo");
-let validUsername = false;
-let validPassword = false;
-button.disabled = true;
+'use strict'
+const usernameInput = document.querySelector('#username')
+const passwordInput = document.querySelector('#password')
+const button = document.querySelector('button')
+const html = document.querySelector('html')
+const logo = document.querySelector('#imgLogo')
+let validUsername = false
+let validPassword = false
+button.disabled = true
 
-if (localStorage.getItem("mode")) {
-  if (localStorage.getItem("mode") === "light") {
-    html.setAttribute("data-theme", "light");
-    logo.setAttribute("src", "/img/lgLogo.jpg");
+if (localStorage.getItem('mode')) {
+  if (localStorage.getItem('mode') === 'light') {
+    html.setAttribute('data-theme', 'light')
+    logo.setAttribute('src', '/img/lgLogo.jpg')
   } else {
-    html.setAttribute("data-theme", "dark");
-    logo.setAttribute("src", "/img/dkLogo.jpg");
+    html.setAttribute('data-theme', 'dark')
+    logo.setAttribute('src', '/img/dkLogo.jpg')
   }
 } else {
-  localStorage.setItem("mode", "dark");
+  localStorage.setItem('mode', 'dark')
 }
 
 function checkUsername() {
-  const regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+  const regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
   if (usernameInput.value.match(regex)) {
-    validUsername = true;
-    usernameInput.classList.remove("invalid");
-    usernameInput.classList.add("valid");
+    validUsername = true
+    usernameInput.classList.remove('invalid')
+    usernameInput.classList.add('valid')
   } else {
-    validUsername = false;
-    usernameInput.classList.remove("valid");
-    usernameInput.classList.add("invalid");
+    validUsername = false
+    usernameInput.classList.remove('valid')
+    usernameInput.classList.add('invalid')
   }
 }
 
 function checkPassword() {
-  const regex = /^[A-Za-z]\w{5,13}$/;
+  const regex = /^[A-Za-z]\w{5,13}$/
   if (passwordInput.value.match(regex)) {
-    validPassword = true;
-    passwordInput.classList.remove("invalid");
-    passwordInput.classList.add("valid");
+    validPassword = true
+    passwordInput.classList.remove('invalid')
+    passwordInput.classList.add('valid')
   } else {
-    validPassword = false;
-    passwordInput.classList.remove("valid");
-    passwordInput.classList.add("invalid");
+    validPassword = false
+    passwordInput.classList.remove('valid')
+    passwordInput.classList.add('invalid')
   }
 }
 
 function validButton() {
   if (validUsername === true && validPassword === true) {
-    button.disabled = false;
-    button.style.backgroundColor = "white";
+    button.disabled = false
+    button.style.backgroundColor = 'white'
   } else {
-    button.disabled = true;
-    button.style.backgroundColor = "red";
+    button.disabled = true
+    button.style.backgroundColor = 'red'
   }
 }
 
-usernameInput.addEventListener("keydown", () => {
-  checkUsername();
-  validButton();
-});
-usernameInput.addEventListener("change", () => {
-  checkUsername();
-  validButton();
-});
+usernameInput.addEventListener('keydown', () => {
+  checkUsername()
+  validButton()
+})
+usernameInput.addEventListener('change', () => {
+  checkUsername()
+  validButton()
+})
 
-passwordInput.addEventListener("keydown", () => {
-  checkPassword();
-  validButton();
-});
-passwordInput.addEventListener("change", () => {
-  checkPassword(passwordInput.value);
-  validButton();
-});
+passwordInput.addEventListener('keydown', () => {
+  checkPassword()
+  validButton()
+})
+passwordInput.addEventListener('change', () => {
+  checkPassword(passwordInput.value)
+  validButton()
+})
 
-button.addEventListener("mouseover", () => {
-  button.style.backgroundColor = "green";
-});
-button.addEventListener("mouseout", () => {
-  button.style.backgroundColor = "white";
-});
-button.addEventListener("click", () => {
-  fetch("/login", {
+button.addEventListener('mouseover', () => {
+  button.style.backgroundColor = 'green'
+})
+button.addEventListener('mouseout', () => {
+  button.style.backgroundColor = 'white'
+})
+button.addEventListener('click', () => {
+  fetch('/login', {
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer " + token,
+      Accept: 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token
     },
-    method: "POST",
-    body: `username=${usernameInput.value}&password=${passwordInput.value}`,
-  });
-});
+    method: 'POST',
+    body: `username=${usernameInput.value}&password=${passwordInput.value}`
+  })
+})

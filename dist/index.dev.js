@@ -57,7 +57,7 @@ var dbQuery = function dbQuery(queryString) {
   return new Promise(function (resolve) {
     db.query(queryString, function (error, result) {
       if (error) {
-        throw new Error("There's an error");
+        throw error;
       } else {
         resolve(result);
       }
@@ -270,7 +270,7 @@ var renderFilms = function renderFilms(genre, res) {
 
           _context5.prev = 1;
           _context5.next = 4;
-          return regeneratorRuntime.awrap(dbQuery("SELECT DISTINCT title FROM ".concat(genre, ";")));
+          return regeneratorRuntime.awrap(dbQuery("SELECT DISTINCT films.title\n      FROM films\n      INNER JOIN genreFilm ON films.title=genreFilm.title\n      WHERE genreFilm.genre = '".concat(genre, "'")));
 
         case 4:
           listOfTitles = _context5.sent;
@@ -289,7 +289,7 @@ var renderFilms = function renderFilms(genre, res) {
                     data = _context4.sent;
                     Title = data.Title, Plot = data.Plot, imdbRating = data.imdbRating, imdbVotes = data.imdbVotes, Genre = data.Genre, Poster = data.Poster;
                     _context4.next = 6;
-                    return regeneratorRuntime.awrap(dbQuery("SELECT * FROM ".concat(genre, " WHERE title = '").concat(Title, "'")));
+                    return regeneratorRuntime.awrap(dbQuery("SELECT liked FROM votes WHERE title = '".concat(Title, "'")));
 
                   case 6:
                     usersVotes = _context4.sent;
@@ -344,7 +344,7 @@ var renderFilms = function renderFilms(genre, res) {
 };
 
 var voteFilm = function voteFilm(title, vote, userIDreq, res) {
-  var data, genres;
+  var data, genres, userID, firstVote;
   return regeneratorRuntime.async(function voteFilm$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
@@ -355,51 +355,76 @@ var voteFilm = function voteFilm(title, vote, userIDreq, res) {
 
         case 3:
           data = _context7.sent;
+          //prendo i dati del film
           genres = data.Genre.split(", ").filter(function (genre) {
             return !genre.includes("-");
-          });
-          genres.forEach(function _callee2(genre) {
-            var userID;
-            return regeneratorRuntime.async(function _callee2$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    _context6.next = 2;
-                    return regeneratorRuntime.awrap(dbQuery("SELECT userID FROM ".concat(genre, " WHERE title = '").concat(title, "' AND userID = '").concat(userIDreq, "'")));
+          } //creo una lista dei generi del film, escludendo quelli che hanno al loro interno "-" (sci-fi)
+          );
+          _context7.next = 7;
+          return regeneratorRuntime.awrap(dbQuery("SELECT userID FROM films WHERE title = '".concat(title, "' AND userID = '").concat(userIDreq, "'") //controllo se l'utente ha già votato quel film
+          ));
 
-                  case 2:
-                    userID = _context6.sent;
+        case 7:
+          userID = _context7.sent;
 
-                    if (userID.length < 1) {
-                      db.query("INSERT INTO ".concat(genre, " VALUES('").concat(title, "', '").concat(vote, "', '").concat(userIDreq, "')"));
-                    } else {
-                      db.query("UPDATE ".concat(genre, " SET liked = '").concat(vote, "' WHERE title = '").concat(title, "' AND userID = '").concat(userIDreq, "'"));
-                    }
+          if (!(userID.length < 1)) {
+            _context7.next = 16;
+            break;
+          }
 
-                  case 4:
-                  case "end":
-                    return _context6.stop();
+          //l'utente non ha già votato il film
+          dbQuery("INSERT INTO films VALUES('".concat(title, "', '").concat(userIDreq, "', ").concat(vote, ")")); //inserisco titolo, voto e id dell'utente nella tabella films
+
+          _context7.next = 12;
+          return regeneratorRuntime.awrap(dbQuery("SELECT title FROM genreFilm WHERE title = '".concat(title, "'") //controllo che il film non sia presente nella tabella genreFilm
+          ));
+
+        case 12:
+          firstVote = _context7.sent;
+
+          if (!firstVote.length) {
+            genres.forEach(function _callee2(genre) {
+              return regeneratorRuntime.async(function _callee2$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      //scorro i generi del film
+                      dbQuery("INSERT INTO genreFilm VALUES('".concat(title, "', '").concat(genre, "')")); //inserisci titolo e UN genere del film nella tabella genreFilm
+
+                    case 1:
+                    case "end":
+                      return _context6.stop();
+                  }
                 }
-              }
+              });
             });
-          });
+          }
+
+          _context7.next = 17;
+          break;
+
+        case 16:
+          db.query("UPDATE films SET liked = ".concat(vote, " WHERE title = '").concat(title, "' AND userID = '").concat(userIDreq, "'") //se l'utente ha già votato il film, il voto è aggiornato
+          );
+
+        case 17:
           res.send({
             vote: true
           });
-          _context7.next = 12;
+          _context7.next = 23;
           break;
 
-        case 9:
-          _context7.prev = 9;
+        case 20:
+          _context7.prev = 20;
           _context7.t0 = _context7["catch"](0);
-          console.log("ehi c'è un errore ocio vez");
+          console.log(_context7.t0);
 
-        case 12:
+        case 23:
         case "end":
           return _context7.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  }, null, null, [[0, 20]]);
 };
 
 var favoriteFilms = function favoriteFilms(userID, res) {
@@ -416,7 +441,7 @@ var favoriteFilms = function favoriteFilms(userID, res) {
           filterUserGenres = listOfGenres;
           userGenres = userGenres.map( //la lista dei generi dell'utente diventa una di promise
           function (genre) {
-            return dbQuery("SELECT title FROM ".concat(genre, " WHERE userID = ").concat(userID, " AND liked = 1;"));
+            return dbQuery("SELECT DISTINCT films.title\n        FROM films\n        INNER JOIN \tgenreFilm ON genreFilm.genre = '".concat(genre, "' AND genreFilm.title = films.title AND userID = ").concat(userID, ";"));
           });
           _context8.prev = 4;
           _context8.next = 7;
@@ -425,22 +450,23 @@ var favoriteFilms = function favoriteFilms(userID, res) {
         case 7:
           results = _context8.sent;
           //attraverso Promise.all creo un'unica promise partendo dalla lista di esse
+          console.log(results);
           _iteratorNormalCompletion = true;
           _didIteratorError = false;
           _iteratorError = undefined;
-          _context8.prev = 11;
+          _context8.prev = 12;
           _iterator = results[Symbol.iterator]();
 
-        case 13:
+        case 14:
           if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-            _context8.next = 46;
+            _context8.next = 47;
             break;
           }
 
           result = _step.value;
 
           if (!(result.length !== 0)) {
-            _context8.next = 42;
+            _context8.next = 43;
             break;
           }
 
@@ -450,16 +476,16 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             return searchFilm(title);
           }); //la lista dei risultati diventa una di promise (searchFilm è una promise avendo async)
 
-          _context8.next = 19;
+          _context8.next = 20;
           return regeneratorRuntime.awrap(Promise.all(result));
 
-        case 19:
+        case 20:
           allData = _context8.sent;
           //stesso procedimento di results
           _iteratorNormalCompletion2 = true;
           _didIteratorError2 = false;
           _iteratorError2 = undefined;
-          _context8.prev = 23;
+          _context8.prev = 24;
 
           _loop = function _loop() {
             var data = _step2.value;
@@ -486,44 +512,44 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             _loop();
           }
 
-          _context8.next = 32;
+          _context8.next = 33;
           break;
 
-        case 28:
-          _context8.prev = 28;
-          _context8.t0 = _context8["catch"](23);
+        case 29:
+          _context8.prev = 29;
+          _context8.t0 = _context8["catch"](24);
           _didIteratorError2 = true;
           _iteratorError2 = _context8.t0;
 
-        case 32:
-          _context8.prev = 32;
+        case 33:
           _context8.prev = 33;
+          _context8.prev = 34;
 
           if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
             _iterator2["return"]();
           }
 
-        case 35:
-          _context8.prev = 35;
+        case 36:
+          _context8.prev = 36;
 
           if (!_didIteratorError2) {
-            _context8.next = 38;
+            _context8.next = 39;
             break;
           }
 
           throw _iteratorError2;
 
-        case 38:
-          return _context8.finish(35);
-
         case 39:
-          return _context8.finish(32);
+          return _context8.finish(36);
 
         case 40:
-          _context8.next = 43;
+          return _context8.finish(33);
+
+        case 41:
+          _context8.next = 44;
           break;
 
-        case 42:
+        case 43:
           (function () {
             var emptyGenre = listOfGenres[results.indexOf(result)];
             filterUserGenres = filterUserGenres.filter(function (userGenre) {
@@ -531,64 +557,64 @@ var favoriteFilms = function favoriteFilms(userID, res) {
             });
           })();
 
-        case 43:
+        case 44:
           _iteratorNormalCompletion = true;
-          _context8.next = 13;
+          _context8.next = 14;
           break;
 
-        case 46:
-          _context8.next = 52;
+        case 47:
+          _context8.next = 53;
           break;
 
-        case 48:
-          _context8.prev = 48;
-          _context8.t1 = _context8["catch"](11);
+        case 49:
+          _context8.prev = 49;
+          _context8.t1 = _context8["catch"](12);
           _didIteratorError = true;
           _iteratorError = _context8.t1;
 
-        case 52:
-          _context8.prev = 52;
+        case 53:
           _context8.prev = 53;
+          _context8.prev = 54;
 
           if (!_iteratorNormalCompletion && _iterator["return"] != null) {
             _iterator["return"]();
           }
 
-        case 55:
-          _context8.prev = 55;
+        case 56:
+          _context8.prev = 56;
 
           if (!_didIteratorError) {
-            _context8.next = 58;
+            _context8.next = 59;
             break;
           }
 
           throw _iteratorError;
 
-        case 58:
-          return _context8.finish(55);
-
         case 59:
-          return _context8.finish(52);
+          return _context8.finish(56);
 
         case 60:
+          return _context8.finish(53);
+
+        case 61:
           res.render("user", {
             userFilms: userFilms,
             userGenres: filterUserGenres
           });
-          _context8.next = 66;
+          _context8.next = 67;
           break;
 
-        case 63:
-          _context8.prev = 63;
+        case 64:
+          _context8.prev = 64;
           _context8.t2 = _context8["catch"](4);
           console.log(_context8.t2);
 
-        case 66:
+        case 67:
         case "end":
           return _context8.stop();
       }
     }
-  }, null, null, [[4, 63], [11, 48, 52, 60], [23, 28, 32, 40], [33,, 35, 39], [53,, 55, 59]]);
+  }, null, null, [[4, 64], [12, 49, 53, 61], [24, 29, 33, 41], [34,, 36, 40], [54,, 56, 60]]);
 };
 
 var renderUser = function renderUser(_ref4, res) {
@@ -637,29 +663,26 @@ var renderUser = function renderUser(_ref4, res) {
 
 
 (function _callee3() {
-  var tables;
   return regeneratorRuntime.async(function _callee3$(_context10) {
     while (1) {
       switch (_context10.prev = _context10.next) {
         case 0:
           _context10.next = 2;
-          return regeneratorRuntime.awrap(dbQuery("SHOW TABLES"));
+          return regeneratorRuntime.awrap(dbQuery("SELECT name FROM genres"));
 
         case 2:
-          tables = _context10.sent;
-          tables.forEach(function (genre) {
-            return listOfGenres.push(genre.Tables_in_bassadefinizione);
+          listOfGenres = _context10.sent;
+          listOfGenres = listOfGenres.map(function (genre) {
+            return genre.name;
           });
-          listOfGenres.pop();
-          console.log("CREATA LA LISTA DEI GENERI");
 
-        case 6:
+        case 4:
         case "end":
           return _context10.stop();
       }
     }
   });
-})(); //----------------------------------------------------------------------------------------------------
+})(); //-----------------------------------------------------------------------------------------------------
 
 
 app.get("", function (req, res) {

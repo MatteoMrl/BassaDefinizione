@@ -2,10 +2,10 @@
     <div id="genresLegend"><h1>GENRES</h1></div>
     <ul>
     {{#each listOfGenres}}
-    <li id="{{this}}">
+    <li id="{{this.id}}">
         <span>
             <span>
-                <a href="?genre={{this}}">{{this}}</a>
+                <a href="?genre={{this.name}}">{{this.name}}</a>
             </span>
         </span>
     </li>

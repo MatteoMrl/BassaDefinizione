@@ -473,7 +473,6 @@ html[data-theme=dark] section .module-border-wrap {
   position: relative;
   border-radius: 10px;
   background: linear-gradient(to right, #ff9900, #68beff);
-  box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 html[data-theme=dark] article#articleGenres {
   display: none;
@@ -853,7 +852,6 @@ html[data-theme=light] .module-border-wrap {
   position: relative;
   border-radius: 10px;
   background: linear-gradient(to right, #ff9900, #68beff);
-  box-shadow: 10px 0 20px #68beff, -10px 0 20px #ff9900;
 }
 html[data-theme=light] article#articleGenres {
   display: none;
