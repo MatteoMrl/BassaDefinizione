@@ -1,8 +1,8 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html[data-theme="dark"] header {
+header {
   background-color: #121212;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,91 +22,70 @@ html[data-theme="dark"] header {
   padding: 30px 70px;
 }
 
-html[data-theme="dark"] header a,
-html[data-theme="dark"] header button {
-  text-decoration: none;
-  color: white;
-}
-
-html[data-theme="dark"] header button {
-  border: none;
-  background-color: transparent;
-}
-
-html[data-theme="dark"] header button:hover,
-html[data-theme="dark"] header button:focus,
-html[data-theme="dark"] header button:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-html[data-theme="dark"] header a:hover,
-html[data-theme="dark"] header button:hover {
-  color: #ff9900;
-  text-decoration: none;
+header #userInteraction #userButton {
   cursor: pointer;
+  border-radius: 10px 0 0 10px;
+  background-color: #121212;
+  color: #ff9900;
+  border: 1px solid #ff9900;
+  padding: 10px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, black 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  font-weight: bold;
 }
 
-html[data-theme="dark"] header img {
+header #userInteraction #userButton:hover {
+  border-color: #ff9900;
+  text-decoration: none;
+  color: #121212;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+header #userInteraction #logoutButton {
+  cursor: pointer;
+  border-radius: 0 10px 10px 0;
+  background-color: #121212;
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, black 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  font-weight: bold;
+}
+
+header #userInteraction #logoutButton:hover {
+  border-color: red;
+  text-decoration: none;
+  color: #121212;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, red), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, red 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+header img {
   display: block;
   width: 200px;
 }
 
-html[data-theme="dark"] header #userInteraction #dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #121212;
-  padding: 20px;
-  -webkit-box-shadow: 0px 8px 16px 0px black;
-          box-shadow: 0px 8px 16px 0px black;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #modeButton {
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton {
-  display: none;
-  position: relative;
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: #ff9900;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
-
-html[data-theme="dark"] header #searchFilm {
+header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,7 +102,7 @@ html[data-theme="dark"] header #searchFilm {
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] header #searchFilm input[type="text"] {
+header #searchFilm input[type='text'] {
   background-color: #121212;
   width: 100%;
   border-radius: 5px;
@@ -132,145 +111,13 @@ html[data-theme="dark"] header #searchFilm input[type="text"] {
   border: transparent;
 }
 
-html[data-theme="dark"] header #searchFilm i {
-  color: orange;
-}
-
-html[data-theme="dark"] header i {
-  margin-right: 1vw;
-}
-
-html[data-theme="light"] header {
-  background-color: #68beff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 30px 70px;
-}
-
-html[data-theme="light"] header a,
-html[data-theme="light"] header button {
-  text-decoration: none;
-  color: white;
-}
-
-html[data-theme="light"] header button {
+header #searchFilm button {
   border: none;
-  background-color: transparent;
+  background-color: #121212;
 }
 
-html[data-theme="light"] header button:hover,
-html[data-theme="light"] header button:focus,
-html[data-theme="light"] header button:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-html[data-theme="light"] header a:hover,
-html[data-theme="light"] header button:hover {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-html[data-theme="light"] header img {
-  display: block;
-  width: 200px;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #68beff;
-  padding: 20px;
-  -webkit-box-shadow: 0px 8px 16px 0px white;
-          box-shadow: 0px 8px 16px 0px white;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #modeButton {
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton {
-  display: none;
-  position: relative;
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
-
-html[data-theme="light"] header #searchFilm {
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 450px;
-  background-color: transparent;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 8px;
-  border-bottom: 1px solid #eeeeee;
-}
-
-html[data-theme="light"] header #searchFilm input[type="text"] {
-  background-color: #68beff;
-  width: 100%;
-  border-radius: 5px;
-  outline: none;
-  color: #eeeeee;
-  border: transparent;
-}
-
-html[data-theme="light"] header i {
-  margin-right: 1vw;
+header #searchFilm i {
+  color: orange;
 }
 
 ::-webkit-scrollbar {
@@ -279,27 +126,17 @@ html[data-theme="light"] header i {
 
 /* Track */
 /* Handle */
-html[data-theme="dark"] ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: none;
   border-left: 1px solid #121212;
 }
 
-html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #ff9900;
   border-radius: 10px;
 }
 
-html[data-theme="light"] ::-webkit-scrollbar-track {
-  background: none;
-  border-left: 1px solid #68beff;
-}
-
-html[data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: #68beff;
-  border-radius: 10px;
-}
-
-html[data-theme="dark"] footer {
+footer {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -307,7 +144,7 @@ html[data-theme="dark"] footer {
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] footer ul {
+footer ul {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -317,86 +154,53 @@ html[data-theme="dark"] footer ul {
           justify-content: space-evenly;
 }
 
-html[data-theme="dark"] footer ul a,
-html[data-theme="dark"] footer ul a:link,
-html[data-theme="dark"] footer ul a:visited,
-html[data-theme="dark"] footer ul a:active {
+footer ul a,
+footer ul a:link,
+footer ul a:visited,
+footer ul a:active {
   text-decoration: none;
   color: black;
   opacity: 70%;
 }
 
-html[data-theme="dark"] footer ul a:hover {
+footer ul a:hover {
   opacity: 100%;
 }
 
-html[data-theme="dark"] footer .footer-copyright i {
-  color: red;
-}
-
-html[data-theme="light"] footer {
-  width: 100%;
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] footer ul {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-html[data-theme="light"] footer ul a,
-html[data-theme="light"] footer ul a:link,
-html[data-theme="light"] footer ul a:visited,
-html[data-theme="light"] footer ul a:active {
-  text-decoration: none;
-  color: #eeeeee;
-}
-
-html[data-theme="light"] footer ul a:hover {
-  color: white;
-}
-
-html[data-theme="light"] footer .footer-copyright i {
+footer .footer-copyright i {
   color: red;
 }
 
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html[data-theme="dark"] body {
+body {
   background-color: black;
   min-height: 100vh;
   position: relative;
   padding-bottom: 200px;
 }
 
-html[data-theme="dark"] #noFilm {
+#noFilm {
   border-left: 5px #ff9900 solid;
   text-transform: uppercase;
   margin: 10vh 10vw;
 }
 
-html[data-theme="dark"] #noFilm h1 {
+#noFilm h1 {
   font-size: 10vw;
   color: orange;
 }
 
-html[data-theme="dark"] #noFilm h1 span {
+#noFilm h1 span {
   background-color: #ff9900;
   color: black;
 }
 
-html[data-theme="dark"] #filterGenres {
+#filterGenres {
   margin: auto;
   display: none;
   background-color: #121212;
@@ -413,7 +217,7 @@ html[data-theme="dark"] #filterGenres {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-html[data-theme="dark"] #filterGenres:hover {
+#filterGenres:hover {
   border-color: black;
   color: #ff9900;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, black), color-stop(50%, transparent));
@@ -423,12 +227,12 @@ html[data-theme="dark"] #filterGenres:hover {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-html[data-theme="dark"] #allGenres {
+#allGenres {
   display: none;
   margin: 5%;
 }
 
-html[data-theme="dark"] #allGenres ul {
+#allGenres ul {
   display: -ms-grid;
   display: grid;
   margin: 0;
@@ -438,7 +242,7 @@ html[data-theme="dark"] #allGenres ul {
       grid-template-columns: 33% 33% auto;
 }
 
-html[data-theme="dark"] #allGenres ul li {
+#allGenres ul li {
   padding: 5px;
   border: 1px solid #ff9900;
   background-size: 200% 200%;
@@ -456,7 +260,7 @@ html[data-theme="dark"] #allGenres ul li {
   cursor: pointer;
 }
 
-html[data-theme="dark"] #allGenres ul li:hover {
+#allGenres ul li:hover {
   color: black;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
   background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
@@ -465,7 +269,7 @@ html[data-theme="dark"] #allGenres ul li:hover {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-html[data-theme="dark"] main {
+main {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: [sidebar] 20% [article] 80%;
@@ -473,36 +277,36 @@ html[data-theme="dark"] main {
   margin: 30px 10px;
 }
 
-html[data-theme="dark"] aside {
+aside {
   grid-area: sidebar;
   margin: 10px 0;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar {
+aside ::-webkit-scrollbar {
   width: 4px;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar-corner {
+aside ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar-track {
+aside ::-webkit-scrollbar-track {
   border: none;
 }
 
-html[data-theme="dark"] aside #genresLegend {
+aside #genresLegend {
   text-align: center;
   padding: 0;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] aside #genresLegend h1 {
+aside #genresLegend h1 {
   color: #ff9900;
   font-size: 30px;
 }
 
-html[data-theme="dark"] aside ul {
+aside ul {
   list-style-type: none;
   direction: rtl;
   height: 100vh;
@@ -510,7 +314,7 @@ html[data-theme="dark"] aside ul {
   padding: 0;
 }
 
-html[data-theme="dark"] aside ul li {
+aside ul li {
   background-size: 200% 200%;
   text-align: center;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #ff9900), color-stop(50%, transparent));
@@ -528,7 +332,7 @@ html[data-theme="dark"] aside ul li {
   cursor: pointer;
 }
 
-html[data-theme="dark"] aside ul li:hover {
+aside ul li:hover {
   border-color: #ff9900;
   color: black;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
@@ -538,29 +342,29 @@ html[data-theme="dark"] aside ul li:hover {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-html[data-theme="dark"] article {
+article {
   grid-area: article;
   margin: 10px 0;
 }
 
-html[data-theme="dark"] article #title {
+article #title {
   text-align: center;
   padding: 0;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] article #title h1 {
+article #title h1 {
   color: #ff9900;
   font-size: 30px;
 }
 
-html[data-theme="dark"] article #title h1 i {
+article #title h1 i {
   color: #ff9900;
   font-size: 30px;
 }
 
-html[data-theme="dark"] #favouriteFilms {
+#favouriteFilms {
   border-left: 1px solid #ff9900;
   display: -ms-grid;
   display: grid;
@@ -571,12 +375,12 @@ html[data-theme="dark"] #favouriteFilms {
   row-gap: 30px;
 }
 
-html[data-theme="dark"] #favouriteFilms .far,
-html[data-theme="dark"] #favouriteFilms .fas {
+#favouriteFilms .far,
+#favouriteFilms .fas {
   color: #ff9900;
 }
 
-html[data-theme="dark"] #favouriteFilms .card {
+#favouriteFilms .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -584,21 +388,21 @@ html[data-theme="dark"] #favouriteFilms .card {
   background-color: #121212;
 }
 
-html[data-theme="dark"] #favouriteFilms .card img {
+#favouriteFilms .card img {
   height: 300px;
   width: 200px;
   opacity: 80%;
 }
 
-html[data-theme="dark"] #favouriteFilms .card .card-body .card-title {
+#favouriteFilms .card .card-body .card-title {
   color: #ff9900;
 }
 
-html[data-theme="dark"] #favouriteFilms .card .card-body .card-text {
+#favouriteFilms .card .card-body .card-text {
   color: white;
 }
 
-html[data-theme="dark"] #favouriteFilms .card .btn {
+#favouriteFilms .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -607,296 +411,34 @@ html[data-theme="dark"] #favouriteFilms .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme="dark"] #favouriteFilms .card .btn:hover,
-html[data-theme="dark"] #favouriteFilms .card .btn:focus,
-html[data-theme="dark"] #favouriteFilms .card .btn:active {
+#favouriteFilms .card .btn:hover,
+#favouriteFilms .card .btn:focus,
+#favouriteFilms .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme="dark"] #favouriteFilms .card:hover {
+#favouriteFilms .card:hover {
   position: relative;
   bottom: 20px;
 }
 
-html[data-theme="dark"] #favouriteFilms .card:hover img {
-  opacity: 100%;
-}
-
-html[data-theme="light"] body {
-  background-color: #eeeeee;
-  position: relative;
-  padding-bottom: 200px;
-}
-
-html[data-theme="light"] #filterGenres {
-  margin: auto;
-  display: none;
-  background-color: #68beff;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  padding: 10px;
-  letter-spacing: 2px;
-  background-size: 200% 200%;
-  text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #eeeeee), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #eeeeee 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-}
-
-html[data-theme="light"] #filterGenres:hover {
-  border-color: #eeeeee;
-  color: #68beff;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #eeeeee), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #eeeeee 51%, transparent 50%);
-  background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-}
-
-html[data-theme="light"] #allGenres {
-  margin: 5%;
-}
-
-html[data-theme="light"] #allGenres ul {
-  display: -ms-grid;
-  display: grid;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  -ms-grid-columns: 33% 33% auto;
-      grid-template-columns: 33% 33% auto;
-}
-
-html[data-theme="light"] #allGenres ul li {
-  padding: 10px;
-  border: 1px solid #68beff;
-  color: white;
-  background-size: 200% 200%;
-  text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #68beff), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #68beff 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  direction: ltr;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  text-decoration: none;
-  color: #918f8f;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-html[data-theme="light"] #allGenres ul li:hover {
-  color: black;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #68beff), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #68beff 51%, transparent 50%);
-  background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-}
-
-html[data-theme="light"] main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: [sidebar] 20% [article] 80%;
-      grid-template-columns: [sidebar] 20% [article] 80%;
-  margin: 30px 10px;
-}
-
-html[data-theme="light"] #noFilm {
-  border-left: 5px #68beff solid;
-  text-transform: uppercase;
-  margin: 10vh 10vw;
-  height: 100vh;
-}
-
-html[data-theme="light"] #noFilm h1 {
-  font-size: 10vw;
-  color: #68beff;
-}
-
-html[data-theme="light"] #noFilm h1 span {
-  background-color: #68beff;
-  color: #eeeeee;
-}
-
-html[data-theme="light"] aside {
-  grid-area: sidebar;
-  margin: 10px 0;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar {
-  width: 4px;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar-track {
-  border: none;
-}
-
-html[data-theme="light"] aside #genresLegend {
-  text-align: center;
-  padding: 0;
-  margin: 20px 0;
-  border-bottom: 1px solid #68beff;
-}
-
-html[data-theme="light"] aside #genresLegend h1 {
-  color: #68beff;
-  font-size: 30px;
-}
-
-html[data-theme="light"] aside ul {
-  list-style-type: none;
-  direction: rtl;
-  height: 100vh;
-  padding: 0;
-  margin: 0 10px;
-  overflow: scroll;
-  border: 1px solid white;
-  border-radius: 5px;
-  background-color: white;
-}
-
-html[data-theme="light"] aside ul li {
-  background-size: 200% 200%;
-  text-align: center;
-  border-radius: 10px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #68beff), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #68beff 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  direction: ltr;
-  padding: 10px;
-  margin: 5%;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  text-decoration: none;
-  border: 1px solid #68beff;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-html[data-theme="light"] aside ul li:hover {
-  border-color: #68beff;
-  color: black;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #68beff), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #68beff 51%, transparent 50%);
-  background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-}
-
-html[data-theme="light"] article {
-  grid-area: article;
-  margin-top: 10px;
-}
-
-html[data-theme="light"] article #title {
-  text-align: center;
-  padding: 0;
-  margin: 20px 0;
-  border-bottom: 1px solid #68beff;
-}
-
-html[data-theme="light"] article #title h1 {
-  color: #68beff;
-  font-size: 30px;
-}
-
-html[data-theme="light"] article #title h1 i {
-  color: #68beff;
-  font-size: 30px;
-}
-
-html[data-theme="light"] #favouriteFilms {
-  border-left: 1px solid #68beff;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto auto auto auto auto;
-      grid-template-columns: auto auto auto auto auto;
-  justify-items: center;
-  padding: 1vw 0;
-  row-gap: 30px;
-}
-
-html[data-theme="light"] #favouriteFilms .far,
-html[data-theme="light"] #favouriteFilms .fas {
-  color: #68beff;
-}
-
-html[data-theme="light"] #favouriteFilms .card {
-  width: 200px;
-  border-radius: 4px;
-  display: inline-block;
-  border: transparent;
-  background-color: white;
-}
-
-html[data-theme="light"] #favouriteFilms .card img {
-  height: 300px;
-  width: 200px;
-  opacity: 80%;
-}
-
-html[data-theme="light"] #favouriteFilms .card .card-body .card-title {
-  color: #68beff;
-}
-
-html[data-theme="light"] #favouriteFilms .card .card-body .card-text {
-  color: #121212;
-}
-
-html[data-theme="light"] #favouriteFilms .card .btn {
-  background-color: #68beff;
-  color: #121212;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  border-radius: 0 0 4px 4px;
-}
-
-html[data-theme="light"] #favouriteFilms .card .btn:hover,
-html[data-theme="light"] #favouriteFilms .card .btn:focus,
-html[data-theme="light"] #favouriteFilms .card .btn:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-html[data-theme="light"] #favouriteFilms .card:hover {
-  position: relative;
-  bottom: 20px;
-}
-
-html[data-theme="light"] #favouriteFilms .card:hover img {
+#favouriteFilms .card:hover img {
   opacity: 100%;
 }
 
 @media only screen and (max-width: 1400px) {
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 300px;
   }
-  html[data-theme="dark"] #favouriteFilms {
-    -ms-grid-columns: auto auto auto auto;
-        grid-template-columns: auto auto auto auto;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 300px;
-  }
-  html[data-theme="light"] #favouriteFilms {
+  #favouriteFilms {
     -ms-grid-columns: auto auto auto auto;
         grid-template-columns: auto auto auto auto;
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  html[data-theme="dark"] header {
+  header {
     padding: 30px 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -904,125 +446,64 @@ html[data-theme="light"] #favouriteFilms .card:hover img {
             flex-direction: column;
     row-gap: 20px;
   }
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 60%;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 400px;
   }
-  html[data-theme="dark"] #favouriteFilms {
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
-  }
-  html[data-theme="light"] header {
-    padding: 30px 0px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    row-gap: 20px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 60%;
-  }
-  html[data-theme="light"] header img {
-    width: 400px;
-  }
-  html[data-theme="light"] #favouriteFilms {
+  #favouriteFilms {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
   }
 }
 
 @media only screen and (max-width: 800px) {
-  html[data-theme="dark"] header {
+  header {
     row-gap: 15px;
   }
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 65%;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 300px;
   }
-  html[data-theme="dark"] #favouriteFilms {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-  }
-  html[data-theme="light"] header {
-    row-gap: 15px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 65%;
-  }
-  html[data-theme="light"] header img {
-    width: 300px;
-  }
-  html[data-theme="light"] #favouriteFilms {
+  #favouriteFilms {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  html[data-theme="dark"] header {
+  header {
     row-gap: 10px;
   }
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 70%;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 200px;
   }
-  html[data-theme="dark"] #filterGenres {
+  #filterGenres {
     display: block;
   }
-  html[data-theme="dark"] main {
+  main {
     -ms-grid-columns: [article] 100%;
         grid-template-columns: [article] 100%;
   }
-  html[data-theme="dark"] #favouriteFilms {
+  #favouriteFilms {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
     border: none;
   }
-  html[data-theme="dark"] #favouriteFilms .card {
+  #favouriteFilms .card {
     width: 150px;
   }
-  html[data-theme="dark"] #favouriteFilms .card img {
-    width: 150px;
-    height: 225px;
-  }
-  html[data-theme="dark"] aside {
-    display: none;
-  }
-  html[data-theme="light"] header {
-    row-gap: 10px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 70%;
-  }
-  html[data-theme="light"] header img {
-    width: 200px;
-  }
-  html[data-theme="light"] main {
-    -ms-grid-columns: [article] 100%;
-        grid-template-columns: [article] 100%;
-  }
-  html[data-theme="light"] #filterGenres {
-    display: block;
-  }
-  html[data-theme="light"] #favouriteFilms {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-  }
-  html[data-theme="light"] #favouriteFilms .card {
-    width: 150px;
-  }
-  html[data-theme="light"] #favouriteFilms .card img {
+  #favouriteFilms .card img {
     width: 150px;
     height: 225px;
   }
-  html[data-theme="light"] aside {
+  aside {
     display: none;
   }
 }

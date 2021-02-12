@@ -1,7 +1,7 @@
-@import "navbar";
-@import "scrollbar";
-@import "footer";
-@import "colors";
+@import 'navbar';
+@import 'scrollbar';
+@import 'footer';
+@import 'colors';
 
 * {
   margin: 0;
@@ -10,213 +10,106 @@
 }
 
 //------------------------------------------------------------------------------------------------
-html[data-theme="dark"] {
-  body {
-    background-color: black;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 200px;
-  }
+body {
+  background-color: black;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 200px;
+}
 
-  #filmNotFound {
-    padding: 0;
-    border-right: 5px $orangeOp solid;
-    text-transform: uppercase;
-    margin: 10vh 10vw;
-    h1 {
-      font-size: 8vw;
-      color: orange;
-      text-align: right;
-      span {
-        background-color: $orangeOp;
-        color: black;
-      }
-    }
-  }
-
-  #specificFilm {
-    display: flex;
-    flex-direction: row;
-    background-color: $lightBlack;
-    width: 90%;
-    margin: 50px auto 0;
-    padding: 20px;
-
-    img {
-      border: 1px solid $orangeOp;
-      margin-right: 20px;
-      width: 300px;
-      height: 450px;
-    }
-    #filmInformation {
-      height: 100%;
-      #title {
-        line-height: 60px;
-        color: black;
-        font-size: 40px;
-        background-color: $orangeOp;
-        display: inline;
-        text-transform: uppercase;
-        letter-spacing: 0.5vw;
-        padding: 0 1vw;
-      }
-      #plot {
-        font-size: 20px;
-        margin: 20px 0;
-        padding: 0 10px;
-        color: white;
-        border-left: 1px solid $orangeOp;
-      }
-
-      h5 {
-        font-size: 15px;
-        padding: 0 10px;
-        color: white;
-        border-left: 1px solid $orangeOp;
-      }
-
-      #vote {
-        margin-top: 20px;
-        #textRating {
-          display: inline;
-          background-color: $orangeOp;
-          color: black;
-          padding: 5px;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-right: 5px;
-          font-size: 20px;
-        }
-        .fas {
-          color: black;
-          font-size: 20px;
-          cursor: pointer;
-        }
-
-        .fa-thumbs-up,
-        .fa-thumbs-down {
-          transition: color 0.5s;
-        }
-        .fa-thumbs-up:hover {
-          color: green;
-        }
-        .fa-thumbs-down:hover {
-          color: red;
-        }
-      }
-
-      #serverResponse {
-        display: inline;
-        color: black;
-        border-radius: 5px;
-        margin-left: 10px;
-        padding: 5px;
-      }
+#filmNotFound {
+  padding: 0;
+  border-right: 5px $orangeOp solid;
+  text-transform: uppercase;
+  margin: 10vh 10vw;
+  h1 {
+    font-size: 8vw;
+    color: orange;
+    text-align: right;
+    span {
+      background-color: $orangeOp;
+      color: black;
     }
   }
 }
 
-//-------------------------------------------------------------------------------------------------------------
-html[data-theme="light"] {
-  body {
-    background-color: $primary;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 200px;
+#specificFilm {
+  display: flex;
+  flex-direction: row;
+  background-color: $lightBlack;
+  width: 90%;
+  margin: 50px auto 0;
+  padding: 20px;
+
+  img {
+    border: 1px solid $orangeOp;
+    margin-right: 20px;
+    width: 300px;
+    height: 450px;
   }
-
-  #filmNotFound {
-    padding: 0;
-    border-right: 5px $lightBlue solid;
-    text-transform: uppercase;
-    margin: 10vh 10vw;
-    h1 {
-      font-size: 8vw;
-      color: $lightBlue;
-      text-align: right;
-      span {
-        background-color: $lightBlue;
-        color: white;
-      }
+  #filmInformation {
+    height: 100%;
+    #title {
+      line-height: 60px;
+      color: black;
+      font-size: 40px;
+      background-color: $orangeOp;
+      display: inline;
+      text-transform: uppercase;
+      letter-spacing: 0.5vw;
+      padding: 0 1vw;
     }
-  }
-
-  #specificFilm {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    width: 90%;
-    margin: 50px auto 0;
-    padding: 20px;
-
-    img {
-      border: 1px solid $lightBlue;
-      margin-right: 20px;
-      width: 300px;
-      height: 450px;
+    #plot {
+      font-size: 20px;
+      margin: 20px 0;
+      padding: 0 10px;
+      color: white;
+      border-left: 1px solid $orangeOp;
     }
-    #filmInformation {
-      #title {
-        line-height: 60px;
-        color: black;
-        font-size: 40px;
-        background-color: $lightBlue;
+
+    h5 {
+      font-size: 15px;
+      padding: 0 10px;
+      color: white;
+      border-left: 1px solid $orangeOp;
+    }
+
+    #vote {
+      margin-top: 20px;
+      #textRating {
         display: inline;
-        text-transform: uppercase;
-        letter-spacing: 0.5vw;
-        padding: 0 10px;
-      }
-      #plot {
-        font-size: 20px;
-        margin: 2vh 0;
-        padding: 0 10px;
-        color: $lightBlack;
-        border-left: 1px solid $lightBlue;
-      }
-
-      h5 {
-        font-size: 15px;
-        padding: 0 10px;
-        color: $lightBlack;
-        border-left: 1px solid $lightBlue;
-      }
-
-      #vote {
-        #textRating {
-          display: inline;
-          background-color: $lightBlue;
-          color: black;
-          padding: 5px;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-right: 5px;
-          font-size: 20px;
-        }
-        .fas {
-          color: black;
-          font-size: 20px;
-          cursor: pointer;
-        }
-
-        .fa-thumbs-up,
-        .fa-thumbs-down {
-          transition: color 0.5s;
-        }
-        .fa-thumbs-up:hover {
-          color: green;
-        }
-        .fa-thumbs-down:hover {
-          color: red;
-        }
-      }
-
-      #serverResponse {
-        display: inline;
+        background-color: $orangeOp;
         color: black;
-        border-radius: 5px;
-        margin-left: 10px;
         padding: 5px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-right: 5px;
+        font-size: 20px;
       }
+      .fas {
+        color: black;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .fa-thumbs-up,
+      .fa-thumbs-down {
+        transition: color 0.5s;
+      }
+      .fa-thumbs-up:hover {
+        color: green;
+      }
+      .fa-thumbs-down:hover {
+        color: red;
+      }
+    }
+
+    #serverResponse {
+      display: inline;
+      color: black;
+      border-radius: 5px;
+      margin-left: 10px;
+      padding: 5px;
     }
   }
 }
@@ -224,161 +117,78 @@ html[data-theme="light"] {
 //----------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 1200px) {
-  html[data-theme="light"] {
-    header {
-      #searchFilm {
-        width: 300px;
-      }
-    }
-    #specificFilm {
-      #filmInformation {
-        #serverResponse {
-          display: inline-block;
-        }
-      }
+  header {
+    #searchFilm {
+      width: 300px;
     }
   }
-  html[data-theme="dark"] {
-    header {
-      #searchFilm {
-        width: 300px;
-      }
-    }
-    #specificFilm {
-      #filmInformation {
-        #serverResponse {
-          display: inline-block;
-        }
+  #specificFilm {
+    #filmInformation {
+      #serverResponse {
+        display: inline-block;
       }
     }
   }
 }
 @media only screen and (max-width: 992px) {
-  html[data-theme="dark"] {
-    header {
-      flex-direction: column;
-      row-gap: 20px;
-      padding: 30px 0px;
-      #searchFilm {
-        width: 60%;
-      }
-      img {
-        width: 400px;
-      }
+  header {
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 30px 0px;
+    #searchFilm {
+      width: 60%;
     }
-    #specificFilm {
-      #filmInformation {
-        #title {
-          font-size: 30px;
-          line-height: 50px;
-        }
-        #textRating {
-          display: inline-block;
-          border: none;
-        }
-      }
+    img {
+      width: 400px;
     }
   }
-  html[data-theme="light"] {
-    header {
-      flex-direction: column;
-      row-gap: 20px;
-      padding: 30px 0px;
-      #searchFilm {
-        width: 60%;
+  #specificFilm {
+    #filmInformation {
+      #title {
+        font-size: 30px;
+        line-height: 50px;
       }
-      img {
-        width: 400px;
-      }
-    }
-    #specificFilm {
-      #filmInformation {
-        #title {
-          font-size: 30px;
-          line-height: 50px;
-        }
-        #textRating {
-          display: inline-block;
-          border: none;
-        }
+      #textRating {
+        display: inline-block;
+        border: none;
       }
     }
   }
 }
 
 @media only screen and (max-width: 768px) {
-  html[data-theme="dark"] {
-    header {
-      row-gap: 15px;
-      #searchFilm {
-        width: 65%;
-      }
-      img {
-        width: 300px;
-      }
+  header {
+    row-gap: 15px;
+    #searchFilm {
+      width: 65%;
     }
-    #specificFilm {
-      flex-direction: column;
-      img {
-        margin: 0 auto 20px auto;
-        width: 50%;
-        height: 50%;
-      }
+    img {
+      width: 300px;
     }
   }
-  html[data-theme="light"] {
-    header {
-      row-gap: 15px;
-      #searchFilm {
-        width: 65%;
-      }
-      img {
-        width: 300px;
-      }
-    }
-    #specificFilm {
-      flex-direction: column;
-      img {
-        margin: 0 auto 20px auto;
-        width: 50%;
-        height: 50%;
-      }
+  #specificFilm {
+    flex-direction: column;
+    img {
+      margin: 0 auto 20px auto;
+      width: 50%;
+      height: 50%;
     }
   }
 }
 @media only screen and (max-width: 600px) {
-  html[data-theme="dark"] {
-    header {
-      row-gap: 10px;
-      #searchFilm {
-        width: 70%;
-      }
-      img {
-        width: 200px;
-      }
+  header {
+    row-gap: 10px;
+    #searchFilm {
+      width: 70%;
     }
-    #specificFilm {
-      img {
-        width: 70%;
-        height: 70%;
-      }
+    img {
+      width: 200px;
     }
   }
-  html[data-theme="light"] {
-    header {
-      row-gap: 10px;
-      #searchFilm {
-        width: 70%;
-      }
-      img {
-        width: 200px;
-      }
-    }
-    #specificFilm {
-      img {
-        width: 70%;
-        height: 70%;
-      }
+  #specificFilm {
+    img {
+      width: 70%;
+      height: 70%;
     }
   }
 }

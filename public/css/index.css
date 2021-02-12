@@ -1,8 +1,8 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html[data-theme="dark"] header {
+header {
   background-color: #121212;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,91 +22,70 @@ html[data-theme="dark"] header {
   padding: 30px 70px;
 }
 
-html[data-theme="dark"] header a,
-html[data-theme="dark"] header button {
-  text-decoration: none;
-  color: white;
-}
-
-html[data-theme="dark"] header button {
-  border: none;
-  background-color: transparent;
-}
-
-html[data-theme="dark"] header button:hover,
-html[data-theme="dark"] header button:focus,
-html[data-theme="dark"] header button:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-html[data-theme="dark"] header a:hover,
-html[data-theme="dark"] header button:hover {
-  color: #ff9900;
-  text-decoration: none;
+header #userInteraction #userButton {
   cursor: pointer;
+  border-radius: 10px 0 0 10px;
+  background-color: #121212;
+  color: #ff9900;
+  border: 1px solid #ff9900;
+  padding: 10px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, black 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  font-weight: bold;
 }
 
-html[data-theme="dark"] header img {
+header #userInteraction #userButton:hover {
+  border-color: #ff9900;
+  text-decoration: none;
+  color: #121212;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+header #userInteraction #logoutButton {
+  cursor: pointer;
+  border-radius: 0 10px 10px 0;
+  background-color: #121212;
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
+  background-size: 200% 200%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, black 50%, transparent 50%);
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  font-weight: bold;
+}
+
+header #userInteraction #logoutButton:hover {
+  border-color: red;
+  text-decoration: none;
+  color: #121212;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, red), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, red 51%, transparent 50%);
+  background-position: 0 100%;
+  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+header img {
   display: block;
   width: 200px;
 }
 
-html[data-theme="dark"] header #userInteraction #dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #121212;
-  padding: 20px;
-  -webkit-box-shadow: 0px 8px 16px 0px black;
-          box-shadow: 0px 8px 16px 0px black;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #modeButton {
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton {
-  display: none;
-  position: relative;
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: #ff9900;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-html[data-theme="dark"] header #userInteraction #dropdown-content #userButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #loginButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #signinButton:hover:before,
-html[data-theme="dark"] header #userInteraction #dropdown-content #logoutButton:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
-
-html[data-theme="dark"] header #searchFilm {
+header #searchFilm {
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,7 +102,7 @@ html[data-theme="dark"] header #searchFilm {
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] header #searchFilm input[type="text"] {
+header #searchFilm input[type='text'] {
   background-color: #121212;
   width: 100%;
   border-radius: 5px;
@@ -132,145 +111,13 @@ html[data-theme="dark"] header #searchFilm input[type="text"] {
   border: transparent;
 }
 
-html[data-theme="dark"] header #searchFilm i {
-  color: orange;
-}
-
-html[data-theme="dark"] header i {
-  margin-right: 1vw;
-}
-
-html[data-theme="light"] header {
-  background-color: #68beff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 30px 70px;
-}
-
-html[data-theme="light"] header a,
-html[data-theme="light"] header button {
-  text-decoration: none;
-  color: white;
-}
-
-html[data-theme="light"] header button {
+header #searchFilm button {
   border: none;
-  background-color: transparent;
+  background-color: #121212;
 }
 
-html[data-theme="light"] header button:hover,
-html[data-theme="light"] header button:focus,
-html[data-theme="light"] header button:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-html[data-theme="light"] header a:hover,
-html[data-theme="light"] header button:hover {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-html[data-theme="light"] header img {
-  display: block;
-  width: 200px;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #68beff;
-  padding: 20px;
-  -webkit-box-shadow: 0px 8px 16px 0px white;
-          box-shadow: 0px 8px 16px 0px white;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #modeButton {
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton {
-  display: none;
-  position: relative;
-  padding: 0 0 5px 0 !important;
-  margin: 0 0 5px 0 !important;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-html[data-theme="light"] header #userInteraction #dropdown-content #userButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #loginButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #signinButton:hover:before,
-html[data-theme="light"] header #userInteraction #dropdown-content #logoutButton:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
-
-html[data-theme="light"] header #searchFilm {
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 450px;
-  background-color: transparent;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 8px;
-  border-bottom: 1px solid #eeeeee;
-}
-
-html[data-theme="light"] header #searchFilm input[type="text"] {
-  background-color: #68beff;
-  width: 100%;
-  border-radius: 5px;
-  outline: none;
-  color: #eeeeee;
-  border: transparent;
-}
-
-html[data-theme="light"] header i {
-  margin-right: 1vw;
+header #searchFilm i {
+  color: orange;
 }
 
 ::-webkit-scrollbar {
@@ -279,27 +126,17 @@ html[data-theme="light"] header i {
 
 /* Track */
 /* Handle */
-html[data-theme="dark"] ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: none;
   border-left: 1px solid #121212;
 }
 
-html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #ff9900;
   border-radius: 10px;
 }
 
-html[data-theme="light"] ::-webkit-scrollbar-track {
-  background: none;
-  border-left: 1px solid #68beff;
-}
-
-html[data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: #68beff;
-  border-radius: 10px;
-}
-
-html[data-theme="dark"] footer {
+footer {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -307,7 +144,7 @@ html[data-theme="dark"] footer {
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] footer ul {
+footer ul {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -317,69 +154,41 @@ html[data-theme="dark"] footer ul {
           justify-content: space-evenly;
 }
 
-html[data-theme="dark"] footer ul a,
-html[data-theme="dark"] footer ul a:link,
-html[data-theme="dark"] footer ul a:visited,
-html[data-theme="dark"] footer ul a:active {
+footer ul a,
+footer ul a:link,
+footer ul a:visited,
+footer ul a:active {
   text-decoration: none;
   color: black;
   opacity: 70%;
 }
 
-html[data-theme="dark"] footer ul a:hover {
+footer ul a:hover {
   opacity: 100%;
 }
 
-html[data-theme="dark"] footer .footer-copyright i {
+footer .footer-copyright i {
   color: red;
 }
 
-html[data-theme="light"] footer {
-  width: 100%;
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  background-color: #68beff;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html[data-theme="light"] footer ul {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-html[data-theme="light"] footer ul a,
-html[data-theme="light"] footer ul a:link,
-html[data-theme="light"] footer ul a:visited,
-html[data-theme="light"] footer ul a:active {
-  text-decoration: none;
-  color: #eeeeee;
-}
-
-html[data-theme="light"] footer ul a:hover {
-  color: white;
-}
-
-html[data-theme="light"] footer .footer-copyright i {
-  color: red;
-}
-
-html[data-theme="dark"] h1 {
+h1 {
   margin: 0;
 }
 
-html[data-theme="dark"] body {
+body {
   background-color: black;
   position: relative;
   padding-bottom: 200px;
   min-height: 100vh;
 }
 
-html[data-theme="dark"] main {
+main {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: [sidebar] 20% [main] 80%;
@@ -387,41 +196,41 @@ html[data-theme="dark"] main {
   margin: 0 10px;
 }
 
-html[data-theme="dark"] aside {
+aside {
   grid-area: sidebar;
   margin: 10px 0 0 10px;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar {
+aside ::-webkit-scrollbar {
   width: 4px;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar-corner {
+aside ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-html[data-theme="dark"] aside ::-webkit-scrollbar-track {
+aside ::-webkit-scrollbar-track {
   border: none;
 }
 
-html[data-theme="dark"] aside #genresLegend {
+aside #genresLegend {
   text-align: right;
   padding: 0;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff9900;
 }
 
-html[data-theme="dark"] aside #genresLegend h1 {
+aside #genresLegend h1 {
   color: #ff9900;
   font-size: 2.5vw;
 }
 
-html[data-theme="dark"] aside #genresLegend h1 i {
+aside #genresLegend h1 i {
   color: #ff9900;
   font-size: 2.5vw;
 }
 
-html[data-theme="dark"] aside ul {
+aside ul {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
@@ -432,7 +241,7 @@ html[data-theme="dark"] aside ul {
   overflow: scroll;
 }
 
-html[data-theme="dark"] aside ul li {
+aside ul li {
   background-color: #121212;
   direction: ltr;
   padding: 10px;
@@ -443,8 +252,8 @@ html[data-theme="dark"] aside ul li {
   overflow: hidden;
 }
 
-html[data-theme="dark"] aside ul li:before, html[data-theme="dark"] aside ul li:after {
-  content: "";
+aside ul li:before, aside ul li:after {
+  content: '';
   position: absolute;
   left: 0;
   height: 2px;
@@ -452,26 +261,26 @@ html[data-theme="dark"] aside ul li:before, html[data-theme="dark"] aside ul li:
   background-color: #121212;
 }
 
-html[data-theme="dark"] aside ul li:before {
+aside ul li:before {
   top: 0;
 }
 
-html[data-theme="dark"] aside ul li:after {
+aside ul li:after {
   bottom: 0;
 }
 
-html[data-theme="dark"] aside ul li:hover > * > *:before, html[data-theme="dark"] aside ul li:hover > * > *:after {
+aside ul li:hover > * > *:before, aside ul li:hover > * > *:after {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-html[data-theme="dark"] aside ul li:hover > * > * > *:before, html[data-theme="dark"] aside ul li:hover > * > * > *:after {
+aside ul li:hover > * > * > *:before, aside ul li:hover > * > * > *:after {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-html[data-theme="dark"] aside ul li > *:before, html[data-theme="dark"] aside ul li > *:after {
-  content: "";
+aside ul li > *:before, aside ul li > *:after {
+  content: '';
   position: absolute;
   top: 0;
   height: 100%;
@@ -479,16 +288,16 @@ html[data-theme="dark"] aside ul li > *:before, html[data-theme="dark"] aside ul
   background-color: #121212;
 }
 
-html[data-theme="dark"] aside ul li > *:before {
+aside ul li > *:before {
   left: 0;
 }
 
-html[data-theme="dark"] aside ul li > *:after {
+aside ul li > *:after {
   right: 0;
 }
 
-html[data-theme="dark"] aside ul li > * > *:before, html[data-theme="dark"] aside ul li > * > *:after {
-  content: "";
+aside ul li > * > *:before, aside ul li > * > *:after {
+  content: '';
   position: absolute;
   left: 0;
   z-index: 9;
@@ -497,7 +306,7 @@ html[data-theme="dark"] aside ul li > * > *:before, html[data-theme="dark"] asid
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] aside ul li > * > *:before {
+aside ul li > * > *:before {
   top: 0;
   -webkit-transform: translate3d(-105%, 0, 0);
           transform: translate3d(-105%, 0, 0);
@@ -507,7 +316,7 @@ html[data-theme="dark"] aside ul li > * > *:before {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] aside ul li > * > *:after {
+aside ul li > * > *:after {
   bottom: 0;
   -webkit-transform: translate3d(105%, 0, 0);
           transform: translate3d(105%, 0, 0);
@@ -517,8 +326,8 @@ html[data-theme="dark"] aside ul li > * > *:after {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] aside ul li > * > * > *:before, html[data-theme="dark"] aside ul li > * > * > *:after {
-  content: "";
+aside ul li > * > * > *:before, aside ul li > * > * > *:after {
+  content: '';
   position: absolute;
   top: 0;
   z-index: 9;
@@ -527,7 +336,7 @@ html[data-theme="dark"] aside ul li > * > * > *:before, html[data-theme="dark"] 
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] aside ul li > * > * > *:before {
+aside ul li > * > * > *:before {
   left: 0;
   -webkit-transform: translate3d(0, 105%, 0);
           transform: translate3d(0, 105%, 0);
@@ -537,7 +346,7 @@ html[data-theme="dark"] aside ul li > * > * > *:before {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] aside ul li > * > * > *:after {
+aside ul li > * > * > *:after {
   right: 0;
   -webkit-transform: translate3d(0, -105%, 0);
           transform: translate3d(0, -105%, 0);
@@ -547,27 +356,28 @@ html[data-theme="dark"] aside ul li > * > * > *:after {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] aside ul li a {
-  text-decoration: none;
+aside ul li a {
+  text-decoration: none !important;
   color: #918f8f;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   cursor: pointer;
 }
 
-html[data-theme="dark"] aside ul li:hover {
+aside ul li:hover {
   background-color: black;
 }
 
-html[data-theme="dark"] aside ul li:hover a {
+aside ul li:hover a {
   color: #ff9900;
+  text-decoration: none !important;
 }
 
-html[data-theme="dark"] section {
+section {
   grid-area: main;
 }
 
-html[data-theme="dark"] section .genre {
+section .genre {
   color: #ff9900;
   background-color: #121212;
   font-size: 30px;
@@ -577,11 +387,11 @@ html[data-theme="dark"] section .genre {
   margin-bottom: 10px;
 }
 
-html[data-theme="dark"] section .genre i {
+section .genre i {
   display: none;
 }
 
-html[data-theme="dark"] section #slogan {
+section #slogan {
   width: 100%;
   padding: 30px;
   border-radius: 10px;
@@ -589,11 +399,11 @@ html[data-theme="dark"] section #slogan {
   text-align: center;
 }
 
-html[data-theme="dark"] section #slogan h2 {
+section #slogan h2 {
   color: white;
 }
 
-html[data-theme="dark"] section #slogan h1 {
+section #slogan h1 {
   color: #ff9900;
   overflow: hidden;
   background: -webkit-gradient(linear, left top, right top, from(#68beff), color-stop(50%, #68beff), color-stop(50%, #ff9900));
@@ -607,15 +417,15 @@ html[data-theme="dark"] section #slogan h1 {
   transition: background-position 1s ease;
 }
 
-html[data-theme="dark"] section #slogan h1:hover {
+section #slogan h1:hover {
   background-position: 0 100%;
 }
 
-html[data-theme="dark"] section #slogan img {
+section #slogan img {
   margin-bottom: 8px;
 }
 
-html[data-theme="dark"] section .module-border-wrap {
+section .module-border-wrap {
   width: 75%;
   margin: 50px auto;
   padding: 1vw;
@@ -625,11 +435,11 @@ html[data-theme="dark"] section .module-border-wrap {
   background: linear-gradient(to right, #ff9900, #68beff);
 }
 
-html[data-theme="dark"] article#articleGenres {
+article#articleGenres {
   display: none;
 }
 
-html[data-theme="dark"] article#articleGenres ul {
+article#articleGenres ul {
   padding: 0;
   margin: 0 5%;
   display: -ms-grid;
@@ -639,7 +449,7 @@ html[data-theme="dark"] article#articleGenres ul {
   list-style-type: none;
 }
 
-html[data-theme="dark"] article#articleGenres ul li {
+article#articleGenres ul li {
   display: inline;
   background-color: #121212;
   padding: 10px;
@@ -651,8 +461,8 @@ html[data-theme="dark"] article#articleGenres ul li {
   overflow: hidden;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:before, html[data-theme="dark"] article#articleGenres ul li:after {
-  content: "";
+article#articleGenres ul li:before, article#articleGenres ul li:after {
+  content: '';
   position: absolute;
   left: 0;
   height: 2px;
@@ -660,26 +470,26 @@ html[data-theme="dark"] article#articleGenres ul li:before, html[data-theme="dar
   background-color: #121212;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:before {
+article#articleGenres ul li:before {
   top: 0;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:after {
+article#articleGenres ul li:after {
   bottom: 0;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:hover > * > *:before, html[data-theme="dark"] article#articleGenres ul li:hover > * > *:after {
+article#articleGenres ul li:hover > * > *:before, article#articleGenres ul li:hover > * > *:after {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-html[data-theme="dark"] article#articleGenres ul li:hover > * > * > *:before, html[data-theme="dark"] article#articleGenres ul li:hover > * > * > *:after {
+article#articleGenres ul li:hover > * > * > *:before, article#articleGenres ul li:hover > * > * > *:after {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-html[data-theme="dark"] article#articleGenres ul li > *:before, html[data-theme="dark"] article#articleGenres ul li > *:after {
-  content: "";
+article#articleGenres ul li > *:before, article#articleGenres ul li > *:after {
+  content: '';
   position: absolute;
   top: 0;
   height: 100%;
@@ -687,16 +497,16 @@ html[data-theme="dark"] article#articleGenres ul li > *:before, html[data-theme=
   background-color: #121212;
 }
 
-html[data-theme="dark"] article#articleGenres ul li > *:before {
+article#articleGenres ul li > *:before {
   left: 0;
 }
 
-html[data-theme="dark"] article#articleGenres ul li > *:after {
+article#articleGenres ul li > *:after {
   right: 0;
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > *:before, html[data-theme="dark"] article#articleGenres ul li > * > *:after {
-  content: "";
+article#articleGenres ul li > * > *:before, article#articleGenres ul li > * > *:after {
+  content: '';
   position: absolute;
   left: 0;
   z-index: 9;
@@ -705,7 +515,7 @@ html[data-theme="dark"] article#articleGenres ul li > * > *:before, html[data-th
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > *:before {
+article#articleGenres ul li > * > *:before {
   top: 0;
   -webkit-transform: translate3d(-105%, 0, 0);
           transform: translate3d(-105%, 0, 0);
@@ -715,7 +525,7 @@ html[data-theme="dark"] article#articleGenres ul li > * > *:before {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > *:after {
+article#articleGenres ul li > * > *:after {
   bottom: 0;
   -webkit-transform: translate3d(105%, 0, 0);
           transform: translate3d(105%, 0, 0);
@@ -725,8 +535,8 @@ html[data-theme="dark"] article#articleGenres ul li > * > *:after {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > * > *:before, html[data-theme="dark"] article#articleGenres ul li > * > * > *:after {
-  content: "";
+article#articleGenres ul li > * > * > *:before, article#articleGenres ul li > * > * > *:after {
+  content: '';
   position: absolute;
   top: 0;
   z-index: 9;
@@ -735,7 +545,7 @@ html[data-theme="dark"] article#articleGenres ul li > * > * > *:before, html[dat
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > * > *:before {
+article#articleGenres ul li > * > * > *:before {
   left: 0;
   -webkit-transform: translate3d(0, 105%, 0);
           transform: translate3d(0, 105%, 0);
@@ -745,7 +555,7 @@ html[data-theme="dark"] article#articleGenres ul li > * > * > *:before {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] article#articleGenres ul li > * > * > *:after {
+article#articleGenres ul li > * > * > *:after {
   right: 0;
   -webkit-transform: translate3d(0, -105%, 0);
           transform: translate3d(0, -105%, 0);
@@ -755,23 +565,24 @@ html[data-theme="dark"] article#articleGenres ul li > * > * > *:after {
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="dark"] article#articleGenres ul li a {
-  text-decoration: none;
+article#articleGenres ul li a {
+  text-decoration: none !important;
   color: #918f8f;
   -webkit-transition: 0.8s;
   transition: 0.8s;
   cursor: pointer;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:hover {
+article#articleGenres ul li:hover {
   background-color: black;
 }
 
-html[data-theme="dark"] article#articleGenres ul li:hover a {
+article#articleGenres ul li:hover a {
   color: #ff9900;
+  text-decoration: none !important;
 }
 
-html[data-theme="dark"] article#articleFilms {
+article#articleFilms {
   border-left: 1px solid #ff9900;
   display: -ms-grid;
   display: grid;
@@ -786,12 +597,12 @@ html[data-theme="dark"] article#articleFilms {
   margin-bottom: 30px;
 }
 
-html[data-theme="dark"] article#articleFilms .far,
-html[data-theme="dark"] article#articleFilms .fas {
+article#articleFilms .far,
+article#articleFilms .fas {
   color: #ff9900;
 }
 
-html[data-theme="dark"] article#articleFilms .card {
+article#articleFilms .card {
   width: 200px;
   border-radius: 4px;
   display: inline-block;
@@ -801,29 +612,29 @@ html[data-theme="dark"] article#articleFilms .card {
   transition: 0.5s;
 }
 
-html[data-theme="dark"] article#articleFilms .card ::-webkit-scrollbar {
+article#articleFilms .card ::-webkit-scrollbar {
   width: 2px;
   margin-left: 5px;
 }
 
-html[data-theme="dark"] article#articleFilms .card ::-webkit-scrollbar-track {
+article#articleFilms .card ::-webkit-scrollbar-track {
   background: none;
   border: none;
 }
 
-html[data-theme="dark"] article#articleFilms .card ::-webkit-scrollbar-thumb {
+article#articleFilms .card ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ff9900;
 }
 
-html[data-theme="dark"] article#articleFilms .card img {
+article#articleFilms .card img {
   height: 300px;
   width: 200px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-html[data-theme="dark"] article#articleFilms .card .card-body .card-title {
+article#articleFilms .card .card-body .card-title {
   background-color: #ff9900;
   color: #121212;
   text-align: center;
@@ -833,27 +644,27 @@ html[data-theme="dark"] article#articleFilms .card .card-body .card-title {
   overflow: hidden;
 }
 
-html[data-theme="dark"] article#articleFilms .card .card-body .card-label {
+article#articleFilms .card .card-body .card-label {
   color: #ff9900;
   margin: 0;
 }
 
-html[data-theme="dark"] article#articleFilms .card .card-body .card-text {
+article#articleFilms .card .card-body .card-text {
   color: white;
   margin: 0 0 10px 0;
 }
 
-html[data-theme="dark"] article#articleFilms .card .card-body #plot {
+article#articleFilms .card .card-body #plot {
   height: 180px;
   overflow-y: auto;
 }
 
-html[data-theme="dark"] article#articleFilms .card .card-body #filmGenre {
+article#articleFilms .card .card-body #filmGenre {
   height: 50px;
   overflow: hidden;
 }
 
-html[data-theme="dark"] article#articleFilms .card .btn {
+article#articleFilms .card .btn {
   background-color: #ff9900;
   color: white;
   position: absolute;
@@ -862,548 +673,37 @@ html[data-theme="dark"] article#articleFilms .card .btn {
   border-radius: 0 0 4px 4px;
 }
 
-html[data-theme="dark"] article#articleFilms .card .btn:hover,
-html[data-theme="dark"] article#articleFilms .card .btn:focus,
-html[data-theme="dark"] article#articleFilms .card .btn:active {
+article#articleFilms .card .btn:hover,
+article#articleFilms .card .btn:focus,
+article#articleFilms .card .btn:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-html[data-theme="dark"] article#articleFilms .card:hover {
+article#articleFilms .card:hover {
   -webkit-transform: scale(0.93);
           transform: scale(0.93);
   -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
           box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
 }
 
-html[data-theme="light"] h1 {
-  margin: 0;
-}
-
-html[data-theme="light"] body {
-  background-color: #eeeeee;
-  position: relative;
-  padding-bottom: 200px;
-  min-height: 100vh;
-}
-
-html[data-theme="light"] main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: [sidebar] 20% [main] 80%;
-      grid-template-columns: [sidebar] 20% [main] 80%;
-  margin: 0 10px;
-}
-
-html[data-theme="light"] aside {
-  grid-area: sidebar;
-  margin: 10px 0 0 10px;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar {
-  width: 4px;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-
-html[data-theme="light"] aside ::-webkit-scrollbar-track {
-  border: none;
-}
-
-html[data-theme="light"] aside #genresLegend {
-  text-align: right;
-  padding: 0;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #68beff;
-}
-
-html[data-theme="light"] aside #genresLegend h1 {
-  color: #68beff;
-  font-size: 2.5vw;
-}
-
-html[data-theme="light"] aside #genresLegend h1 i {
-  color: #68beff;
-  font-size: 2.5vw;
-}
-
-html[data-theme="light"] aside ul {
-  position: -webkit-sticky;
-  position: sticky;
-  left: 0;
-  top: 0;
-  list-style-type: none;
-  direction: rtl;
-  height: 100vh;
-  overflow: scroll;
-}
-
-html[data-theme="light"] aside ul li {
-  background-color: white;
-  direction: ltr;
-  padding: 10px;
-  margin: 5%;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
-  position: relative;
-  overflow: hidden;
-}
-
-html[data-theme="light"] aside ul li:before, html[data-theme="light"] aside ul li:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: white;
-}
-
-html[data-theme="light"] aside ul li:before {
-  top: 0;
-}
-
-html[data-theme="light"] aside ul li:after {
-  bottom: 0;
-}
-
-html[data-theme="light"] aside ul li:hover > * > *:before, html[data-theme="light"] aside ul li:hover > * > *:after {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-html[data-theme="light"] aside ul li:hover > * > * > *:before, html[data-theme="light"] aside ul li:hover > * > * > *:after {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-html[data-theme="light"] aside ul li > *:before, html[data-theme="light"] aside ul li > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 2px;
-  background-color: white;
-}
-
-html[data-theme="light"] aside ul li > *:before {
-  left: 0;
-}
-
-html[data-theme="light"] aside ul li > *:after {
-  right: 0;
-}
-
-html[data-theme="light"] aside ul li > * > *:before, html[data-theme="light"] aside ul li > * > *:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  z-index: 9;
-  height: 2px;
-  width: 100%;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] aside ul li > * > *:before {
-  top: 0;
-  -webkit-transform: translate3d(-105%, 0, 0);
-          transform: translate3d(-105%, 0, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] aside ul li > * > *:after {
-  bottom: 0;
-  -webkit-transform: translate3d(105%, 0, 0);
-          transform: translate3d(105%, 0, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] aside ul li > * > * > *:before, html[data-theme="light"] aside ul li > * > * > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  z-index: 9;
-  height: 100%;
-  width: 2px;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] aside ul li > * > * > *:before {
-  left: 0;
-  -webkit-transform: translate3d(0, 105%, 0);
-          transform: translate3d(0, 105%, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] aside ul li > * > * > *:after {
-  right: 0;
-  -webkit-transform: translate3d(0, -105%, 0);
-          transform: translate3d(0, -105%, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] aside ul li a {
-  text-decoration: none;
-  color: black;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-html[data-theme="light"] aside ul li:hover {
-  background-color: #eeeeee;
-}
-
-html[data-theme="light"] aside ul li:hover a {
-  color: #68beff;
-}
-
-html[data-theme="light"] section {
-  grid-area: main;
-}
-
-html[data-theme="light"] section .genre {
-  color: #68beff;
-  background-color: white;
-  font-size: 30px;
-  text-align: center;
-  padding: 10px 20px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-html[data-theme="light"] section .genre i {
-  display: none;
-}
-
-html[data-theme="light"] #slogan {
-  width: 100%;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: white;
-  text-align: center;
-}
-
-html[data-theme="light"] #slogan h2 {
-  color: black;
-}
-
-html[data-theme="light"] #slogan h1 {
-  color: #68beff;
-  overflow: hidden;
-  background: -webkit-gradient(linear, left top, right top, from(#ff9900), color-stop(50%, #ff9900), color-stop(50%, #68beff));
-  background: linear-gradient(to right, #ff9900, #ff9900 50%, #68beff 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 100%;
-  background-position: 100%;
-  -webkit-transition: background-position 500ms ease;
-  transition: background-position 500ms ease;
-}
-
-html[data-theme="light"] #slogan h1:hover {
-  background-position: 0 100%;
-}
-
-html[data-theme="light"] #slogan img {
-  margin-bottom: 8px;
-}
-
-html[data-theme="light"] .module-border-wrap {
-  width: 75%;
-  margin: 50px auto;
-  padding: 1vw;
-  position: relative;
-  border-radius: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#68beff));
-  background: linear-gradient(to right, #ff9900, #68beff);
-}
-
-html[data-theme="light"] article#articleGenres {
-  display: none;
-}
-
-html[data-theme="light"] article#articleGenres ul {
-  padding: 0;
-  margin: 0 5%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 25% 25% 25% 25%;
-      grid-template-columns: 25% 25% 25% 25%;
-  list-style-type: none;
-}
-
-html[data-theme="light"] article#articleGenres ul li {
-  display: inline;
-  background-color: white;
-  padding: 10px;
-  margin: 5%;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-html[data-theme="light"] article#articleGenres ul li:before, html[data-theme="light"] article#articleGenres ul li:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: white;
-}
-
-html[data-theme="light"] article#articleGenres ul li:before {
-  top: 0;
-}
-
-html[data-theme="light"] article#articleGenres ul li:after {
-  bottom: 0;
-}
-
-html[data-theme="light"] article#articleGenres ul li:hover > * > *:before, html[data-theme="light"] article#articleGenres ul li:hover > * > *:after {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-html[data-theme="light"] article#articleGenres ul li:hover > * > * > *:before, html[data-theme="light"] article#articleGenres ul li:hover > * > * > *:after {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-html[data-theme="light"] article#articleGenres ul li > *:before, html[data-theme="light"] article#articleGenres ul li > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 2px;
-  background-color: white;
-}
-
-html[data-theme="light"] article#articleGenres ul li > *:before {
-  left: 0;
-}
-
-html[data-theme="light"] article#articleGenres ul li > *:after {
-  right: 0;
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > *:before, html[data-theme="light"] article#articleGenres ul li > * > *:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  z-index: 9;
-  height: 2px;
-  width: 100%;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > *:before {
-  top: 0;
-  -webkit-transform: translate3d(-105%, 0, 0);
-          transform: translate3d(-105%, 0, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > *:after {
-  bottom: 0;
-  -webkit-transform: translate3d(105%, 0, 0);
-          transform: translate3d(105%, 0, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > * > *:before, html[data-theme="light"] article#articleGenres ul li > * > * > *:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  z-index: 9;
-  height: 100%;
-  width: 2px;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > * > *:before {
-  left: 0;
-  -webkit-transform: translate3d(0, 105%, 0);
-          transform: translate3d(0, 105%, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] article#articleGenres ul li > * > * > *:after {
-  right: 0;
-  -webkit-transform: translate3d(0, -105%, 0);
-          transform: translate3d(0, -105%, 0);
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-theme="light"] article#articleGenres ul li a {
-  text-decoration: none;
-  color: #918f8f;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
-  cursor: pointer;
-}
-
-html[data-theme="light"] article#articleGenres ul li:hover {
-  background-color: #eeeeee;
-}
-
-html[data-theme="light"] article#articleGenres ul li:hover a {
-  color: #68beff;
-}
-
-html[data-theme="light"] article#articleFilms {
-  border-left: 1px solid #68beff;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto auto auto auto auto;
-      grid-template-columns: auto auto auto auto auto;
-  justify-items: center;
-  padding: 1vw 0;
-  row-gap: 30px;
-}
-
-html[data-theme="light"] article#articleFilms .far,
-html[data-theme="light"] article#articleFilms .fas {
-  color: #68beff;
-}
-
-html[data-theme="light"] article#articleFilms .card {
-  width: 200px;
-  border-radius: 4px;
-  display: inline-block;
-  border: transparent;
-  background-color: white;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-html[data-theme="light"] article#articleFilms .card ::-webkit-scrollbar {
-  width: 2px;
-  margin-left: 5px;
-}
-
-html[data-theme="light"] article#articleFilms .card ::-webkit-scrollbar-track {
-  background: none;
-  border: none;
-}
-
-html[data-theme="light"] article#articleFilms .card ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #68beff;
-}
-
-html[data-theme="light"] article#articleFilms .card img {
-  height: 300px;
-  width: 200px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-html[data-theme="light"] article#articleFilms .card .card-body .card-title {
-  background-color: #68beff;
-  color: white;
-  text-align: center;
-  padding: 2px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-html[data-theme="light"] article#articleFilms .card .card-body .card-label {
-  color: #68beff;
-  margin: 0;
-}
-
-html[data-theme="light"] article#articleFilms .card .card-body .card-text {
-  color: #121212;
-  margin: 0 0 10px 0;
-}
-
-html[data-theme="light"] article#articleFilms .card .card-body #plot {
-  height: 180px;
-  overflow-y: auto;
-}
-
-html[data-theme="light"] article#articleFilms .card .card-body #filmGenre {
-  height: 50px;
-  overflow: hidden;
-}
-
-html[data-theme="light"] article#articleFilms .card .btn {
-  background-color: #68beff;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  border-radius: 0 0 4px 4px;
-}
-
-html[data-theme="light"] article#articleFilms .card .btn:hover,
-html[data-theme="light"] article#articleFilms .card .btn:focus,
-html[data-theme="light"] article#articleFilms .card .btn:active {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-html[data-theme="light"] article#articleFilms .card:hover {
-  -webkit-transform: scale(0.93);
-          transform: scale(0.93);
-  -webkit-box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-          box-shadow: 0 4px 8px 0 #68beff, 0 6px 20px 0 #68beff;
-}
-
 @media only screen and (max-width: 1600px) {
-  html[data-theme="light"] article#articleFilms {
-    -ms-grid-columns: auto auto auto auto;
-        grid-template-columns: auto auto auto auto;
-  }
-  html[data-theme="dark"] article#articleFilms {
+  article#articleFilms {
     -ms-grid-columns: auto auto auto auto;
         grid-template-columns: auto auto auto auto;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  html[data-theme="light"] header #searchFilm {
+  header #searchFilm {
     width: 300px;
   }
-  html[data-theme="light"] aside {
-    display: none;
-  }
-  html[data-theme="light"] main {
+  main {
     -ms-grid-columns: [main] 100%;
         grid-template-columns: [main] 100%;
     margin: 0 10px;
   }
-  html[data-theme="light"] main .genre {
+  main .genre {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1414,40 +714,17 @@ html[data-theme="light"] article#articleFilms .card:hover {
         -ms-flex-align: center;
             align-items: center;
   }
-  html[data-theme="light"] main .genre i {
+  main .genre i {
     display: block;
     cursor: pointer;
   }
-  html[data-theme="dark"] header #searchFilm {
-    width: 300px;
-  }
-  html[data-theme="dark"] main {
-    -ms-grid-columns: [main] 100%;
-        grid-template-columns: [main] 100%;
-    margin: 0 10px;
-  }
-  html[data-theme="dark"] main .genre {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  html[data-theme="dark"] main .genre i {
-    display: block;
-    cursor: pointer;
-  }
-  html[data-theme="dark"] aside {
+  aside {
     display: none;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  html[data-theme="dark"] header {
+  header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1455,214 +732,108 @@ html[data-theme="light"] article#articleFilms .card:hover {
     padding: 30px;
     row-gap: 15px;
   }
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 65%;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 300px;
   }
-  html[data-theme="dark"] #slogan h2 {
+  #slogan h2 {
     font-size: 26px;
   }
-  html[data-theme="dark"] #slogan h1 {
+  #slogan h1 {
     font-size: 32px;
   }
-  html[data-theme="dark"] .genre h1 {
+  .genre h1 {
     font-size: 35px;
   }
-  html[data-theme="dark"] .genre i {
+  .genre i {
     font-size: 25px;
   }
-  html[data-theme="dark"] article#articleFilms {
+  article#articleFilms {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
     border-left: 1px solid #ff9900;
   }
-  html[data-theme="dark"] article#articleFilms .card img {
+  article#articleFilms .card img {
     opacity: 100%;
   }
-  html[data-theme="dark"] #title {
-    font-size: 20px;
-  }
-  html[data-theme="light"] header {
-    row-gap: 15px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 30px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 65%;
-  }
-  html[data-theme="light"] header img {
-    width: 300px;
-  }
-  html[data-theme="light"] #slogan h2 {
-    font-size: 26px;
-  }
-  html[data-theme="light"] #slogan h1 {
-    font-size: 32px;
-  }
-  html[data-theme="light"] .genre h1 {
-    font-size: 35px;
-  }
-  html[data-theme="light"] .genre i {
-    font-size: 25px;
-  }
-  html[data-theme="light"] article#articleFilms {
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
-  }
-  html[data-theme="light"] article#articleFilms .card img {
-    opacity: 100%;
-  }
-  html[data-theme="light"] #title {
+  #title {
     font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 700px) {
-  html[data-theme="dark"] header {
+  header {
     row-gap: 10px;
   }
-  html[data-theme="dark"] header #searchFilm {
+  header #searchFilm {
     width: 90%;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 200px;
   }
-  html[data-theme="dark"] .genre h1 {
+  .genre h1 {
     font-size: 30px;
   }
-  html[data-theme="dark"] .genre i {
+  .genre i {
     font-size: 20px;
   }
-  html[data-theme="dark"] #slogan {
+  #slogan {
     padding: 15px;
   }
-  html[data-theme="dark"] #slogan img {
+  #slogan img {
     width: 75px;
   }
-  html[data-theme="dark"] #slogan h2 {
+  #slogan h2 {
     font-size: 4.5vw;
   }
-  html[data-theme="dark"] #slogan h1 {
+  #slogan h1 {
     font-size: 5vw;
   }
-  html[data-theme="dark"] .module-border-wrap {
+  .module-border-wrap {
     width: 90% !important;
   }
-  html[data-theme="dark"] article#articleFilms {
+  article#articleFilms {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
-  html[data-theme="dark"] article#articleGenres ul {
-    -ms-grid-columns: 33% 33% 33%;
-        grid-template-columns: 33% 33% 33%;
-  }
-  html[data-theme="light"] header {
-    row-gap: 10px;
-  }
-  html[data-theme="light"] header #searchFilm {
-    width: 90%;
-  }
-  html[data-theme="light"] header img {
-    width: 200px;
-  }
-  html[data-theme="light"] .genre h1 {
-    font-size: 30px;
-  }
-  html[data-theme="light"] .genre i {
-    font-size: 20px;
-  }
-  html[data-theme="light"] #slogan {
-    padding: 15px;
-  }
-  html[data-theme="light"] #slogan img {
-    width: 75px;
-  }
-  html[data-theme="light"] #slogan h2 {
-    font-size: 4.5vw;
-  }
-  html[data-theme="light"] #slogan h1 {
-    font-size: 5vw;
-  }
-  html[data-theme="light"] .module-border-wrap {
-    width: 90% !important;
-  }
-  html[data-theme="light"] article#articleFilms {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-  }
-  html[data-theme="light"] article#articleGenres ul {
+  article#articleGenres ul {
     -ms-grid-columns: 33% 33% 33%;
         grid-template-columns: 33% 33% 33%;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  html[data-theme="dark"] header {
+  header {
     row-gap: 10px;
     padding: 20px 10px;
   }
-  html[data-theme="dark"] header img {
+  header img {
     width: 200px;
   }
-  html[data-theme="dark"] article#articleFilms {
+  article#articleFilms {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
   }
-  html[data-theme="dark"] article#articleFilms .card {
+  article#articleFilms .card {
     width: 150px;
   }
-  html[data-theme="dark"] article#articleFilms .card .card-body {
+  article#articleFilms .card .card-body {
     padding: 10px;
     font-size: 14px;
   }
-  html[data-theme="dark"] article#articleFilms .card .card-body #filmGenre {
+  article#articleFilms .card .card-body #filmGenre {
     height: 40px;
   }
-  html[data-theme="dark"] article#articleFilms .card img {
+  article#articleFilms .card img {
     width: 150px;
     height: 225px;
   }
-  html[data-theme="dark"] article#articleFilms .card #plot {
+  article#articleFilms .card #plot {
     display: none;
   }
-  html[data-theme="dark"] article#articleGenres ul {
-    -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
-  }
-  html[data-theme="light"] header {
-    row-gap: 10px;
-    padding: 20px 10px;
-  }
-  html[data-theme="light"] header img {
-    width: 200px;
-  }
-  html[data-theme="light"] article#articleFilms {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-  }
-  html[data-theme="light"] article#articleFilms .card {
-    width: 150px;
-  }
-  html[data-theme="light"] article#articleFilms .card .card-body {
-    padding: 10px;
-    font-size: 14px;
-  }
-  html[data-theme="light"] article#articleFilms .card .card-body #filmGenre {
-    height: 40px;
-  }
-  html[data-theme="light"] article#articleFilms .card img {
-    width: 150px;
-    height: 225px;
-  }
-  html[data-theme="light"] article#articleFilms .card #plot {
-    display: none;
-  }
-  html[data-theme="light"] article#articleGenres ul {
+  article#articleGenres ul {
     -ms-grid-columns: 50% 50%;
         grid-template-columns: 50% 50%;
   }

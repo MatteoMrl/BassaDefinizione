@@ -28,10 +28,10 @@
       <article id="articleGenres">
         <ul>
           {{#each listOfGenres}}
-            <li id="{{this}}">
+            <li id="{{this.id}}">
                 <span>
                     <span>
-                        <a href="?genre={{this}}">{{this}}</a>
+                        <a href="/genre?s={{this.name}}">{{this.name}}</a>
                     </span>
                 </span>
             </li>

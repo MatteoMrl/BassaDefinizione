@@ -1,8 +1,14 @@
-@import "navbar";
-@import "scrollbar";
-@import "footer";
-@import "colors";
+@import 'navbar';
+@import 'scrollbar';
+@import 'footer';
+@import 'colors';
 
+//-----------------------------------------------------------------------------------------------------------
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 //------------------------------------------------------------------------------------------------------------
 @mixin btn-border-slide($color, $hoverColor, $borderWidth, $time) {
   $easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -11,7 +17,7 @@
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
 
@@ -50,7 +56,7 @@
   & > * {
     &:before,
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
 
@@ -71,7 +77,7 @@
     & > * {
       &:before,
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         z-index: 9;
@@ -99,7 +105,7 @@
       & > * {
         &:before,
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           z-index: 9;
@@ -127,381 +133,121 @@
     }
   }
 }
-html[data-theme="dark"] {
-  h1 {
-    margin: 0;
+
+h1 {
+  margin: 0;
+}
+body {
+  background-color: black;
+  position: relative;
+  padding-bottom: 200px;
+  min-height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template-columns: [sidebar]20% [main]80%;
+  margin: 0 10px;
+}
+
+aside {
+  grid-area: sidebar;
+  margin: 10px 0 0 10px;
+  ::-webkit-scrollbar {
+    width: 4px;
   }
-  body {
-    background-color: black;
-    position: relative;
-    padding-bottom: 200px;
-    min-height: 100vh;
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track {
+    border: none;
   }
 
-  main {
-    display: grid;
-    grid-template-columns: [sidebar]20% [main]80%;
-    margin: 0 10px;
-  }
-
-  aside {
-    grid-area: sidebar;
-    margin: 10px 0 0 10px;
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    ::-webkit-scrollbar-corner {
-      background-color: transparent;
-    }
-    ::-webkit-scrollbar-track {
-      border: none;
-    }
-
-    #genresLegend {
-      text-align: right;
-      padding: 0;
-      margin-bottom: 20px;
-      border-bottom: 1px solid $orangeOp;
-      h1 {
+  #genresLegend {
+    text-align: right;
+    padding: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $orangeOp;
+    h1 {
+      color: $orangeOp;
+      font-size: 2.5vw;
+      i {
         color: $orangeOp;
         font-size: 2.5vw;
-        i {
-          color: $orangeOp;
-          font-size: 2.5vw;
-        }
-      }
-    }
-    ul {
-      position: sticky;
-      left: 0;
-      top: 0;
-      list-style-type: none;
-      direction: rtl;
-      height: 100vh;
-      overflow: scroll;
-      li {
-        background-color: $lightBlack;
-        direction: ltr;
-        padding: 10px;
-        margin: 5%;
-        transition: 0.8s;
-        @include btn-border-slide($lightBlack, $orangeOp, 2px, 0.8s);
-        a {
-          text-decoration: none;
-          color: rgb(145, 143, 143);
-          transition: 0.5s;
-          cursor: pointer;
-        }
-      }
-      li:hover {
-        background-color: black;
-        a {
-          color: $orangeOp;
-        }
       }
     }
   }
-
-  section {
-    grid-area: main;
-    .genre {
-      color: $orangeOp;
+  ul {
+    position: sticky;
+    left: 0;
+    top: 0;
+    list-style-type: none;
+    direction: rtl;
+    height: 100vh;
+    overflow: scroll;
+    li {
       background-color: $lightBlack;
-      font-size: 30px;
-      text-align: center;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      i {
-        display: none;
-      }
-    }
-    #slogan {
-      width: 100%;
-      padding: 30px;
-      border-radius: 10px;
-      background-color: $lightBlack;
-      text-align: center;
-
-      h2 {
-        color: white;
-      }
-      h1 {
-        color: $orangeOp;
-        overflow: hidden;
-        background: linear-gradient(
-          to right,
-          $lightBlue,
-          $lightBlue 50%,
-          $orangeOp 50%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% 100%;
-        background-position: 100%;
-        transition: background-position 1s ease;
-      }
-      h1:hover {
-        background-position: 0 100%;
-      }
-      img {
-        margin-bottom: 8px;
-      }
-    }
-    .module-border-wrap {
-      width: 75%;
-      margin: 50px auto;
-      padding: 1vw;
-      position: relative;
-      border-radius: 10px;
-      background: linear-gradient(to right, $orangeOp, $lightBlue);
-      //box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
-    }
-  }
-
-  article#articleGenres {
-    display: none;
-    ul {
-      padding: 0;
-      margin: 0 5%;
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
-      list-style-type: none;
-      li {
-        display: inline;
-        background-color: $lightBlack;
-        padding: 10px;
-        margin: 5%;
-        transition: 0.8s;
-        text-align: center;
-        @include btn-border-slide($lightBlack, $orangeOp, 2px, 0.8s);
-        a {
-          text-decoration: none;
-          color: rgb(145, 143, 143);
-          transition: 0.8s;
-          cursor: pointer;
-        }
-      }
-      li:hover {
-        background-color: black;
-        a {
-          color: $orangeOp;
-        }
-      }
-    }
-  }
-
-  article#articleFilms {
-    border-left: 1px solid $orangeOp;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    justify-items: center;
-    justify-content: space-evenly;
-    padding: 30px 0;
-    row-gap: 30px;
-    margin-bottom: 30px;
-
-    .far,
-    .fas {
-      color: $orangeOp;
-    }
-    .card {
-      width: 200px;
-      border-radius: 4px;
-      display: inline-block;
-      border: transparent;
-      background-color: $lightBlack;
-      transition: 0.5s;
-
-      ::-webkit-scrollbar {
-        width: 2px;
-        margin-left: 5px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: none;
-        border: none;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: $orangeOp;
-      }
-
-      img {
-        height: 300px;
-        width: 200px;
+      direction: ltr;
+      padding: 10px;
+      margin: 5%;
+      transition: 0.8s;
+      @include btn-border-slide($lightBlack, $orangeOp, 2px, 0.8s);
+      a {
+        text-decoration: none !important;
+        color: rgb(145, 143, 143);
         transition: 0.5s;
-      }
-
-      .card-body {
-        .card-title {
-          background-color: $orangeOp;
-          color: $lightBlack;
-          text-align: center;
-          padding: 2px;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
-        .card-label {
-          color: $orangeOp;
-          margin: 0;
-        }
-        .card-text {
-          color: white;
-          margin: 0 0 10px 0;
-        }
-        #plot {
-          height: 180px;
-          overflow-y: auto;
-        }
-        #filmGenre {
-          height: 50px;
-          overflow: hidden;
-        }
-      }
-
-      .btn {
-        background-color: $orangeOp;
-        color: white;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        border-radius: 0 0 4px 4px;
-      }
-
-      .btn:hover,
-      .btn:focus,
-      .btn:active {
-        box-shadow: none;
+        cursor: pointer;
       }
     }
-
-    .card:hover {
-      transform: scale(0.93);
-      box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
+    li:hover {
+      background-color: black;
+      a {
+        color: $orangeOp;
+        text-decoration: none !important;
+      }
     }
   }
 }
 
-//--------------------------------------------------------------------------------------------------------
-
-html[data-theme="light"] {
-  h1 {
-    margin: 0;
-  }
-  body {
-    background-color: $primary;
-    position: relative;
-    padding-bottom: 200px;
-    min-height: 100vh;
-  }
-  main {
-    display: grid;
-    grid-template-columns: [sidebar]20% [main]80%;
-    margin: 0 10px;
-  }
-  aside {
-    grid-area: sidebar;
-    margin: 10px 0 0 10px;
-
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    ::-webkit-scrollbar-corner {
-      background-color: transparent;
-    }
-    ::-webkit-scrollbar-track {
-      border: none;
-    }
-
-    #genresLegend {
-      text-align: right;
-      padding: 0;
-      margin-bottom: 20px;
-      border-bottom: 1px solid $lightBlue;
-      h1 {
-        color: $lightBlue;
-        font-size: 2.5vw;
-        i {
-          color: $lightBlue;
-          font-size: 2.5vw;
-        }
-      }
-    }
-
-    ul {
-      position: sticky;
-      left: 0;
-      top: 0;
-      list-style-type: none;
-      direction: rtl;
-      height: 100vh;
-      overflow: scroll;
-      li {
-        background-color: white;
-        direction: ltr;
-        padding: 10px;
-        margin: 5%;
-        transition: 0.8s;
-        @include btn-border-slide(white, $lightBlue, 2px, 0.8s);
-
-        a {
-          text-decoration: none;
-          color: black;
-          transition: 0.5s;
-          cursor: pointer;
-        }
-      }
-      li:hover {
-        background-color: $primary;
-        a {
-          color: $lightBlue;
-        }
-      }
-    }
-  }
-  section {
-    grid-area: main;
-    .genre {
-      color: $lightBlue;
-      background-color: white;
-      font-size: 30px;
-      text-align: center;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      i {
-        display: none;
-      }
+section {
+  grid-area: main;
+  .genre {
+    color: $orangeOp;
+    background-color: $lightBlack;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    i {
+      display: none;
     }
   }
   #slogan {
     width: 100%;
     padding: 30px;
     border-radius: 10px;
-    background-color: white;
+    background-color: $lightBlack;
     text-align: center;
+
     h2 {
-      color: black;
+      color: white;
     }
     h1 {
-      color: $lightBlue;
+      color: $orangeOp;
       overflow: hidden;
       background: linear-gradient(
         to right,
-        $orangeOp,
-        $orangeOp 50%,
-        $lightBlue 50%
+        $lightBlue,
+        $lightBlue 50%,
+        $orangeOp 50%
       );
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% 100%;
       background-position: 100%;
-      transition: background-position 500ms ease;
+      transition: background-position 1s ease;
     }
     h1:hover {
       background-position: 0 100%;
@@ -510,7 +256,6 @@ html[data-theme="light"] {
       margin-bottom: 8px;
     }
   }
-
   .module-border-wrap {
     width: 75%;
     margin: 50px auto;
@@ -520,432 +265,281 @@ html[data-theme="light"] {
     background: linear-gradient(to right, $orangeOp, $lightBlue);
     //box-shadow: 10px 0 20px $lightBlue, -10px 0 20px $orangeOp;
   }
+}
 
-  article#articleGenres {
-    display: none;
-    ul {
-      padding: 0;
-      margin: 0 5%;
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
-      list-style-type: none;
-      li {
-        display: inline;
-        background-color: white;
-        padding: 10px;
-        margin: 5%;
+article#articleGenres {
+  display: none;
+  ul {
+    padding: 0;
+    margin: 0 5%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    list-style-type: none;
+    li {
+      display: inline;
+      background-color: $lightBlack;
+      padding: 10px;
+      margin: 5%;
+      transition: 0.8s;
+      text-align: center;
+      @include btn-border-slide($lightBlack, $orangeOp, 2px, 0.8s);
+      a {
+        text-decoration: none !important;
+        color: rgb(145, 143, 143);
         transition: 0.8s;
-        text-align: center;
-        @include btn-border-slide(white, $lightBlue, 2px, 0.8s);
-        a {
-          text-decoration: none;
-          color: rgb(145, 143, 143);
-          transition: 0.8s;
-          cursor: pointer;
-        }
+        cursor: pointer;
       }
-      li:hover {
-        background-color: $primary;
-        a {
-          color: $lightBlue;
-        }
+    }
+    li:hover {
+      background-color: black;
+      a {
+        color: $orangeOp;
+        text-decoration: none !important;
       }
     }
   }
+}
 
-  article#articleFilms {
-    border-left: 1px solid $lightBlue;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    justify-items: center;
-    padding: 1vw 0;
-    row-gap: 30px;
+article#articleFilms {
+  border-left: 1px solid $orangeOp;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-items: center;
+  justify-content: space-evenly;
+  padding: 30px 0;
+  row-gap: 30px;
+  margin-bottom: 30px;
 
-    .far,
-    .fas {
-      color: $lightBlue;
+  .far,
+  .fas {
+    color: $orangeOp;
+  }
+  .card {
+    width: 200px;
+    border-radius: 4px;
+    display: inline-block;
+    border: transparent;
+    background-color: $lightBlack;
+    transition: 0.5s;
+
+    ::-webkit-scrollbar {
+      width: 2px;
+      margin-left: 5px;
     }
-    .card {
+
+    ::-webkit-scrollbar-track {
+      background: none;
+      border: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $orangeOp;
+    }
+
+    img {
+      height: 300px;
       width: 200px;
-      border-radius: 4px;
-      display: inline-block;
-      border: transparent;
-      background-color: white;
       transition: 0.5s;
+    }
 
-      ::-webkit-scrollbar {
-        width: 2px;
-        margin-left: 5px;
+    .card-body {
+      .card-title {
+        background-color: $orangeOp;
+        color: $lightBlack;
+        text-align: center;
+        padding: 2px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
-
-      ::-webkit-scrollbar-track {
-        background: none;
-        border: none;
+      .card-label {
+        color: $orangeOp;
+        margin: 0;
       }
-
-      ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: $lightBlue;
-      }
-
-      img {
-        height: 300px;
-        width: 200px;
-        transition: 0.5s;
-      }
-
-      .card-body {
-        .card-title {
-          background-color: $lightBlue;
-          color: white;
-          text-align: center;
-          padding: 2px;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
-        .card-label {
-          color: $lightBlue;
-          margin: 0;
-        }
-        .card-text {
-          color: $lightBlack;
-          margin: 0 0 10px 0;
-        }
-        #plot {
-          height: 180px;
-          overflow-y: auto;
-        }
-        #filmGenre {
-          height: 50px;
-          overflow: hidden;
-        }
-      }
-
-      .btn {
-        background-color: $lightBlue;
+      .card-text {
         color: white;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        border-radius: 0 0 4px 4px;
+        margin: 0 0 10px 0;
       }
-
-      .btn:hover,
-      .btn:focus,
-      .btn:active {
-        box-shadow: none;
+      #plot {
+        height: 180px;
+        overflow-y: auto;
+      }
+      #filmGenre {
+        height: 50px;
+        overflow: hidden;
       }
     }
 
-    .card:hover {
-      transform: scale(0.93);
-      box-shadow: 0 4px 8px 0 $lightBlue, 0 6px 20px 0 $lightBlue;
+    .btn {
+      background-color: $orangeOp;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-radius: 0 0 4px 4px;
     }
+
+    .btn:hover,
+    .btn:focus,
+    .btn:active {
+      box-shadow: none;
+    }
+  }
+
+  .card:hover {
+    transform: scale(0.93);
+    box-shadow: 0 4px 8px 0 $orangeOp, 0 6px 20px 0 $orangeOp;
   }
 }
 
 //-----------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 1600px) {
-  html[data-theme="light"] {
-    article#articleFilms {
-      grid-template-columns: auto auto auto auto;
-    }
-  }
-  html[data-theme="dark"] {
-    article#articleFilms {
-      grid-template-columns: auto auto auto auto;
-    }
+  article#articleFilms {
+    grid-template-columns: auto auto auto auto;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  html[data-theme="light"] {
-    header {
-      #searchFilm {
-        width: 300px;
-      }
+  header {
+    #searchFilm {
+      width: 300px;
     }
-    aside {
-      display: none;
-    }
-    main {
-      grid-template-columns: [main]100%;
-      margin: 0 10px;
-      .genre {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        i {
-          display: block;
-          cursor: pointer;
-        }
+  }
+  main {
+    grid-template-columns: [main]100%;
+    margin: 0 10px;
+    .genre {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      i {
+        display: block;
+        cursor: pointer;
       }
     }
   }
-  html[data-theme="dark"] {
-    header {
-      #searchFilm {
-        width: 300px;
-      }
-    }
-    main {
-      grid-template-columns: [main]100%;
-      margin: 0 10px;
-      .genre {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        i {
-          display: block;
-          cursor: pointer;
-        }
-      }
-    }
-    aside {
-      display: none;
-    }
+  aside {
+    display: none;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  html[data-theme="dark"] {
-    header {
-      flex-direction: column;
-      padding: 30px;
-      row-gap: 15px;
-      #searchFilm {
-        width: 65%;
-      }
-      img {
-        width: 300px;
-      }
+  header {
+    flex-direction: column;
+    padding: 30px;
+    row-gap: 15px;
+    #searchFilm {
+      width: 65%;
     }
-    #slogan {
-      h2 {
-        font-size: 26px;
-      }
-      h1 {
-        font-size: 32px;
-      }
-    }
-    .genre {
-      h1 {
-        font-size: 35px;
-      }
-      i {
-        font-size: 25px;
-      }
-    }
-    article#articleFilms {
-      grid-template-columns: auto auto auto;
-      border-left: 1px solid $orangeOp;
-      .card {
-        img {
-          opacity: 100%;
-        }
-      }
-    }
-    #title {
-      font-size: 20px;
+    img {
+      width: 300px;
     }
   }
-  html[data-theme="light"] {
-    header {
-      row-gap: 15px;
-      flex-direction: column;
-      padding: 30px;
-      #searchFilm {
-        width: 65%;
-      }
+  #slogan {
+    h2 {
+      font-size: 26px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+  }
+  .genre {
+    h1 {
+      font-size: 35px;
+    }
+    i {
+      font-size: 25px;
+    }
+  }
+  article#articleFilms {
+    grid-template-columns: auto auto auto;
+    border-left: 1px solid $orangeOp;
+    .card {
       img {
-        width: 300px;
+        opacity: 100%;
       }
     }
-    #slogan {
-      h2 {
-        font-size: 26px;
-      }
-      h1 {
-        font-size: 32px;
-      }
-    }
-    .genre {
-      h1 {
-        font-size: 35px;
-      }
-      i {
-        font-size: 25px;
-      }
-    }
-    article#articleFilms {
-      grid-template-columns: auto auto auto;
-      .card {
-        img {
-          opacity: 100%;
-        }
-      }
-    }
-    #title {
-      font-size: 20px;
-    }
+  }
+  #title {
+    font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 700px) {
-  html[data-theme="dark"] {
-    header {
-      row-gap: 10px;
-      #searchFilm {
-        width: 90%;
-      }
-      img {
-        width: 200px;
-      }
+  header {
+    row-gap: 10px;
+    #searchFilm {
+      width: 90%;
     }
-    .genre {
-      h1 {
-        font-size: 30px;
-      }
-      i {
-        font-size: 20px;
-      }
-    }
-    #slogan {
-      padding: 15px;
-      img {
-        width: 75px;
-      }
-      h2 {
-        font-size: 4.5vw;
-      }
-      h1 {
-        font-size: 5vw;
-      }
-    }
-    .module-border-wrap {
-      width: 90% !important;
-    }
-    article#articleFilms {
-      grid-template-columns: auto auto;
-    }
-    article#articleGenres {
-      ul {
-        grid-template-columns: 33% 33% 33%;
-      }
+    img {
+      width: 200px;
     }
   }
-  html[data-theme="light"] {
-    header {
-      row-gap: 10px;
-      #searchFilm {
-        width: 90%;
-      }
-      img {
-        width: 200px;
-      }
+  .genre {
+    h1 {
+      font-size: 30px;
     }
-    .genre {
-      h1 {
-        font-size: 30px;
-      }
-      i {
-        font-size: 20px;
-      }
+    i {
+      font-size: 20px;
     }
-    #slogan {
-      padding: 15px;
-      img {
-        width: 75px;
-      }
-      h2 {
-        font-size: 4.5vw;
-      }
-      h1 {
-        font-size: 5vw;
-      }
+  }
+  #slogan {
+    padding: 15px;
+    img {
+      width: 75px;
     }
-    .module-border-wrap {
-      width: 90% !important;
+    h2 {
+      font-size: 4.5vw;
     }
-    article#articleFilms {
-      grid-template-columns: auto auto;
+    h1 {
+      font-size: 5vw;
     }
-    article#articleGenres {
-      ul {
-        grid-template-columns: 33% 33% 33%;
-      }
+  }
+  .module-border-wrap {
+    width: 90% !important;
+  }
+  article#articleFilms {
+    grid-template-columns: auto auto;
+  }
+  article#articleGenres {
+    ul {
+      grid-template-columns: 33% 33% 33%;
     }
   }
 }
 @media only screen and (max-width: 450px) {
-  html[data-theme="dark"] {
-    header {
-      row-gap: 10px;
-      padding: 20px 10px;
+  header {
+    row-gap: 10px;
+    padding: 20px 10px;
+    img {
+      width: 200px;
+    }
+  }
+  article#articleFilms {
+    grid-template-columns: auto auto;
+    .card {
+      width: 150px;
+      .card-body {
+        padding: 10px;
+        font-size: 14px;
+        #filmGenre {
+          height: 40px;
+        }
+      }
       img {
-        width: 200px;
-      }
-    }
-    article#articleFilms {
-      grid-template-columns: auto auto;
-      .card {
         width: 150px;
-        .card-body {
-          padding: 10px;
-          font-size: 14px;
-          #filmGenre {
-            height: 40px;
-          }
-        }
-        img {
-          width: 150px;
-          height: 225px;
-        }
-        #plot {
-          display: none;
-        }
+        height: 225px;
       }
-    }
-    article#articleGenres {
-      ul {
-        grid-template-columns: 50% 50%;
+      #plot {
+        display: none;
       }
     }
   }
-  html[data-theme="light"] {
-    header {
-      row-gap: 10px;
-      padding: 20px 10px;
-      img {
-        width: 200px;
-      }
-    }
-    article#articleFilms {
-      grid-template-columns: auto auto;
-      .card {
-        width: 150px;
-        .card-body {
-          padding: 10px;
-          font-size: 14px;
-          #filmGenre {
-            height: 40px;
-          }
-        }
-        img {
-          width: 150px;
-          height: 225px;
-        }
-        #plot {
-          display: none;
-        }
-      }
-    }
-    article#articleGenres {
-      ul {
-        grid-template-columns: 50% 50%;
-      }
+  article#articleGenres {
+    ul {
+      grid-template-columns: 50% 50%;
     }
   }
 }

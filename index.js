@@ -312,14 +312,14 @@ const renderUser = async ({ username }, res) => {
 //-----------------------------------------------------------------------------------------------------
 
 app.get('', (req, res) => {
-  renderFilms(req.query.genre, res)
+  renderFilms(null, res)
+})
+
+app.get('/genre', (req, res) => {
+  renderFilms(req.query.s, res)
 })
 
 app.get('/user/:username', (req, res) => {
-  res.render('index', { allFilms })
-})
-
-app.post('/user/:username', (req, res) => {
   renderUser(req.params, res)
 })
 
@@ -328,9 +328,6 @@ app.get('/search', async (req, res) => {
   if (title) {
     try {
       const data = await searchFilm(title)
-      if (data.Director === 'N/A') {
-        data.Director = undefined
-      }
       res.render('searchFilms', { data })
     } catch (err) {
       console.log(err)
