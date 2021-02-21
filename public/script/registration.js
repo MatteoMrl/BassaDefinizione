@@ -14,18 +14,6 @@ let validPassword = false
 let changeColor = false
 button.disabled = true
 
-if (localStorage.getItem('mode')) {
-  if (localStorage.getItem('mode') === 'light') {
-    html.setAttribute('data-theme', 'light')
-    logo.setAttribute('src', '/img/lgLogo.jpg')
-  } else {
-    html.setAttribute('data-theme', 'dark')
-    logo.setAttribute('src', '/img/dkLogo.jpg')
-  }
-} else {
-  localStorage.setItem('mode', 'dark')
-}
-
 function checkUsername() {
   const regex = /^(?=.{3,14}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
   if (usernameInput.value.match(regex)) {
