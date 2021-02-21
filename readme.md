@@ -10,8 +10,7 @@ Through BassaDefinizione the user can:
 - Like or dislike a movie
 - Register and log
 - Observe the user appreciation of a specific film
-- Display in descending order of the evaluation rated films
-- Change theme from light to dark and vice versa
+- Display the best rated films
 
 ### External APIs
 
@@ -22,7 +21,7 @@ Any information on any film is obtained from [OMDb API](http://www.omdbapi.com/)
 - [Express](https://www.npmjs.com/package/express)
 - [Hbs](https://www.npmjs.com/package/hbs)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
-- [MySQL](https://www.npmjs.com/package/mysql)
+- [MySQL2](https://www.npmjs.com/package/mysql2)
 - [JWT](https://www.npmjs.com/package/jsonwebtoken)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
@@ -118,7 +117,8 @@ To have a global IP address instead, you need to:
 
 - [ ] Change the password
 - [ ] Advanced movie search
-- [ ] Recover a forgotten password
+- [ ] Light mode
+- [ ] Remove a rated film
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TheGodMorel/BassaDefinizione)
 
