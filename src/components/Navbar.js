@@ -7,24 +7,23 @@ import {
   Route,
   Link,
   Redirect,
-  useHistory
+  useHistory,
+  useParams
 } from "react-router-dom"
 
 const Navbar = ({ token, setToken }) => {
-  const getCookie = (cname) => {
-    const name = cname + "="
-    const decodedCookie = decodeURIComponent(document.cookie)
-    const ca = decodedCookie.split(";")
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i]
-      while (c.charAt(0) === " ") {
-        c = c.substring(1)
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ""
+  const tokenIsValid = (username) => {
+    userButton.current.href = `/user/${username}`
+    userButton.current.innerHTML = `<i class="fa fa-user"></i> ${username}`
+    userButton.current.style["border-radius"] = "10px 0 0 10px"
+    logoutButton.current.style.display = "inline"
+  }
+
+  const tokenNotValid = () => {
+    userButton.current.href = "/login"
+    userButton.current.innerHTML = `<i class="fa fa-user"></i> GET STARTED`
+    userButton.current.style["border-radius"] = "10px"
+    logoutButton.current.style.display = "none"
   }
 
   const checkAccess = () => {
@@ -41,31 +40,29 @@ const Navbar = ({ token, setToken }) => {
           return response.json()
         })
         .then((data) => {
-          const { username } = data
-          if (username) {
-            userButton.current.href = `/user/${username}`
-            userButton.current.innerHTML = `<i class="fa fa-user"></i> ${username}`
-          }
+          const { username, auth } = data
+          auth ? tokenIsValid(username) : tokenNotValid()
         })
         .catch(function (err) {
-          console.log("Something went wrong!", err)
+          tokenNotValid()
         })
     } else {
-      userButton.current.href = "/login"
-      userButton.current.innerHTML = `<i class="fa fa-user"></i> GET STARTED`
-      userButton.current.style["border-radius"] = "10px"
-      logoutButton.current.style.display = "none"
+      tokenNotValid()
     }
+  }
+
+  const deleteToken = () => {
+    document.cookie =
+      "jwt=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    setToken("")
   }
 
   const [input, setInput] = useState("")
   const [results, setResults] = useState([])
-  let history = useHistory()
 
   useEffect(() => {
-    setToken(getCookie("jwt"))
     checkAccess()
-  }, [])
+  })
 
   useEffect(() => {
     const timeoutSearch = setTimeout(() => {
@@ -83,7 +80,7 @@ const Navbar = ({ token, setToken }) => {
             setResults([])
           })
       }
-    }, 500)
+    }, 300)
     return () => {
       clearTimeout(timeoutSearch)
     }
@@ -102,13 +99,6 @@ const Navbar = ({ token, setToken }) => {
         id="searchFilm"
         onSubmit={(e) => {
           e.preventDefault()
-          if (input) {
-            history.push(`/film/${input}`)
-            setInput("")
-            setResults([])
-            window.location.reload()
-            return false
-          }
         }}
       >
         <i className="fas fa-film"></i>
@@ -152,9 +142,9 @@ const Navbar = ({ token, setToken }) => {
         <a href="/login" id="userButton" ref={userButton}>
           <i className="far fa-user"></i> GET STARTED
         </a>
-        <a href="/logout" id="logoutButton" ref={logoutButton}>
+        <button id="logoutButton" ref={logoutButton} onClick={deleteToken}>
           <i className="fas fa-sign-out-alt"></i> LOGOUT
-        </a>
+        </button>
       </div>
     </header>
   )

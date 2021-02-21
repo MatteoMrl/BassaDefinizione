@@ -86,12 +86,14 @@ header img {
 }
 
 header #searchFilm {
+  margin: 0;
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 450px;
   position: relative;
+  border-radius: 0;
   background-color: transparent;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -106,7 +108,6 @@ header #searchFilm {
 header #searchFilm input[type="text"] {
   background-color: #121212;
   width: 100%;
-  border-radius: 5px;
   outline: none;
   color: #ff9900;
   border: transparent;
@@ -692,9 +693,8 @@ article#articleFilms .card img {
 }
 
 article#articleFilms .card .card-body .card-title {
-  background-color: #ff9900;
-  color: #121212;
-  text-align: center;
+  color: #ff9900;
+  font-size: 20px;
   padding: 2px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -739,9 +739,9 @@ article#articleFilms .card .btn:active {
 
 article#articleFilms .card:hover {
   -webkit-transform: scale(0.93);
-  transform: scale(0.93);
-  -webkit-box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
-  box-shadow: 0 4px 8px 0 #ff9900, 0 6px 20px 0 #ff9900;
+          transform: scale(0.93);
+  -webkit-box-shadow: 0 0 30px #ff9900;
+          box-shadow: 0 0 30px #ff9900;
 }
 
 .lds-ellipsis {

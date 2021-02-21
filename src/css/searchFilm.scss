@@ -153,6 +153,7 @@ body {
       .fa-thumbs-up,
       .fa-thumbs-down {
         transition: color 0.5s;
+        margin-left: 10px;
       }
       .fa-thumbs-up:hover {
         color: green;
@@ -160,14 +161,6 @@ body {
       .fa-thumbs-down:hover {
         color: red;
       }
-    }
-
-    #serverResponse {
-      display: inline;
-      color: black;
-      border-radius: 5px;
-      margin-left: 10px;
-      padding: 5px;
     }
   }
 }

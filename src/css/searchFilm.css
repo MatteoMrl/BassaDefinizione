@@ -1,5 +1,5 @@
 * {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 header {
@@ -35,7 +35,7 @@ header #userInteraction #userButton {
   background-image: linear-gradient(to top, black 50%, transparent 50%);
   -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   border: none;
   font-weight: bold;
 }
@@ -56,6 +56,7 @@ header #userInteraction #logoutButton {
   border-radius: 0 10px 10px 0;
   background-color: #121212;
   color: red;
+  outline: none !important;
   border: 1px solid red;
   padding: 10px;
   background-size: 200% 200%;
@@ -64,7 +65,6 @@ header #userInteraction #logoutButton {
   background-image: linear-gradient(to top, black 50%, transparent 50%);
   -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border: none;
   font-weight: bold;
 }
@@ -102,7 +102,7 @@ header #searchFilm {
   border-bottom: 1px solid #ff9900;
 }
 
-header #searchFilm input[type='text'] {
+header #searchFilm input[type="text"] {
   background-color: #121212;
   width: 100%;
   border-radius: 5px;
@@ -390,6 +390,7 @@ body {
 #specificFilm #filmInformation #vote .fa-thumbs-down {
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
+  margin-left: 10px;
 }
 
 #specificFilm #filmInformation #vote .fa-thumbs-up:hover {
@@ -398,14 +399,6 @@ body {
 
 #specificFilm #filmInformation #vote .fa-thumbs-down:hover {
   color: red;
-}
-
-#specificFilm #filmInformation #serverResponse {
-  display: inline;
-  color: black;
-  border-radius: 5px;
-  margin-left: 10px;
-  padding: 5px;
 }
 
 @media only screen and (max-width: 1200px) {

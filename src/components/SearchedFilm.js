@@ -1,12 +1,19 @@
 import fetch from "node-fetch"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "../css/searchFilm.css"
+import { useParams } from "react-router-dom"
+import Navbar from "./Navbar.js"
+import Footer from "./Footer.js"
 
-const SearchedFilm = (props) => {
+const SearchedFilm = ({ token, setToken }) => {
   const [data, setData] = useState()
   const [isRendered, setIsRendered] = useState(false)
+  const { title } = useParams()
+  const likeButton = useRef()
+  const dislikeButton = useRef()
+
   useEffect(() => {
-    const url = encodeURI(`/film/${props.match.params.title}`)
+    const url = encodeURI(`/film/${title}`)
     fetch(url)
       .then((res) => res.json())
       .then((film) => {
@@ -15,9 +22,35 @@ const SearchedFilm = (props) => {
       })
   }, [])
 
+  const onLikeClick = (rating) => {
+    fetch(`/vote`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ title, rating }),
+      method: "PUT"
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then(({ auth, vote }) => {
+        if (auth && vote) {
+          if (rating) {
+            likeButton.current.style.color = "green"
+            dislikeButton.current.style.color = "black"
+          } else {
+            dislikeButton.current.style.color = "red"
+            likeButton.current.style.color = "black"
+          }
+        }
+      })
+  }
+
   if (isRendered) {
     return (
       <React.Fragment>
+        <Navbar token={token} setToken={setToken} />
         {data !== undefined ? (
           <section id="specificFilm">
             <img src={data.Poster} alt="" />
@@ -35,12 +68,21 @@ const SearchedFilm = (props) => {
                 {data.imdbVotes} <i className="fas fa-vote-yea"></i> IMDb
                 ratings
               </h5>
-              <div id="vote">
-                <h5 id="textRating">Rate the film</h5>
-                <i className="fas fa-thumbs-up"></i>
-                <i className="fas fa-thumbs-down"></i>
-                <h6 id="serverResponse"></h6>
-              </div>
+              {token && (
+                <div id="vote">
+                  <h5 id="textRating">Rate the film</h5>
+                  <i
+                    className="fas fa-thumbs-up"
+                    onClick={() => onLikeClick(1)}
+                    ref={likeButton}
+                  ></i>
+                  <i
+                    className="fas fa-thumbs-down"
+                    onClick={() => onLikeClick(0)}
+                    ref={dislikeButton}
+                  ></i>
+                </div>
+              )}
             </div>
           </section>
         ) : (
@@ -50,17 +92,22 @@ const SearchedFilm = (props) => {
             </h1>
           </div>
         )}
+        <Footer />
       </React.Fragment>
     )
   } else {
     return (
-      <div className="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <React.Fragment>
+        <Navbar token={token} />
+        <div className="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>{" "}
+        <Footer />
+      </React.Fragment>
     )
   }
 }
