@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "./Home.js"
 import SearchedFilm from "./components/SearchedFilm.js"
 import Login from "./components/Login.js"
+import Registration from "./components/Registration.js"
 
 const App = () => {
   const getCookie = (cname) => {
@@ -32,7 +33,10 @@ const App = () => {
             <SearchedFilm token={token} setToken={setToken} />
           </Route>
           <Route path="/login">
-            <Login setToken={setToken} token={token} />
+            <Login setToken={setToken} />
+          </Route>
+          <Route path="/registration">
+            <Registration setToken={setToken} />
           </Route>
           <Route path="/">
             <Home token={token} setToken={setToken} />

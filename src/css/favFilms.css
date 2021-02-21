@@ -100,6 +100,8 @@ header #searchFilm {
           justify-content: space-between;
   padding: 8px;
   border-bottom: 1px solid #ff9900;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 header #searchFilm input[type="text"] {

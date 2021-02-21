@@ -17,6 +17,10 @@ body {
   padding-bottom: 200px;
 }
 
+#root {
+  min-height: 100%;
+}
+
 #filmNotFound {
   padding: 0;
   border-right: 5px $orangeOp solid;
@@ -102,8 +106,7 @@ body {
   img {
     border: 1px solid $orangeOp;
     margin-right: 20px;
-    width: 300px;
-    height: 450px;
+    height: 100%;
   }
   #filmInformation {
     height: 100%;

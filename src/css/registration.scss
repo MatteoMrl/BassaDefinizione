@@ -9,14 +9,13 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#login {
-  background-color: orange;
-}
-
-#registration {
-  background-color: black;
-  background-repeat: repeat, no-repeat;
-  background-size: cover;
+#registrationPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $orangeOp;
+  width: 100%;
+  min-height: 100vh;
 }
 
 form {
@@ -24,7 +23,7 @@ form {
   color: white;
   margin: 10vh auto;
   border-radius: 7px;
-
+  box-shadow: 10px 10px 20px black;
   width: 400px;
 
   #imgLogo {
@@ -71,18 +70,18 @@ form {
   .btn {
     text-align: center;
     width: 100%;
-    background-color: white;
+    background-color: red;
     color: black;
     letter-spacing: 3px;
     border-radius: 0 0 7px 7px;
     transition: all 0.5s;
   }
 
-  .btn:hover,
-  .btn:focus,
-  .btn:active {
+  .btn-abled:hover,
+  .btn-abled:focus,
+  .btn-abled:active {
     box-shadow: none;
-    background-color: green;
+    background-color: green !important;
   }
 
   .alert {
@@ -96,28 +95,13 @@ form {
     border: 1px solid red;
     background-color: red;
   }
-
-  .alert-success {
-    border: 1px solid green;
-    background-color: green;
-  }
 }
 
 @media only screen and (max-width: 600px) {
-  html[data-theme="dark"] {
-    form {
+  form {
+    width: 300px;
+    #imgLogo {
       width: 300px;
-      #imgLogo {
-        width: 300px;
-      }
-    }
-  }
-  html[data-theme="light"] {
-    form {
-      width: 300px;
-      #imgLogo {
-        width: 300px;
-      }
     }
   }
 }

@@ -100,6 +100,8 @@ header #searchFilm {
           justify-content: space-between;
   padding: 8px;
   border-bottom: 1px solid #ff9900;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 header #searchFilm input[type="text"] {
@@ -183,6 +185,10 @@ body {
   position: relative;
   min-height: 100vh;
   padding-bottom: 200px;
+}
+
+#root {
+  min-height: 100%;
 }
 
 #filmNotFound {
@@ -331,8 +337,7 @@ body {
 #specificFilm img {
   border: 1px solid #ff9900;
   margin-right: 20px;
-  width: 300px;
-  height: 450px;
+  height: 100%;
 }
 
 #specificFilm #filmInformation {

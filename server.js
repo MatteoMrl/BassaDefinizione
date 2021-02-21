@@ -100,8 +100,7 @@ const loginUser = async ({ username, password }, res) => {
     } else {
       createToken(userData.id, res)
     }
-  } catch (err) {
-    console.log(err)
+  } catch {
     res.json({ message: "An error has occurred. Please try again" })
   }
 }
@@ -109,7 +108,7 @@ const loginUser = async ({ username, password }, res) => {
 const userRegistration = async ({ username, mail, password }, res) => {
   try {
     const resultMail = await dbQuery(
-      `SELECT mail FROM users WHERE mail = '${mail}'`
+      `SELECT mail FROM users WHERE mail = '${mail}' LIMIT 1`
     )
     if (resultMail.length < 1) {
       const hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
@@ -118,16 +117,14 @@ const userRegistration = async ({ username, mail, password }, res) => {
       )
       loginUser({ username, password }, res)
     } else {
-      res.render("registration", {
-        message: "This mail is already in use, try another one",
-        class: "alert-danger"
+      res.json({
+        message: "This mail is already in use, try another one"
       })
     }
   } catch (err) {
     console.log(err)
-    res.render("registration", {
-      message: "An error has occurred. Please try again",
-      class: "alert-danger"
+    res.json({
+      message: "An error has occurred. Please try again"
     })
   }
 }
@@ -281,6 +278,10 @@ app.get("/film/:title", async (req, res) => {
 
 app.post("/login", (req, res) => {
   loginUser(req.body, res)
+})
+
+app.post("/registration", (req, res) => {
+  userRegistration(req.body, res)
 })
 
 app.put("/vote", verifyToken, (req, res) => {

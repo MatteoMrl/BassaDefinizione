@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import "../css/login.css"
 
-const Login = ({ token, setToken }) => {
+const Login = ({ setToken }) => {
   const [message, setMessage] = useState()
   const [inputUsername, setInputUsername] = useState("")
   const [inputPassword, setInputPassword] = useState("")
@@ -14,9 +14,7 @@ const Login = ({ token, setToken }) => {
     fetch("/login", {
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
-
-        Authorization: "Bearer " + token
+        "Content-Type": "application/json"
       },
       method: "POST",
       body: JSON.stringify({ username: inputUsername, password: inputPassword })
