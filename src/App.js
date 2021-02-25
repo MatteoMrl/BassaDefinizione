@@ -4,7 +4,8 @@ import Home from "./Home.js"
 import SearchedFilm from "./components/SearchedFilm.js"
 import Login from "./components/Login.js"
 import Registration from "./components/Registration.js"
-
+import UserMenu from "./components/UserMenu.js"
+import "./css/index.css"
 const App = () => {
   const getCookie = (cname) => {
     const name = cname + "="
@@ -29,13 +30,16 @@ const App = () => {
     <React.Fragment>
       <Router>
         <Switch>
-          <Route path="/film/:title">
+          <Route exact path="/film/:title">
             <SearchedFilm token={token} setToken={setToken} />
           </Route>
-          <Route path="/login">
+          <Route exact path="/user/:username">
+            <UserMenu token={token} setToken={setToken} />
+          </Route>
+          <Route exact path="/login">
             <Login setToken={setToken} />
           </Route>
-          <Route path="/registration">
+          <Route exact path="/registration">
             <Registration setToken={setToken} />
           </Route>
           <Route path="/">

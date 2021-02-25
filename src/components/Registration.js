@@ -118,7 +118,7 @@ const Registration = ({ setToken }) => {
 
   return (
     <div id="registrationPage">
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={onFormSubmit} className="form-registration">
         <a href="/">
           <img src="/img/dkLogo.jpg" id="imgLogo" alt="" />
         </a>

@@ -1,12 +1,12 @@
-@import 'navbar';
-@import 'scrollbar';
-@import 'footer';
-@import 'colors';
+@import "navbar";
+@import "scrollbar";
+@import "footer";
+@import "colors";
 
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -48,7 +48,6 @@ body {
 }
 #filterGenres:hover {
   border-color: black;
-  color: $orangeOp;
   background-image: linear-gradient(to top, black 51%, transparent 50%);
   background-position: 0 100%;
   transition: background-position 300ms, color 300ms ease,
@@ -92,12 +91,12 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: [sidebar]20% [article]80%;
+  grid-template-columns: [genres]20% [films]80%;
   margin: 30px 10px;
 }
 
-aside {
-  grid-area: sidebar;
+.user-genres {
+  grid-area: genres;
   margin: 10px 0;
   ::-webkit-scrollbar {
     width: 4px;
@@ -152,8 +151,8 @@ aside {
   }
 }
 
-article {
-  grid-area: article;
+.user-films {
+  grid-area: films;
   margin: 10px 0;
   #title {
     text-align: center;
@@ -254,6 +253,20 @@ article {
       width: 400px;
     }
   }
+  #filterGenres {
+    display: block;
+  }
+  main {
+    grid-template-columns: [films]100%;
+    .card {
+      .card-title {
+        font-size: 18px;
+      }
+    }
+  }
+  aside {
+    display: none;
+  }
   #favouriteFilms {
     grid-template-columns: auto auto auto;
   }
@@ -284,15 +297,8 @@ article {
       width: 200px;
     }
   }
-  #filterGenres {
-    display: block;
-  }
-  main {
-    grid-template-columns: [article]100%;
-  }
+
   #favouriteFilms {
-    grid-template-columns: auto auto;
-    border: none;
     .card {
       width: 150px;
       img {
@@ -300,8 +306,5 @@ article {
         height: 225px;
       }
     }
-  }
-  aside {
-    display: none;
   }
 }

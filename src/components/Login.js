@@ -11,23 +11,28 @@ const Login = ({ setToken }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault()
-    fetch("/login", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      body: JSON.stringify({ username: inputUsername, password: inputPassword })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.message) {
-          setMessage(data.message)
-        } else {
-          setToken(data.token)
-          history.push("/")
-        }
+    if (inputUsername.length > 0 && inputPassword.length > 0) {
+      fetch("/login", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          username: inputUsername,
+          password: inputPassword
+        })
       })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.message) {
+            setMessage(data.message)
+          } else {
+            setToken(data.token)
+            history.push("/")
+          }
+        })
+    }
   }
 
   return (

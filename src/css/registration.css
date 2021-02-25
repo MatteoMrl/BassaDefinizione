@@ -15,7 +15,7 @@
   min-height: 100vh;
 }
 
-form {
+.form-registration {
   background-color: #121212;
   color: white;
   margin: 10vh auto;
@@ -25,56 +25,56 @@ form {
   width: 400px;
 }
 
-form #imgLogo {
+.form-registration #imgLogo {
   width: 400px;
   border-radius: 7px;
 }
 
-form #title {
+.form-registration #title {
   font-size: 28px;
   text-align: center;
 }
 
-form .form-group {
+.form-registration .form-group {
   margin: 20px;
 }
 
-form .form-group label {
+.form-registration .form-group label {
   font-size: 15px;
 }
 
-form .form-group .form-control:hover,
-form .form-group .form-control:focus {
+.form-registration .form-group .form-control:hover,
+.form-registration .form-group .form-control:focus {
   -webkit-box-shadow: 0 0 10px 1px #ff9900;
           box-shadow: 0 0 10px 1px #ff9900;
   outline: none;
   border: 1px solid #ff9900;
 }
 
-form .form-group .valid:hover,
-form .form-group .valid:focus {
+.form-registration .form-group .valid:hover,
+.form-registration .form-group .valid:focus {
   -webkit-box-shadow: 0 0 10px 1px green;
           box-shadow: 0 0 10px 1px green;
   border-color: green;
 }
 
-form .form-group .invalid:hover,
-form .form-group .invalid:focus {
+.form-registration .form-group .invalid:hover,
+.form-registration .form-group .invalid:focus {
   -webkit-box-shadow: 0 0 10px 1px red;
           box-shadow: 0 0 10px 1px red;
   border-color: red;
 }
 
-form #registrationLink {
+.form-registration #registrationLink {
   color: white;
   font-size: 14px;
 }
 
-form #registrationLink:hover {
+.form-registration #registrationLink:hover {
   cursor: pointer;
 }
 
-form .btn {
+.form-registration .btn {
   text-align: center;
   width: 100%;
   background-color: red;
@@ -85,22 +85,22 @@ form .btn {
   transition: all 0.5s;
 }
 
-form .btn-abled:hover,
-form .btn-abled:focus,
-form .btn-abled:active {
+.form-registration .btn-abled:hover,
+.form-registration .btn-abled:focus,
+.form-registration .btn-abled:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: green !important;
 }
 
-form .alert {
+.form-registration .alert {
   width: 100%;
   text-align: center;
   border-radius: 7px;
   color: white;
 }
 
-form .alert-danger {
+.form-registration .alert-danger {
   border: 1px solid red;
   background-color: red;
 }

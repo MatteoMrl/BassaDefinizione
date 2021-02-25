@@ -1,17 +1,15 @@
 import fetch from "node-fetch"
 import React, { useState, useEffect, useRef } from "react"
 import "../css/index.css"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useParams
-} from "react-router-dom"
+import { BrowserRouter as Router, useHistory } from "react-router-dom"
 
 const Navbar = ({ token, setToken }) => {
+  const userButton = useRef()
+  const logoutButton = useRef()
+  let history = useHistory()
+  const [input, setInput] = useState("")
+  const [results, setResults] = useState([])
+
   const tokenIsValid = (username) => {
     userButton.current.href = `/user/${username}`
     userButton.current.innerHTML = `<i class="fa fa-user"></i> ${username}`
@@ -55,10 +53,8 @@ const Navbar = ({ token, setToken }) => {
     document.cookie =
       "jwt=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
     setToken("")
+    history.push("/")
   }
-
-  const [input, setInput] = useState("")
-  const [results, setResults] = useState([])
 
   useEffect(() => {
     checkAccess()
@@ -86,13 +82,10 @@ const Navbar = ({ token, setToken }) => {
     }
   }, [input])
 
-  const userButton = useRef()
-  const logoutButton = useRef()
-
   return (
     <header>
       <a href="/">
-        <img src="/img/dkLogo.jpg" alt="" id="logo" />
+        <img src="/img/dkLogo.jpg" alt="" className="logo" />
       </a>
 
       <form
@@ -101,7 +94,7 @@ const Navbar = ({ token, setToken }) => {
           e.preventDefault()
         }}
       >
-        <i className="fas fa-film"></i>
+        <i className="fa fa-search"></i>
         <input
           className="input-field"
           spellCheck="false"
@@ -113,36 +106,30 @@ const Navbar = ({ token, setToken }) => {
           name="title"
           placeholder="Search for a movie..."
         />
-        <button id="searchButton">
-          <i className="fa fa-search"></i>
-        </button>
         <div id="suggestions">
           {input.length === 0 || results === undefined ? (
             <span></span>
           ) : (
-            <Router>
-              <ul>
-                {results.map((film, index) => {
-                  return (
-                    <li key={index}>
-                      <a href={`/film/${film.Title}`}>
-                        <p>{film.Title}</p>{" "}
-                        <i className="fas fa-arrow-right"></i>
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </Router>
+            <ul>
+              {results.map((film, index) => {
+                return (
+                  <li key={index}>
+                    <a href={`/film/${film.Title}`}>
+                      <p>{film.Title}</p> <i className="fas fa-arrow-right"></i>
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
           )}
         </div>
       </form>
 
       <div id="userInteraction">
-        <a href="/login" id="userButton" ref={userButton}>
+        <a href="/login" id="button-user" ref={userButton}>
           <i className="far fa-user"></i> GET STARTED
         </a>
-        <button id="logoutButton" ref={logoutButton} onClick={deleteToken}>
+        <button id="button-logout" ref={logoutButton} onClick={deleteToken}>
           <i className="fas fa-sign-out-alt"></i> LOGOUT
         </button>
       </div>

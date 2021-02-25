@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 const Sidebar = ({ genres, currentGenre, setCurrentGenre, setIsRendered }) => {
   return (
@@ -9,10 +9,10 @@ const Sidebar = ({ genres, currentGenre, setCurrentGenre, setIsRendered }) => {
       <ul>
         {genres
           .filter((genre) => genre.name !== currentGenre)
-          .map((genre) => {
+          .map((genre, index) => {
             return (
               <li
-                key={genre.id}
+                key={index}
                 onClick={(e) => {
                   setCurrentGenre(e.target.innerText)
                   setIsRendered(false)

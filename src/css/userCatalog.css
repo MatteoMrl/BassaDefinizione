@@ -1,7 +1,3 @@
-* {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
 header {
   background-color: #121212;
   display: -webkit-box;
@@ -22,8 +18,7 @@ header {
   padding: 30px 70px;
 }
 
-header #userInteraction #userButton {
-  cursor: pointer;
+header #userInteraction #button-user {
   border-radius: 10px 0 0 10px;
   background-color: #121212;
   color: #ff9900;
@@ -40,7 +35,7 @@ header #userInteraction #userButton {
   font-weight: bold;
 }
 
-header #userInteraction #userButton:hover {
+header #userInteraction #button-user:hover {
   border-color: #ff9900;
   text-decoration: none;
   color: #121212;
@@ -51,12 +46,11 @@ header #userInteraction #userButton:hover {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-header #userInteraction #logoutButton {
+header #userInteraction #button-logout {
   cursor: pointer;
   border-radius: 0 10px 10px 0;
   background-color: #121212;
   color: red;
-  outline: none !important;
   border: 1px solid red;
   padding: 10px;
   background-size: 200% 200%;
@@ -65,11 +59,12 @@ header #userInteraction #logoutButton {
   background-image: linear-gradient(to top, black 50%, transparent 50%);
   -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   border: none;
   font-weight: bold;
 }
 
-header #userInteraction #logoutButton:hover {
+header #userInteraction #button-logout:hover {
   border-color: red;
   text-decoration: none;
   color: #121212;
@@ -86,31 +81,95 @@ header img {
 }
 
 header #searchFilm {
+  margin: 0;
   color: #ff9900;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 450px;
+  position: relative;
+  border-radius: 0;
   background-color: transparent;
   -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 8px;
   border-bottom: 1px solid #ff9900;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 header #searchFilm input[type="text"] {
   background-color: #121212;
   width: 100%;
-  border-radius: 5px;
   outline: none;
   color: #ff9900;
   border: transparent;
+}
+
+header #searchFilm #suggestions {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+header #searchFilm #suggestions ul {
+  padding: 0 !important;
+  -webkit-box-shadow: 0 20px 20px 10px black;
+  box-shadow: 0 20px 20px 10px black;
+  background-color: #121212;
+}
+
+header #searchFilm #suggestions li {
+  background-color: #121212;
+  padding: 8px;
+  list-style-type: none;
+  border: 1px solid #121212;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+}
+
+header #searchFilm #suggestions li:hover {
+  background-color: black !important;
+}
+
+header #searchFilm #suggestions li:hover i {
+  color: #ff9900;
+}
+
+header #searchFilm #suggestions a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+header #searchFilm #suggestions li p {
+  margin: 0;
+}
+
+header #searchFilm #suggestions li i {
+  color: black;
+  margin: 0 10px;
+  -webkit-transition: 1s all;
+  transition: 1s all;
 }
 
 header #searchFilm button {
@@ -120,6 +179,7 @@ header #searchFilm button {
 
 header #searchFilm i {
   color: orange;
+  margin-right: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -176,7 +236,7 @@ footer .footer-copyright i {
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -221,7 +281,6 @@ body {
 
 #filterGenres:hover {
   border-color: black;
-  color: #ff9900;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, black), color-stop(50%, transparent));
   background-image: linear-gradient(to top, black 51%, transparent 50%);
   background-position: 0 100%;
@@ -274,41 +333,41 @@ body {
 main {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: [sidebar] 20% [article] 80%;
-      grid-template-columns: [sidebar] 20% [article] 80%;
+  -ms-grid-columns: [genres] 20% [films] 80%;
+      grid-template-columns: [genres] 20% [films] 80%;
   margin: 30px 10px;
 }
 
-aside {
-  grid-area: sidebar;
+.user-genres {
+  grid-area: genres;
   margin: 10px 0;
 }
 
-aside ::-webkit-scrollbar {
+.user-genres ::-webkit-scrollbar {
   width: 4px;
 }
 
-aside ::-webkit-scrollbar-corner {
+.user-genres ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-aside ::-webkit-scrollbar-track {
+.user-genres ::-webkit-scrollbar-track {
   border: none;
 }
 
-aside #genresLegend {
+.user-genres #genresLegend {
   text-align: center;
   padding: 0;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff9900;
 }
 
-aside #genresLegend h1 {
+.user-genres #genresLegend h1 {
   color: #ff9900;
   font-size: 30px;
 }
 
-aside ul {
+.user-genres ul {
   list-style-type: none;
   direction: rtl;
   height: 100vh;
@@ -316,7 +375,7 @@ aside ul {
   padding: 0;
 }
 
-aside ul li {
+.user-genres ul li {
   background-size: 200% 200%;
   text-align: center;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #ff9900), color-stop(50%, transparent));
@@ -334,7 +393,7 @@ aside ul li {
   cursor: pointer;
 }
 
-aside ul li:hover {
+.user-genres ul li:hover {
   border-color: #ff9900;
   color: black;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
@@ -344,24 +403,24 @@ aside ul li:hover {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
-article {
-  grid-area: article;
+.user-films {
+  grid-area: films;
   margin: 10px 0;
 }
 
-article #title {
+.user-films #title {
   text-align: center;
   padding: 0;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff9900;
 }
 
-article #title h1 {
+.user-films #title h1 {
   color: #ff9900;
   font-size: 30px;
 }
 
-article #title h1 i {
+.user-films #title h1 i {
   color: #ff9900;
   font-size: 30px;
 }
@@ -454,6 +513,19 @@ article #title h1 i {
   header img {
     width: 400px;
   }
+  #filterGenres {
+    display: block;
+  }
+  main {
+    -ms-grid-columns: [films] 100%;
+        grid-template-columns: [films] 100%;
+  }
+  main .card .card-title {
+    font-size: 18px;
+  }
+  aside {
+    display: none;
+  }
   #favouriteFilms {
     -ms-grid-columns: auto auto auto;
         grid-template-columns: auto auto auto;
@@ -486,18 +558,6 @@ article #title h1 i {
   header img {
     width: 200px;
   }
-  #filterGenres {
-    display: block;
-  }
-  main {
-    -ms-grid-columns: [article] 100%;
-        grid-template-columns: [article] 100%;
-  }
-  #favouriteFilms {
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-    border: none;
-  }
   #favouriteFilms .card {
     width: 150px;
   }
@@ -505,8 +565,5 @@ article #title h1 i {
     width: 150px;
     height: 225px;
   }
-  aside {
-    display: none;
-  }
 }
-/*# sourceMappingURL=favFilms.css.map */
+/*# sourceMappingURL=userCatalog.css.map */

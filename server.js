@@ -78,7 +78,7 @@ const verifyToken = (req, res, next) => {
       } else {
         res.json({ auth: false })
       }
-    } catch {
+    } catch (err) {
       res.json({ auth: false })
     }
   } else {
@@ -202,29 +202,40 @@ const renderFilms = async (genre, res) => {
 const voteFilm = async ({ title, rating }, userIDreq, res) => {
   try {
     const data = await searchFilm(title) //prendo i dati del film
-    const genres = data.Genre.split(", ").filter(
-      (genre) => !genre.includes("-") //creo una lista dei generi del film, escludendo quelli che hanno al loro interno "-" (sci-fi)
-    )
+
+    const genres = data.Genre.split(", ")
     let titleID = await dbQuery(
-      `SELECT films.id FROM films INNER JOIN votes ON films.id = votes.filmID AND userID = ${userIDreq} AND films.title = '${title}' LIMIT 1` //controllo se l'utente ha già votato quel film
+      `SELECT films.id FROM films INNER JOIN votes ON films.id = votes.filmID AND userID = ${userIDreq} AND films.title = "${title}" LIMIT 1` //controllo se l'utente ha già votato quel film
     )
     if (titleID.length < 1) {
       //l'utente non ha già votato il film
       titleID = await dbQuery(
-        `SELECT id FROM films WHERE title = '${title}' LIMIT 1` //controllo che il film non sia presente nella tabella genreFilm
+        `SELECT id FROM films WHERE title = "${title}" LIMIT 1` //controllo che il film non sia presente nella tabella genreFilm
       )
+
       if (!titleID.length) {
-        await dbQuery(`INSERT INTO films (title) VALUES('${title}')`)
+        await dbQuery(`INSERT INTO films (title) VALUES("${title}")`)
         titleID = await dbQuery(
-          `SELECT id FROM films WHERE title = '${title}' LIMIT 1`
+          `SELECT id FROM films WHERE title = "${title}" LIMIT 1`
         )
         genres.forEach(async (genre) => {
-          const genreID = await dbQuery(
+          let genreID = await dbQuery(
             `SELECT id FROM genres WHERE name = '${genre}' LIMIT 1`
           )
-          dbQuery(
-            `INSERT INTO genreFilm VALUES(${titleID[0].id}, '${genreID[0].id}')`
-          )
+
+          if (genreID[0] !== undefined) {
+            dbQuery(
+              `INSERT INTO genreFilm VALUES(${titleID[0].id}, '${genreID[0].id}')`
+            )
+          } else {
+            await dbQuery(`INSERT INTO genres (name) VALUES('${genre}')`)
+            genreID = await dbQuery(
+              `SELECT id FROM genres WHERE name = '${genre}' LIMIT 1`
+            )
+            dbQuery(
+              `INSERT INTO genreFilm VALUES(${titleID[0].id}, '${genreID[0].id}')`
+            )
+          }
         })
       }
 
@@ -240,6 +251,37 @@ const voteFilm = async ({ title, rating }, userIDreq, res) => {
     res.json({ auth: true, vote: true })
   } catch (err) {
     res.json({ auth: true, vote: false })
+  }
+}
+
+const favoriteFilms = async (userID, res) => {
+  //prende tutti i film votati piaciuti all'utente e li renderizza --> pesante ma evito altre chiamate
+  let userFilms = []
+  let userGenres = []
+  try {
+    let results = await dbQuery(
+      `SELECT DISTINCT films.title, votes.liked
+      FROM films
+      INNER JOIN votes ON films.id = votes.filmID AND votes.userID = ${userID}`
+    )
+    //se sono presenti 1 o + film votati dall'utente in quel genere allora li scorre
+    results = results.map(({ title }) => searchFilm(title)) //la lista dei risultati diventa una di promise (searchFilm è una promise avendo async)
+    const allData = await Promise.all(results) //stesso procedimento di results
+    for (let data of allData) {
+      //se nella lista dei film dell'utente non è presente quello appena cercato lo aggiunge
+      //questo viene fatto per evitare che film con più generi vengano aggiunti più volte
+      const { Title, imdbRating, Poster, Genre } = data
+      Genre.split(", ").forEach((genre) => {
+        if (!userGenres.includes(genre)) userGenres.push(genre)
+      })
+
+      userFilms.push({ Title, imdbRating, Poster, Genre })
+    }
+    userGenres.sort()
+    userFilms.sort((a, b) => b.imdbRating - a.imdbRating)
+    res.json({ userFilms, userGenres, auth: true })
+  } catch {
+    res.json({ auth: false })
   }
 }
 
@@ -274,6 +316,10 @@ app.get("/film/:title", async (req, res) => {
   } catch (err) {
     console.log(err)
   }
+})
+
+app.get("/user/:username", verifyToken, (req, res) => {
+  favoriteFilms(req.id, res)
 })
 
 app.post("/login", (req, res) => {
