@@ -1,30 +1,19 @@
 # <img src="imgReadme/icon.jpg" alt="drawing" width="50"/> BassaDefinizione
 
-> BassaDefinizione is a project created for my candidacy for [Soluzioni Futura](https://github.com/soluzionifutura/sf-academy/blob/master/README.md). In particular, the path I have chosen is [Movie Review](https://github.com/soluzionifutura/sf-academy/blob/master/prove/recensioni-film.md) medium difficulty and skills of web applications development.
+> BassaDefinizione is a React project created for my candidacy for [Soluzioni Futura](https://github.com/soluzionifutura/sf-academy/blob/master/README.md). In particular, the path I have chosen is [Movie Review](https://github.com/soluzionifutura/sf-academy/blob/master/prove/recensioni-film.md) medium difficulty and skills of web applications development.
 
 ## Description
 
 Through BassaDefinizione the user can:
 
-- Look for a movie
+- Search for a movie
 - Like or dislike a movie
 - Register and log
-- Observe the user appreciation of a specific film
 - Display in descending order of the evaluation rated films
-- Change theme from light to dark and vice versa
 
 ### External APIs
 
 Any information on any film is obtained from [OMDb API](http://www.omdbapi.com/), through a GET request in which an identification key must be specified
-
-### Main NPM packages used
-
-- [Express](https://www.npmjs.com/package/express)
-- [Hbs](https://www.npmjs.com/package/hbs)
-- [Dotenv](https://www.npmjs.com/package/dotenv)
-- [MySQL](https://www.npmjs.com/package/mysql)
-- [JWT](https://www.npmjs.com/package/jsonwebtoken)
-- [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ## Installation
 
@@ -118,7 +107,7 @@ To have a global IP address instead, you need to:
 
 - [ ] Change the password
 - [ ] Advanced movie search
-- [ ] Recover a forgotten password
+- [ ] A better design that doesn't look like P\*rnhub :)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TheGodMorel/BassaDefinizione)
 
