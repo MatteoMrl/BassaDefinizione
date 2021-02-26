@@ -6,40 +6,35 @@ const Footer = () => {
           <li className="list-inline-item">
             <a
               href="https://www.facebook.com/profile.php?id=100010848486989"
-              className="btn-floating fa-lg fa-2x"
-            >
+              className="btn-floating fa-lg fa-2x">
               <i className="fab fa-facebook-f"> </i>
             </a>
           </li>
           <li className="list-inline-item">
             <a
               href="https://twitter.com/Mmorello08"
-              className="btn-floating fa-lg fa-2x"
-            >
+              className="btn-floating fa-lg fa-2x">
               <i className="fab fa-twitter"> </i>
             </a>
           </li>
           <li className="list-inline-item">
             <a
               href="https://www.instagram.com/matteo.mrl/?hl=it"
-              className="btn-floating fa-lg fa-2x"
-            >
+              className="btn-floating fa-lg fa-2x">
               <i className="fab fa-instagram"> </i>
             </a>
           </li>
           <li className="list-inline-item">
             <a
               href="https://www.linkedin.com/in/matteo-morellini-306a331a8/"
-              className="btn-floating fa-lg fa-2x"
-            >
+              className="btn-floating fa-lg fa-2x">
               <i className="fab fa-linkedin-in"> </i>
             </a>
           </li>
           <li className="list-inline-item">
             <a
               href="https://github.com/TheGodMorel"
-              className="btn-floating fa-lg fa-2x"
-            >
+              className="btn-floating fa-lg fa-2x">
               <i className="fab fa-github"> </i>
             </a>
           </li>

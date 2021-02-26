@@ -55,13 +55,13 @@ const UserFilms = ({ token, setToken }) => {
       {isRendered ? (
         films.current.length > 0 ? (
           <React.Fragment>
-            <div id='filterGenres' onClick={onButtonFilterClick}>
-              <i className='fas fa-sort-down'></i> Filter by genre{" "}
-              <i className='fas fa-sort-down'></i>
+            <div id="filterGenres" onClick={onButtonFilterClick}>
+              <i className="fas fa-sort-down"></i> Filter by genre{" "}
+              <i className="fas fa-sort-down"></i>
             </div>
-            <div id='allGenres' ref={allGenres}>
+            <div id="allGenres" ref={allGenres}>
               <ul>
-                <li key='0' onClick={onGenreClick}>
+                <li key="0" onClick={onGenreClick}>
                   All genres
                 </li>
                 {genres.current
@@ -88,14 +88,14 @@ const UserFilms = ({ token, setToken }) => {
             </main>
           </React.Fragment>
         ) : (
-          <div id='noFilm'>
+          <div id="noFilm">
             <h1>
               you haven't <span>voted</span> any movie yet.
             </h1>
           </div>
         )
       ) : (
-        <div className='lds-ellipsis'>
+        <div className="lds-ellipsis">
           <div></div>
           <div></div>
           <div></div>

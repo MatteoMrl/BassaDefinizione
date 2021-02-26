@@ -5,6 +5,7 @@ import SearchedFilm from "./components/SearchedFilm.js"
 import Login from "./components/Login.js"
 import Registration from "./components/Registration.js"
 import UserMenu from "./components/UserMenu.js"
+import Page404 from "./components/Page404.js"
 import "./css/index.css"
 const App = () => {
   const getCookie = (cname) => {
@@ -42,8 +43,11 @@ const App = () => {
           <Route exact path="/registration">
             <Registration setToken={setToken} />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home token={token} setToken={setToken} />
+          </Route>
+          <Route path="/">
+            <Page404 />
           </Route>
         </Switch>
       </Router>

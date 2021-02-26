@@ -6,11 +6,11 @@
     padding: 20px;
     font-size: 20px;
     background-color: $orangeOp;
-    border: 1px solid $lightBlack;
     color: black;
+    border: 1px solid black;
   }
   .active {
-    background-color: $lightBlack;
+    background-color: black;
     color: $orangeOp;
   }
 }

@@ -16,8 +16,7 @@ const Sidebar = ({ genres, currentGenre, setCurrentGenre, setIsRendered }) => {
                 onClick={(e) => {
                   setCurrentGenre(e.target.innerText)
                   setIsRendered(false)
-                }}
-              >
+                }}>
                 <span>
                   <span>
                     <span>{genre.name}</span>

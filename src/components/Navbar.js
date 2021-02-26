@@ -6,7 +6,7 @@ import { BrowserRouter as Router, useHistory } from "react-router-dom"
 const Navbar = ({ token, setToken }) => {
   const userButton = useRef()
   const logoutButton = useRef()
-  let history = useHistory()
+  const history = useHistory()
   const [input, setInput] = useState("")
   const [results, setResults] = useState([])
 
@@ -19,7 +19,7 @@ const Navbar = ({ token, setToken }) => {
 
   const tokenNotValid = () => {
     userButton.current.href = "/login"
-    userButton.current.innerHTML = `<i class="fa fa-user"></i> GET STARTED`
+    userButton.current.innerHTML = "<i class='fa fa-user'></i> GET STARTED"
     userButton.current.style["border-radius"] = "10px"
     logoutButton.current.style.display = "none"
   }
@@ -41,7 +41,7 @@ const Navbar = ({ token, setToken }) => {
           const { username, auth } = data
           auth ? tokenIsValid(username) : tokenNotValid()
         })
-        .catch(function (err) {
+        .catch(() => {
           tokenNotValid()
         })
     } else {
@@ -92,8 +92,7 @@ const Navbar = ({ token, setToken }) => {
         id="searchFilm"
         onSubmit={(e) => {
           e.preventDefault()
-        }}
-      >
+        }}>
         <i className="fa fa-search"></i>
         <input
           className="input-field"

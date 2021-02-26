@@ -22,7 +22,7 @@ const Home = ({ token, setToken }) => {
   return (
     <React.Fragment>
       <Navbar token={token} setToken={setToken} />
-      <main className='main-homepage'>
+      <main className="main-homepage">
         <Sidebar
           genres={genres.current}
           currentGenre={currentGenre} // viene eliminato dalla lista il genere corrente

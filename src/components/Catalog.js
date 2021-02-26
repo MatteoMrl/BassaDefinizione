@@ -69,7 +69,7 @@ const Catalog = ({
     if (isRendered) {
       return (
         <React.Fragment>
-          <article id='articleFilms' ref={articleFilms}>
+          <article id="articleFilms" ref={articleFilms}>
             {films.current.map((film) => {
               return <Card film={film} key={film.imdbID} />
             })}
@@ -87,7 +87,7 @@ const Catalog = ({
       )
     } else {
       return (
-        <div className='lds-ellipsis'>
+        <div className="lds-ellipsis">
           <div></div>
           <div></div>
           <div></div>
@@ -99,27 +99,27 @@ const Catalog = ({
 
   return (
     <section>
-      <div className='module-border-wrap'>
-        <div id='slogan'>
-          <img src='/img/logo.jpg' alt='logo' />
+      <div className="module-border-wrap">
+        <div id="slogan">
+          <img src="/img/logo.jpg" alt="logo" />
           <h2>Search. Vote. Save.</h2>
           <h1>ANY MOVIE IN YOUR MIND</h1>
         </div>
       </div>
-      <div className='genre' id={currentGenre}>
-        <h1 id='currentGenre' ref={titleGenre}>
+      <div className="genre" id={currentGenre}>
+        <h1 id="currentGenre" ref={titleGenre}>
           {currentGenre}
         </h1>
         <i
-          id='changeGenre'
+          id="changeGenre"
           ref={changeGenreButton}
           onClick={changeMode}
-          className='fas fa-exchange-alt'></i>
+          className="fas fa-exchange-alt"></i>
       </div>
 
       <SectionFilms />
 
-      <article id='articleGenres' ref={articleGenres}>
+      <article id="articleGenres" ref={articleGenres}>
         <ul>
           {genres
             .filter((genre) => genre.name !== currentGenre)

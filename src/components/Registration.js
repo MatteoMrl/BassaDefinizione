@@ -15,11 +15,11 @@ const Registration = ({ setToken }) => {
   const usernameInput = useRef()
   const passwordInput = useRef()
   const mailInput = useRef()
-  let validPassword = useRef(false)
+  const validPassword = useRef(false)
   const passwordHelper = useRef()
-  let validMail = useRef(false)
+  const validMail = useRef(false)
   const mailHelper = useRef()
-  let validUsername = useRef(false)
+  const validUsername = useRef(false)
   const usernameHelper = useRef()
 
   const submitButton = useRef()
@@ -36,7 +36,12 @@ const Registration = ({ setToken }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        data.message ? setMessage(data.message) : history.push("")
+        if (data.message) {
+          setMessage(data.message)
+        } else {
+          setToken(data.token)
+          history.push("")
+        }
       })
   }
 
@@ -62,7 +67,7 @@ const Registration = ({ setToken }) => {
     if (mail) {
       const regex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
       if (mail.match(regex)) {
-        mailHelper.current.innerHTML = '<i class="fas fa-info"></i> Valid email'
+        mailHelper.current.innerHTML = "<i class='fas fa-info'></i> Valid email"
         mailHelper.current.style.color = "green"
         validMail.current = true
         mailInput.current.classList.remove("invalid")
@@ -70,7 +75,7 @@ const Registration = ({ setToken }) => {
         checkFormValid()
       } else {
         mailHelper.current.innerHTML =
-          '<i class="fas fa-info"></i> Invalid email'
+          "<i class='fas fa-info'></i> Invalid email"
         mailHelper.current.style.color = "red"
         validMail.current = false
         mailInput.current.classList.remove("valid")
@@ -84,7 +89,7 @@ const Registration = ({ setToken }) => {
       const regex = /^[A-Za-z]\w{5,13}$/
       if (password.match(regex)) {
         passwordHelper.current.innerHTML =
-          '<i class="fas fa-info"></i> Valid password'
+          "<i class='fas fa-info'></i> Valid password"
         passwordHelper.current.style.color = "green"
         validPassword.current = true
         passwordInput.current.classList.remove("invalid")
@@ -92,7 +97,7 @@ const Registration = ({ setToken }) => {
         checkFormValid()
       } else {
         passwordHelper.current.innerHTML =
-          '<i class="fas fa-info"></i> 7 to 15 characters and the first must be a letter'
+          "<i class='fas fa-info'></i> 7 to 15 characters and the first must be a letter"
         passwordHelper.current.style.color = "red"
         validPassword.current = false
         passwordInput.current.classList.remove("valid")
@@ -185,8 +190,7 @@ const Registration = ({ setToken }) => {
           className="btn"
           ref={submitButton}
           onClick={onFormSubmit}
-          disabled
-        >
+          disabled>
           SUBMIT
         </button>
       </form>
