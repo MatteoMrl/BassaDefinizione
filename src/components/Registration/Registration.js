@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 import React, { useEffect, useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
-import "../css/registration.css"
+import "./registration.css"
 
 const Registration = ({ setToken }) => {
   const [username, setUsername] = useState("")

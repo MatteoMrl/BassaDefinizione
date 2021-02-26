@@ -5,16 +5,16 @@ header {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 30px 70px;
 }
 
@@ -26,11 +26,20 @@ header #userInteraction #button-user {
   padding: 10px;
   background-size: 200% 200%;
   text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(50%, black),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, black 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   border: none;
   font-weight: bold;
 }
@@ -39,11 +48,19 @@ header #userInteraction #button-user:hover {
   border-color: #ff9900;
   text-decoration: none;
   color: #121212;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(51%, #ff9900),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
   background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 header #userInteraction #button-logout {
@@ -56,11 +73,20 @@ header #userInteraction #button-logout {
   padding: 10px;
   background-size: 200% 200%;
   text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(50%, black),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, black 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   border: none;
   font-weight: bold;
 }
@@ -69,11 +95,19 @@ header #userInteraction #button-logout:hover {
   border-color: red;
   text-decoration: none;
   color: #121212;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, red), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(51%, red),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, red 51%, transparent 50%);
   background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 header img {
@@ -213,8 +247,8 @@ footer ul {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
 
 footer ul a,
@@ -236,8 +270,9 @@ footer .footer-copyright i {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -274,10 +309,18 @@ body {
   letter-spacing: 2px;
   background-size: 200% 200%;
   text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(50%, black),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, black 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 #filterGenres .fas {
@@ -287,21 +330,29 @@ body {
 
 #filterGenres:hover {
   border-color: black;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, black), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(51%, black),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, black 51%, transparent 50%);
   background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 #filterGenres:hover .fas:first-child {
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 #filterGenres:hover .fas:last-child {
   -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 #allGenres {
@@ -316,7 +367,7 @@ body {
   padding: 0;
   list-style-type: none;
   -ms-grid-columns: 33% 33% auto;
-      grid-template-columns: 33% 33% auto;
+  grid-template-columns: 33% 33% auto;
 }
 
 #allGenres ul li {
@@ -324,10 +375,18 @@ body {
   border: 1px solid #ff9900;
   background-size: 200% 200%;
   text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #ff9900), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(50%, #ff9900),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #ff9900 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
   direction: ltr;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -339,18 +398,26 @@ body {
 
 #allGenres ul li:hover {
   color: black;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(51%, #ff9900),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
   background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 main {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: [genres] 20% [films] 80%;
-      grid-template-columns: [genres] 20% [films] 80%;
+  grid-template-columns: [genres] 20% [films] 80%;
   margin: 30px 10px;
 }
 
@@ -394,10 +461,18 @@ main {
 .user-genres ul li {
   background-size: 200% 200%;
   text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #ff9900), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(50%, #ff9900),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #ff9900 50%, transparent 50%);
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
   direction: ltr;
   padding: 10px;
   margin: 5%;
@@ -412,11 +487,19 @@ main {
 .user-genres ul li:hover {
   border-color: #ff9900;
   color: black;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #ff9900), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(51%, #ff9900),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #ff9900 51%, transparent 50%);
   background-position: 0 100%;
-  -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
-  transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+  -webkit-transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
+  transition: background-position 300ms, color 300ms ease,
+    border-color 300ms ease;
 }
 
 .user-films {
@@ -446,7 +529,7 @@ main {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto auto auto;
-      grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
   justify-items: center;
   padding: 1vw 0;
   row-gap: 30px;
@@ -492,7 +575,7 @@ main {
 #favouriteFilms .card .btn:focus,
 #favouriteFilms .card .btn:active {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 #favouriteFilms .card:hover {
@@ -510,7 +593,7 @@ main {
   }
   #favouriteFilms {
     -ms-grid-columns: auto auto auto auto;
-        grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
   }
 }
 
@@ -519,8 +602,8 @@ main {
     padding: 30px 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     row-gap: 20px;
   }
   header #searchFilm {
@@ -534,7 +617,7 @@ main {
   }
   main {
     -ms-grid-columns: [films] 100%;
-        grid-template-columns: [films] 100%;
+    grid-template-columns: [films] 100%;
   }
   main .card .card-title {
     font-size: 18px;
@@ -544,7 +627,7 @@ main {
   }
   #favouriteFilms {
     -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto;
   }
 }
 
@@ -560,7 +643,7 @@ main {
   }
   #favouriteFilms {
     -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
+    grid-template-columns: auto auto;
   }
 }
 

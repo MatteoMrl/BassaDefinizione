@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "../css/pagination.css"
+import "./pagination.css"
 
 const Pagination = ({ pagesNumber, onPageClick, currentPage }) => {
   const ListPages = () => {

@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
-import "../css/login.css"
+import "./login.css"
 
 const Login = ({ setToken }) => {
   const [message, setMessage] = useState()

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
-import Sidebar from "./components/Sidebar.js"
-import Catalog from "./components/Catalog.js"
-import Navbar from "./components/Navbar.js"
-import Footer from "./components/Footer.js"
-import "./css/index.css"
+import Sidebar from "./Sidebar.js"
+import Catalog from "./Catalog.js"
+import Navbar from "../Navbar.js"
+import Footer from "../Footer.js"
+import "./index.css"
 
 const Home = ({ token, setToken }) => {
   const [currentGenre, setCurrentGenre] = useState("Action")

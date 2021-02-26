@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
-import Navbar from "./Navbar.js"
-import Footer from "./Footer.js"
+import Navbar from "../Navbar.js"
+import Footer from "../Footer.js"
 import UserSidebar from "./UserSidebar.js"
-import "../css/userCatalog.css"
+import "./userCatalog.css"
 import UserCatalog from "./UserCatalog.js"
 
 const UserFilms = ({ token, setToken }) => {

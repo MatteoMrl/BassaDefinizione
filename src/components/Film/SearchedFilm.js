@@ -1,9 +1,9 @@
 import fetch from "node-fetch"
 import React, { useEffect, useRef, useState } from "react"
-import "../css/searchFilm.css"
+import "./searchFilm.css"
 import { useParams } from "react-router-dom"
-import Navbar from "./Navbar.js"
-import Footer from "./Footer.js"
+import Navbar from "../Navbar.js"
+import Footer from "../Footer.js"
 
 const SearchedFilm = ({ token, setToken }) => {
   const [data, setData] = useState()

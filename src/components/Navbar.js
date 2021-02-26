@@ -1,7 +1,6 @@
 import fetch from "node-fetch"
 import React, { useState, useEffect, useRef } from "react"
-import "../css/index.css"
-import { BrowserRouter as Router, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const Navbar = ({ token, setToken }) => {
   const userButton = useRef()
