@@ -48,6 +48,7 @@ header #userInteraction #button-user:hover {
 
 header #userInteraction #button-logout {
   cursor: pointer;
+  outline: none !important;
   border-radius: 0 10px 10px 0;
   background-color: #121212;
   color: red;
@@ -279,6 +280,11 @@ body {
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
 }
 
+#filterGenres .fas {
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
 #filterGenres:hover {
   border-color: black;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(51%, black), color-stop(50%, transparent));
@@ -286,6 +292,16 @@ body {
   background-position: 0 100%;
   -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
   transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+}
+
+#filterGenres:hover .fas:first-child {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+#filterGenres:hover .fas:last-child {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 #allGenres {

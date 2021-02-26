@@ -45,6 +45,9 @@ body {
   background-image: linear-gradient(to top, black 50%, transparent 50%);
   transition: background-position 300ms, color 300ms ease,
     border-color 300ms ease;
+  .fas {
+    transition: 0.3s all;
+  }
 }
 #filterGenres:hover {
   border-color: black;
@@ -52,6 +55,12 @@ body {
   background-position: 0 100%;
   transition: background-position 300ms, color 300ms ease,
     border-color 300ms ease;
+  .fas:first-child {
+    transform: rotate(180deg);
+  }
+  .fas:last-child {
+    transform: rotate(-180deg);
+  }
 }
 
 #allGenres {

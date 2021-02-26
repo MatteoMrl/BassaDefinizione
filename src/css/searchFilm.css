@@ -48,6 +48,7 @@ header #userInteraction #button-user:hover {
 
 header #userInteraction #button-logout {
   cursor: pointer;
+  outline: none !important;
   border-radius: 0 10px 10px 0;
   background-color: #121212;
   color: red;
@@ -449,6 +450,14 @@ body {
   color: black;
   font-size: 20px;
   cursor: pointer;
+}
+
+#specificFilm #filmInformation #vote .fa-thumbs-up {
+  text-shadow: 0 0 1px green;
+}
+
+#specificFilm #filmInformation #vote .fa-thumbs-down {
+  text-shadow: 0 0 1px red;
 }
 
 #specificFilm #filmInformation #vote .fa-thumbs-up,

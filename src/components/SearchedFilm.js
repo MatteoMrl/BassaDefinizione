@@ -11,10 +11,17 @@ const SearchedFilm = ({ token, setToken }) => {
   const { title } = useParams()
   const likeButton = useRef()
   const dislikeButton = useRef()
+  const sectionFilm = useRef()
 
   useEffect(() => {
     const url = encodeURI(`/film/${title}`)
-    fetch(url)
+    const headers = token
+      ? {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        }
+      : null
+    fetch(url, headers)
       .then((res) => res.json())
       .then((film) => {
         setData(film)
@@ -52,41 +59,39 @@ const SearchedFilm = ({ token, setToken }) => {
       <React.Fragment>
         <Navbar token={token} setToken={setToken} />
         {data !== undefined ? (
-          <section id="specificFilm">
-            <img src={data.Poster} alt="" />
-            <div id="filmInformation">
-              <h1 id="title">{data.Title}</h1>
-              <h5 id="plot">{data.Plot}</h5>
-              <h5 id="genre">{data.Genre}</h5>
-              <h5 id="runtime">{data.Runtime}</h5>
-              <h5 id="released">{data.Released}</h5>
-              <h5 id="director">Director: {data.Director}</h5>
-              <h5 id="actors">Actors: {data.Actors}</h5>
-              <h5 id="awards">{data.Awards}</h5>
-              <h5 id="imdbRating">
-                {data.imdbRating} <i className="far fa-star"></i> |{" "}
-                {data.imdbVotes} <i className="fas fa-vote-yea"></i> IMDb
+          <section id='specificFilm' ref={sectionFilm}>
+            <img src={data.Poster} alt='' />
+            <div id='filmInformation'>
+              <h1 id='title'>{data.Title}</h1>
+              <h5 id='plot'>{data.Plot}</h5>
+              <h5 id='genre'>{data.Genre}</h5>
+              <h5 id='runtime'>{data.Runtime}</h5>
+              <h5 id='released'>{data.Released}</h5>
+              <h5 id='director'>Director: {data.Director}</h5>
+              <h5 id='actors'>Actors: {data.Actors}</h5>
+              <h5 id='awards'>{data.Awards}</h5>
+              <h5 id='imdbRating'>
+                {data.imdbRating} <i className='far fa-star'></i> |{" "}
+                {data.imdbVotes} <i className='fas fa-vote-yea'></i> IMDb
                 ratings
               </h5>
               {token && (
-                <div id="vote">
-                  <h5 id="textRating">Rate the film</h5>
+                <div id='vote'>
+                  <h5 id='textRating'>Rate the film</h5>
                   <i
-                    className="fas fa-thumbs-up"
+                    className='fas fa-thumbs-up'
                     onClick={() => onLikeClick(1)}
-                    ref={likeButton}
-                  ></i>
+                    ref={likeButton}></i>
                   <i
-                    className="fas fa-thumbs-down"
+                    className='fas fa-thumbs-down'
                     onClick={() => onLikeClick(0)}
-                    ref={dislikeButton}
-                  ></i>
+                    ref={dislikeButton}></i>
                 </div>
               )}
             </div>
           </section>
         ) : (
-          <div id="filmNotFound">
+          <div id='filmNotFound'>
             <h1>
               FILM <span>NOT FOUND</span> TRY ANOTHER NAME
             </h1>
@@ -99,7 +104,7 @@ const SearchedFilm = ({ token, setToken }) => {
     return (
       <React.Fragment>
         <Navbar token={token} />
-        <div className="lds-ellipsis">
+        <div className='lds-ellipsis'>
           <div></div>
           <div></div>
           <div></div>

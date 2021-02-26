@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AACE,WADS,CACT,UAAU,CAAC;EACT,MAAM,EAAE,OAAO;EACf,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,gBAAgB,ECPT,OAAO;EDQd,MAAM,EAAE,GAAG,CAAC,KAAK,CCPR,OAAO;EDQhB,KAAK,EAAE,KAAK;CACb;;AARH,AASE,WATS,CAST,OAAO,CAAC;EACN,gBAAgB,ECXP,OAAO;EDYhB,KAAK,ECbE,OAAO;CDcf",
+    "sources": [
+        "pagination.scss",
+        "_colors.scss"
+    ],
+    "names": [],
+    "file": "pagination.css"
+}

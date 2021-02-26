@@ -9,6 +9,8 @@ const jwt = require("jsonwebtoken")
 const atob = require("atob")
 const bcrypt = require("bcryptjs")
 const fetch = require("node-fetch")
+const { count } = require("console")
+const cardsPerPage = 10
 
 const publicDirectoryPath = path.join(__dirname, "public")
 app.use(express.static(publicDirectoryPath))
@@ -64,7 +66,7 @@ const verifyToken = (req, res, next) => {
   // Get auth header value
   const bearerHeader = req.headers["authorization"]
   // Check if bearer is undefined
-  if (bearerHeader !== "undefined") {
+  if (bearerHeader !== undefined) {
     // Split at the space
     const bearer = bearerHeader.split(" ")
     // Get token from array
@@ -92,9 +94,11 @@ const verifyToken = (req, res, next) => {
 const loginUser = async ({ username, password }, res) => {
   try {
     const users = await dbQuery(
-      `SELECT * FROM users WHERE username = '${username}' LIMIT 1`
+      "SELECT id, password FROM `users` WHERE `username` = ? LIMIT 1",
+      [username]
     )
-    const userData = users[0]
+    const [userData] = users
+
     if (!userData || !(await bcrypt.compare(password, userData.password))) {
       res.json({ message: "Incorrect username or password" })
     } else {
@@ -108,12 +112,14 @@ const loginUser = async ({ username, password }, res) => {
 const userRegistration = async ({ username, mail, password }, res) => {
   try {
     const resultMail = await dbQuery(
-      `SELECT mail FROM users WHERE mail = '${mail}' LIMIT 1`
+      "SELECT `mail` FROM `users` WHERE `mail` = ? LIMIT 1",
+      [mail]
     )
     if (resultMail.length < 1) {
       const hashedPassword = await bcrypt.hash(password, 4) //number of times the password is hashed
       dbQuery(
-        `INSERT INTO users(username, password, mail) VALUES('${username}', '${hashedPassword}', '${mail}')`
+        "INSERT INTO `users`(`username`, `password`, `mail`) VALUES(?, ?, ?)",
+        [username, hashedPassword, mail]
       )
       loginUser({ username, password }, res)
     } else {
@@ -135,6 +141,7 @@ const searchFilm = async (name) => {
   const url = `https://www.omdbapi.com/?t=${encodeURIComponent(name)}&apikey=${
     process.env.OMDBKEY
   }`
+
   try {
     const response = await fetch(url)
     return response.json() //.json è una promise perciò c'è bisogno di await
@@ -143,56 +150,38 @@ const searchFilm = async (name) => {
   }
 }
 
-const renderFilms = async (genre, res) => {
+const renderFilms = async ({ genre, page }, res) => {
+  const offset = parseInt(page) * cardsPerPage
   try {
-    const genreId = await dbQuery(
-      "SELECT `id` FROM `genres` WHERE `name` = ? LIMIT 1",
-      [genre]
-    )
+    const [
+      { id }
+    ] = await dbQuery("SELECT `id` FROM `genres` WHERE `name` = ? LIMIT 1", [
+      genre
+    ])
 
     const listOfTitlesID = await dbQuery(
-      "SELECT `filmID` FROM `genreFilm` WHERE `genreID` = ?",
-      [genreId[0].id]
+      `SELECT filmID FROM genreFilm WHERE genreID = ? LIMIT 10 OFFSET ?`,
+      [id, offset]
     )
 
-    const requests = listOfTitlesID.map(({ filmID }) =>
+    const requestsTitle = listOfTitlesID.map(({ filmID }) =>
       dbQuery("SELECT title FROM `films` WHERE `id` = ? LIMIT 1", [filmID])
     )
-
-    const listOfTitles = await Promise.all(requests)
-    let listOfFilms = []
-    let count = 0
-    listOfTitles.forEach(async (film) => {
-      // CERCA DI TRANSFORMARLO CON PROMISE.ALL
-      const data = await searchFilm(film[0].title)
-
-      const { Title, Plot, imdbRating, imdbVotes, imdbID, Genre, Poster } = data // riaggiungi il poster quando rifai Patreon
-      // const usersVotes = await dbQuery(
-      //   "SELECT `liked` FROM `votes` WHERE `filmID` = ?",
-      //   [film[0].id]
-      // )
-      // const Appreciation = Math.floor(
-      //   (usersVotes.reduce((sum, current) => sum + current.liked, 0) * 100) /
-      //     usersVotes.length
-      // )
-
-      listOfFilms.push({
-        Title,
-        Plot,
-        imdbRating,
-        imdbVotes,
-        imdbID,
-        Genre,
-        Poster
-      })
-      count++
-      if (count === listOfTitles.length) {
-        //utlizzo count poichè il foreach non so come metterlo asincrono e perciò se avessi
-        listOfFilms.sort((a, b) => b.imdbRating - a.imdbRating) //film ordinati per voto decrescente./node_modules/.bin/eslint --init
-        res.json({
-          listOfFilms
-        })
-      }
+    const listOfTitles = await Promise.all(requestsTitle)
+    const requestsData = listOfTitles.map(([{ title }]) => searchFilm(title))
+    let listOfFilms = await Promise.all(requestsData)
+    listOfFilms = listOfFilms.map((film) => ({
+      Title: film.Title,
+      imdbRating: film.imdbRating,
+      imdbVotes: film.imdbVotes,
+      imdbID: film.imdbID,
+      Poster: film.Poster,
+      Genre: film.Genre,
+      Plot: film.Plot
+    }))
+    listOfFilms.sort((a, b) => b.imdbRating - a.imdbRating) //film ordinati per voto decrescente
+    res.status(200).json({
+      listOfFilms
     })
   } catch (err) {
     console.log(err)
@@ -205,52 +194,57 @@ const voteFilm = async ({ title, rating }, userIDreq, res) => {
 
     const genres = data.Genre.split(", ")
     let titleID = await dbQuery(
-      `SELECT films.id FROM films INNER JOIN votes ON films.id = votes.filmID AND userID = ${userIDreq} AND films.title = "${title}" LIMIT 1` //controllo se l'utente ha già votato quel film
+      "SELECT films.id FROM films INNER JOIN votes ON films.id = votes.filmID AND userID = ? AND films.title = ? LIMIT 1",
+      [userIDreq, title] //controllo se l'utente ha già votato quel film
     )
     if (titleID.length < 1) {
       //l'utente non ha già votato il film
       titleID = await dbQuery(
-        `SELECT id FROM films WHERE title = "${title}" LIMIT 1` //controllo che il film non sia presente nella tabella genreFilm
+        "SELECT id FROM films WHERE title = ? LIMIT 1",
+        [title] //controllo che il film non sia presente nella tabella genreFilm
       )
 
       if (!titleID.length) {
-        await dbQuery(`INSERT INTO films (title) VALUES("${title}")`)
-        titleID = await dbQuery(
-          `SELECT id FROM films WHERE title = "${title}" LIMIT 1`
-        )
+        const {
+          insertId // id del film appena inserito
+        } = await dbQuery(`INSERT INTO films (title) VALUES(?)`, [title])
         genres.forEach(async (genre) => {
-          let genreID = await dbQuery(
-            `SELECT id FROM genres WHERE name = '${genre}' LIMIT 1`
-          )
-
-          if (genreID[0] !== undefined) {
-            dbQuery(
-              `INSERT INTO genreFilm VALUES(${titleID[0].id}, '${genreID[0].id}')`
-            )
+          let [
+            { id } // id del genere attuale
+          ] = await dbQuery(`SELECT id FROM genres WHERE name = ? LIMIT 1`, [
+            genre
+          ])
+          if (id !== undefined) {
+            dbQuery(`INSERT INTO genreFilm VALUES(?, ?)`, [insertId, id])
           } else {
-            await dbQuery(`INSERT INTO genres (name) VALUES('${genre}')`)
-            genreID = await dbQuery(
-              `SELECT id FROM genres WHERE name = '${genre}' LIMIT 1`
+            await dbQuery(`INSERT INTO genres (name) VALUES(?)`, [genre])
+            let genreID = await dbQuery(
+              `SELECT id FROM genres WHERE name = ? LIMIT 1`,
+              [genre]
             )
-            dbQuery(
-              `INSERT INTO genreFilm VALUES(${titleID[0].id}, '${genreID[0].id}')`
-            )
+            dbQuery(`INSERT INTO genreFilm VALUES(?, ?)`, [
+              insertId,
+              genreID[0].id
+            ])
           }
         })
       }
 
-      dbQuery(
-        `INSERT INTO votes VALUES(${titleID[0].id}, ${userIDreq}, ${rating})`
-      )
+      dbQuery(`INSERT INTO votes VALUES(?,?,?)`, [
+        titleID[0].id,
+        userIDreq,
+        rating
+      ])
     } else {
       dbQuery(
-        `UPDATE votes SET liked = ${rating} WHERE filmID = ${titleID[0].id} AND userID = ${userIDreq}` //se l'utente ha già votato il film, il voto è aggiornato
+        `UPDATE votes SET liked = ? WHERE filmID = ? AND userID = ?`,
+        [rating, titleID[0].id, userIDreq] //se l'utente ha già votato il film, il voto è aggiornato
       )
     }
 
-    res.json({ auth: true, vote: true })
+    res.status(200).json({ auth: true, vote: true })
   } catch (err) {
-    res.json({ auth: true, vote: false })
+    res.status(401).json({ auth: true, vote: false })
   }
 }
 
@@ -262,7 +256,8 @@ const favoriteFilms = async (userID, res) => {
     let results = await dbQuery(
       `SELECT DISTINCT films.title, votes.liked
       FROM films
-      INNER JOIN votes ON films.id = votes.filmID AND votes.userID = ${userID}`
+      INNER JOIN votes ON films.id = votes.filmID AND votes.userID = ?`,
+      [userID]
     )
     //se sono presenti 1 o + film votati dall'utente in quel genere allora li scorre
     results = results.map(({ title }) => searchFilm(title)) //la lista dei risultati diventa una di promise (searchFilm è una promise avendo async)
@@ -279,9 +274,9 @@ const favoriteFilms = async (userID, res) => {
     }
     userGenres.sort()
     userFilms.sort((a, b) => b.imdbRating - a.imdbRating)
-    res.json({ userFilms, userGenres, auth: true })
+    res.status(200).json({ userFilms, userGenres, auth: true })
   } catch {
-    res.json({ auth: false })
+    res.status(401).json({ auth: false })
   }
 }
 
@@ -289,11 +284,11 @@ const favoriteFilms = async (userID, res) => {
 
 app.get("/genres", async (req, res) => {
   const results = await dbQuery("SELECT * FROM `genres`", [])
-  res.json(results)
+  res.status(200).json(results)
 })
 
 app.get("/films", (req, res) => {
-  renderFilms(req.query.s, res)
+  renderFilms(req.query, res)
 })
 
 app.get("/search", async (req, res) => {
@@ -304,15 +299,30 @@ app.get("/search", async (req, res) => {
   )
   const data = await response.json()
   if (data.Response) {
-    res.json(data)
-  } else res.json(data.Response)
+    res.status(200).json(data)
+  } else res.status(404).json(data.Response)
+})
+
+app.get("/pagination", async (req, res) => {
+  const [
+    { id }
+  ] = await dbQuery("SELECT `id` FROM `genres` WHERE `name` = ? LIMIT 1", [
+    req.query.genre
+  ])
+  const [
+    { pagesLength }
+  ] = await dbQuery(
+    "SELECT COUNT(genreID) AS pagesLength FROM genreFilm WHERE genreID = ?",
+    [id]
+  )
+  res.json({ pagesLength })
 })
 
 app.get("/film/:title", async (req, res) => {
   const { title } = req.params
   try {
     const data = await searchFilm(title)
-    res.json(data)
+    res.status(200).json(data)
   } catch (err) {
     console.log(err)
   }
@@ -336,13 +346,14 @@ app.put("/vote", verifyToken, (req, res) => {
 
 app.post("/token", verifyToken, async (req, res) => {
   try {
-    const result = await dbQuery(
-      `SELECT username FROM users WHERE id = '${req.id}' LIMIT 1`
-    )
-    const { username } = result[0]
-    res.send({ username, auth: true })
+    const [
+      { username }
+    ] = await dbQuery(`SELECT username FROM users WHERE id = ? LIMIT 1`, [
+      req.id
+    ])
+    res.status(200).send({ username, auth: true })
   } catch {
-    res.send({ auth: false })
+    res.status(301).send({ auth: false })
   }
 })
 

@@ -83,6 +83,7 @@ header #userInteraction #button-user:hover {
 
 header #userInteraction #button-logout {
   cursor: pointer;
+  outline: none !important;
   border-radius: 0 10px 10px 0;
   background-color: #121212;
   color: red;

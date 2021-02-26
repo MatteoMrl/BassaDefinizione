@@ -9,7 +9,6 @@ const Home = ({ token, setToken }) => {
   const [currentGenre, setCurrentGenre] = useState("Action")
   const genres = useRef([])
   const [isRendered, setIsRendered] = useState()
-  const films = useRef([])
 
   useEffect(() => {
     fetch("/genres")
@@ -20,24 +19,10 @@ const Home = ({ token, setToken }) => {
       })
   }, [])
 
-  useEffect(() => {
-    fetch(`/films?s=${currentGenre}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      }
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        films.current = data.listOfFilms
-        setIsRendered(true)
-      })
-  }, [currentGenre])
-
   return (
     <React.Fragment>
       <Navbar token={token} setToken={setToken} />
-      <main className="main-homepage">
+      <main className='main-homepage'>
         <Sidebar
           genres={genres.current}
           currentGenre={currentGenre} // viene eliminato dalla lista il genere corrente
@@ -45,7 +30,6 @@ const Home = ({ token, setToken }) => {
           setIsRendered={setIsRendered} // con un nuovo genere è necessario un nuovo caricamento
         />
         <Catalog
-          films={films.current}
           currentGenre={currentGenre} // per il titolo della section
           setCurrentGenre={setCurrentGenre} // con le mq il menù dei generi passa nel Catalog
           genres={genres.current}

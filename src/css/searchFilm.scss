@@ -152,6 +152,12 @@ body {
         font-size: 20px;
         cursor: pointer;
       }
+      .fa-thumbs-up {
+        text-shadow: 0 0 1px green;
+      }
+      .fa-thumbs-down {
+        text-shadow: 0 0 1px red;
+      }
 
       .fa-thumbs-up,
       .fa-thumbs-down {
