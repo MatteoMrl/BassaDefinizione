@@ -14,7 +14,7 @@ const SearchedFilm = ({ token, setToken }) => {
   const sectionFilm = useRef()
 
   useEffect(() => {
-    const url = encodeURI(`/film/${title}`)
+    const url = encodeURI(`/film-data/${title}`)
 
     fetch(url, {
       headers: {

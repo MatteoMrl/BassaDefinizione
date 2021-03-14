@@ -2,8 +2,9 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 #registrationPage {
@@ -21,7 +22,7 @@
   margin: 10vh auto;
   border-radius: 7px;
   -webkit-box-shadow: 10px 10px 20px black;
-          box-shadow: 10px 10px 20px black;
+  box-shadow: 10px 10px 20px black;
   width: 400px;
 }
 
@@ -46,7 +47,7 @@
 .form-registration .form-group .form-control:hover,
 .form-registration .form-group .form-control:focus {
   -webkit-box-shadow: 0 0 10px 1px #ff9900;
-          box-shadow: 0 0 10px 1px #ff9900;
+  box-shadow: 0 0 10px 1px #ff9900;
   outline: none;
   border: 1px solid #ff9900;
 }
@@ -54,14 +55,14 @@
 .form-registration .form-group .valid:hover,
 .form-registration .form-group .valid:focus {
   -webkit-box-shadow: 0 0 10px 1px green;
-          box-shadow: 0 0 10px 1px green;
+  box-shadow: 0 0 10px 1px green;
   border-color: green;
 }
 
 .form-registration .form-group .invalid:hover,
 .form-registration .form-group .invalid:focus {
   -webkit-box-shadow: 0 0 10px 1px red;
-          box-shadow: 0 0 10px 1px red;
+  box-shadow: 0 0 10px 1px red;
   border-color: red;
 }
 
@@ -89,7 +90,7 @@
 .form-registration .btn-abled:focus,
 .form-registration .btn-abled:active {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background-color: green !important;
 }
 
@@ -106,10 +107,10 @@
 }
 
 @media only screen and (max-width: 600px) {
-  form {
+  .form-registration {
     width: 300px;
   }
-  form #imgLogo {
+  .form-registration #imgLogo {
     width: 300px;
   }
 }

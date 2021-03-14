@@ -10,15 +10,13 @@ const atob = require("atob")
 const bcrypt = require("bcryptjs")
 const fetch = require("node-fetch")
 const cardsPerPage = 10 // number of films per page
-
-const publicDirectoryPath = path.join(__dirname, "public")
+const publicDirectoryPath = path.join(__dirname, "/build")
 app.use(express.static(publicDirectoryPath))
-
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cookieParser())
-
 dotenv.config({ path: "./private/.env" })
+const serverPort = process.env.PORT || 5000
 
 // DATABASE SECTION ------------------------------------------------------------------
 
@@ -341,6 +339,7 @@ app.get("/pagination", async (req, res) => {
 
 app.get("/film/:title", async (req, res) => {
   const { title } = req.params
+
   try {
     const data = await searchFilm(title)
     data.Title
@@ -351,7 +350,7 @@ app.get("/film/:title", async (req, res) => {
   }
 })
 
-app.get("/user/:username", verifyToken, (req, res) => {
+app.get("/user-data/:username", verifyToken, (req, res) => {
   favoriteFilms(req.id, res)
 })
 
@@ -380,4 +379,8 @@ app.post("/token", verifyToken, async (req, res) => {
   }
 })
 
-app.listen(8080)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"))
+})
+
+app.listen(serverPort, () => console.log(serverPort))

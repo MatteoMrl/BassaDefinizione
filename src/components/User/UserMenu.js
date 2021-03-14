@@ -31,7 +31,7 @@ const UserFilms = ({ token, setToken }) => {
 
   useEffect(() => {
     if (token !== "") {
-      fetch(`/user/${username}`, {
+      fetch(`/user-data/${username}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/x-www-form-urlencoded",
