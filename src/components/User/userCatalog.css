@@ -560,10 +560,9 @@ main {
   background-color: #121212;
 }
 
-#favouriteFilms .card img {
+#favouriteFilms .card .card-img-top {
   height: 300px;
   width: 200px;
-  opacity: 80%;
 }
 
 #favouriteFilms .card .card-body .card-title {
@@ -593,10 +592,6 @@ main {
 #favouriteFilms .card:hover {
   position: relative;
   bottom: 20px;
-}
-
-#favouriteFilms .card:hover img {
-  opacity: 100%;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -672,7 +667,7 @@ main {
   #favouriteFilms .card {
     width: 150px;
   }
-  #favouriteFilms .card img {
+  #favouriteFilms .card .card-img-top {
     width: 150px;
     height: 225px;
   }
