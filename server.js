@@ -337,7 +337,7 @@ app.get("/pagination", async (req, res) => {
   res.json({ pagesLength })
 })
 
-app.get("/film/:title", async (req, res) => {
+app.get("/film-data/:title", async (req, res) => {
   const { title } = req.params
 
   try {
@@ -383,4 +383,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
-app.listen(serverPort, () => console.log(serverPort))
+app.listen(serverPort, () =>
+  console.log(`server listening on port ${serverPort}`)
+)

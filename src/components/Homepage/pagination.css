@@ -7,6 +7,12 @@
   border: 1px solid black;
 }
 
+.pagination .page-item:hover {
+  position: relative;
+  bottom: 2px;
+  box-shadow: 0 5px 10px black;
+}
+
 .pagination .active {
   background-color: black;
   color: #ff9900;
