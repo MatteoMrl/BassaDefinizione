@@ -47,7 +47,9 @@ const Catalog = ({
 
   const onPageClick = (e) => {
     setIsRendered(false)
-    currentPage.current = +e.target.dataset.page
+    currentPage.current = isNaN(e.target.dataset.page)
+      ? 0
+      : e.target.dataset.page
     getActualPageFilms()
   }
 
